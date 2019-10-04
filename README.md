@@ -1,2 +1,3 @@
-# portfolio-v2
-Nathan Thomas' new personal portfolio website
+# PORTFOLIO
+
+Nathan Thomas' second iteration of his portfolio.
