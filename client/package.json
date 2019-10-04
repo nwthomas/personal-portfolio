@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "nathan-thomas-portfolio",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "The portfolio site for Nathan Thomas, software engineer.",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Nathan Thomas",
   "dependencies": {
     "gatsby": "^2.15.29",
     "gatsby-image": "^2.2.24",
@@ -21,6 +21,7 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
+    "flow-bin": "^0.109.0",
     "prettier": "^1.18.2"
   },
   "keywords": [
