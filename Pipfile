@@ -10,6 +10,12 @@ v = {editable = true,version = "*"}
 
 [packages]
 django = "*"
+python-decouple = "*"
+django-cors-headers = "*"
+gunicorn = "*"
+django-heroku = "*"
+psycopg2-binary = "*"
+whitenoise = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.7.4"

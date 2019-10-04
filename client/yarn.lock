@@ -9575,6 +9575,13 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-conflux@^0.0.2-beta.6:
+  version "0.0.2-beta.6"
+  resolved "https://registry.yarnpkg.com/react-conflux/-/react-conflux-0.0.2-beta.6.tgz#560b3abf95f28a281a3c22ca14bf545259db84c8"
+  integrity sha512-Qmmn3W6HJVYRZZWV26qUExEVtRUpT3ZDnR8rF3lcSCLj0LpxEUhQb9OI/P+RpgI1zWceMBghw5W0cvAPCIYy6g==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-dev-utils@^4.2.3:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-4.2.3.tgz#5b42d9ea58d5e9e017a2f57a40a8af408a3a46fb"
