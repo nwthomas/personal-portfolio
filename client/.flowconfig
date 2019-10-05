@@ -10,6 +10,8 @@
 [lints]
 
 [options]
+module.name_mapper='.*.scss' -> 'SCSSModule'
+module.system=haste
 all=true
 
 [strict]

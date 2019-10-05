@@ -13,11 +13,10 @@ import { useStaticQuery, graphql } from 'gatsby';
 type Props = {|
   description: string,
   lang: string,
-  meta: string,
   title: string
 |};
 
-function SEO({ description, lang, meta, title }: Props) {
+function SEO({ description = '', lang = 'en', title = '' }: Props) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -74,23 +73,9 @@ function SEO({ description, lang, meta, title }: Props) {
           name: `twitter:description`,
           content: metaDescription
         }
-      ].concat(meta)}
+      ]}
     />
   );
 }
-
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-  title: ``
-};
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired
-};
 
 export default SEO;
