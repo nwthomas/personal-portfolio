@@ -185,3 +185,6 @@ dmypy.json
 
 # Ignore VSCode settings
 .vscode
+
+#Ignore testing database
+db.sqlite3
