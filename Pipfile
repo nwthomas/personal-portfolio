@@ -16,6 +16,7 @@ gunicorn = "*"
 django-heroku = "*"
 psycopg2-binary = "*"
 whitenoise = "*"
+graphene-django = "*"
 
 [requires]
 python_version = "3.7.4"
