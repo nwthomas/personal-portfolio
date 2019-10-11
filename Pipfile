@@ -18,6 +18,7 @@ psycopg2-binary = "*"
 whitenoise = "*"
 graphene-django = "*"
 dj-database-url = "*"
+django-filter = "*"
 
 [requires]
 python_version = "3.7.4"

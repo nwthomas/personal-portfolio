@@ -1,7 +1,7 @@
 from django.conf import settings
 from graphene_django import DjangoObjectType
 import graphene
-from models import Mail
+from .models import Mail
 from graphene_django.filter import DjangoFilterConnectionField
 
 
