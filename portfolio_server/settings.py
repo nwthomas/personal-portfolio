@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from decouple import config
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,17 +22,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'jiyolr4g0h(3r11j$rof3+l1la-uv$$$p0z*81vn%wy=a)&5#q'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('ALLOWED_HOSTS')
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'blog',
+    'mail',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,8 +44,10 @@ INSTALLED_APPS = [
     'graphene_django'
 ]
 
+# Directs us to the schema that we'll use for Graphene
+
 GRAPHENE = {
-    'SCHEMA': 'django_root.schema.schema',
+    'SCHEMA': 'mail.schema.schema',
 }
 
 MIDDLEWARE = [
@@ -79,10 +85,7 @@ WSGI_APPLICATION = 'portfolio_server.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.config('DATABASE_URL')
 }
 
 
@@ -123,3 +126,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

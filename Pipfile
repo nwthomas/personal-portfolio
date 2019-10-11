@@ -17,6 +17,7 @@ django-heroku = "*"
 psycopg2-binary = "*"
 whitenoise = "*"
 graphene-django = "*"
+dj-database-url = "*"
 
 [requires]
 python_version = "3.7.4"

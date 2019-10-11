@@ -34,4 +34,12 @@ class CreateMail(graphene.Mutation):
     ok = graphene.Boolean()
 
     def mutate(self, info, title, context):
-        pass
+        print(title, context)
+
+
+class Mutation(graphene.ObjectType):
+    create_mail = CreateMail.Field()
+
+
+# Exports the queries and mutations
+schema = graphene.Schema(query=Query, mutation=None)
