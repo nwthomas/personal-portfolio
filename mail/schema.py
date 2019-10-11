@@ -23,22 +23,22 @@ class Query(graphene.ObjectType):
     mail = DjangoFilterConnectionField(MailType)
 
 
-class CreateMail(graphene.Mutation):
-    class Arguments:
-        name = graphene.String()
-        email = graphene.String()
-        subject = graphene.String()
-        message = models.String()
-        honey_field = models.String()
-    mail = graphene.Field(MailType)
-    ok = graphene.Boolean()
+# class CreateMail(graphene.Mutation):
+#     class Arguments:
+#         name = graphene.String()
+#         email = graphene.String()
+#         subject = graphene.String()
+#         message = models.String()
+#         honey_field = models.String()
+#     mail = graphene.Field(MailType)
+#     ok = graphene.Boolean()
 
-    def mutate(self, info, title, context):
-        print(title, context)
+#     def mutate(self, info, title, context):
+#         print(title, context)
 
 
-class Mutation(graphene.ObjectType):
-    create_mail = CreateMail.Field()
+# class Mutation(graphene.ObjectType):
+#     create_mail = CreateMail.Field()
 
 
 # Exports the queries and mutations
