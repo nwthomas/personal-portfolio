@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'graphene_django'
+    'graphene_django',
 ]
 
 # Directs us to the schema that we'll use for Graphene
