@@ -27,7 +27,18 @@ module.exports = {
         icon: `src/images/Twitter_Logo_White.png` // This path is relative to the root of the site.
       }
     },
-    `gatsby-plugin-flow`
+    `gatsby-plugin-flow`,
+    {
+      resolve: 'gatsby-plugin-sentry',
+      options: {
+        dsn: process.env.REACT_APP_SENTRY_DNS,
+        // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
+        environment: process.env.NODE_ENV,
+        enabled: (() =>
+          ['production', 'stage'].indexOf(process.env.NODE_ENV) !== -1)(),
+        name: process.env.REACT_APP_SENTRY_NAME
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
