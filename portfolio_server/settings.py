@@ -13,6 +13,14 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 from decouple import config
 import dj_database_url
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
+# Initiate Sentry for Django server
+sentry_sdk.init(
+    dsn=config("SENTRY_DNS"),
+    integrations=[DjangoIntegration()]
+)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
