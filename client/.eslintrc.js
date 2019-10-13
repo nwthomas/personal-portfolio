@@ -8,9 +8,9 @@ module.exports = {
     'plugin:import/recommended',
     'plugin:react/recommended',
     'plugin:prettier/recommended',
-    'plugin:jsx-a11y/strict'
+    'plugin:jsx-a11y/recommended'
   ],
-  plugins: ['import', 'react'],
+  plugins: ['import', 'react', 'jsx-a11y'],
   rules: {
     'valid-jsdoc': 2,
     'react/jsx-uses-react': 1,
