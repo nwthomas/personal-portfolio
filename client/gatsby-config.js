@@ -5,7 +5,9 @@ module.exports = {
     author: `@nwthomas_`
   },
   plugins: [
+    // Configures Node-SASS
     'gatsby-plugin-sass',
+    // Configures the Gatsby file system
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -15,6 +17,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    // Adds a Gatsby manifest to all pages
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -27,7 +30,9 @@ module.exports = {
         icon: `src/images/Twitter_Logo_White.png` // This path is relative to the root of the site.
       }
     },
+    // Turns on Gatsby support for flow
     `gatsby-plugin-flow`,
+    // Configures Sentry support in React/Gatsby
     {
       resolve: 'gatsby-plugin-sentry',
       options: {
@@ -37,6 +42,13 @@ module.exports = {
         enabled: (() =>
           ['production', 'stage'].indexOf(process.env.NODE_ENV) !== -1)(),
         name: process.env.REACT_APP_SENTRY_NAME
+      }
+    },
+    // Adds .jsx file support
+    {
+      resolve: `gatsby-plugin-compile-es6-packages`,
+      options: {
+        modules: [`query-string`]
       }
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality

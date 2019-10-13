@@ -9,6 +9,7 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import Header from './header';
+import ErrorBoundary from './ErrorBoundary';
 
 type Props = {|
   children: Object
@@ -26,7 +27,7 @@ const Layout = ({ children }: Props) => {
   `);
 
   return (
-    <>
+    <ErrorBoundary>
       <Header siteTitle={data.site.siteMetadata.title} />
       <div
         style={{
@@ -43,7 +44,7 @@ const Layout = ({ children }: Props) => {
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
       </div>
-    </>
+    </ErrorBoundary>
   );
 };
 
