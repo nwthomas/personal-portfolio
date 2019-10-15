@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 
-type Props = {
-  children: Object
-};
+import type {
+  ErrorBoundaryState,
+  ErrorBoundaryProps
+} from './ErrorBoundaryTypes';
 
-type State = {
-  error: Error | null
-};
-
-class ErrorBoundary extends Component<Props, State> {
-  constructor(props: Props) {
+class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { error: null };
   }

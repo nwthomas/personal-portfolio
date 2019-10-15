@@ -8,14 +8,11 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import Header from './Header';
-import ErrorBoundary from './ErrorBoundary';
+import Header from '../Header';
+import ErrorBoundary from '../ErrorBoundary';
+import type { LayoutProps } from './LayoutTypes';
 
-type Props = {|
-  children: Object
-|};
-
-const Layout = ({ children }: Props) => {
+const Layout = ({ children }: LayoutProps) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
