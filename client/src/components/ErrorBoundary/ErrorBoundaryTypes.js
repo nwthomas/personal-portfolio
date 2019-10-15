@@ -2,6 +2,6 @@ export type ErrorBoundaryProps = {|
   children: Object
 |};
 
-export type ErrorBoundaryState = {
+export type ErrorBoundaryState = {|
   error: Error | null
-};
+|};
