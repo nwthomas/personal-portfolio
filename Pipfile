@@ -17,9 +17,9 @@ django-heroku = "*"
 psycopg2-binary = "*"
 whitenoise = "*"
 graphene-django = "*"
-dj-database-url = "*"
 django-filter = "*"
 sentry-sdk = "==0.12.3"
+dj-database-url = "*"
 
 [requires]
 python_version = "3.7.4"
