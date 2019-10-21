@@ -1,0 +1,7 @@
+{
+  "name": "Nathan Thomas' Portfolio Server",
+  "description": "The server for Nathan Thomas' personal portfolio",
+  "repository": "https://github.com/nwthomas/personal-portfolio-v2",
+  "logo": "",
+  "_comment": "This file is used to house the data used in the README.md Heroku button"
+}
