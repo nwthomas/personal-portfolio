@@ -22,4 +22,4 @@ sentry-sdk = "==0.12.3"
 dj-database-url = "*"
 
 [requires]
-python_version = "3.7.4"
+python_version = "3.7"
