@@ -1,8 +1,8 @@
 {
   "name": "nathan-thomas-portfolio",
   "private": true,
-  "description": "The portfolio site for Nathan Thomas, software engineer.",
-  "version": "0.0.1-beta.1",
+  "description": "The portfolio site for Nathan Thomas, software engineer",
+  "version": "0.0.1-beta.2",
   "author": "Nathan Thomas",
   "dependencies": {
     "@babel/core": "^7.7.7",
