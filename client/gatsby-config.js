@@ -50,6 +50,8 @@ module.exports = {
       options: {
         // precachePages: [`/about-us/`, `/projects/*`] // To be updated to pre-cache pages/files
       }
-    }
+    },
+    'gatsby-plugin-nullish-coalescing-operator',
+    '@bumped-inc/gatsby-plugin-optional-chaining'
   ]
 };

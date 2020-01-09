@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 
@@ -10,7 +9,7 @@ const IndexPage = () => (
       description="This is the portfolio site for Nathan Thomas, software engineer, musician, amateur musician, and Italian food fan."
       lang="en"
     />
-    <h1>Home Page</h1>
+    <h1>Nathan Thomas</h1>
   </Layout>
 );
 
