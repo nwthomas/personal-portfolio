@@ -51,6 +51,7 @@ module.exports = {
       }
     },
     'gatsby-plugin-nullish-coalescing-operator',
-    '@bumped-inc/gatsby-plugin-optional-chaining'
+    '@bumped-inc/gatsby-plugin-optional-chaining',
+    `gatsby-plugin-typescript`
   ]
 };
