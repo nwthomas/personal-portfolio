@@ -11,7 +11,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Header from '../Header';
 import ErrorBoundary from '../ErrorBoundary';
 
-const Layout = children => {
+const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {

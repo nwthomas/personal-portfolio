@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import './_header.scss';
 
-const Header = siteTitle => {
+const Header = ({ siteTitle }) => {
   return (
     <header className="header__container">
       <div>{siteTitle}</div>
