@@ -52,6 +52,13 @@ module.exports = {
     },
     'gatsby-plugin-nullish-coalescing-operator',
     '@bumped-inc/gatsby-plugin-optional-chaining',
-    `gatsby-plugin-typescript`
+    `gatsby-plugin-typescript`,
+    {
+      resolve: 'gatsby-plugin-tslint',
+      options: {
+        test: /\.ts$|\.tsx$/,
+        exclude: /(node_modules|cache|public)/
+      }
+    }
   ]
 };
