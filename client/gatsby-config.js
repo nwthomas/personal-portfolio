@@ -78,6 +78,10 @@ module.exports = {
     },
 
     // typescript
-    `gatsby-plugin-typescript`
+    `gatsby-plugin-typescript`,
+
+    // typescript type checking
+    'gatsby-plugin-typescript',
+    'gatsby-plugin-typescript-checker'
   ]
 };
