@@ -5,16 +5,7 @@ module.exports = {
     author: `@nwthomas_`
   },
   plugins: [
-    'gatsby-plugin-sass',
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`
-      }
-    },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    // manifest data
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -27,38 +18,66 @@ module.exports = {
         icon: `src/images/Twitter_Logo_White.png` // This path is relative to the root of the site.
       }
     },
+
+    // sass
+    'gatsby-plugin-sass',
+
+    // sharp
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+
+    // filesystem source
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`
+      }
+    },
+
+    // sentry error tracking
     {
       resolve: 'gatsby-plugin-sentry',
       options: {
         dsn: process.env.REACT_APP_SENTRY_DNS,
-        // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
+        // optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
         environment: process.env.NODE_ENV,
         enabled: (() =>
           ['production', 'stage'].indexOf(process.env.NODE_ENV) !== -1)(),
         name: process.env.REACT_APP_SENTRY_NAME
       }
     },
+
+    // es6 packages for .jsx support
     {
       resolve: `gatsby-plugin-compile-es6-packages`, // Adds .jsx file support
       options: {
         modules: [`query-string`]
       }
     },
+
+    // Offline support
     {
       resolve: `gatsby-plugin-offline`,
       options: {
         // precachePages: [`/about-us/`, `/projects/*`] // To be updated to pre-cache pages/files
       }
     },
+
+    // javascript nullish coalescing and optional chaining support
     'gatsby-plugin-nullish-coalescing-operator',
     '@bumped-inc/gatsby-plugin-optional-chaining',
-    `gatsby-plugin-typescript`,
+
+    // tslint
     {
       resolve: 'gatsby-plugin-tslint',
       options: {
         test: /\.ts$|\.tsx$/,
         exclude: /(node_modules|cache|public)/
       }
-    }
+    },
+
+    // typescript
+    `gatsby-plugin-typescript`
   ]
 };
