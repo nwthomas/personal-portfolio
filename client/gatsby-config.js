@@ -27,7 +27,6 @@ module.exports = {
         icon: `src/images/Twitter_Logo_White.png` // This path is relative to the root of the site.
       }
     },
-    `gatsby-plugin-flow`,
     {
       resolve: 'gatsby-plugin-sentry',
       options: {

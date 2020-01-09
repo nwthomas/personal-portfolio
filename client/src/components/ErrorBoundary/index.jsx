@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 
-import type {
-  ErrorBoundaryState,
-  ErrorBoundaryProps
-} from './ErrorBoundaryTypes';
-
-class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
-  constructor(props: ErrorBoundaryProps) {
+class ErrorBoundary extends Component {
+  constructor(props) {
     super(props);
     this.state = { error: null };
   }
 
-  componentDidCatch(error: Error, errorInfo: Object) {
+  componentDidCatch(error, errorInfo) {
     const { Sentry } = window;
     this.setState({ error });
     // eslint-disable-next-line

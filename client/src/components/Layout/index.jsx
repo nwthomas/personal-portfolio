@@ -10,9 +10,8 @@ import { useStaticQuery, graphql } from 'gatsby';
 
 import Header from '../Header';
 import ErrorBoundary from '../ErrorBoundary';
-import type { LayoutProps } from './LayoutTypes';
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = children => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
