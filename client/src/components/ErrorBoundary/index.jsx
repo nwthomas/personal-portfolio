@@ -9,13 +9,11 @@ class ErrorBoundary extends Component {
   componentDidCatch(error, errorInfo) {
     const { Sentry } = window;
     this.setState({ error });
-    // eslint-disable-next-line
     Sentry.configureScope(scope => {
       Object.keys(errorInfo).forEach(key => {
         scope.setExtra(key, errorInfo[key]);
       });
     });
-    // eslint-disable-next-line
     Sentry.captureException(error);
   }
 

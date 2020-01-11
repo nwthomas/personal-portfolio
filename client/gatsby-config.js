@@ -77,11 +77,8 @@ module.exports = {
       }
     },
 
-    // typescript
-    `gatsby-plugin-typescript`,
-
     // typescript type checking
-    'gatsby-plugin-typescript',
+    { resolve: 'gatsby-plugin-typescript', options: { isTSX: true } },
     'gatsby-plugin-typescript-checker'
   ]
 };
