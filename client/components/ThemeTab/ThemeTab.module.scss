@@ -1,0 +1,21 @@
+@use "../../styles/libs/variables" as variables;
+
+.root {
+  background-color: variables.$theme-tab-background;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  bottom: 0;
+  cursor: pointer;
+  height: 80px;
+  position: fixed;
+  right: 5%;
+  transition: box-shadow 0.3s;
+  width: 55px;
+  z-index: 10;
+
+  &:hover {
+    box-shadow: -1px 3px 10px -1px rgba(0, 0, 0, 0.35);
+    -webkit-box-shadow: -1px 3px 10px -1px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: -1px 3px 10px -1px rgba(0, 0, 0, 0.35);
+  }
+}

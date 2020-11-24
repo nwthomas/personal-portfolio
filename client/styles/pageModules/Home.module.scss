@@ -1,0 +1,45 @@
+.root {
+  display: flex;
+  justify-content: center;
+  padding: 30px 3%;
+  width: 100%;
+
+  > div {
+    max-width: 1200px;
+    width: 100%;
+
+    > p {
+      font-size: 3rem;
+      max-width: 75%;
+
+      > span {
+        display: inline-block;
+        height: 40px;
+        margin: 0 8px;
+        width: 29px;
+
+        > a {
+          align-items: flex-end;
+          display: flex;
+          height: 40px;
+          position: relative;
+          transition: margin-bottom 0.2s, opacity 0.2s;
+
+          > div {
+            bottom: -5px;
+            position: absolute;
+
+            &:hover {
+              opacity: 0.8;
+              margin-bottom: 3px;
+            }
+          }
+        }
+      }
+
+      > span:first-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

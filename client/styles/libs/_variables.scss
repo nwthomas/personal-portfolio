@@ -1,0 +1,25 @@
+// ===================================== Color Variables
+// All color names pulled directly from http://chir.ag/projects/name-that-color/
+$electric-violet: #642af5;
+$black: #000000;
+$bunker: #101419;
+$emerald: #59c689;
+$shark: #27272a;
+$vista-blue: #95dbb3;
+$white: #ffffff;
+$woodsmoke: #161618;
+
+// ===================================== Color Assignments
+// =================== Dark Mode
+$background-color-dark: $woodsmoke;
+$background-hover-color-dark: #27272a;
+
+// =================== Light Mode
+$background-color-light: $white;
+$text-color-light: $bunker;
+
+// =================== General
+$hover-color: $vista-blue;
+$navbar-title-color: $emerald;
+$text-color-light: $white;
+$theme-tab-background: $black;

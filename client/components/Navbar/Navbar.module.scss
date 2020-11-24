@@ -1,9 +1,11 @@
+@use "../../styles/libs/_variables" as variables;
+
 .root {
   align-items: center;
   display: flex;
   height: 60px;
   justify-content: center;
-  padding: 3%;
+  padding: 0 3%;
   width: 100%;
 
   @media only screen and (min-width: 600px) {
@@ -13,15 +15,43 @@
   @media only screen and (min-width: 1000px) {
     height: 100px;
   }
-}
 
-.navbar {
-  align-items: baseline;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
+  .navbar {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 100%;
 
-.maxWidth {
-  max-width: 1200px;
+    > h1 {
+      color: variables.$navbar-title-color;
+      transition: color 0.3s;
+
+      &:hover {
+        color: variables.$hover-color;
+      }
+    }
+
+    > nav {
+      display: flex;
+      align-self: center;
+      flex-grow: 1;
+      justify-content: flex-end;
+
+      > a {
+        align-items: center;
+        display: flex;
+        height: 60px;
+        justify-content: center;
+        text-decoration: none;
+        transition: color 0.3s, padding-bottom 0.3s;
+        width: 100px;
+
+        &:hover {
+          color: variables.$hover-color;
+          padding-bottom: 5px;
+        }
+      }
+    }
+  }
 }
