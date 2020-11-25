@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import Head from "next/head";
 import Footer from "../Footer";
+import Navbar from "../Navbar";
 import styles from "./Layout.module.scss";
 
 interface Props {
@@ -12,13 +13,16 @@ export default function Layout(props: Props) {
   const { children, pageName } = props;
 
   return (
-    <div className={styles.root}>
-      <Head>
-        <title>{`${pageName} | Nathan Thomas`}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      {children}
-      <Footer />
-    </div>
+    <>
+      <Navbar />
+      <div className={styles.root}>
+        <Head>
+          <title>{`${pageName} | Nathan Thomas`}</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        {children}
+        <Footer />
+      </div>
+    </>
   );
 }

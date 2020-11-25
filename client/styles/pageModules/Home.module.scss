@@ -1,7 +1,6 @@
 .root {
   display: flex;
   justify-content: center;
-  padding: 30px 3%;
   width: 100%;
 
   > div {
@@ -9,8 +8,13 @@
     width: 100%;
 
     > p {
-      font-size: 3rem;
-      max-width: 75%;
+      font-size: 2.5rem;
+      max-width: 95%;
+
+      @media only screen and (min-width: 600px) {
+        font-size: 3rem;
+        max-width: 75%;
+      }
 
       > span {
         display: inline-block;
@@ -38,7 +42,7 @@
       }
 
       > span:first-child {
-        margin-right: 0;
+        margin: 0 0 0 5px;
       }
     }
   }
