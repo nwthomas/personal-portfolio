@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Layout from "../components/Layout";
+import LineBreak from "../components/LineBreak";
 import styles from "../styles/pageModules/Home.module.scss";
 
 const PAGE_NAME = "Home";
@@ -41,6 +42,7 @@ export default function Home() {
             in San Francisco, California.
           </p>
         </div>
+        <LineBreak />
       </main>
     </Layout>
   );
