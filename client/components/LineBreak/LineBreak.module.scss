@@ -7,7 +7,8 @@
   width: 100%;
 
   > div {
-    height: 1px;
+    border-radius: variables.$infinity;
+    height: 2px;
     background-color: variables.$line-break;
     width: 100%;
   }

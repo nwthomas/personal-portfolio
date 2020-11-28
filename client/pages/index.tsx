@@ -11,7 +11,7 @@ export default function Home() {
     <Layout pageName={PAGE_NAME}>
       <main className={styles.root}>
         <div>
-          <p>
+          <h3>
             I'm Nathan Thomas, a full stack software engineer, writer, reader,
             runner, instructor, speaker, and investor
             <span>
@@ -40,7 +40,7 @@ export default function Home() {
               </a>
             </span>
             in San Francisco, California.
-          </p>
+          </h3>
         </div>
         <LineBreak />
       </main>
