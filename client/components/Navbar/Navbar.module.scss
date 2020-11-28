@@ -1,0 +1,27 @@
+.root {
+  align-items: center;
+  display: flex;
+  height: 60px;
+  justify-content: center;
+  padding: 3%;
+  width: 100%;
+
+  @media only screen and (min-width: 600px) {
+    height: 80px;
+  }
+
+  @media only screen and (min-width: 1000px) {
+    height: 100px;
+  }
+}
+
+.navbar {
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.maxWidth {
+  max-width: 1200px;
+}
