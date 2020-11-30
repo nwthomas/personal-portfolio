@@ -1,19 +1,18 @@
 @use "../../styles/libs/variables" as variables;
 
-.root {
-  align-items: center;
-  display: flex;
-  margin: 70px 0;
-  width: 100%;
-
-  > div {
-    border-radius: variables.$infinity;
-    height: 2px;
-    background-color: variables.$line-break;
+@media only screen and (min-width: 600px) {
+  .root {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    margin: 100px 0;
     width: 100%;
-  }
 
-  @media only screen and (min-width: 600px) {
-    margin: 80px 0;
+    > div {
+      background-color: variables.$line-break;
+      border-radius: variables.$infinity;
+      height: 2px;
+      width: 80%;
+    }
   }
 }

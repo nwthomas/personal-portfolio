@@ -4,15 +4,15 @@
   align-items: center;
   flex-direction: column;
   display: flex;
-  margin-top: 35px;
+  padding: 0 3%;
   width: 100%;
 
   @media only screen and (min-width: 600px) {
-    margin-top: 40px;
+    margin: 60px 0;
   }
 
   > div {
-    max-width: 1200px;
+    max-width: 1400px;
     width: 100%;
 
     > h3 {
@@ -26,14 +26,14 @@
 
       > span {
         display: inline-block;
-        height: 40px;
-        margin: 0 8px;
-        width: 29px;
+        height: 30px;
+        margin: 0 0 0 7px;
+        width: 30px;
 
         > a {
           align-items: flex-end;
           display: flex;
-          height: 40px;
+          height: 30px;
           position: relative;
           transition: margin-bottom 0.2s, opacity 0.2s;
 
@@ -49,8 +49,8 @@
         }
       }
 
-      > span:first-child {
-        margin: 0 0 0 5px;
+      > span:last-child {
+        margin: 0 8px;
       }
     }
   }

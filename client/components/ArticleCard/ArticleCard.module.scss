@@ -1,0 +1,16 @@
+@use "../../styles/libs/_variables" as variables;
+
+.root {
+  flex-grow: 1;
+  padding: 40px 5%;
+  max-width: 400px;
+  width: 100%;
+
+  h3 {
+    margin-bottom: 20px;
+  }
+
+  &:hover {
+    background-color: variables.$background-hover-color-dark;
+  }
+}

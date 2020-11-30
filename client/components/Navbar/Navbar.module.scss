@@ -2,13 +2,9 @@
 
 .root {
   align-items: center;
-  background-image: linear-gradient(
-    180deg,
-    variables.$background-color-dark 80%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  background-color: variables.$background-color-dark;
   display: flex;
-  height: 90px;
+  height: 60px;
   justify-content: center;
   padding: 0 3%;
   position: fixed;
@@ -24,39 +20,70 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: 1400px;
     width: 100%;
 
-    > h1 {
+    .title {
       color: variables.$navbar-title-color;
+      cursor: pointer;
+      font-size: 5.5rem;
       transition: color 0.3s;
 
       &:hover {
         color: variables.$hover-color;
       }
-    }
-
-    > nav {
-      display: none;
 
       @media only screen and (min-width: 600px) {
+        font-size: 7rem;
+      }
+    }
+
+    > div {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      width: 80%;
+
+      .theme__icon {
+        cursor: pointer;
         display: flex;
-        align-self: center;
-        flex-grow: 1;
+        height: 60px;
         justify-content: flex-end;
+        transition: padding-bottom 0.3s;
+        width: 100px;
 
-        > a {
-          align-items: center;
-          display: flex;
-          height: 60px;
+        &:hover {
+          opacity: 0.8;
+          padding-bottom: 5px;
+        }
+
+        @media only screen and (min-width: 600px) {
           justify-content: center;
-          text-decoration: none;
-          transition: color 0.3s, padding-bottom 0.3s;
-          width: 100px;
+        }
+      }
 
-          &:hover {
-            color: variables.$hover-color;
-            padding-bottom: 5px;
+      .navbar__links {
+        display: none;
+
+        @media only screen and (min-width: 600px) {
+          display: flex;
+          align-self: center;
+          justify-content: flex-end;
+
+          > a {
+            align-items: center;
+            display: flex;
+            height: 60px;
+            justify-content: center;
+            text-decoration: none;
+            transition: color 0.3s, padding-bottom 0.3s;
+            width: 100px;
+
+            &:hover {
+              color: variables.$hover-color;
+              padding-bottom: 5px;
+            }
           }
         }
       }

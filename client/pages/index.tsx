@@ -1,4 +1,5 @@
 import React from "react";
+import ArticleCardGroup from "../components/ArticleCardGroup";
 import Image from "next/image";
 import Layout from "../components/Layout";
 import LineBreak from "../components/LineBreak";
@@ -12,8 +13,20 @@ export default function Home() {
       <main className={styles.root}>
         <div>
           <h3>
-            I'm Nathan Thomas, a full stack software engineer, writer, reader,
-            runner, instructor, speaker, and investor
+            I'm Nathan Thomas, a software engineer
+            <span>
+              <a href="https://reactjs.org/">
+                <Image
+                  alt="React logo"
+                  draggable={false}
+                  height={100}
+                  quality={100}
+                  src="/react.png"
+                  width={100}
+                />
+              </a>
+            </span>
+            , writer, reader, runner, instructor, speaker, and investor
             <span>
               <a href="https://bitcoin.org/bitcoin.pdf">
                 <Image
@@ -28,7 +41,7 @@ export default function Home() {
             </span>
             . I currently work at the bird company
             <span>
-              <a href="https://www.twitter.com/nwthomas_">
+              <a href="https://twitter.com/nwthomas_">
                 <Image
                   alt="Twitter logo"
                   draggable={false}

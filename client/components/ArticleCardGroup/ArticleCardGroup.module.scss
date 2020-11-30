@@ -1,0 +1,8 @@
+@use "../../styles/libs/_variables" as variables;
+
+.root {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+}
