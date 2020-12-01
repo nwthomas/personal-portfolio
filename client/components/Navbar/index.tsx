@@ -22,7 +22,7 @@ export default function Navbar() {
             />
           </div>
           <nav className={styles.navbar__links}>
-            <Link href="/">Home</Link>
+            <Link href="/about">About</Link>
             <Link href="/posts">Posts</Link>
             <Link href="/projects">Projects</Link>
             <Link href="/contact">Contact</Link>
