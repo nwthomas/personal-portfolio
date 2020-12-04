@@ -1,8 +1,7 @@
 import React from "react";
-import ArticleCardGroup from "../components/ArticleCardGroup";
 import Image from "next/image";
 import Layout from "../components/Layout";
-import LineBreak from "../components/LineBreak";
+import Cubes from "../components/Cubes";
 import styles from "../styles/pageModules/Home.module.scss";
 
 const PAGE_NAME = "Home";
