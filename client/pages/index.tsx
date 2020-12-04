@@ -55,7 +55,6 @@ export default function Home() {
             in San Francisco, California.
           </h3>
         </div>
-        <LineBreak />
       </main>
     </Layout>
   );
