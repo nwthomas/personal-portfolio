@@ -3,6 +3,7 @@ import { css } from "styled-components";
 const GlobalStyle = css`
   * {
     box-sizing: border-box;
+    transition: background-color 0.3s, color 0.3s;
   }
 
   html {

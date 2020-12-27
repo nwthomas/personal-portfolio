@@ -3,7 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 
-export default function Navbar() {
+interface Props {
+  onThemeChangeClick: () => void;
+}
+
+export default function Navbar({ onThemeChangeClick }: Props) {
   return (
     <RootStyles>
       <div>
@@ -11,8 +15,8 @@ export default function Navbar() {
           <TitleIcon>n</TitleIcon>
         </Link>
         <div>
-          <div>
-            <ThemeIcon
+          <ThemeIconImage onClick={onThemeChangeClick}>
+            <Image
               alt="Light mode button"
               draggable={false}
               height={30}
@@ -20,7 +24,7 @@ export default function Navbar() {
               src="/sun.svg"
               width={30}
             />
-          </div>
+          </ThemeIconImage>
           <nav>
             <Link href="/posts">Posts</Link>
             <Link href="/talks">Talks</Link>
@@ -109,7 +113,7 @@ const TitleIcon = styled.h1`
   }
 `;
 
-const ThemeIcon = styled(Image)`
+const ThemeIconImage = styled.div`
   cursor: pointer;
   display: flex;
   height: 60px;

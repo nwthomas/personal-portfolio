@@ -5,6 +5,7 @@ const colors = {
   electricViolet: "#642af5",
   bunker: "#101419",
   emerald: "#59c689",
+  mercury: "#e2e2e2",
   mineShaft: "#333333",
   shark: "#27272a",
   vistaBlue: "#95dbb3",
@@ -22,8 +23,8 @@ const darkColorTheme = {
 };
 
 const lightColorTheme = {
-  bodyBackground: colors.white,
-  bodyBackgroundAccentOne: colors.alabaster,
+  bodyBackground: colors.alabaster,
+  bodyBackgroundAccentOne: colors.mercury,
   text: colors.mineShaft,
   textAccent: colors.emerald,
   textAccentHover: colors.vistaBlue,

@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState } from "react";
 import { BabyYodaEasterEgg } from "../EasterEggs";
 import GlobalStyle from "../../styles";
 import Head from "next/head";
@@ -16,15 +16,20 @@ interface Props {
 
 export default function Layout({ children, pageName }: Props) {
   const [currentPageName] = usePageName(pageName);
+  const [currentTheme, setCurrentTheme] = useState<"dark" | "light">("dark");
+
+  const handleSetCurrentTheme = () => {
+    setCurrentTheme(currentTheme === "dark" ? "light" : "dark");
+  };
 
   return (
-    <ThemeProvider theme={makeMainTheme("dark")}>
+    <ThemeProvider theme={makeMainTheme(currentTheme)}>
       <GlobalStyle />
       <Head>
         <title>{currentPageName}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
+      <Navbar onThemeChangeClick={handleSetCurrentTheme} />
       <RootStyles>
         {children}
         <Footer />
