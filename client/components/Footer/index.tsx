@@ -8,7 +8,6 @@ import {
 } from "../Icons";
 import Link from "next/link";
 import styled from "styled-components";
-import styles from "./Footer.module.scss";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -23,27 +22,27 @@ export default function Footer() {
         <nav>
           <div>
             <a href="https://github.com/nwthomas">
-              <GitHubIcon theme="dark" />
+              <GitHubIcon />
             </a>
           </div>
           <div>
             <a href="https://www.instagram.com/nwthomas/">
-              <InstagramIcon theme="dark" />
+              <InstagramIcon />
             </a>
           </div>
           <div>
             <a href="https://www.linkedin.com/in/nwthomas-dev/">
-              <LinkedInIcon theme="dark" />
+              <LinkedInIcon />
             </a>
           </div>
           <div>
             <a href="https://twitter.com/nwthomas_">
-              <TwitterIcon theme="dark" />
+              <TwitterIcon />
             </a>
           </div>
           <Link href="/contact">
             <div>
-              <MailIcon theme="dark" />
+              <MailIcon />
             </div>
           </Link>
         </nav>
