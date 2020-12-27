@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import BabyYodaEasterEgg from "../BabyYodaEasterEgg";
+import { BabyYodaEasterEgg } from "../EasterEggs";
 import Head from "next/head";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
