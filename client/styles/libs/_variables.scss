@@ -13,6 +13,7 @@ $woodsmoke: #161618;
 // =================== Dark Mode
 $background-color-dark: $woodsmoke;
 $background-hover-color-dark: $shark;
+$text-color-dark: $white;
 
 // =================== Light Mode
 $background-color-light: $white;
@@ -21,7 +22,6 @@ $text-color-light: $bunker;
 // =================== General
 $hover-color: $vista-blue;
 $navbar-title-color: $emerald;
-$text-color-light: $white;
 $line-break: $shark;
 
 // ================== Spaces
@@ -37,5 +37,5 @@ $extra-extra-large: 50px;
 
 // ===================================== Space Variables
 // ================= Border Radii
-$infinity: 9999px;
-$small: 8px;
+$border-infinity: 9999px;
+$border-small: 8px;

@@ -1,6 +1,44 @@
+@use "../../styles/libs/_variables" as variables;
+
 .root {
+  align-items: center;
+  border-top: 1px solid variables.$background-hover-color-dark;
   bottom: 0;
-  height: 100px;
+  display: flex;
+  height: 200px;
+  justify-content: center;
+  padding: 0 3%;
   position: absolute;
   width: 100%;
+
+  .footer__navbar {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1400px;
+    width: 100%;
+
+    .quote {
+      font-style: italic;
+    }
+
+    nav {
+      align-items: center;
+      display: flex;
+      height: 100px;
+      justify-content: flex-end;
+      width: 50%;
+
+      .icon {
+        cursor: pointer;
+        margin: 3.5%;
+        transition: opacity 0.3s;
+        width: 30px;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
 }

@@ -1,0 +1,15 @@
+@use "../../styles/libs/_variables" as variables;
+
+.root {
+  background-color: variables.$background-hover-color-dark;
+  border-radius: variables.$border-small;
+  cursor: pointer;
+  margin-bottom: 10px;
+  margin-right: 2%;
+  padding: 1px 10px;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

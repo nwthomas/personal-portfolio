@@ -1,8 +1,7 @@
-import { clear } from "console";
 import { useEffect, useState } from "react";
 
 const INTERVAL_AMOUNT = 1000;
-const STATIC_EMOJI_LIST = [..."💰🌀🍪🤬🦑🌞👻✨🌧🤯"];
+const STATIC_EMOJI_LIST = [..."💰🌀🍪🤬🦑🌞👻✨🌧🤯🧩"];
 
 const usePageName = (initialPageName: string) => {
   const [pageName, setPageName] = useState(

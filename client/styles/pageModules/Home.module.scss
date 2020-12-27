@@ -7,20 +7,17 @@
   padding: 0 3%;
   width: 100%;
 
-  @media only screen and (min-width: 600px) {
-    margin: 80px 0;
-  }
-
   > div {
     max-width: 1400px;
     width: 100%;
 
-    > h3 {
+    > h2 {
       font-size: 2.5rem;
       max-width: 95%;
 
       @media only screen and (min-width: 600px) {
         font-size: 3rem;
+        margin: 80px 0 120px;
         max-width: 75%;
       }
 
@@ -35,7 +32,7 @@
           display: flex;
           height: 30px;
           position: relative;
-          transition: margin-bottom 0.2s, opacity 0.2s;
+          transition: opacity 0.3s;
 
           > div {
             bottom: -5px;
@@ -43,7 +40,6 @@
 
             &:hover {
               opacity: 0.8;
-              margin-bottom: 3px;
             }
           }
         }
@@ -51,6 +47,27 @@
 
       > span:last-child {
         margin: 0 8px;
+      }
+    }
+
+    .content {
+      display: flex;
+
+      .article__previews {
+        flex-grow: 2;
+      }
+
+      .content__sidebar {
+        flex-grow: 1;
+        max-width: 460px;
+        width: 100%;
+
+        .tag__area {
+          display: flex;
+          flex-wrap: wrap;
+          margin-bottom: 50px;
+          width: 100%;
+        }
       }
     }
   }

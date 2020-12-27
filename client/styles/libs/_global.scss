@@ -23,7 +23,7 @@ h2,
 h3,
 h4,
 h5 {
-  color: variables.$text-color-light;
+  color: variables.$text-color-dark;
   line-height: 1.8;
 }
 
@@ -37,7 +37,10 @@ h2 {
 }
 
 h3 {
-  font-size: 2.5rem;
+  color: variables.$navbar-title-color;
+  font-size: 1.6rem;
+  margin-bottom: 30px;
+  text-transform: uppercase;
 }
 
 h4 {
@@ -46,12 +49,12 @@ h4 {
 
 p,
 span {
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   line-height: 1.8;
 }
 
 p {
-  color: variables.$text-color-light;
+  color: variables.$text-color-dark;
 }
 
 span {
@@ -59,7 +62,7 @@ span {
 }
 
 a {
-  color: variables.$text-color-light;
+  color: variables.$text-color-dark;
   font-size: 1.6rem;
   text-decoration: none;
 }

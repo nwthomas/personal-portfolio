@@ -1,0 +1,9 @@
+@use "../../styles/libs/_variables" as variables;
+
+.icon__dark {
+  fill: variables.$text-color-dark;
+}
+
+.icon__light {
+  fill: variables.$text-color-light;
+}

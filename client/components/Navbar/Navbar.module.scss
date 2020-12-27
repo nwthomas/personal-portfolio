@@ -24,9 +24,13 @@
     width: 100%;
 
     .title {
+      align-items: center;
       color: variables.$navbar-title-color;
       cursor: pointer;
+      display: flex;
+      flex-grow: 1;
       font-size: 5.5rem;
+      max-height: 100px;
       transition: color 0.3s;
 
       &:hover {
@@ -43,7 +47,6 @@
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
-      width: 80%;
 
       .theme__icon {
         cursor: pointer;
