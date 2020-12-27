@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
-import styles from "./BabyYoda.module.scss";
+import styled from "styled-components";
 
 export default function BabyYodaEasterEgg() {
   return (
-    <div className={styles.root}>
+    <RootStyles>
       <div>
         <Image
           alt="Baby Yoda"
@@ -15,6 +15,31 @@ export default function BabyYodaEasterEgg() {
           width={200}
         />
       </div>
-    </div>
+    </RootStyles>
   );
 }
+
+const RootStyles = styled.div`
+  display: none;
+
+  @media only screen and (min-width: 600px) {
+    bottom: 0;
+    display: flex;
+    height: 150px;
+    left: 0;
+    overflow: hidden;
+    position: fixed;
+    width: 150px;
+
+    > div {
+      transition: 0.3s ease-in-out;
+      transform: rotate(30deg) translate(0px, 180px);
+    }
+
+    &:hover {
+      > div {
+        transform: rotate(30deg) translate(-5px, 30px);
+      }
+    }
+  }
+`;
