@@ -67,6 +67,11 @@ a {
   text-decoration: none;
 }
 
+button {
+  color: variables.$text-color-dark;
+  font-size: 1.6rem;
+}
+
 img {
   height: auto;
   width: 100%;

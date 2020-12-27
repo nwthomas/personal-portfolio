@@ -2,14 +2,23 @@
 
 .root {
   background-color: variables.$background-hover-color-dark;
+  border: none;
   border-radius: variables.$border-small;
+  display: inline-block;
   cursor: pointer;
   margin-bottom: 10px;
   margin-right: 2%;
-  padding: 1px 10px;
+  padding: 6px 10px;
+  text-decoration: none;
   transition: opacity 0.3s;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 
   &:hover {
     opacity: 0.8;
+  }
+
+  &:focus {
+    outline-color: variables.$text-color-dark;
   }
 }

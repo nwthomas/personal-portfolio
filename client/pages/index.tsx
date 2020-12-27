@@ -14,7 +14,10 @@ const categories = [
   "Career",
   "Personal",
   "Soft Skills",
-];
+  "Mobile",
+  "HTML",
+  "CSS",
+].sort((a, b) => (a < b ? -1 : 1));
 
 export default function Home() {
   return (
@@ -35,7 +38,7 @@ export default function Home() {
                 />
               </a>
             </span>
-            , writer, reader, musician
+            , reader, writer, musician
             <span>
               <a href="https://soundcloud.com/limbalring">
                 <Image
@@ -88,7 +91,9 @@ export default function Home() {
                   <TopicTag name={category} route={category} />
                 ))}
               </div>
-              <h3>Popular Posts</h3>
+              <div className={styles.popular__posts}>
+                <h3>Popular Posts</h3>
+              </div>
             </div>
           </div>
         </div>

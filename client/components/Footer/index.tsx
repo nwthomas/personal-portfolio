@@ -20,21 +20,26 @@ export default function Footer() {
           <p>{`© ${currentYear} Nathan Thomas`}</p>
         </div>
         <nav>
-          <a className={styles.icon} href="https://github.com/nwthomas">
-            <GitHubIcon theme="dark" />
-          </a>
-          <a className={styles.icon} href="https://www.instagram.com/nwthomas/">
-            <InstagramIcon theme="dark" />
-          </a>
-          <a
-            className={styles.icon}
-            href="https://www.linkedin.com/in/nwthomas-dev/"
-          >
-            <LinkedInIcon theme="dark" />
-          </a>
-          <a className={styles.icon} href="https://twitter.com/nwthomas_">
-            <TwitterIcon theme="dark" />
-          </a>
+          <div className={styles.icon}>
+            <a href="https://github.com/nwthomas">
+              <GitHubIcon theme="dark" />
+            </a>
+          </div>
+          <div className={styles.icon}>
+            <a href="https://www.instagram.com/nwthomas/">
+              <InstagramIcon theme="dark" />
+            </a>
+          </div>
+          <div className={styles.icon}>
+            <a href="https://www.linkedin.com/in/nwthomas-dev/">
+              <LinkedInIcon theme="dark" />
+            </a>
+          </div>
+          <div className={styles.icon}>
+            <a href="https://twitter.com/nwthomas_">
+              <TwitterIcon theme="dark" />
+            </a>
+          </div>
           <Link href="/contact">
             <div className={styles.icon}>
               <MailIcon theme="dark" />

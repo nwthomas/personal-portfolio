@@ -9,9 +9,9 @@ interface Props {
 export default function TopicTag({ name, route }: Props) {
   return (
     <Link href={route}>
-      <div className={styles.root} key={name}>
-        <p>{name}</p>
-      </div>
+      <button className={styles.root} key={name}>
+        {name}
+      </button>
     </Link>
   );
 }
