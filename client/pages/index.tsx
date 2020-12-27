@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import Layout from "../components/Layout";
-import Cubes from "../components/Cubes";
 import styles from "../styles/pageModules/Home.module.scss";
 
 const PAGE_NAME = "Home";
@@ -25,7 +24,20 @@ export default function Home() {
                 />
               </a>
             </span>
-            , writer, reader, runner, instructor, speaker, and investor
+            , writer, reader, musician
+            <span>
+              <a href="https://soundcloud.com/limbalring">
+                <Image
+                  alt="Soundcloud logo"
+                  draggable={false}
+                  height={100}
+                  quality={100}
+                  src="/soundcloud.png"
+                  width={100}
+                />
+              </a>
+            </span>
+            , instructor, speaker, and investor
             <span>
               <a href="https://bitcoin.org/bitcoin.pdf">
                 <Image

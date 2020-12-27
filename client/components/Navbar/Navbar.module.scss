@@ -10,10 +10,10 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 1;
 
   @media only screen and (min-width: 600px) {
-    height: 100px;
+    height: 120px;
   }
 
   .navbar {
@@ -34,7 +34,7 @@
       }
 
       @media only screen and (min-width: 600px) {
-        font-size: 8rem;
+        font-size: 10rem;
       }
     }
 

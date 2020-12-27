@@ -21,10 +21,6 @@ export default function Layout({ children, pageName }: Props) {
         <Head>
           <title>{currentPageName}</title>
           <link rel="icon" href="/favicon.ico" />
-
-          {/* <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-          <script src="https://cdn.spline.design/lib/spline.runtime.min.js"></script> */}
         </Head>
         {children}
         <Footer />
