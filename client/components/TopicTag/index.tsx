@@ -8,8 +8,8 @@ interface Props {
 
 export default function TopicTag({ name, route }: Props) {
   return (
-    <Link href={route} key={name}>
-      <Button key={name}>{name}</Button>
+    <Link href={route}>
+      <Button>{name}</Button>
     </Link>
   );
 }

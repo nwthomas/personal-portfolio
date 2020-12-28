@@ -10,9 +10,9 @@ const colors = {
   mercury: "#e2e2e2",
   mineShaft: "#333333",
   shark: "#27272a",
+  titanWhite: "#f8f8ff",
   transparent: "transparent",
   vistaBlue: "#95dbb3",
-  white: "#ffffff",
   woodsmoke: "#161618",
 };
 
@@ -20,8 +20,7 @@ const colors = {
 const darkColorTheme = {
   bodyBackground: colors.woodsmoke,
   bodyBackgroundAccentOne: colors.shark,
-  themeButtonIcon: colors.finn,
-  text: colors.white,
+  text: colors.titanWhite,
   textAccent: colors.emerald,
   textAccentHover: colors.vistaBlue,
   transparent: colors.transparent,
@@ -30,7 +29,6 @@ const darkColorTheme = {
 const lightColorTheme = {
   bodyBackground: colors.alabaster,
   bodyBackgroundAccentOne: colors.mercury,
-  themeButtonIcon: colors.crusta,
   text: colors.mineShaft,
   textAccent: colors.emerald,
   textAccentHover: colors.vistaBlue,

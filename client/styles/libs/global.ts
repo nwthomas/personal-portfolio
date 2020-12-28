@@ -3,6 +3,7 @@ import { css } from "styled-components";
 const GlobalStyle = css`
   * {
     box-sizing: border-box;
+    font-display: swap;
     transition: ${({ isPageLoaded }) =>
       isPageLoaded ? "background-color 0.3s, color 0.3s" : "none"};
   }

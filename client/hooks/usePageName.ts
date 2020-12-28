@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const INTERVAL_AMOUNT = 1000;
 const STATIC_EMOJI_LIST = [..."💰🌀🍪🤬🦑🌞👻✨🌧🤯🧩"];
 
-const usePageName = (initialPageName: string) => {
+export default function usePageName(initialPageName: string) {
   const [pageName, setPageName] = useState(
     [...`${initialPageName}`].concat(STATIC_EMOJI_LIST)
   );
@@ -18,6 +18,4 @@ const usePageName = (initialPageName: string) => {
   }, [pageName, setPageName]);
 
   return [pageName.join(""), setPageName];
-};
-
-export default usePageName;
+}

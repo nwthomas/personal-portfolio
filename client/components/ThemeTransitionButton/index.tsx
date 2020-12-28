@@ -1,3 +1,4 @@
+import { SyntheticEvent } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 
@@ -7,8 +8,18 @@ interface Props {
 }
 
 export default function ThemeTransitionButton({ onClick, themeName }: Props) {
+  const handleOnClick = (event: SyntheticEvent) => {
+    event.preventDefault();
+
+    const buttonClickAudio = new Audio("/switch-click.mp3");
+    buttonClickAudio.volume = 0.3;
+    buttonClickAudio.play();
+
+    onClick();
+  };
+
   return (
-    <RootStyles onClick={onClick}>
+    <RootStyles onClick={handleOnClick}>
       <Image
         alt="Theme button"
         draggable={false}

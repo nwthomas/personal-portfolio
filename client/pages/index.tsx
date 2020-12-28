@@ -88,7 +88,7 @@ export default function Home() {
               <h3>Top Categories</h3>
               <div>
                 {categories.map((category) => (
-                  <TopicTag name={category} route={category} />
+                  <TopicTag name={category} route={category} key={category} />
                 ))}
               </div>
               <div>
