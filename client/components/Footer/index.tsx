@@ -64,11 +64,17 @@ const RootStyles = styled.footer`
   width: 100%;
 
   > div {
-    align-items: center;
+    align-items: flex-start;
     display: flex;
+    flex-direction: column-reverse;
     justify-content: space-between;
     max-width: 1400px;
     width: 100%;
+
+    @media only screen and (min-width: 600px) {
+      align-items: center;
+      flex-direction: row;
+    }
 
     div:first-child {
       font-style: italic;
@@ -77,15 +83,27 @@ const RootStyles = styled.footer`
     nav {
       align-items: center;
       display: flex;
-      height: 100px;
-      justify-content: flex-end;
-      width: 50%;
+      height: 50px;
+      justify-content: flex-start;
+      margin-bottom: 10px;
+      width: 100%;
+
+      @media only screen and (min-width: 600px) {
+        height: 100px;
+        justify-content: flex-end;
+        margin-bottom: 0;
+        width: 50%;
+      }
 
       > div {
         cursor: pointer;
-        margin: 0 3.5%;
+        margin: 0 6% 0 0;
         transition: opacity 0.3s;
         width: 30px;
+
+        @media only screen and (min-width: 600px) {
+          margin: 0 3.5%;
+        }
 
         &:hover {
           opacity: 0.8;
