@@ -4,9 +4,5 @@ import Layout from "../components/Layout";
 const PAGE_NAME = "Posts";
 
 export default function Posts() {
-  return (
-    <Layout pageName={PAGE_NAME}>
-      <main></main>
-    </Layout>
-  );
+  return <Layout pageName={PAGE_NAME}></Layout>;
 }

@@ -42,8 +42,8 @@ const spaces = {
 };
 
 const borderRadii = {
-  micro: "2px",
-  nano: "5px",
+  nano: "2px",
+  micro: "5px",
   small: "8px",
   medium: "10px",
   large: "15px",
