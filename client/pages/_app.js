@@ -19,7 +19,10 @@ function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={makeMainTheme(currentTheme)}>
       <GlobalStyle isPageLoaded={isPageLoaded} />
-      <Navbar onThemeChangeClick={handleSetCurrentTheme} />
+      <Navbar
+        onThemeChangeClick={handleSetCurrentTheme}
+        themeName={currentTheme}
+      />
       <Component {...pageProps} />
     </ThemeProvider>
   );

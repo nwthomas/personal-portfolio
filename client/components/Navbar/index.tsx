@@ -1,13 +1,15 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ThemeTransitionButton from "../ThemeTransitionButton";
 import styled from "styled-components";
 
 interface Props {
   onThemeChangeClick: () => void;
+  themeName: "dark" | "light";
 }
 
-export default function Navbar({ onThemeChangeClick }: Props) {
+export default function Navbar({ onThemeChangeClick, themeName }: Props) {
   return (
     <RootStyles>
       <div>
@@ -15,16 +17,10 @@ export default function Navbar({ onThemeChangeClick }: Props) {
           <TitleIcon>n</TitleIcon>
         </Link>
         <div>
-          <ThemeIconImage onClick={onThemeChangeClick}>
-            <Image
-              alt="Light mode button"
-              draggable={false}
-              height={30}
-              quality={100}
-              src="/sun.svg"
-              width={30}
-            />
-          </ThemeIconImage>
+          <ThemeTransitionButton
+            onClick={onThemeChangeClick}
+            themeName={themeName}
+          />
           <nav>
             <Link href="/posts">Posts</Link>
             <Link href="/talks">Talks</Link>
@@ -110,22 +106,5 @@ const TitleIcon = styled.h1`
 
   @media only screen and (min-width: 600px) {
     font-size: 10rem;
-  }
-`;
-
-const ThemeIconImage = styled.div`
-  cursor: pointer;
-  display: flex;
-  height: 60px;
-  justify-content: flex-end;
-  transition: padding-bottom 0.3s;
-  width: 100px;
-
-  &:hover {
-    padding-bottom: 5px;
-  }
-
-  @media only screen and (min-width: 600px) {
-    justify-content: center;
   }
 `;

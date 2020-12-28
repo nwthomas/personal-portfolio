@@ -2,12 +2,15 @@
 // All color names pulled directly from http://chir.ag/projects/name-that-color/
 const colors = {
   alabaster: "#f8f8f8f8",
+  crusta: "#f98a31",
   electricViolet: "#642af5",
   bunker: "#101419",
   emerald: "#59c689",
+  finn: "#6e2d6a",
   mercury: "#e2e2e2",
   mineShaft: "#333333",
   shark: "#27272a",
+  transparent: "transparent",
   vistaBlue: "#95dbb3",
   white: "#ffffff",
   woodsmoke: "#161618",
@@ -17,17 +20,21 @@ const colors = {
 const darkColorTheme = {
   bodyBackground: colors.woodsmoke,
   bodyBackgroundAccentOne: colors.shark,
+  themeButtonIcon: colors.finn,
   text: colors.white,
   textAccent: colors.emerald,
   textAccentHover: colors.vistaBlue,
+  transparent: colors.transparent,
 };
 
 const lightColorTheme = {
   bodyBackground: colors.alabaster,
   bodyBackgroundAccentOne: colors.mercury,
+  themeButtonIcon: colors.crusta,
   text: colors.mineShaft,
   textAccent: colors.emerald,
   textAccentHover: colors.vistaBlue,
+  transparent: colors.transparent,
 };
 
 // ===================================== Space Variables
