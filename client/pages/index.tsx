@@ -115,6 +115,7 @@ const RootStyles = styled.main`
 
     > h2 {
       font-size: 2.5rem;
+      margin-bottom: 20px;
       max-width: 95%;
 
       @media only screen and (min-width: 600px) {
@@ -156,13 +157,20 @@ const RootStyles = styled.main`
 
 const Content = styled.div`
   display: flex;
+  flex-direction: column;
+
+  @media only screen and (min-width: 600px) {
+    flex-direction: row;
+  }
 
   div:first-child {
     flex-grow: 2;
+    margin-bottom: 30px;
   }
 
   div:last-child {
     flex-grow: 1;
+    margin-bottom: 30px;
     max-width: 460px;
     width: 100%;
 
