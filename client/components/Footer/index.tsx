@@ -22,27 +22,27 @@ export default function Footer() {
         <nav>
           <div>
             <a href="https://github.com/nwthomas">
-              <GitHubIcon />
+              <GitHubIcon title="Link to GitHub" />
             </a>
           </div>
           <div>
             <a href="https://www.instagram.com/nwthomas/">
-              <InstagramIcon />
+              <InstagramIcon title="Link to Instagram" />
             </a>
           </div>
           <div>
             <a href="https://www.linkedin.com/in/nwthomas-dev/">
-              <LinkedInIcon />
+              <LinkedInIcon title="Link to LinkedIn" />
             </a>
           </div>
           <div>
             <a href="https://twitter.com/nwthomas_">
-              <TwitterIcon />
+              <TwitterIcon title="Link to Twitter" />
             </a>
           </div>
           <Link href="/contact">
             <div>
-              <MailIcon />
+              <MailIcon title="Link to contact page" />
             </div>
           </Link>
         </nav>
@@ -55,13 +55,21 @@ const RootStyles = styled.footer`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.backgroundColor};
   border-top: 1px solid ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
+  border-bottom: 1px solid
+    ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
   bottom: 0;
   display: flex;
   height: 200px;
   justify-content: center;
+  margin-bottom: 70px;
   padding: 0 3%;
   position: absolute;
   width: 100%;
+
+  @media only screen and (min-width: 600px) {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
 
   > div {
     align-items: flex-start;
@@ -102,12 +110,16 @@ const RootStyles = styled.footer`
         width: 30px;
 
         @media only screen and (min-width: 600px) {
-          margin: 0 3.5%;
+          margin: 0 3%;
         }
 
         &:hover {
           opacity: 0.8;
         }
+      }
+
+      > div:last-child {
+        width: 35px;
       }
     }
   }
