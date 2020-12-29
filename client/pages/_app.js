@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import Navbar from "../components/Navbar";
 import useGetPreferredTheme from "../hooks/useGetPreferredTheme";
-import AppBar from "../components/AppBar";
+import MobileNavbar from "../components/MobileNavbar";
 import GlobalStyle, { makeMainTheme } from "../styles";
 import "../styles/libs/fonts.css";
 
@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }) {
         themeName={currentTheme}
       />
       <Component {...pageProps} />
-      <AppBar />
+      <MobileNavbar />
     </ThemeProvider>
   );
 }

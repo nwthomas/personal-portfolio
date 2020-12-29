@@ -36,15 +36,16 @@ const RootStyles = styled.div`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.bodyBackground};
   display: flex;
-  height: 60px;
+  height: 70px;
   justify-content: center;
   padding: 0 3%;
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100%;
   z-index: 1;
 
   @media only screen and (min-width: 600px) {
+    position: fixed;
     height: 120px;
   }
 

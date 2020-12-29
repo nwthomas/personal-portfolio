@@ -5,7 +5,9 @@ const GlobalStyle = css`
     box-sizing: border-box;
     font-display: swap;
     transition: ${({ isPageLoaded }) =>
-      isPageLoaded ? "background-color 0.3s, color 0.3s" : "none"};
+      isPageLoaded
+        ? "background-color 0.3s, color 0.3s, fill 0.3s, stroke 0.3s"
+        : "none"};
   }
 
   html {

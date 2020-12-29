@@ -158,6 +158,7 @@ const RootStyles = styled.main`
 const Content = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 50px;
 
   @media only screen and (min-width: 600px) {
     flex-direction: row;
@@ -169,10 +170,15 @@ const Content = styled.div`
   }
 
   div:last-child {
+    display: none;
     flex-grow: 1;
     margin-bottom: 30px;
     max-width: 460px;
     width: 100%;
+
+    @media only screen and (min-width: 600px) {
+      display: block;
+    }
 
     > div {
       display: flex;

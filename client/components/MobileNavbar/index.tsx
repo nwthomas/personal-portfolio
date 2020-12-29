@@ -2,28 +2,28 @@ import Link from "next/link";
 import styled from "styled-components";
 import { HomeIcon, SearchIcon, MailIcon, PostsIcon } from "../Icons";
 
-export default function AppBar() {
+export default function MobileNavbar() {
   return (
     <RootStyles>
       <nav>
         <Link href="/">
           <div>
-            <HomeIcon />
+            <HomeIcon title="Link to home page" />
           </div>
         </Link>
         <Link href="/posts">
           <div>
-            <PostsIcon />
+            <PostsIcon title="Link to posts page" />
           </div>
         </Link>
         <Link href="/search">
           <div>
-            <SearchIcon />
+            <SearchIcon title="Link to search page" />
           </div>
         </Link>
         <Link href="/contact">
           <div>
-            <MailIcon />
+            <MailIcon title="Link to contact page" />
           </div>
         </Link>
       </nav>
@@ -37,7 +37,7 @@ const RootStyles = styled.div`
   display: flex;
   height: 70px;
   justify-content: center;
-  padding: 0 3%;
+  padding: 0 8%;
   position: fixed;
   width: 100%;
   z-index: 1;
@@ -49,8 +49,8 @@ const RootStyles = styled.div`
   nav {
     align-items: center;
     display: flex;
-    justify-content: space-around;
-    max-width: 600px;
+    justify-content: space-between;
+    max-width: 450px;
     width: 100%;
 
     div {

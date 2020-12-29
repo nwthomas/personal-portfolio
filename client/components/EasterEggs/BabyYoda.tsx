@@ -38,7 +38,7 @@ const RootStyles = styled.div`
 
     &:hover {
       > div {
-        transform: rotate(30deg) translate(-5px, 30px);
+        transform: rotate(30deg) translate(-6px, 35px);
       }
     }
   }

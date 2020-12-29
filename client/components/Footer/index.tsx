@@ -62,13 +62,13 @@ const RootStyles = styled.footer`
   height: 200px;
   justify-content: center;
   margin-bottom: 70px;
-  padding: 0 3%;
   position: absolute;
   width: 100%;
 
   @media only screen and (min-width: 600px) {
     border-bottom: none;
     margin-bottom: 0;
+    padding: 0 3%;
   }
 
   > div {
@@ -76,12 +76,14 @@ const RootStyles = styled.footer`
     display: flex;
     flex-direction: column-reverse;
     justify-content: space-between;
+    padding: 0 3%;
     max-width: 1400px;
     width: 100%;
 
     @media only screen and (min-width: 600px) {
       align-items: center;
       flex-direction: row;
+      padding: 0;
     }
 
     div:first-child {
@@ -119,7 +121,12 @@ const RootStyles = styled.footer`
       }
 
       > div:last-child {
-        width: 35px;
+        display: none;
+
+        @media only screen and (min-width: 600px) {
+          display: block;
+          width: 35px;
+        }
       }
     }
   }

@@ -2,34 +2,37 @@ import { SyntheticEvent } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 
+const MoonIcon = (
+  <Image
+    alt="Click to change theme to light mode"
+    draggable={false}
+    height={30}
+    quality={100}
+    src={"/moon.svg"}
+    width={30}
+  />
+);
+
+const SunIcon = (
+  <Image
+    alt="Click to change theme to dark mode"
+    draggable={false}
+    height={30}
+    quality={100}
+    src={"/sun.svg"}
+    width={30}
+  />
+);
+
 interface Props {
   onClick: () => void;
   themeName: "dark" | "light";
 }
 
 export default function ThemeTransitionButton({ onClick, themeName }: Props) {
-  const handleOnClick = (event: SyntheticEvent) => {
-    event.preventDefault();
+  const currentIcon = themeName === "dark" ? MoonIcon : SunIcon;
 
-    const buttonClickAudio = new Audio("/switch-click.mp3");
-    buttonClickAudio.volume = 0.3;
-    buttonClickAudio.play();
-
-    onClick();
-  };
-
-  return (
-    <RootStyles onClick={handleOnClick}>
-      <Image
-        alt="Theme button"
-        draggable={false}
-        height={30}
-        quality={100}
-        src={themeName === "dark" ? "/moon.svg" : "/sun.svg"}
-        width={30}
-      />
-    </RootStyles>
-  );
+  return <RootStyles onClick={onClick}>{currentIcon}</RootStyles>;
 }
 
 const RootStyles = styled.div`
@@ -40,7 +43,6 @@ const RootStyles = styled.div`
   justify-content: flex-end;
   text-decoration: none;
   transition: padding-bottom 0.3s, opacity 0.3s;
-  width: 100px;
 
   &:hover {
     opacity: 0.8;
@@ -49,5 +51,6 @@ const RootStyles = styled.div`
 
   @media only screen and (min-width: 600px) {
     justify-content: center;
+    width: 100px;
   }
 `;

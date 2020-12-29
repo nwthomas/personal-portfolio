@@ -30,7 +30,7 @@ export default function Layout({ children, pageName }: Props) {
 
 const RootStyles = styled.div`
   min-height: 100vh;
-  padding: 60px 0 200px;
+  padding: 90px 0 200px;
   position: relative;
   width: 100%;
 

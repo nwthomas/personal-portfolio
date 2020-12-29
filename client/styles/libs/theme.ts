@@ -24,6 +24,7 @@ const darkColorTheme = {
   textAccent: colors.emerald,
   textAccentHover: colors.vistaBlue,
   transparent: colors.transparent,
+  themeIconBackground: colors.finn,
 };
 
 const lightColorTheme = {
@@ -33,6 +34,7 @@ const lightColorTheme = {
   textAccent: colors.emerald,
   textAccentHover: colors.vistaBlue,
   transparent: colors.transparent,
+  themeIconBackground: colors.crusta,
 };
 
 // ===================================== Space Variables
