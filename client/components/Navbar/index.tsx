@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import ThemeTransitionButton from "../ThemeTransitionButton";
+import { useArticles } from "../../api";
+import { useQuery } from "react-query";
 import styled from "styled-components";
 
 interface Props {

@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Layout from "../components/Layout";
 import TopicTag from "../components/TopicTag";
+import { useArticles } from "../api";
 import styled from "styled-components";
 
 const PAGE_NAME = "Home";
@@ -20,6 +21,8 @@ const categories = [
 ].sort((a, b) => (a < b ? -1 : 1));
 
 export default function Home() {
+  const { data, error, isFetching } = useArticles();
+
   return (
     <Layout pageName={PAGE_NAME}>
       <RootStyles>
@@ -33,6 +36,7 @@ export default function Home() {
                   draggable={false}
                   height={100}
                   quality={100}
+                  priority
                   src="/react.png"
                   width={100}
                 />
@@ -46,6 +50,7 @@ export default function Home() {
                   draggable={false}
                   height={100}
                   quality={100}
+                  priority
                   src="/soundcloud.png"
                   width={100}
                 />
@@ -59,6 +64,7 @@ export default function Home() {
                   draggable={false}
                   height={100}
                   quality={100}
+                  priority
                   src="/bitcoin-logo.png"
                   width={100}
                 />
@@ -72,6 +78,7 @@ export default function Home() {
                   draggable={false}
                   height={263}
                   quality={100}
+                  priority
                   src="/twitter-logo-blue.png"
                   width={263}
                 />
@@ -83,6 +90,12 @@ export default function Home() {
             <div>
               <h3>Latest Posts</h3>
               <p>Building Your First GraphQL Server</p>
+              <p>
+                {"If you're a member of the JavaScript community (or one of those people who loves making memes like this), you have likely at least heard about the new(ish) popular kid on the block - TypeScript."
+                  .split(" ")
+                  .slice(0, 20)
+                  .join(" ") + "...."}
+              </p>
             </div>
             <div>
               <h3>Top Categories</h3>
@@ -157,10 +170,10 @@ const RootStyles = styled.main`
 
 const Content = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   margin-bottom: 50px;
 
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 1000px) {
     flex-direction: row;
   }
 
@@ -172,7 +185,6 @@ const Content = styled.div`
   div:last-child {
     display: none;
     flex-grow: 1;
-    margin-bottom: 30px;
     max-width: 460px;
     width: 100%;
 
@@ -185,6 +197,14 @@ const Content = styled.div`
       flex-wrap: wrap;
       margin-bottom: 50px;
       width: 100%;
+    }
+
+    > div:last-child {
+      display: none;
+
+      @media only screen and (min-width: 1000px) {
+        display: block;
+      }
     }
   }
 `;

@@ -9,10 +9,10 @@ export default function BabyYodaEasterEgg() {
         <Image
           alt="Baby Yoda"
           draggable={false}
-          height={200}
+          height={256}
           quality={100}
           src="/baby-yoda.png"
-          width={200}
+          width={257}
         />
       </div>
     </RootStyles>

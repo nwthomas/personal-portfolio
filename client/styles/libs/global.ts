@@ -3,7 +3,6 @@ import { css } from "styled-components";
 const GlobalStyle = css`
   * {
     box-sizing: border-box;
-    font-display: swap;
     transition: ${({ isPageLoaded }) =>
       isPageLoaded
         ? "background-color 0.3s, color 0.3s, fill 0.3s, stroke 0.3s"
@@ -29,6 +28,7 @@ const GlobalStyle = css`
   h4,
   h5 {
     color: ${({ theme }) => theme.colors.text};
+    font-display: swap;
     line-height: 1.8;
   }
 
@@ -54,6 +54,7 @@ const GlobalStyle = css`
 
   p,
   span {
+    font-display: swap;
     font-size: 1.6rem;
     line-height: 1.8;
   }
@@ -63,11 +64,13 @@ const GlobalStyle = css`
   }
 
   span {
+    color: ${({ theme }) => theme.colors.text};
     color: inherit;
   }
 
   a {
     color: ${({ theme }) => theme.colors.text};
+    font-display: swap;
     font-size: 1.6rem;
     text-decoration: none;
   }

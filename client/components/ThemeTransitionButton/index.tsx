@@ -8,6 +8,7 @@ const MoonIcon = (
     draggable={false}
     height={30}
     quality={100}
+    priority
     src={"/moon.svg"}
     width={30}
   />
@@ -19,6 +20,7 @@ const SunIcon = (
     draggable={false}
     height={30}
     quality={100}
+    priority
     src={"/sun.svg"}
     width={30}
   />

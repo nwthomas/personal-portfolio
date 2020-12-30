@@ -16,7 +16,7 @@ export default function Footer() {
     <RootStyles>
       <div>
         <div>
-          <p>"Be most excellent to each other."</p>
+          <p>"Be excellent to each other."</p>
           <p>{`© ${currentYear} Nathan Thomas`}</p>
         </div>
         <nav>
