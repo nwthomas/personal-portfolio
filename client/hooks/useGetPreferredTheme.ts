@@ -1,18 +1,16 @@
 import { useEffect, useState } from "react";
 
-const themeOptions = {
-  DARK: "dark",
-  LIGHT: "light",
-};
-const DEFAULT_THEME = themeOptions.DARK;
+const DEFAULT_THEME = "dark";
 
-export default function useGetPreferredTheme() {
-  const [preferredTheme, setPreferredTheme] = useState("dark");
+export default function useGetPreferredTheme(): ["dark" | "light", () => void] {
+  const [preferredTheme, setPreferredTheme] = useState<"dark" | "light">(
+    "dark"
+  );
 
   useEffect(() => {
     try {
       const pastThemeState = window.localStorage.getItem("preferredTheme");
-      if (pastThemeState) {
+      if (pastThemeState === "dark" || pastThemeState === "light") {
         setPreferredTheme(pastThemeState);
       } else {
         setPreferredTheme(DEFAULT_THEME);
@@ -23,10 +21,7 @@ export default function useGetPreferredTheme() {
   }, []);
 
   function handleSetPreferredTheme() {
-    const newPreferredTheme =
-      preferredTheme === themeOptions.DARK
-        ? themeOptions.LIGHT
-        : themeOptions.DARK;
+    const newPreferredTheme = preferredTheme === "dark" ? "light" : "dark";
 
     try {
       window.localStorage.setItem("preferredTheme", newPreferredTheme);

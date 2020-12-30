@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }) {
 
   const handleSetCurrentTheme = () => {
     setShouldUseThemeTransition(true);
-    setCurrentTheme(currentTheme === "dark" ? "light" : "dark");
+    setCurrentTheme();
   };
 
   return (
