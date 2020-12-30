@@ -1,11 +1,15 @@
 import { useQuery } from "react-query";
 import { request, gql } from "graphql-request";
 
-const baseEndpoint = "https://graphql.contentful.com";
+const contentfulDeliveryAccessToken =
+  process.env.NEXT_PUBLIC_CONTENTFUL_DELIVERY_ACCESS_TOKEN;
+const contentfulSpaceId = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
 
+const baseUrl = "https://graphql.contentful.com";
+const endpoint = `${baseUrl}/content/v1/spaces/${contentfulSpaceId}?access_token=${contentfulDeliveryAccessToken}`;
+
+// Queries all categories in use in the app
 export function useCategories() {
-  const endpoint = `${baseEndpoint}/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_DELIVERY_ACCESS_TOKEN}`;
-
   return useQuery("categories", async () => {
     const {
       categoryCollection: { items: data },

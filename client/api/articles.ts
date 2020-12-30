@@ -8,7 +8,7 @@ const contentfulSpaceId = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
 const baseUrl = "https://graphql.contentful.com";
 const endpoint = `${baseUrl}/content/v1/spaces/${contentfulSpaceId}?access_token=${contentfulDeliveryAccessToken}`;
 
-// Fetches all articles
+// Queries all articles
 export function useArticles() {
   return useQuery("articles", async () => {
     const {
@@ -93,12 +93,12 @@ export function useArticles() {
   });
 }
 
-// Fetches an article by ID
+// Queries an article by ID
 export function useArticleById(articleId: string) {
   // finish
 }
 
-// Fetches previews of all articles
+// Queries previews of all articles
 export function useArticlesPreview() {
   return useQuery("articlePreviews", async () => {
     const {

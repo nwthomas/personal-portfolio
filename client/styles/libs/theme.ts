@@ -38,14 +38,12 @@ const lightColorTheme = {
 };
 
 // ===================================== Space Variables
-const spaces = {
-  nano: "2px",
-  micro: "5px",
-  small: "20px",
-  medium: "30px",
-  large: "35px",
-  xLarge: "40px",
-  xxLarge: "50px",
+const appDimensions = {
+  appHorizontalGutters: "3%",
+  appMaxWidth: "1400px",
+  desktopNavbarHeight: "120px",
+  mobileNavbarHeight: "70px",
+  navbarLinkWidth: "100px",
 };
 
 const borderRadii = {
@@ -57,14 +55,36 @@ const borderRadii = {
   infinity: "9999px",
 };
 
+const breakpoints = {
+  mobile: "600px",
+  desktop: "1000px",
+};
+
+const spaces = {
+  nano: "2px",
+  micro: "5px",
+  small: "20px",
+  medium: "30px",
+  large: "35px",
+  xLarge: "40px",
+  xxLarge: "50px",
+};
+
+const transitions = {
+  short: "0.3s",
+};
+
 // ===================================== Main Theme
 type ThemeColorTypeEnum = "dark" | "light";
 
 function makeMainTheme(themeColor: ThemeColorTypeEnum) {
   return {
+    appDimensions,
+    breakpoints,
     borderRadii,
     colors: themeColor === "light" ? lightColorTheme : darkColorTheme,
     spaces,
+    transitions,
   };
 }
 
