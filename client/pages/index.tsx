@@ -146,51 +146,61 @@ const RootStyles = styled.main`
     max-width: 1400px;
     width: 100%;
 
-    > section > h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      max-width: 95%;
+    > section {
+      align-items: center;
+      display: flex;
+      margin: 30px 0 50px;
+      width: 100%;
 
-      @media only screen and (min-width: 600px) {
-        font-size: 3rem;
+      @media only screen and (min-width: ${({ theme }) =>
+          theme.breakpoints.mobile}) {
         margin: 80px 0;
-        max-width: 75%;
       }
 
-      > span {
-        display: inline-block;
-        height: 30px;
-        margin: 0 0 0 7px;
-        width: 30px;
+      > h2 {
+        font-size: 2.5rem;
+        max-width: 100%;
 
-        > a {
-          align-items: flex-end;
-          display: flex;
+        @media only screen and (min-width: 600px) {
+          font-size: 3rem;
+          max-width: 75%;
+        }
+
+        > span {
+          display: inline-block;
           height: 30px;
-          position: relative;
-          transition: opacity ${({ theme }) => theme.transitions.short};
+          margin: 0 0 0 7px;
+          width: 30px;
 
-          > div {
-            bottom: -5px;
-            position: absolute;
+          > a {
+            align-items: flex-end;
+            display: flex;
+            height: 30px;
+            position: relative;
+            transition: opacity ${({ theme }) => theme.transitions.short};
 
-            &:hover {
-              opacity: ${({ theme }) => theme.opacity.opacity80};
+            > div {
+              bottom: -5px;
+              position: absolute;
+
+              &:hover {
+                opacity: ${({ theme }) => theme.opacity.opacity80};
+              }
             }
           }
         }
-      }
 
-      > span:first-child {
-        margin-left: 5px;
-      }
+        > span:first-child {
+          margin-left: 5px;
+        }
 
-      > span:nth-child(3) {
-        margin: 0 -3px 0 5px;
-      }
+        > span:nth-child(3) {
+          margin: 0 -3px 0 5px;
+        }
 
-      > span:last-child {
-        margin: 0 7px;
+        > span:last-child {
+          margin: 0 7px;
+        }
       }
     }
   }
@@ -208,6 +218,11 @@ const Content = styled.div`
   > div:first-child {
     flex-grow: 2;
     margin-bottom: 30px;
+
+    @media only screen and (min-width: ${({ theme }) =>
+        theme.breakpoints.mobile}) {
+      padding-right: 15%;
+    }
   }
 
   > div:last-child {
