@@ -16,15 +16,15 @@ export default function MailIcon({ title }: Props) {
         rx="40"
         ry="40"
         fill="none"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="32"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="32"
       />
       <path
         fill="none"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="32"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="32"
         d="M112 160l144 112 144-112"
       />
     </RootStyles>

@@ -8,7 +8,14 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import GlobalStyle, { makeMainTheme } from "../styles";
 import "../styles/libs/fonts.css";
 
-const queryClient = new QueryClient();
+const oneDayMillis = 60000 * 60 * 24;
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: oneDayMillis,
+    },
+  },
+});
 
 function MyApp({ Component, pageProps }) {
   const [currentTheme, setCurrentTheme] = useGetPreferredTheme();

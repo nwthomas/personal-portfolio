@@ -24,6 +24,11 @@ export function useArticles() {
               }
               title
               slug
+              categoriesCollection {
+                items {
+                  title
+                }
+              }
               modulesCollection {
                 __typename
                 items {
@@ -72,6 +77,48 @@ export function useArticles() {
                     shell
                     typescript
                   }
+                }
+              }
+            }
+          }
+        }
+      `
+    );
+
+    return data;
+  });
+}
+
+export function useArticlesPreview() {
+  const endpoint = `${baseEndpoint}/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_DELIVERY_ACCESS_TOKEN}`;
+
+  return useQuery("articlePreviews", async () => {
+    const {
+      articleCollection: { items: data },
+    } = await request(
+      endpoint,
+      gql`
+        query {
+          articleCollection(limit: 3) {
+            __typename
+            items {
+              __typename
+              sys {
+                id
+                firstPublishedAt
+                publishedAt
+              }
+              title
+              slug
+              description
+              categoriesCollection {
+                __typename
+                items {
+                  sys {
+                    id
+                  }
+                  title
+                  slug
                 }
               }
             }

@@ -60,7 +60,7 @@ const borderRadii = {
 // ===================================== Main Theme
 type ThemeColorTypeEnum = "dark" | "light";
 
-export function makeMainTheme(themeColor: ThemeColorTypeEnum) {
+function makeMainTheme(themeColor: ThemeColorTypeEnum) {
   return {
     borderRadii,
     colors: themeColor === "light" ? lightColorTheme : darkColorTheme,
