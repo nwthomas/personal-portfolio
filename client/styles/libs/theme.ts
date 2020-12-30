@@ -41,8 +41,10 @@ const lightColorTheme = {
 const appDimensions = {
   appHorizontalGutters: "3%",
   appMaxWidth: "1400px",
-  desktopNavbarHeight: "120px",
+  appMinHeight: "100vh",
   desktopFooterHeight: "200px",
+  desktopNavbarHeight: "120px",
+  mobileFooterHeight: "200px",
   mobileNavbarHeight: "70px",
   navbarLinkWidth: "100px",
 };

@@ -29,12 +29,16 @@ export default function Layout({ children, pageName }: Props) {
 }
 
 const RootStyles = styled.div`
-  min-height: 100vh;
-  padding: 90px 0 200px;
+  background-color: ${({ theme }) => theme.colors.bodyBackground};
+  min-height: ${({ theme }) => theme.appDimensions.appMinHeight};
+  padding: ${({ theme: { appDimensions } }) =>
+    `${appDimensions.mobileNavbarHeight} 0 ${appDimensions.mobileFooterHeight}`};
   position: relative;
   width: 100%;
 
-  @media only screen and (min-width: 600px) {
-    padding-top: 120px;
+  @media only screen and (min-width: ${({ theme }) =>
+      theme.breakpoints.mobile}) {
+    padding-top: ${({ theme }) =>
+      `${theme.appDimensions.desktopNavbarHeight} 0 ${theme.appDimensions.desktopFooterHeight}`};
   }
 `;
