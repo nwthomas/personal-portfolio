@@ -1,11 +1,15 @@
 import { useQuery } from "react-query";
 import { request, gql } from "graphql-request";
 
-const baseEndpoint = "https://graphql.contentful.com";
+const contentfulDeliveryAccessToken =
+  process.env.NEXT_PUBLIC_CONTENTFUL_DELIVERY_ACCESS_TOKEN;
+const contentfulSpaceId = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
 
+const baseUrl = "https://graphql.contentful.com";
+const endpoint = `${baseUrl}/content/v1/spaces/${contentfulSpaceId}?access_token=${contentfulDeliveryAccessToken}`;
+
+// Fetches all articles
 export function useArticles() {
-  const endpoint = `${baseEndpoint}/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_DELIVERY_ACCESS_TOKEN}`;
-
   return useQuery("articles", async () => {
     const {
       articleCollection: { items: data },
@@ -89,9 +93,13 @@ export function useArticles() {
   });
 }
 
-export function useArticlesPreview() {
-  const endpoint = `${baseEndpoint}/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_DELIVERY_ACCESS_TOKEN}`;
+// Fetches an article by ID
+export function useArticleById(articleId: string) {
+  // finish
+}
 
+// Fetches previews of all articles
+export function useArticlesPreview() {
   return useQuery("articlePreviews", async () => {
     const {
       articleCollection: { items: data },
@@ -99,7 +107,7 @@ export function useArticlesPreview() {
       endpoint,
       gql`
         query {
-          articleCollection(limit: 3) {
+          articleCollection {
             __typename
             items {
               __typename
