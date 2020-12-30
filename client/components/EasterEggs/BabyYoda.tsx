@@ -32,8 +32,9 @@ const RootStyles = styled.div`
     width: 150px;
 
     > div {
-      transition: 0.3s ease-in-out;
+      transition: ${({ theme }) => theme.transitions.short} ease-in-out;
       transform: rotate(30deg) translate(0px, 180px);
+      user-select: none;
     }
 
     &:hover {

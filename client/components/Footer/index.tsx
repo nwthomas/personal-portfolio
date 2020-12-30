@@ -54,21 +54,23 @@ export default function Footer() {
 const RootStyles = styled.footer`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.backgroundColor};
-  border-top: 1px solid ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
-  border-bottom: 1px solid
+  border-top: ${({ theme }) => theme.spaces.nano} solid
+    ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
+  border-bottom: ${({ theme }) => theme.spaces.nano} solid
     ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
   bottom: 0;
   display: flex;
-  height: 200px;
+  height: ${({ theme }) => theme.appDimensions.desktopFooterHeight};
   justify-content: center;
-  margin-bottom: 70px;
+  margin-bottom: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};
+  padding: 0 ${({ theme }) => theme.appDimensions.appHorizontalGutters};
   position: absolute;
   width: 100%;
 
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: ${({ theme }) =>
+      theme.breakpoints.mobile}) {
     border-bottom: none;
     margin-bottom: 0;
-    padding: 0 3%;
   }
 
   > div {
@@ -76,11 +78,11 @@ const RootStyles = styled.footer`
     display: flex;
     flex-direction: column-reverse;
     justify-content: space-between;
-    padding: 0 3%;
-    max-width: 1400px;
+    max-width: ${({ theme }) => theme.appDimensions.appMaxWidth};
     width: 100%;
 
-    @media only screen and (min-width: 600px) {
+    @media only screen and (min-width: ${({ theme }) =>
+        theme.breakpoints.mobile}) {
       align-items: center;
       flex-direction: row;
       padding: 0;
@@ -93,13 +95,14 @@ const RootStyles = styled.footer`
     nav {
       align-items: center;
       display: flex;
-      height: 50px;
+      height: ${({ theme }) => theme.spaces.xxLarge};
       justify-content: flex-start;
-      margin-bottom: 10px;
+      margin-bottom: ${({ theme }) => theme.spaces.small};
       width: 100%;
 
-      @media only screen and (min-width: 600px) {
-        height: 100px;
+      @media only screen and (min-width: ${({ theme }) =>
+          theme.breakpoints.mobile}) {
+        height: ${({ theme }) => theme.spaces.jumbo};
         justify-content: flex-end;
         margin-bottom: 0;
         width: 50%;
@@ -108,10 +111,11 @@ const RootStyles = styled.footer`
       > div {
         cursor: pointer;
         margin: 0 6% 0 0;
-        transition: opacity 0.3s;
+        transition: opacity ${({ theme }) => theme.transitions.short};
         width: 30px;
 
-        @media only screen and (min-width: 600px) {
+        @media only screen and (min-width: ${({ theme }) =>
+            theme.breakpoints.mobile}) {
           margin: 0 3%;
         }
 
@@ -123,7 +127,8 @@ const RootStyles = styled.footer`
       > div:last-child {
         display: none;
 
-        @media only screen and (min-width: 600px) {
+        @media only screen and (min-width: ${({ theme }) =>
+            theme.breakpoints.mobile}) {
           display: block;
           width: 35px;
         }

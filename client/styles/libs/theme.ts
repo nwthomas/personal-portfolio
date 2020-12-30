@@ -42,6 +42,7 @@ const appDimensions = {
   appHorizontalGutters: "3%",
   appMaxWidth: "1400px",
   desktopNavbarHeight: "120px",
+  desktopFooterHeight: "200px",
   mobileNavbarHeight: "70px",
   navbarLinkWidth: "100px",
 };
@@ -61,13 +62,14 @@ const breakpoints = {
 };
 
 const spaces = {
-  nano: "2px",
+  nano: "1px",
   micro: "5px",
-  small: "20px",
+  small: "10px",
   medium: "30px",
   large: "35px",
   xLarge: "40px",
   xxLarge: "50px",
+  jumbo: "100px",
 };
 
 const transitions = {
