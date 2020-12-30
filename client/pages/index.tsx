@@ -153,7 +153,7 @@ const RootStyles = styled.main`
 
       @media only screen and (min-width: 600px) {
         font-size: 3rem;
-        margin: 80px 0 120px;
+        margin: 80px 0;
         max-width: 75%;
       }
 
@@ -168,14 +168,14 @@ const RootStyles = styled.main`
           display: flex;
           height: 30px;
           position: relative;
-          transition: opacity 0.3s;
+          transition: opacity ${({ theme }) => theme.transitions.short};
 
           > div {
             bottom: -5px;
             position: absolute;
 
             &:hover {
-              opacity: 0.8;
+              opacity: ${({ theme }) => theme.opacity.opacity80};
             }
           }
         }
@@ -205,12 +205,12 @@ const Content = styled.div`
     flex-direction: row;
   }
 
-  div:first-child {
+  > div:first-child {
     flex-grow: 2;
     margin-bottom: 30px;
   }
 
-  div:last-child {
+  > div:last-child {
     display: none;
     flex-grow: 1;
     max-width: 460px;

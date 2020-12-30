@@ -63,6 +63,10 @@ const breakpoints = {
   desktop: "1000px",
 };
 
+const opacity = {
+  opacity80: "0.8",
+};
+
 const spaces = {
   nano: "1px",
   micro: "5px",
@@ -87,6 +91,7 @@ function makeMainTheme(themeColor: ThemeColorTypeEnum) {
     breakpoints,
     borderRadii,
     colors: themeColor === "light" ? lightColorTheme : darkColorTheme,
+    opacity,
     spaces,
     transitions,
   };

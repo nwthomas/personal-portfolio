@@ -17,7 +17,7 @@ export function useCategories() {
       endpoint,
       gql`
         query {
-          categoryCollection {
+          categoryCollection(order: title_ASC) {
             __typename
             items {
               sys {

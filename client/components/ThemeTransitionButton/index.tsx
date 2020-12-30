@@ -51,7 +51,7 @@ const RootStyles = styled.div`
   }) => `padding-bottom ${short}, opacity ${short}`};
 
   &:hover {
-    opacity: 0.8;
+    opacity: ${({ theme }) => theme.opacity.opacity80};
     padding-bottom: ${({ theme }) => theme.spaces.micro};
   }
 

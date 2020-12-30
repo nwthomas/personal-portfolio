@@ -113,7 +113,7 @@ const RootStyles = styled.footer`
         cursor: pointer;
         margin: 0 6% 0 0;
         transition: opacity ${({ theme }) => theme.transitions.short};
-        width: 30px;
+        width: ${({ theme }) => theme.spaces.medium};
 
         @media only screen and (min-width: ${({ theme }) =>
             theme.breakpoints.mobile}) {
@@ -121,7 +121,7 @@ const RootStyles = styled.footer`
         }
 
         &:hover {
-          opacity: 0.8;
+          opacity: ${({ theme }) => theme.opacity.opacity80};
         }
       }
 

@@ -29,7 +29,7 @@ const Button = styled.button`
   -moz-appearance: none;
 
   &:hover {
-    opacity: 0.8;
+    opacity: ${({ theme }) => theme.opacity.opacity80};
   }
 
   &:focus {

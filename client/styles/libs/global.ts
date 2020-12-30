@@ -10,7 +10,7 @@ const GlobalStyle = css`
       },
     }) =>
       isPageLoaded
-        ? `background-color ${short}, color ${short}, fill ${short}, stroke ${short}`
+        ? `background-color ${short}, color ${short}, fill ${short}, stroke ${short}, border-color ${short}`
         : "none"};
   }
 

@@ -1,3 +1,4 @@
+export { default as ChevronForwardIcon } from "./ChevronForwardIcon";
 export { default as GitHubIcon } from "./GitHubIcon";
 export { default as HomeIcon } from "./HomeIcon";
 export { default as InstagramIcon } from "./InstagramIcon";
