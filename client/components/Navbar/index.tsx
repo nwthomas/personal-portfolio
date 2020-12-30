@@ -102,7 +102,7 @@ const TitleIcon = styled.h1`
   display: flex;
   font-size: 5.5rem;
   line-height: 1;
-  max-height: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};
+  height: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};
   transition: color ${({ theme }) => theme.transitions.short};
 
   &:hover {
@@ -111,6 +111,7 @@ const TitleIcon = styled.h1`
 
   @media only screen and (min-width: ${({ theme }) =>
       theme.breakpoints.mobile}) {
+    height: ${({ theme }) => theme.appDimensions.desktopNavbarHeight};
     font-size: 10rem;
   }
 `;

@@ -20,11 +20,11 @@ const Button = styled.button`
   border-radius: ${({ theme }) => theme.borderRadii.small};
   display: inline-block;
   cursor: pointer;
-  margin-bottom: 10px;
+  margin-bottom: ${({ theme }) => theme.spaces.small};
   margin-right: 2%;
   padding: 6px 10px;
   text-decoration: none;
-  transition: opacity 0.3s;
+  transition: opacity ${({ theme }) => theme.transitions.short};
   -webkit-appearance: none;
   -moz-appearance: none;
 

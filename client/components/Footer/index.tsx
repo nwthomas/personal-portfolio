@@ -60,7 +60,7 @@ const RootStyles = styled.footer`
     ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
   bottom: 0;
   display: flex;
-  height: ${({ theme }) => theme.appDimensions.desktopFooterHeight};
+  height: ${({ theme }) => theme.appDimensions.mobileFooterHeight};
   justify-content: center;
   margin-bottom: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};
   padding: 0 ${({ theme }) => theme.appDimensions.appHorizontalGutters};
@@ -70,6 +70,7 @@ const RootStyles = styled.footer`
   @media only screen and (min-width: ${({ theme }) =>
       theme.breakpoints.mobile}) {
     border-bottom: none;
+    height: ${({ theme }) => theme.appDimensions.desktopFooterHeight};
     margin-bottom: 0;
   }
 

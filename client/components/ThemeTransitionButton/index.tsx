@@ -41,17 +41,23 @@ const RootStyles = styled.div`
   align-items: center;
   cursor: pointer;
   display: flex;
-  height: 60px;
+  height: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};
   justify-content: flex-end;
   text-decoration: none;
-  transition: padding-bottom 0.3s, opacity 0.3s;
+  transition: ${({
+    theme: {
+      transitions: { short },
+    },
+  }) => `padding-bottom ${short}, opacity ${short}`};
 
   &:hover {
     opacity: 0.8;
-    padding-bottom: 5px;
+    padding-bottom: ${({ theme }) => theme.spaces.micro};
   }
 
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: ${({ theme }) =>
+      theme.breakpoints.mobile}) {
+    height: ${({ theme }) => theme.appDimensions.desktopNavbarHeight};
     justify-content: center;
     width: 100px;
   }

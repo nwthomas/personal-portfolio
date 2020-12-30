@@ -3,9 +3,14 @@ import { css } from "styled-components";
 const GlobalStyle = css`
   * {
     box-sizing: border-box;
-    transition: ${({ isPageLoaded }) =>
+    transition: ${({
+      isPageLoaded,
+      theme: {
+        transitions: { short },
+      },
+    }) =>
       isPageLoaded
-        ? "background-color 0.3s, color 0.3s, fill 0.3s, stroke 0.3s"
+        ? `background-color ${short}, color ${short}, fill ${short}, stroke ${short}`
         : "none"};
   }
 
@@ -44,7 +49,7 @@ const GlobalStyle = css`
   h3 {
     color: ${({ theme }) => theme.colors.textAccent};
     font-size: 1.6rem;
-    margin-bottom: 30px;
+    margin-bottom: ${({ theme }) => theme.spaces.medium};
     text-transform: uppercase;
   }
 
