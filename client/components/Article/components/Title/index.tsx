@@ -5,7 +5,7 @@ interface Props {
   titleCopy: string;
 }
 
-export default function Title({ isMainTitle, titleCopy }: Props) {
+export default function ArticleTitle({ isMainTitle, titleCopy }: Props) {
   return (
     <RootStyles isMainTitle={isMainTitle}>
       <div>

@@ -48,7 +48,7 @@ export default function Post() {
 const RootStyles = styled.main`
   display: flex;
   justify-content: center;
-  margin-bottom: ${({ theme }) => theme.spaces.xLarge};
+  margin-bottom: ${({ theme }) => theme.spaces.jumbo};
   width: 100%;
 
   @media only screen and (min-width: ${({ theme }) =>

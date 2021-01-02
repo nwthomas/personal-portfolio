@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function Seperators() {
+export default function ArticleSeperator() {
   return (
     <RootStyles>
       <div />

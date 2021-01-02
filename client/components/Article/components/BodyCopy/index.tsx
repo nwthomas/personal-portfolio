@@ -5,7 +5,7 @@ interface Props {
   bodyCopy: string;
 }
 
-export default function BodyCopy({ bodyCopy }: Props) {
+export default function ArticleBodyCopy({ bodyCopy }: Props) {
   const bodyCopySections = bodyCopy.split("\n\n");
 
   return (
@@ -21,7 +21,7 @@ export default function BodyCopy({ bodyCopy }: Props) {
   );
 }
 
-const RootStyles = styled.div`
+const RootStyles = styled.section`
   align-items: center;
   display: flex;
   flex-direction: column;

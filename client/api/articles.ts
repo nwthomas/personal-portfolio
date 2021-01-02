@@ -29,6 +29,7 @@ interface ArticleImage {
     sys: {
       id: string;
     };
+    url: string;
   };
 }
 
@@ -130,6 +131,12 @@ export async function useArticleById(articleId: string) {
                 title
                 caption
                 heroImage
+                image {
+                  sys {
+                    id
+                  }
+                  url
+                }
               }
               ... on ArticleQuote {
                 __typename

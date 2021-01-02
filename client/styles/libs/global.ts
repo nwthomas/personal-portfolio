@@ -76,6 +76,7 @@ const GlobalStyle = css`
   }
 
   li {
+    color: ${({ theme }) => theme.colors.text};
     list-style: circle inside;
   }
 

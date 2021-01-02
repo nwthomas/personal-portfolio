@@ -1,21 +1,21 @@
 import styled from "styled-components";
-import Seperators from "../Seperators";
+import Seperator from "../Seperator";
 
 interface Props {
   quoteAttribution: string;
   quoteCopy: string;
 }
 
-export default function Quote({ quoteAttribution, quoteCopy }: Props) {
+export default function ArticleQuote({ quoteAttribution, quoteCopy }: Props) {
   return (
     <RootStyles>
       <div>
-        <Seperators />
+        <Seperator />
         <blockquote>
           <p>{`"${quoteCopy}"`}</p>
           <p>{`- ${quoteAttribution}`}</p>
         </blockquote>
-        <Seperators />
+        <Seperator />
       </div>
     </RootStyles>
   );
@@ -34,12 +34,16 @@ const RootStyles = styled.div`
     width: 100%;
 
     > blockquote {
-      margin: ${({ theme }) => theme.spaces.xLarge}
-        ${({ theme }) => theme.appDimensions.quoteHorizontalGutters};
+      margin: ${({ theme }) =>
+        `${theme.spaces.xLarge} ${theme.appDimensions.quoteHorizontalGutters}`};
 
       > p {
         font-size: 2rem;
         font-style: italic;
+      }
+
+      > p:last-child {
+        margin-top: ${({ theme }) => theme.spaces.medium};
       }
     }
   }
