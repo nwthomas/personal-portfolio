@@ -15,8 +15,8 @@ export default function ArticleImage({
 }: Props) {
   return (
     <RootStyles isHeroImage={isHeroImage}>
-      <Seperator />
-      <div>
+      {!isHeroImage ? <Seperator /> : null}
+      <figure>
         <Image
           alt={altText || "Image"}
           draggable={false}
@@ -26,8 +26,8 @@ export default function ArticleImage({
           src={imageUrl}
           width={1000}
         />
-      </div>
-      <Seperator />
+      </figure>
+      {!isHeroImage ? <Seperator /> : null}
     </RootStyles>
   );
 }
@@ -36,11 +36,13 @@ const RootStyles = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
+  margin: ${({ theme }) => theme.spaces.xxLarge} 0;
   width: 100%;
 
-  > div {
+  > figure {
     height: auto;
-    margin: ${({ theme }) => `${theme.spaces.medium} 0`};
+    margin: ${({ isHeroImage, theme }) =>
+      `${isHeroImage ? 0 : theme.spaces.medium} 0`};
     position: relative;
   }
 `;

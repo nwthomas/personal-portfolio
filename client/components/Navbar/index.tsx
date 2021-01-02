@@ -32,7 +32,7 @@ export default function Navbar({ onThemeChangeClick, themeName }: Props) {
   );
 }
 
-const RootStyles = styled.div`
+const RootStyles = styled.header`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.bodyBackground};
   display: flex;

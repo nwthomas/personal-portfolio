@@ -58,10 +58,7 @@ interface ArticleCodeSnippets {
     id: string;
   };
   title: string;
-  javascript?: string;
-  python?: string;
-  shell?: string;
-  typescript?: string;
+  contents: string;
 }
 
 export type ArticleModulesCollectionTypes =
@@ -161,6 +158,7 @@ export async function useArticleById(articleId: string) {
                   id
                 }
                 title
+                contents
                 javascript
                 python
                 shell

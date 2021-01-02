@@ -7,13 +7,16 @@ interface Props {
 }
 
 export default function ArticleQuote({ quoteAttribution, quoteCopy }: Props) {
+  const finalQuoteAttribution = `- ${quoteAttribution}`;
+  const finalQuoteCopy = `"${quoteCopy}"`;
+
   return (
     <RootStyles>
       <div>
         <Seperator />
         <blockquote>
-          <p>{`"${quoteCopy}"`}</p>
-          <p>{`- ${quoteAttribution}`}</p>
+          <p>{finalQuoteCopy}</p>
+          <p>{finalQuoteAttribution}</p>
         </blockquote>
         <Seperator />
       </div>
@@ -35,15 +38,15 @@ const RootStyles = styled.div`
 
     > blockquote {
       margin: ${({ theme }) =>
-        `${theme.spaces.xLarge} ${theme.appDimensions.quoteHorizontalGutters}`};
+        `${theme.spaces.medium} ${theme.appDimensions.quoteHorizontalGutters}`};
 
       > p {
         font-size: 2rem;
         font-style: italic;
       }
 
-      > p:last-child {
-        margin-top: ${({ theme }) => theme.spaces.medium};
+      > p:first-child {
+        margin-bottom: ${({ theme }) => theme.spaces.medium};
       }
     }
   }
