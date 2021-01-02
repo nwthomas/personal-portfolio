@@ -43,6 +43,10 @@ const RootStyles = styled.div`
     height: auto;
     margin: ${({ isHeroImage, theme }) =>
       `${isHeroImage ? 0 : theme.spaces.medium} 0`};
+    max-width: ${({ isHeroImage, theme }) =>
+      isHeroImage
+        ? theme.appDimensions.articleHeroImageMaxWidth
+        : theme.appDimensions.articleMaxWidth};
     position: relative;
   }
 `;

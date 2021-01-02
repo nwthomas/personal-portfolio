@@ -16,7 +16,7 @@ const RootStyles = styled.div`
   width: 100%;
 
   > div {
-    background-color: ${({ theme }) => theme.colors.textAccent};
+    background-color: ${({ theme }) => theme.colors.bodyBackgroundAccentTwo};
     border-radius: ${({ theme }) => theme.borderRadii.infinity};
     height: ${({ theme }) => theme.spaces.micro};
     width: ${({ theme }) => theme.spaces.micro};
