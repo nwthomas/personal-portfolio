@@ -8,20 +8,28 @@ import styled from "styled-components";
 interface Props {
   children?: ReactNode | Array<ReactNode>;
   pageName: string;
+  withEmojis?: boolean;
+  withFooter?: boolean;
 }
 
-export default function Layout({ children, pageName }: Props) {
+export default function Layout({
+  children,
+  pageName,
+  withEmojis,
+  withFooter,
+}: Props) {
   const [currentPageName] = usePageName(pageName);
+  const finalPageName = withEmojis ? currentPageName : pageName;
 
   return (
     <>
       <Head>
-        <title>{currentPageName}</title>
+        <title>{finalPageName}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <RootStyles>
         {children}
-        <Footer />
+        {withFooter ? <Footer /> : null}
         <BabyYodaEasterEgg />
       </RootStyles>
     </>
@@ -30,15 +38,17 @@ export default function Layout({ children, pageName }: Props) {
 
 const RootStyles = styled.div`
   background-color: ${({ theme }) => theme.colors.bodyBackground};
+  display: flex;
+  justify-content: center;
   min-height: ${({ theme }) => theme.appDimensions.appMinHeight};
-  padding: ${({ theme: { appDimensions } }) =>
-    `${appDimensions.mobileNavbarHeight} 0 ${appDimensions.mobileFooterHeight}`};
+  padding: ${({ theme }) =>
+    `${theme.appDimensions.mobileNavbarHeight} 0 ${theme.appDimensions.mobileFooterHeight}`};
   position: relative;
   width: 100%;
 
   @media only screen and (min-width: ${({ theme }) =>
       theme.breakpoints.mobile}) {
-    padding-top: ${({ theme }) =>
+    padding: ${({ theme }) =>
       `${theme.appDimensions.desktopNavbarHeight} 0 ${theme.appDimensions.desktopFooterHeight}`};
   }
 `;

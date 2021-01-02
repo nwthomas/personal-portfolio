@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ThemeProvider } from "styled-components";
 import Navbar from "../components/Navbar";
 import useGetPreferredTheme from "../hooks/useGetPreferredTheme";
 import MobileNavbar from "../components/MobileNavbar";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { Hydrate } from "react-query/hydration";
 import GlobalStyle, { makeMainTheme } from "../styles";
 import "../styles/libs/fonts.css";
 
@@ -23,25 +24,26 @@ function MyApp({ Component, pageProps }) {
     false
   );
 
-  const handleSetCurrentTheme = () => {
+  useEffect(() => {
     setShouldUseThemeTransition(true);
-    setCurrentTheme();
-  };
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={makeMainTheme(currentTheme)}>
-        <GlobalStyle isPageLoaded={shouldUseThemeTransition} />
-        <Navbar
-          onThemeChangeClick={handleSetCurrentTheme}
-          themeName={currentTheme}
-        />
-        <Component {...pageProps} />
-        <MobileNavbar />
-      </ThemeProvider>
-      {process.env.NEXT_PUBLIC_RUNTIME_ENV === "development" ? (
-        <ReactQueryDevtools initialIsOpen />
-      ) : null}
+      <Hydrate state={pageProps.dehydratedState}>
+        <ThemeProvider theme={makeMainTheme(currentTheme)}>
+          <GlobalStyle isPageLoaded={shouldUseThemeTransition} />
+          <Navbar
+            onThemeChangeClick={setCurrentTheme}
+            themeName={currentTheme}
+          />
+          <Component {...pageProps} />
+          <MobileNavbar />
+        </ThemeProvider>
+        {process.env.NEXT_PUBLIC_RUNTIME_ENV === "development" ? (
+          <ReactQueryDevtools initialIsOpen />
+        ) : null}
+      </Hydrate>
     </QueryClientProvider>
   );
 }

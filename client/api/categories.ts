@@ -1,4 +1,3 @@
-import { useQuery } from "react-query";
 import { request, gql } from "graphql-request";
 
 const contentfulDeliveryAccessToken =
@@ -9,28 +8,24 @@ const baseUrl = "https://graphql.contentful.com";
 const endpoint = `${baseUrl}/content/v1/spaces/${contentfulSpaceId}?access_token=${contentfulDeliveryAccessToken}`;
 
 // Queries all categories in use in the app
-export function useCategories() {
-  return useQuery("categories", async () => {
-    const {
-      categoryCollection: { items: data },
-    } = await request(
-      endpoint,
-      gql`
-        query {
-          categoryCollection(order: title_ASC) {
-            __typename
-            items {
-              sys {
-                id
-              }
-              title
-              slug
+export async function useCategories() {
+  const { categoryCollection } = await request(
+    endpoint,
+    gql`
+      query {
+        categoryCollection(order: title_ASC) {
+          __typename
+          items {
+            sys {
+              id
             }
+            title
+            slug
           }
         }
-      `
-    );
+      }
+    `
+  );
 
-    return data;
-  });
+  return categoryCollection;
 }

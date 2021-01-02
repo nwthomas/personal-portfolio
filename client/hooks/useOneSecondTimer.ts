@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const oneSecondMillis = 1000;
+const ONE_SECOND_MILLIS = 1000;
 
 export default function useOneSecondTimer() {
   const [isOneSecond, setIsOneSecond] = useState(false);
@@ -8,7 +8,7 @@ export default function useOneSecondTimer() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsOneSecond(true);
-    }, oneSecondMillis);
+    }, ONE_SECOND_MILLIS);
 
     return () => clearTimeout(timer);
   }, []);

@@ -3,14 +3,20 @@ import styled from "styled-components";
 
 interface Props {
   name: string;
-  route: string;
+  route?: string;
 }
 
 export default function TopicTag({ name, route }: Props) {
   return (
-    <Link href={route}>
-      <Button>{name}</Button>
-    </Link>
+    <>
+      {route ? (
+        <Link href={route}>
+          <Button>{name}</Button>
+        </Link>
+      ) : (
+        <Button>{name}</Button>
+      )}
+    </>
   );
 }
 
@@ -20,13 +26,9 @@ const Button = styled.button`
   border-radius: ${({ theme }) => theme.borderRadii.small};
   display: inline-block;
   cursor: pointer;
-  margin-bottom: ${({ theme }) => theme.spaces.small};
-  margin-right: 2%;
   padding: 6px 10px;
   text-decoration: none;
   transition: opacity ${({ theme }) => theme.transitions.short};
-  -webkit-appearance: none;
-  -moz-appearance: none;
 
   &:hover {
     opacity: ${({ theme }) => theme.opacity.opacity80};

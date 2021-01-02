@@ -1,30 +1,33 @@
 import { useEffect, useState } from "react";
 
-const DEFAULT_THEME = "dark";
+const DARK_THEME = "dark";
+const LIGHT_THEME = "light";
+const LOCAL_STORAGE_KEY = "preferredTheme";
 
 export default function useGetPreferredTheme(): ["dark" | "light", () => void] {
   const [preferredTheme, setPreferredTheme] = useState<"dark" | "light">(
-    "dark"
+    DARK_THEME
   );
 
   useEffect(() => {
     try {
-      const pastThemeState = window.localStorage.getItem("preferredTheme");
-      if (pastThemeState === "dark" || pastThemeState === "light") {
+      const pastThemeState = window.localStorage.getItem(LOCAL_STORAGE_KEY);
+      if (pastThemeState === DARK_THEME || pastThemeState === LIGHT_THEME) {
         setPreferredTheme(pastThemeState);
       } else {
-        setPreferredTheme(DEFAULT_THEME);
+        setPreferredTheme(DARK_THEME);
       }
     } catch (_) {
-      setPreferredTheme(DEFAULT_THEME);
+      setPreferredTheme(DARK_THEME);
     }
   }, []);
 
   function handleSetPreferredTheme() {
-    const newPreferredTheme = preferredTheme === "dark" ? "light" : "dark";
+    const newPreferredTheme =
+      preferredTheme === DARK_THEME ? LIGHT_THEME : DARK_THEME;
 
     try {
-      window.localStorage.setItem("preferredTheme", newPreferredTheme);
+      window.localStorage.setItem(LOCAL_STORAGE_KEY, newPreferredTheme);
     } catch (_) {}
 
     setPreferredTheme(newPreferredTheme);

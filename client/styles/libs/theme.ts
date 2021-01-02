@@ -3,7 +3,6 @@
 const colors = {
   alabaster: "#f8f8f8f8",
   crusta: "#f98a31",
-  electricViolet: "#642af5",
   bunker: "#101419",
   emerald: "#59c689",
   finn: "#6e2d6a",
@@ -42,10 +41,12 @@ const appDimensions = {
   appHorizontalGutters: "3%",
   appMaxWidth: "1400px",
   appMinHeight: "100vh",
+  articleMaxWidth: "680px",
   desktopFooterHeight: "200px",
   desktopNavbarHeight: "120px",
   mobileFooterHeight: "200px",
   mobileNavbarHeight: "70px",
+  quoteHorizontalGutters: "6%",
   navbarLinkWidth: "100px",
 };
 
@@ -64,7 +65,16 @@ const breakpoints = {
 };
 
 const opacity = {
-  opacity80: "0.8",
+  opacity00: 0,
+  opacity10: 0.1,
+  opacity20: 0.2,
+  opacity30: 0.3,
+  opacity40: 0.4,
+  opacity50: 0.5,
+  opacity60: 0.6,
+  opacity70: 0.7,
+  opacity80: 0.8,
+  opacity90: 0.9,
 };
 
 const spaces = {
@@ -80,6 +90,8 @@ const spaces = {
 
 const transitions = {
   short: "0.3s",
+  medium: "0.5s",
+  long: "1s",
 };
 
 // ===================================== Main Theme

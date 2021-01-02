@@ -1,2 +1,2 @@
-export { useArticles, useArticlesPreview } from "./articles";
+export { useArticleById, useArticlesPreview } from "./articles";
 export { useCategories } from "./categories";

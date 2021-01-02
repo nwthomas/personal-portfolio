@@ -3,38 +3,40 @@ import Image from "next/image";
 import Layout from "../components/Layout";
 import TopicTag from "../components/TopicTag";
 import ArticlePreviewCard from "../components/ArticlePreviewCard";
+import { QueryClient, useQuery } from "react-query";
+import { dehydrate } from "react-query/hydration";
 import { useArticlesPreview, useCategories } from "../api";
 import styled from "styled-components";
 
 const PAGE_NAME = "Home";
 
-const categories = [
-  "React",
-  "Python",
-  "GraphQL",
-  "Infra",
-  "Career",
-  "Personal",
-  "Soft Skills",
-  "Mobile",
-  "HTML",
-  "CSS",
-].sort((a, b) => (a < b ? -1 : 1));
+export async function getServerSideProps() {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery("articlePreviews", useArticlesPreview);
+  await queryClient.prefetchQuery("categories", useCategories);
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
+}
 
 export default function Home() {
   const {
-    data: articlesData,
+    data: { items: articlesData },
     error: articlesError,
     isFetching: isFetchingArticles,
-  } = useArticlesPreview();
+  } = useQuery("articlePreviews", useArticlesPreview);
   const {
-    data: categoriesData,
+    data: { items: categoriesData },
     error: categoriesError,
     isFetching: isFetchingCategories,
-  } = useCategories();
+  } = useQuery("categories", useCategories);
 
   return (
-    <Layout pageName={PAGE_NAME}>
+    <Layout pageName={PAGE_NAME} withEmojis withFooter>
       <RootStyles>
         <div>
           <section>
@@ -102,26 +104,48 @@ export default function Home() {
             <Content>
               <div>
                 <h3>Latest Posts</h3>
-                {articlesData.map(({ id, description, title }) => (
-                  <ArticlePreviewCard
-                    articleId={id}
-                    description={description}
-                    title={title}
-                  />
-                ))}
+                {articlesData.map(
+                  ({
+                    categoriesCollection,
+                    description,
+                    sys: { id },
+                    title,
+                  }) => {
+                    const articleCategories = categoriesCollection?.items
+                      ? categoriesCollection.items.map(
+                          (category) => category.title
+                        )
+                      : undefined;
+
+                    return (
+                      <ArticlePreviewCard
+                        articleId={id}
+                        description={description}
+                        key={title}
+                        title={title}
+                        topicTags={articleCategories}
+                      />
+                    );
+                  }
+                )}
               </div>
               <div>
                 <h3>Top Categories</h3>
                 <div>
                   {!isFetchingCategories &&
                     !categoriesError &&
-                    categoriesData.map(({ title }) => (
-                      <TopicTag
-                        name={title}
-                        route={title.split(" ").join("-").toLowerCase()}
-                        key={title}
-                      />
-                    ))}
+                    categoriesData.map(({ title }) => {
+                      const normalizedRoute = title
+                        .split(" ")
+                        .join("-")
+                        .toLowerCase();
+
+                      return (
+                        <div key={title}>
+                          <TopicTag name={title} route={normalizedRoute} />
+                        </div>
+                      );
+                    })}
                 </div>
                 <div>
                   <h3>Popular Posts</h3>
@@ -149,7 +173,7 @@ const RootStyles = styled.main`
     > section {
       align-items: center;
       display: flex;
-      margin: 30px 0 50px;
+      margin: 50px 0 80px;
       width: 100%;
 
       @media only screen and (min-width: ${({ theme }) =>
@@ -209,7 +233,7 @@ const RootStyles = styled.main`
 const Content = styled.div`
   display: flex;
   flex-direction: column-reverse;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 
   @media only screen and (min-width: 1000px) {
     flex-direction: row;
@@ -240,6 +264,11 @@ const Content = styled.div`
       flex-wrap: wrap;
       margin-bottom: 50px;
       width: 100%;
+
+      > div {
+        margin-bottom: ${({ theme }) => theme.spaces.small};
+        margin-right: ${({ theme }) => theme.spaces.small};
+      }
     }
 
     > div:last-child {

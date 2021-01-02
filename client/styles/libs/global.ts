@@ -16,7 +16,7 @@ const GlobalStyle = css`
 
   html {
     font-size: 62.5%;
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
   }
 
   html,
@@ -58,10 +58,12 @@ const GlobalStyle = css`
   }
 
   p,
-  span {
+  span,
+  ul,
+  ol {
     font-display: swap;
     font-size: 1.6rem;
-    line-height: 1.8;
+    line-height: 2;
   }
 
   p {
@@ -71,6 +73,10 @@ const GlobalStyle = css`
   span {
     color: ${({ theme }) => theme.colors.text};
     color: inherit;
+  }
+
+  li {
+    list-style: circle inside;
   }
 
   a {
