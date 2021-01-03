@@ -56,7 +56,7 @@ const RootStyles = styled.div`
   > figure {
     height: auto;
     margin: ${({ isHeroImage, theme }) =>
-      `${isHeroImage ? 0 : theme.spaces.medium} 0`};
+      `${isHeroImage ? 0 : theme.spaces.medium} 0 ${theme.spaces.medium}`};
     max-width: ${({ isHeroImage, theme }) =>
       isHeroImage
         ? theme.appDimensions.articleHeroImageMaxWidth

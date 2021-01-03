@@ -8,7 +8,7 @@ const baseUrl = "https://graphql.contentful.com";
 const endpoint = `${baseUrl}/content/v1/spaces/${contentfulSpaceId}?access_token=${contentfulDeliveryAccessToken}`;
 
 // Queries all categories in use in the app
-export async function useCategories() {
+export async function getCategories() {
   const { categoryCollection } = await request(
     endpoint,
     gql`
