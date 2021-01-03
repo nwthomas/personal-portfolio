@@ -21,28 +21,37 @@ export default function Footer() {
         </div>
         <nav>
           <div>
-            <a href="https://github.com/nwthomas">
-              <GitHubIcon title="Link to GitHub" />
+            <a href="https://github.com/nwthomas" aria-label="Link to GitHub">
+              <GitHubIcon />
             </a>
           </div>
           <div>
-            <a href="https://www.instagram.com/nwthomas/">
-              <InstagramIcon title="Link to Instagram" />
+            <a
+              href="https://www.instagram.com/nwthomas/"
+              aria-label="Link to Instagram"
+            >
+              <InstagramIcon />
             </a>
           </div>
           <div>
-            <a href="https://www.linkedin.com/in/nwthomas-dev/">
-              <LinkedInIcon title="Link to LinkedIn" />
+            <a
+              href="https://www.linkedin.com/in/nwthomas-dev/"
+              aria-label="Link to LinkedIn"
+            >
+              <LinkedInIcon />
             </a>
           </div>
           <div>
-            <a href="https://twitter.com/nwthomas_">
-              <TwitterIcon title="Link to Twitter" />
+            <a
+              href="https://twitter.com/nwthomas_"
+              aria-label="Link to Twitter"
+            >
+              <TwitterIcon />
             </a>
           </div>
-          <Link href="/contact">
+          <Link href="/contact" aria-label="Link to contact page">
             <div>
-              <MailIcon title="Link to contact page" />
+              <MailIcon />
             </div>
           </Link>
         </nav>

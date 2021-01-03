@@ -16,40 +16,45 @@ export default function createNewArticle(
 ) {
   switch (articleModule.__typename) {
     case ARTICLE_COPY:
-      const bodyCopy = articleModule.copy;
-
-      return <BodyCopy bodyCopy={bodyCopy} key={bodyCopy} />;
+      return (
+        <BodyCopy bodyCopy={articleModule.copy} key={articleModule.copy} />
+      );
     case ARTICLE_CODE_SNIPPETS:
-      const codeSnippet = articleModule.contents;
-
-      return <CodeSnippet codeSnippetCopy={codeSnippet} key={codeSnippet} />;
+      return (
+        <CodeSnippet
+          codeSnippetCopy={articleModule.contents}
+          key={articleModule.contents}
+        />
+      );
     case ARTICLE_HEADING:
       const isMainTitle = articleModule?.isMainTitle
         ? articleModule.isMainTitle
         : undefined;
-      const titleCopy = articleModule.copy;
 
       return (
         <Title
-          titleCopy={titleCopy}
+          titleCopy={articleModule.copy}
           isMainTitle={isMainTitle}
-          key={titleCopy}
+          key={articleModule.copy}
         />
       );
     case ARTICLE_IMAGE:
-      const imageUrl = articleModule.image.url;
-      const isHeroImage = articleModule.heroImage;
-
-      return <Image imageUrl={imageUrl} isHeroImage={isHeroImage} />;
+      return (
+        <Image
+          height={articleModule.height}
+          imageUrl={articleModule.image.url}
+          isHeroImage={articleModule.heroImage}
+          isInline={articleModule.inline}
+          key={articleModule.image.url}
+          width={articleModule.width}
+        />
+      );
     case ARTICLE_QUOTE:
-      const quoteBodyCopy = articleModule.copy;
-      const quoteAttribution = articleModule.attribution;
-
       return (
         <Quote
-          key={quoteAttribution}
-          quoteAttribution={quoteAttribution}
-          quoteCopy={quoteBodyCopy}
+          key={articleModule.attribution}
+          quoteAttribution={articleModule.attribution}
+          quoteCopy={articleModule.copy}
         />
       );
     default:

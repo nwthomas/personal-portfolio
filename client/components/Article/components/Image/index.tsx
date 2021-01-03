@@ -4,30 +4,41 @@ import styled from "styled-components";
 
 interface Props {
   altText?: string;
+  height: number;
   imageUrl: string;
-  isHeroImage?: boolean;
+  isHeroImage: boolean;
+  isInline: boolean;
+  width: number;
 }
 
 export default function ArticleImage({
   altText,
+  height,
   imageUrl,
   isHeroImage,
+  isInline,
+  width,
 }: Props) {
+  const shouldRenderSeperators = !isInline && !isHeroImage;
+
   return (
-    <RootStyles isHeroImage={isHeroImage}>
-      {!isHeroImage ? <Seperator /> : null}
+    <RootStyles
+      isHeroImage={isHeroImage}
+      shouldRenderSeperators={shouldRenderSeperators}
+    >
+      {shouldRenderSeperators ? <Seperator /> : null}
       <figure>
         <Image
           alt={altText || "Image"}
           draggable={false}
-          height={650}
+          height={height}
           quality={100}
           priority
           src={imageUrl}
-          width={1000}
+          width={width}
         />
       </figure>
-      {!isHeroImage ? <Seperator /> : null}
+      {shouldRenderSeperators ? <Seperator /> : null}
     </RootStyles>
   );
 }
@@ -36,7 +47,9 @@ const RootStyles = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin: ${({ theme }) => theme.spaces.xxLarge} 0;
+  margin: ${({ shouldRenderSeperators, theme }) =>
+      shouldRenderSeperators ? theme.spaces.xxLarge : 0}
+    0;
   width: 100%;
 
   > figure {

@@ -6,24 +6,24 @@ export default function MobileNavbar() {
   return (
     <RootStyles>
       <nav>
-        <Link href="/">
+        <Link href="/" aria-label="Link to home page">
           <div>
-            <HomeIcon title="Link to home page" />
+            <HomeIcon />
           </div>
         </Link>
-        <Link href="/posts">
+        <Link href="/posts" aria-label="Link to posts page">
           <div>
-            <PostsIcon title="Link to posts page" />
+            <PostsIcon />
           </div>
         </Link>
-        <Link href="/search">
+        <Link href="/search" aria-label="Link to search page">
           <div>
-            <SearchIcon title="Link to search page" />
+            <SearchIcon />
           </div>
         </Link>
-        <Link href="/contact">
+        <Link href="/contact" aria-label="Link to contact page">
           <div>
-            <MailIcon title="Link to contact page" />
+            <MailIcon />
           </div>
         </Link>
       </nav>

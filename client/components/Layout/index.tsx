@@ -25,6 +25,7 @@ export default function Layout({
     <>
       <Head>
         <title>{finalPageName}</title>
+        <meta name="description" content={pageName} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <RootStyles>

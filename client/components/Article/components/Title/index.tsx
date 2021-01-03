@@ -9,7 +9,7 @@ export default function ArticleTitle({ isMainTitle, titleCopy }: Props) {
   return (
     <RootStyles isMainTitle={isMainTitle}>
       <div>
-        <h4>{titleCopy}</h4>
+        <h2>{titleCopy}</h2>
       </div>
     </RootStyles>
   );
@@ -29,7 +29,8 @@ const RootStyles = styled.div`
     max-width: ${({ theme }) => theme.appDimensions.articleMaxWidth};
     width: 100%;
 
-    > h4 {
+    > h2 {
+      font-size: 2rem;
       font-weight: bold;
     }
   }

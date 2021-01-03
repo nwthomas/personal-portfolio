@@ -24,7 +24,10 @@ interface ArticleImage {
   };
   title: string;
   caption?: string;
+  width: number;
+  height: number;
   heroImage: boolean;
+  inline: boolean;
   image: {
     sys: {
       id: string;
@@ -127,7 +130,10 @@ export async function useArticleById(articleId: string) {
                 }
                 title
                 caption
+                width
+                height
                 heroImage
+                inline
                 image {
                   sys {
                     id
