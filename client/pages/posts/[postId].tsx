@@ -20,7 +20,7 @@ export default function Post({ article }: Props) {
     getArticleById(postId)
   );
 
-  const pageTitle = data?.title;
+  const pageTitle = data.title;
 
   if (!isLoading && !error) {
     return (

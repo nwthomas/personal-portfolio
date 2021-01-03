@@ -47,7 +47,7 @@ const GlobalStyle = css`
   }
 
   h3 {
-    color: ${({ theme }) => theme.colors.textAccent};
+    color: ${({ theme }) => theme.colors.textAccentTwo};
     font-size: 1.6rem;
     margin-bottom: ${({ theme }) => theme.spaces.medium};
     text-transform: uppercase;

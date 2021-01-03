@@ -20,5 +20,5 @@ export default function ChevronForwardIcon({ title }: Props) {
 }
 
 const RootStyles = styled.svg`
-  stroke: ${({ theme }) => theme.colors.themeIconBackground};
+  stroke: ${({ theme }) => theme.colors.textAccentTwo};
 `;

@@ -83,7 +83,7 @@ const RootStyles = styled.header`
             width: ${({ theme }) => theme.appDimensions.navbarLinkWidth};
 
             &:hover {
-              color: ${({ theme }) => theme.colors.textAccentHover};
+              color: ${({ theme }) => theme.colors.textAccentTwo};
               padding-bottom: 5px;
             }
           }
@@ -95,7 +95,7 @@ const RootStyles = styled.header`
 
 const TitleIcon = styled.h1`
   align-items: center;
-  color: ${({ theme }) => theme.colors.textAccent};
+  color: ${({ theme }) => theme.colors.textAccentOne};
   cursor: pointer;
   display: flex;
   font-size: 5.5rem;
@@ -104,7 +104,7 @@ const TitleIcon = styled.h1`
   transition: color ${({ theme }) => theme.transitions.short};
 
   &:hover {
-    color: ${({ theme }) => theme.colors.textAccentHover};
+    color: ${({ theme }) => theme.colors.textAccentTwo};
   }
 
   @media only screen and (min-width: ${({ theme }) =>

@@ -3,10 +3,12 @@
 const colors = {
   alabaster: "#f8f8f8f8",
   crusta: "#f98a31",
+  bilobaFlower: "#BBADEB",
   bunker: "#101419",
   emerald: "#59c689",
-  finn: "#6e2d6a",
   gainsboro: "#dadde1",
+  dullLavender: "#9F8AE5",
+  mediumPurple: "#7E61DC",
   mercury: "#e2e2e2",
   mineShaft: "#333333",
   onyx: "#3b3b40",
@@ -23,10 +25,11 @@ export const darkColorTheme = {
   bodyBackgroundAccentOne: colors.shark,
   bodyBackgroundAccentTwo: colors.onyx,
   text: colors.titanWhite,
-  textAccent: colors.emerald,
-  textAccentHover: colors.vistaBlue,
+  textAccentOne: colors.mediumPurple,
+  textAccentTwo: colors.dullLavender,
+  textAccentThree: colors.bilobaFlower,
   transparent: colors.transparent,
-  themeIconBackground: colors.finn,
+  themeIconBackground: colors.mediumPurple,
 };
 
 export const lightColorTheme = {
@@ -34,8 +37,9 @@ export const lightColorTheme = {
   bodyBackgroundAccentOne: colors.mercury,
   bodyBackgroundAccentTwo: colors.gainsboro,
   text: colors.mineShaft,
-  textAccent: colors.emerald,
-  textAccentHover: colors.vistaBlue,
+  textAccentOne: colors.mediumPurple,
+  textAccentTwo: colors.dullLavender,
+  textAccentThree: colors.bilobaFlower,
   transparent: colors.transparent,
   themeIconBackground: colors.crusta,
 };

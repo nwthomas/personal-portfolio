@@ -51,10 +51,10 @@ const RootStyles = styled.section`
       overflow: break-word;
 
       > a {
-        color: ${({ theme }) => theme.colors.textAccent};
+        color: ${({ theme }) => theme.colors.textAccentTwo};
 
         &:hover {
-          color: ${({ theme }) => theme.colors.textAccentHover};
+          color: ${({ theme }) => theme.colors.textAccentThree};
         }
       }
     }

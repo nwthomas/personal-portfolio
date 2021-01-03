@@ -76,7 +76,7 @@ const RootStyles = styled.article`
 
   &:hover {
     > h4 {
-      color: ${({ theme }) => theme.colors.textAccentHover};
+      color: ${({ theme }) => theme.colors.textAccentTwo};
     }
 
     > p {

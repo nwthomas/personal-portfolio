@@ -28,7 +28,7 @@ interface Props {
 
 export default function FourOhFour({ errorPhrase }: Props) {
   return (
-    <Layout pageName={pageName} withEmojis>
+    <Layout pageName={pageName} withEmojis withFooter>
       <RootStyles>
         <h4>{`404 - ${errorPhrase}`}</h4>
         <div>
@@ -65,7 +65,7 @@ const RootStyles = styled.main`
     cursor: pointer;
 
     > p {
-      color: ${({ theme }) => theme.colors.textAccent};
+      color: ${({ theme }) => theme.colors.textAccentTwo};
     }
 
     &:hover {
@@ -74,7 +74,7 @@ const RootStyles = styled.main`
       }
 
       > p {
-        color: ${({ theme }) => theme.colors.textAccentHover};
+        color: ${({ theme }) => theme.colors.textAccentThree};
       }
     }
   }
