@@ -33,7 +33,7 @@ export default function ArticleImage({
           draggable={false}
           height={height}
           quality={100}
-          priority
+          priority={isHeroImage}
           src={imageUrl}
           width={width}
         />
