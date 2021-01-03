@@ -17,6 +17,13 @@ interface ArticleHeadingType {
   isMainTitle?: boolean;
 }
 
+interface ArticleSeperator {
+  __typename: "ArticleSeperator";
+  sys: {
+    id: string;
+  };
+}
+
 interface ArticleImageType {
   __typename: "ArticleImage";
   sys: {
@@ -66,6 +73,7 @@ interface ArticleCodeSnippetsType {
 
 export type ArticleModulesCollectionTypes =
   | ArticleHeadingType
+  | ArticleSeperator
   | ArticleImageType
   | ArticleBodyCopyType
   | ArticleQuoteType
@@ -143,6 +151,12 @@ export async function getArticleById(articleId: string) {
                 title
                 copy
                 isMainTitle
+              }
+              ... on ArticleSeperator {
+                __typename
+                sys {
+                  id
+                }
               }
               ... on ArticleImage {
                 __typename

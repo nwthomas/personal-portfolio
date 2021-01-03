@@ -2,6 +2,7 @@ import BodyCopy from "./components/BodyCopy";
 import CodeSnippet from "./components/CodeSnippet";
 import Image from "./components/Image";
 import Quote from "./components/Quote";
+import Seperator from "./components/Seperator";
 import Title from "./components/Title";
 import type { ArticleModulesCollectionTypes } from "../../api/articles";
 
@@ -10,6 +11,7 @@ const ARTICLE_CODE_SNIPPETS = "ArticleCodeSnippets";
 const ARTICLE_HEADING = "ArticleHeading";
 const ARTICLE_IMAGE = "ArticleImage";
 const ARTICLE_QUOTE = "ArticleQuote";
+const ARTICLE_SEPERATOR = "ArticleSeperator";
 
 export default function createNewArticle(
   articleModule: ArticleModulesCollectionTypes
@@ -57,6 +59,8 @@ export default function createNewArticle(
           quoteCopy={articleModule.copy}
         />
       );
+    case ARTICLE_SEPERATOR:
+      return <Seperator />;
     default:
       return null;
   }
