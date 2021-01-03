@@ -57,6 +57,10 @@ const RootStyles = styled.section`
           color: ${({ theme }) => theme.colors.textAccentThree};
         }
       }
+
+      > em {
+        font-style: italic;
+      }
     }
   }
 
