@@ -20,6 +20,7 @@ export default function ArticleImage({
   width,
 }: Props) {
   const shouldRenderSeperators = !isInline && !isHeroImage;
+  const shouldPriorityLoad = isHeroImage;
 
   return (
     <RootStyles
@@ -33,7 +34,7 @@ export default function ArticleImage({
           draggable={false}
           height={height}
           quality={100}
-          priority={isHeroImage}
+          priority={shouldPriorityLoad}
           src={imageUrl}
           width={width}
         />

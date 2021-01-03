@@ -18,7 +18,7 @@ const colors = {
 };
 
 // ===================================== Color Theme
-const darkColorTheme = {
+export const darkColorTheme = {
   bodyBackground: colors.woodsmoke,
   bodyBackgroundAccentOne: colors.shark,
   bodyBackgroundAccentTwo: colors.onyx,
@@ -29,7 +29,7 @@ const darkColorTheme = {
   themeIconBackground: colors.finn,
 };
 
-const lightColorTheme = {
+export const lightColorTheme = {
   bodyBackground: colors.alabaster,
   bodyBackgroundAccentOne: colors.mercury,
   bodyBackgroundAccentTwo: colors.gainsboro,
@@ -108,6 +108,7 @@ function makeMainTheme(themeColor: ThemeColorTypeEnum) {
     breakpoints,
     borderRadii,
     colors: themeColor === "light" ? lightColorTheme : darkColorTheme,
+    currentTheme: themeColor,
     opacity,
     spaces,
     transitions,

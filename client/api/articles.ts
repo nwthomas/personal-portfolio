@@ -7,7 +7,7 @@ const contentfulSpaceId = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
 const baseUrl = "https://graphql.contentful.com";
 const endpoint = `${baseUrl}/content/v1/spaces/${contentfulSpaceId}?access_token=${contentfulDeliveryAccessToken}`;
 
-interface ArticleHeading {
+interface ArticleHeadingType {
   __typename: "ArticleHeading";
   sys: {
     id: string;
@@ -17,7 +17,7 @@ interface ArticleHeading {
   isMainTitle?: boolean;
 }
 
-interface ArticleImage {
+interface ArticleImageType {
   __typename: "ArticleImage";
   sys: {
     id: string;
@@ -36,7 +36,7 @@ interface ArticleImage {
   };
 }
 
-interface ArticleBodyCopy {
+interface ArticleBodyCopyType {
   __typename: "ArticleBodyCopy";
   sys: {
     id: string;
@@ -45,7 +45,7 @@ interface ArticleBodyCopy {
   copy: string;
 }
 
-interface ArticleQuote {
+interface ArticleQuoteType {
   __typename: "ArticleQuote";
   sys: {
     id: string;
@@ -55,7 +55,7 @@ interface ArticleQuote {
   attribution: string;
 }
 
-interface ArticleCodeSnippets {
+interface ArticleCodeSnippetsType {
   __typename: "ArticleCodeSnippets";
   sys: {
     id: string;
@@ -65,15 +65,15 @@ interface ArticleCodeSnippets {
 }
 
 export type ArticleModulesCollectionTypes =
-  | ArticleHeading
-  | ArticleImage
-  | ArticleBodyCopy
-  | ArticleQuote
-  | ArticleCodeSnippets;
+  | ArticleHeadingType
+  | ArticleImageType
+  | ArticleBodyCopyType
+  | ArticleQuoteType
+  | ArticleCodeSnippetsType;
 
-export type ArticleModulesCollection = Array<ArticleModulesCollectionTypes>;
+export type ArticleModulesCollectionType = Array<ArticleModulesCollectionTypes>;
 
-export interface Article {
+export interface ArticleType {
   __typename: "Article";
   sys: {
     id: string;
@@ -87,12 +87,33 @@ export interface Article {
   };
   modulesCollection: {
     __typename: "ArticlesModulesCollection";
-    items: ArticleModulesCollection;
+    items: ArticleModulesCollectionTypes;
   };
 }
 
+export async function getArticleIds() {
+  const { articleCollection } = await request(
+    endpoint,
+    gql`
+      query {
+        articleCollection {
+          __typename
+          items {
+            __typename
+            sys {
+              id
+            }
+          }
+        }
+      }
+    `
+  );
+
+  return articleCollection;
+}
+
 // Queries an article by ID
-export async function useArticleById(articleId: string) {
+export async function getArticleById(articleId: string) {
   const { article } = await request(
     endpoint,
     gql`
@@ -182,7 +203,7 @@ export async function useArticleById(articleId: string) {
 }
 
 // Queries previews of all articles
-export async function useArticlesPreview() {
+export async function getArticlePreviews() {
   const { articleCollection } = await request(
     endpoint,
     gql`

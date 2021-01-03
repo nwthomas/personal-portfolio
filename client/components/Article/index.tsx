@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import createNewArticleModule from "./createNewArticleModule";
-import type { ArticleModulesCollection } from "../../api/articles";
+import type { ArticleModulesCollectionType } from "../../api/articles";
 
 interface Props {
-  articleModuleCollection: ArticleModulesCollection;
+  articleModuleCollection: ArticleModulesCollectionType;
 }
 
 export default function Article({ articleModuleCollection }: Props) {

@@ -2,18 +2,46 @@ import React from "react";
 import { useRouter } from "next/router";
 import { QueryClient, useQuery } from "react-query";
 import { dehydrate } from "react-query/hydration";
-import { useArticleById } from "../../api";
+import type { ArticleType } from "../../api/articles";
+import { getArticleIds, getArticleById } from "../../api";
 import Layout from "../../components/Layout";
 import Article from "../../components/Article";
 import styled from "styled-components";
 
-export async function getServerSideProps(context) {
+interface Props {
+  article: ArticleType;
+}
+
+export default function Post({ article }: Props) {
+  const router = useRouter();
+  const { postId }: { postId?: string } = router.query;
+
+  const { data, error, isLoading } = useQuery(["article", postId], () =>
+    getArticleById(postId)
+  );
+
+  const pageTitle = article?.title;
+
+  if (!isLoading && !error) {
+    return (
+      <Layout pageName={pageTitle} withFooter>
+        <RootStyles>
+          <Article articleModuleCollection={data.modulesCollection.items} />
+        </RootStyles>
+      </Layout>
+    );
+  } else {
+    return <p>Something went wrong</p>;
+  }
+}
+
+export async function getStaticProps(context) {
   const { postId } = context.params;
 
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(["articles", postId], () =>
-    useArticleById(postId)
+  await queryClient.prefetchQuery(["article", postId], () =>
+    getArticleById(postId)
   );
 
   return {
@@ -23,26 +51,20 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function Post() {
-  const router = useRouter();
-  const { postId }: { postId?: string } = router.query;
+export async function getStaticPaths() {
+  const data = await getArticleIds();
 
-  const { data, error, isLoading } = useQuery(["articles", postId], () =>
-    useArticleById(postId)
-  );
-
-  if (!isLoading && !error && data?.modulesCollection?.items.length) {
-    const pageTitle = data?.title;
-    return (
-      <Layout pageName={pageTitle} withFooter>
-        <RootStyles>
-          <Article articleModuleCollection={data.modulesCollection.items} />
-        </RootStyles>
-      </Layout>
-    );
-  } else {
-    return <p>Not Found</p>;
+  if (!data.items.length) {
+    return {
+      paths: [],
+      fallback: false,
+    };
   }
+
+  return {
+    paths: data.items.map(({ sys: { id } }) => ({ params: { postId: id } })),
+    fallback: false,
+  };
 }
 
 const RootStyles = styled.main`

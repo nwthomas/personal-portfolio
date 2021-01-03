@@ -64,6 +64,7 @@ const GlobalStyle = css`
     font-display: swap;
     font-size: 1.6rem;
     line-height: 2;
+    overflow: break-word;
   }
 
   p {

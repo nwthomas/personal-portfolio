@@ -28,7 +28,7 @@ const RootStyles = styled.div`
     height: 150px;
     left: 0;
     overflow: hidden;
-    position: fixed;
+    position: absolute;
     width: 150px;
 
     > div {

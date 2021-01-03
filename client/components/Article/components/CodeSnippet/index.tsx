@@ -1,6 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { a11yDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import styled from "styled-components";
 
 interface Props {
@@ -12,9 +12,9 @@ export default function CodeSnippet({ codeSnippetCopy }: Props) {
     code: ({ language, value }) => {
       return (
         <SyntaxHighlighter
-          language={language}
           children={value}
-          style={a11yDark}
+          language={language}
+          style={materialDark}
         />
       );
     },

@@ -5,7 +5,7 @@ import TopicTag from "../components/TopicTag";
 import ArticlePreviewCard from "../components/ArticlePreviewCard";
 import { QueryClient, useQuery } from "react-query";
 import { dehydrate } from "react-query/hydration";
-import { useArticlesPreview, useCategories } from "../api";
+import { getArticlePreviews, useCategories } from "../api";
 import styled from "styled-components";
 
 const PAGE_NAME = "Home";
@@ -13,7 +13,7 @@ const PAGE_NAME = "Home";
 export async function getServerSideProps() {
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery("articlePreviews", useArticlesPreview);
+  await queryClient.prefetchQuery("articlePreviews", getArticlePreviews);
   await queryClient.prefetchQuery("categories", useCategories);
 
   return {
@@ -28,7 +28,7 @@ export default function Home() {
     data: { items: articlesData },
     error: articlesError,
     isFetching: isFetchingArticles,
-  } = useQuery("articlePreviews", useArticlesPreview);
+  } = useQuery("articlePreviews", getArticlePreviews);
   const {
     data: { items: categoriesData },
     error: categoriesError,
