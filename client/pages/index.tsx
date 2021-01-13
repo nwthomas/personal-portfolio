@@ -103,7 +103,7 @@ export default function Home() {
           {!isFetchingArticles && !articlesError && articlesData.length >= 1 && (
             <Content>
               <div>
-                <h3>Latest Posts</h3>
+                <h3>Latest Articles</h3>
                 {articlesData.map(
                   ({
                     categoriesCollection,
@@ -130,7 +130,7 @@ export default function Home() {
                 )}
               </div>
               <div>
-                <h3>Top Categories</h3>
+                <h3>Article Categories</h3>
                 <div>
                   {!isFetchingCategories &&
                     !categoriesError &&
@@ -148,7 +148,7 @@ export default function Home() {
                     })}
                 </div>
                 <div>
-                  <h3>Popular Posts</h3>
+                  <h3>Latest Tweets</h3>
                 </div>
               </div>
             </Content>

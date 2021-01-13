@@ -11,7 +11,7 @@ export default function MobileNavbar() {
             <HomeIcon />
           </div>
         </Link>
-        <Link href="/posts" aria-label="Link to posts page">
+        <Link href="/articles" aria-label="Link to articles page">
           <div>
             <PostsIcon />
           </div>

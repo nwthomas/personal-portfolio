@@ -12,12 +12,12 @@ interface Props {
   article: ArticleType;
 }
 
-export default function Post({ article }: Props) {
+export default function ArticleScreen({ article }: Props) {
   const router = useRouter();
-  const { postId }: { postId?: string } = router.query;
+  const { articleId }: { articleId?: string } = router.query;
 
-  const { data, error, isLoading } = useQuery(["article", postId], () =>
-    getArticleById(postId)
+  const { data, error, isLoading } = useQuery(["article", articleId], () =>
+    getArticleById(articleId)
   );
 
   const pageTitle = data.title;
@@ -36,12 +36,12 @@ export default function Post({ article }: Props) {
 }
 
 export async function getStaticProps(context) {
-  const { postId } = context.params;
+  const { articleId } = context.params;
 
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(["article", postId], () =>
-    getArticleById(postId)
+  await queryClient.prefetchQuery(["article", articleId], () =>
+    getArticleById(articleId)
   );
 
   return {
@@ -62,7 +62,7 @@ export async function getStaticPaths() {
   }
 
   return {
-    paths: data.items.map(({ sys: { id } }) => ({ params: { postId: id } })),
+    paths: data.items.map(({ sys: { id } }) => ({ params: { articleId: id } })),
     fallback: false,
   };
 }
