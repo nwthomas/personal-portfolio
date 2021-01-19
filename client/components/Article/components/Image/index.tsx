@@ -23,10 +23,7 @@ export default function ArticleImage({
   const shouldPriorityLoad = isHeroImage;
 
   return (
-    <RootStyles
-      isHeroImage={isHeroImage}
-      shouldRenderSeperators={shouldRenderSeperators}
-    >
+    <RootStyles isHeroImage={isHeroImage}>
       {shouldRenderSeperators ? <Seperator /> : null}
       <figure>
         <Image
@@ -48,9 +45,7 @@ const RootStyles = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin: ${({ shouldRenderSeperators, theme }) =>
-      shouldRenderSeperators ? theme.spaces.xxLarge : 0}
-    0;
+  margin: 0;
   width: 100%;
 
   > figure {

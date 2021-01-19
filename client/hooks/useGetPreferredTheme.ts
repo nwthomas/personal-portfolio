@@ -1,37 +1,48 @@
 import { useEffect, useState } from "react";
+import type { ThemeEnum } from "../styles/libs/theme";
 
-const DARK_THEME = "dark";
-const LIGHT_THEME = "light";
-const LOCAL_STORAGE_KEY = "preferredTheme";
+export const DARK_THEME = "dark";
+export const LIGHT_THEME = "light";
+export const LOCAL_STORAGE_KEY = "theme";
 
-export default function useGetPreferredTheme(): ["dark" | "light", () => void] {
-  const [preferredTheme, setPreferredTheme] = useState<"dark" | "light">(
+// This extends the global Window object with custom values from _document.tsx
+declare global {
+  interface Window {
+    __setPreferredTheme: (newTheme: string) => void;
+    __theme: string;
+  }
+}
+// Updates the theme using the JavaScript code defined in the _document.tsx file
+export default function usePreferredTheme(): [ThemeEnum, () => void] {
+  const [userPreferredTheme, setUserPreferredTheme] = useState<ThemeEnum>(
     DARK_THEME
   );
 
   useEffect(() => {
-    try {
-      const pastThemeState = window.localStorage.getItem(LOCAL_STORAGE_KEY);
-      if (pastThemeState === DARK_THEME || pastThemeState === LIGHT_THEME) {
-        setPreferredTheme(pastThemeState);
-      } else {
-        setPreferredTheme(DARK_THEME);
-      }
-    } catch (_) {
-      setPreferredTheme(DARK_THEME);
+    // We must check for typeof window !== "undefined" instead of window !== undefined
+    // because typeof does not evaluate window but only get its type
+    // https://dev.to/vvo/how-to-solve-window-is-not-defined-errors-in-react-and-next-js-5f97
+    if (
+      typeof window !== "undefined" &&
+      window.__theme &&
+      (window.__theme === DARK_THEME || window.__theme === LIGHT_THEME)
+    ) {
+      setUserPreferredTheme(window.__theme);
     }
   }, []);
 
-  function handleSetPreferredTheme() {
-    const newPreferredTheme =
-      preferredTheme === DARK_THEME ? LIGHT_THEME : DARK_THEME;
+  function updatePreferredTheme() {
+    if (
+      typeof window !== "undefined" &&
+      window.__theme &&
+      window.__setPreferredTheme
+    ) {
+      const newTheme = window.__theme === DARK_THEME ? LIGHT_THEME : DARK_THEME;
 
-    try {
-      window.localStorage.setItem(LOCAL_STORAGE_KEY, newPreferredTheme);
-    } catch (_) {}
-
-    setPreferredTheme(newPreferredTheme);
+      setUserPreferredTheme(newTheme);
+      window.__setPreferredTheme(newTheme);
+    }
   }
 
-  return [preferredTheme, handleSetPreferredTheme];
+  return [userPreferredTheme, updatePreferredTheme];
 }

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { ThemeProvider } from "styled-components";
 import Navbar from "../components/Navbar";
 import useGetPreferredTheme from "../hooks/useGetPreferredTheme";
@@ -20,19 +19,13 @@ const queryClient = new QueryClient({
 
 function MyApp({ Component, pageProps }) {
   const [currentTheme, setCurrentTheme] = useGetPreferredTheme();
-  const [shouldUseThemeTransition, setShouldUseThemeTransition] = useState(
-    false
-  );
-
-  useEffect(() => {
-    setShouldUseThemeTransition(true);
-  }, []);
+  const mainTheme = makeMainTheme(currentTheme);
 
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
-        <ThemeProvider theme={makeMainTheme(currentTheme)}>
-          <GlobalStyle isPageLoaded={shouldUseThemeTransition} />
+        <GlobalStyle theme={mainTheme} />
+        <ThemeProvider theme={mainTheme}>
           <Navbar
             onThemeChangeClick={setCurrentTheme}
             themeName={currentTheme}

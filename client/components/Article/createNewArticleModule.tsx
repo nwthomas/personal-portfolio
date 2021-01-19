@@ -14,7 +14,8 @@ const ARTICLE_QUOTE = "ArticleQuote";
 const ARTICLE_SEPERATOR = "ArticleSeperator";
 
 export default function createNewArticle(
-  articleModule: ArticleModulesCollectionTypes
+  articleModule: ArticleModulesCollectionTypes,
+  articleModuleId: number
 ) {
   switch (articleModule.__typename) {
     case ARTICLE_COPY:
@@ -25,7 +26,7 @@ export default function createNewArticle(
       return (
         <CodeSnippet
           codeSnippetCopy={articleModule.contents}
-          key={articleModule.contents}
+          key={articleModuleId}
         />
       );
     case ARTICLE_HEADING:
@@ -37,7 +38,7 @@ export default function createNewArticle(
         <Title
           titleCopy={articleModule.copy}
           isMainTitle={isMainTitle}
-          key={articleModule.copy}
+          key={articleModuleId}
         />
       );
     case ARTICLE_IMAGE:
@@ -47,20 +48,20 @@ export default function createNewArticle(
           imageUrl={articleModule.image.url}
           isHeroImage={articleModule.heroImage}
           isInline={articleModule.inline}
-          key={articleModule.image.url}
+          key={articleModuleId}
           width={articleModule.width}
         />
       );
     case ARTICLE_QUOTE:
       return (
         <Quote
-          key={articleModule.attribution}
+          key={articleModuleId}
           quoteAttribution={articleModule.attribution}
           quoteCopy={articleModule.copy}
         />
       );
     case ARTICLE_SEPERATOR:
-      return <Seperator />;
+      return <Seperator key={articleModuleId} />;
     default:
       return null;
   }

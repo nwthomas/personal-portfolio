@@ -7,6 +7,8 @@ interface Props {
 }
 
 export default function TopicTag({ name, route }: Props) {
+  const isInline = !route;
+
   return (
     <>
       {route ? (
@@ -14,7 +16,7 @@ export default function TopicTag({ name, route }: Props) {
           <Button>{name}</Button>
         </Link>
       ) : (
-        <Button>{name}</Button>
+        <Button isInline={isInline}>{name}</Button>
       )}
     </>
   );
@@ -31,10 +33,12 @@ const Button = styled.button`
   transition: opacity ${({ theme }) => theme.transitions.short};
 
   &:hover {
-    opacity: ${({ theme }) => theme.opacity.opacity80};
+    opacity: ${({ isInline, theme }) =>
+      isInline ? theme.opacity.opacity100 : theme.opacity.opacity80};
   }
 
   &:focus {
     outline-color: ${({ theme }) => theme.colors.text};
+    outline: ${({ isInline }) => (isInline ? "none" : undefined)};
   }
 `;

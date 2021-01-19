@@ -35,6 +35,8 @@ export default function Home() {
     isFetching: isFetchingCategories,
   } = useQuery("categories", getCategories);
 
+  const finalArticlesData = articlesData?.slice(0, 5) || [];
+
   return (
     <Layout pageName={PAGE_NAME} withEmojis withFooter>
       <RootStyles>
@@ -104,7 +106,7 @@ export default function Home() {
             <Content>
               <div>
                 <h3>Latest Articles</h3>
-                {articlesData.map(
+                {finalArticlesData.map(
                   ({
                     categoriesCollection,
                     description,
@@ -123,7 +125,7 @@ export default function Home() {
                         description={description}
                         key={title}
                         title={title}
-                        topicTags={articleCategories}
+                        categories={articleCategories || []}
                       />
                     );
                   }
@@ -148,7 +150,7 @@ export default function Home() {
                     })}
                 </div>
                 <div>
-                  <h3>Latest Tweets</h3>
+                  <h3>Latest Tweet</h3>
                 </div>
               </div>
             </Content>

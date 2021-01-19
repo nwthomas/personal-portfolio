@@ -3,23 +3,25 @@ import styled from "styled-components";
 import { ChevronForwardIcon } from "../Icons";
 import TopicTag from "../TopicTag";
 
+const createArticleRoute = (articleId: string) => `/articles/${articleId}`;
+
 interface Props {
   articleId: string;
   description: string;
   title: string;
-  topicTags?: Array<string>;
+  categories: Array<string>;
 }
 
 export default function ArticlePreviewCard({
   description,
   articleId,
   title,
-  topicTags,
+  categories,
 }: Props) {
-  const articleRoute = `/posts/${articleId}`;
+  const sortedCategories = categories?.sort((a, b) => (a > b ? 1 : -1));
 
   return (
-    <Link href={articleRoute}>
+    <Link href={createArticleRoute(articleId)}>
       <RootStyles>
         <h4>{title}</h4>
         <p>{description}</p>
@@ -28,8 +30,8 @@ export default function ArticlePreviewCard({
             <ChevronForwardIcon />
           </div>
           <p>Read</p>
-          {topicTags?.length >= 1
-            ? topicTags.map((topicTag, i) => (
+          {sortedCategories?.length >= 1
+            ? sortedCategories.map((topicTag, i) => (
                 <div key={`${topicTag}${i}`}>
                   <TopicTag name={topicTag} />
                 </div>
@@ -77,14 +79,6 @@ const RootStyles = styled.article`
   &:hover {
     > h4 {
       color: ${({ theme }) => theme.colors.textAccentTwo};
-    }
-
-    > p {
-      opacity: ${({ theme }) => theme.opacity.opacity80};
-    }
-
-    > div {
-      opacity: ${({ theme }) => theme.opacity.opacity80};
     }
   }
 `;

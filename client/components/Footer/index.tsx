@@ -71,7 +71,6 @@ const RootStyles = styled.footer`
   display: flex;
   height: ${({ theme }) => theme.appDimensions.mobileFooterHeight};
   justify-content: center;
-  margin-bottom: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};
   padding: 0 ${({ theme }) => theme.appDimensions.appHorizontalGutters};
   position: absolute;
   width: 100%;
@@ -80,7 +79,6 @@ const RootStyles = styled.footer`
       theme.breakpoints.mobile}) {
     border-bottom: none;
     height: ${({ theme }) => theme.appDimensions.desktopFooterHeight};
-    margin-bottom: 0;
   }
 
   > div {

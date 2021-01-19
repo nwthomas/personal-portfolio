@@ -28,7 +28,7 @@ export default function Layout({
         <meta name="description" content={pageName} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <RootStyles>
+      <RootStyles withFooter={withFooter}>
         {children}
         {withFooter ? <Footer /> : null}
         <BabyYodaEasterEgg />
@@ -41,6 +41,7 @@ const RootStyles = styled.div`
   background-color: ${({ theme }) => theme.colors.bodyBackground};
   display: flex;
   justify-content: center;
+  margin-bottom: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};
   min-height: ${({ theme }) => theme.appDimensions.appMinHeight};
   padding: ${({ theme }) =>
     `${theme.appDimensions.mobileNavbarHeight} 0 ${theme.appDimensions.mobileFooterHeight}`};
@@ -51,5 +52,6 @@ const RootStyles = styled.div`
       theme.breakpoints.mobile}) {
     padding: ${({ theme }) =>
       `${theme.appDimensions.desktopNavbarHeight} 0 ${theme.appDimensions.desktopFooterHeight}`};
+    margin-bottom: 0;
   }
 `;

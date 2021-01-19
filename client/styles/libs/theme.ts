@@ -1,6 +1,8 @@
+export type ThemeEnum = "dark" | "light";
+
 // ===================================== Color Assignment Variables
 // All color names pulled directly from http://chir.ag/projects/name-that-color/
-const colors = {
+export const colors = {
   alabaster: "#f8f8f8f8",
   crusta: "#f98a31",
   bilobaFlower: "#BBADEB",
@@ -20,28 +22,16 @@ const colors = {
 };
 
 // ===================================== Color Theme
-export const darkColorTheme = {
-  bodyBackground: colors.woodsmoke,
-  bodyBackgroundAccentOne: colors.shark,
-  bodyBackgroundAccentTwo: colors.onyx,
-  text: colors.titanWhite,
-  textAccentOne: colors.mediumPurple,
-  textAccentTwo: colors.dullLavender,
-  textAccentThree: colors.bilobaFlower,
-  transparent: colors.transparent,
-  themeIconBackground: colors.mediumPurple,
-};
-
-export const lightColorTheme = {
-  bodyBackground: colors.alabaster,
-  bodyBackgroundAccentOne: colors.mercury,
-  bodyBackgroundAccentTwo: colors.gainsboro,
-  text: colors.mineShaft,
-  textAccentOne: colors.mediumPurple,
-  textAccentTwo: colors.dullLavender,
-  textAccentThree: colors.bilobaFlower,
-  transparent: colors.transparent,
-  themeIconBackground: colors.crusta,
+export const themeColorValues = {
+  bodyBackground: "var(--body-bg)",
+  bodyBackgroundAccentOne: "var(--body-bg-accent-one)",
+  bodyBackgroundAccentTwo: "var(--body-bg-accent-two)",
+  text: "var(--text)",
+  textAccentOne: "var(--text-accent-one)",
+  textAccentTwo: "var(--text-accent-two)",
+  textAccentThree: "var(--text-accent-three)",
+  transparent: "var(--transparent)",
+  themeIconBackground: "var(--theme-icon-bg)",
 };
 
 // ===================================== Space Variables
@@ -104,14 +94,12 @@ const transitions = {
 };
 
 // ===================================== Main Theme
-type ThemeColorTypeEnum = "dark" | "light";
-
-function makeMainTheme(themeColor: ThemeColorTypeEnum) {
+function makeMainTheme(themeColor: ThemeEnum) {
   return {
     appDimensions,
     breakpoints,
     borderRadii,
-    colors: themeColor === "light" ? lightColorTheme : darkColorTheme,
+    colors: themeColorValues,
     currentTheme: themeColor,
     opacity,
     spaces,

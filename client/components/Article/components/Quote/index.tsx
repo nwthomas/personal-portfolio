@@ -28,7 +28,6 @@ const RootStyles = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin: ${({ theme }) => theme.spaces.xxLarge} 0;
   padding: 0 ${({ theme }) => theme.appDimensions.appHorizontalGutters};
   width: 100%;
 

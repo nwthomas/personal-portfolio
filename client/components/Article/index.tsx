@@ -9,8 +9,8 @@ interface Props {
 export default function Article({ articleModuleCollection }: Props) {
   return (
     <RootStyles>
-      {articleModuleCollection.map((articleModule) =>
-        createNewArticleModule(articleModule)
+      {articleModuleCollection.map((articleModule, id) =>
+        createNewArticleModule(articleModule, id)
       )}
     </RootStyles>
   );

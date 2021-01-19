@@ -33,6 +33,52 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head />
         <body>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            (function () {
+              var DARK_THEME = "dark";
+              var LIGHT_THEME = "light";
+              var LOCAL_STORAGE_KEY = "theme";
+
+              var preferredTheme;
+
+              // This defines the variable for later assignment and use client-side
+              window.__onThemeChange = function onThemeChange() {};
+
+              function setTheme(newTheme) {
+                window.__theme = newTheme;
+                preferredTheme = newTheme;
+                document.body.className = newTheme;
+                window.__onThemeChange(newTheme);
+              }
+
+              try {
+                var savedPreferredTheme = localStorage.getItem(LOCAL_STORAGE_KEY);
+
+                if (savedPreferredTheme === DARK_THEME || savedPreferredTheme === LIGHT_THEME) {
+                  preferredTheme = savedPreferredTheme;
+                }
+              } catch (error) {}
+
+              window.__setPreferredTheme = function setPreferredTheme(newTheme) {
+                setTheme(newTheme);
+
+                try {
+                  localStorage.setItem(LOCAL_STORAGE_KEY, newTheme);
+                } catch (error) {}
+              }
+
+              var userThemePreference = window.matchMedia('(prefers-color-scheme: dark)');
+              userThemePreference.addListener(function(event) {
+                window.__setPreferredTheme(event.matches ? DARK_THEME : LIGHT_THEME);
+              });
+              
+              setTheme(preferredTheme || (userThemePreference.matches ? DARK_THEME : LIGHT_THEME));
+            })();
+            `,
+            }}
+          ></script>
           <Main />
           <NextScript />
         </body>

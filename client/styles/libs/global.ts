@@ -1,22 +1,20 @@
 import { css } from "styled-components";
+import { colors } from "./theme";
 
 const GlobalStyle = css`
   * {
     box-sizing: border-box;
     transition: ${({
-      isPageLoaded,
       theme: {
         transitions: { short },
       },
     }) =>
-      isPageLoaded
-        ? `background-color ${short}, color ${short}, fill ${short}, stroke ${short}, border-color ${short}`
-        : "none"};
+      `background-color ${short}, color ${short}, fill ${short}, stroke ${short}, border-color ${short}`};
   }
 
   html {
     font-size: 62.5%;
-    /* scroll-behavior: smooth; */
+    scroll-behavior: smooth;
   }
 
   html,
@@ -25,6 +23,29 @@ const GlobalStyle = css`
     font-family: "Work Sans", -apple-system, BlinkMacSystemFont, Segoe UI,
       Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
       "Segoe UI Emoji", "Segoe UI Symbol";
+  }
+
+  body {
+    --text-accent-one: ${colors.mediumPurple};
+    --text-accent-two: ${colors.dullLavender};
+    --text-accent-three: ${colors.bilobaFlower};
+    --transparent: ${colors.transparent};
+  }
+
+  body.dark {
+    --body-bg: ${colors.woodsmoke};
+    --body-bg-accent-one: ${colors.shark};
+    --body-bg-accent-two: ${colors.onyx};
+    --text: ${colors.titanWhite};
+    --theme-icon-bg: ${colors.mediumPurple};
+  }
+
+  body.light {
+    --body-bg: ${colors.alabaster};
+    --body-bg-accent-one: ${colors.mercury};
+    --body-bg-accent-two: ${colors.gainsboro};
+    --text: ${colors.mineShaft};
+    --theme-icon-bg: ${colors.crusta};
   }
 
   h1,
@@ -47,7 +68,7 @@ const GlobalStyle = css`
   }
 
   h3 {
-    color: ${({ theme }) => theme.colors.textAccentTwo};
+    color: var(--text-accent-one);
     font-size: 1.6rem;
     margin-bottom: ${({ theme }) => theme.spaces.medium};
     text-transform: uppercase;
