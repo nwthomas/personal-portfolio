@@ -2,10 +2,11 @@ import React from "react";
 import Link from "next/link";
 import ThemeTransitionButton from "../ThemeTransitionButton";
 import styled from "styled-components";
+import type { ThemeEnum } from "../../styles/libs/theme";
 
 interface Props {
   onThemeChangeClick: () => void;
-  themeName: "dark" | "light";
+  themeName: ThemeEnum | null;
 }
 
 export default function Navbar({ onThemeChangeClick, themeName }: Props) {
@@ -16,10 +17,12 @@ export default function Navbar({ onThemeChangeClick, themeName }: Props) {
           <TitleIcon>n</TitleIcon>
         </Link>
         <div>
-          <ThemeTransitionButton
-            onClick={onThemeChangeClick}
-            themeName={themeName}
-          />
+          {themeName ? (
+            <ThemeTransitionButton
+              onClick={onThemeChangeClick}
+              themeName={themeName}
+            />
+          ) : null}
           <nav>
             <Link href="/articles">Articles</Link>
             <Link href="/talks">Talks</Link>

@@ -13,10 +13,8 @@ declare global {
   }
 }
 // Updates the theme using the JavaScript code defined in the _document.tsx file
-export default function usePreferredTheme(): [ThemeEnum, () => void] {
-  const [userPreferredTheme, setUserPreferredTheme] = useState<ThemeEnum>(
-    DARK_THEME
-  );
+export default function usePreferredTheme(): [ThemeEnum | null, () => void] {
+  const [userPreferredTheme, setUserPreferredTheme] = useState<ThemeEnum>(null);
 
   useEffect(() => {
     // We must check for typeof window !== "undefined" instead of window !== undefined

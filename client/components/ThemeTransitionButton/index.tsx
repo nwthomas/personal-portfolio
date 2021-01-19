@@ -1,6 +1,6 @@
-import { SyntheticEvent } from "react";
 import Image from "next/image";
 import styled from "styled-components";
+import type { ThemeEnum } from "../../styles/libs/theme";
 
 const MoonIcon = (
   <Image
@@ -28,7 +28,7 @@ const SunIcon = (
 
 interface Props {
   onClick: () => void;
-  themeName: "dark" | "light";
+  themeName: ThemeEnum;
 }
 
 export default function ThemeTransitionButton({ onClick, themeName }: Props) {

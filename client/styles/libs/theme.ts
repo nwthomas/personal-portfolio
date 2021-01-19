@@ -94,13 +94,12 @@ const transitions = {
 };
 
 // ===================================== Main Theme
-function makeMainTheme(themeColor: ThemeEnum) {
+function makeMainTheme() {
   return {
     appDimensions,
     breakpoints,
     borderRadii,
     colors: themeColorValues,
-    currentTheme: themeColor,
     opacity,
     spaces,
     transitions,
