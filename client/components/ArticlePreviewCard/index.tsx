@@ -10,6 +10,7 @@ interface Props {
   description: string;
   title: string;
   categories: Array<string>;
+  withBackground?: boolean;
 }
 
 export default function ArticlePreviewCard({
@@ -17,12 +18,13 @@ export default function ArticlePreviewCard({
   articleId,
   title,
   categories,
+  withBackground,
 }: Props) {
   const sortedCategories = categories?.sort((a, b) => (a > b ? 1 : -1));
 
   return (
     <Link href={createArticleRoute(articleId)}>
-      <RootStyles>
+      <RootStyles withBackground={withBackground}>
         <h4>{title}</h4>
         <p>{description}</p>
         <div>
@@ -44,8 +46,22 @@ export default function ArticlePreviewCard({
 }
 
 const RootStyles = styled.article`
+  background-color: ${({ theme, withBackground }) =>
+    withBackground
+      ? theme.colors.bodyBackgroundAccentTwo
+      : theme.colors.bodyBackground};
+  border: ${({ theme, withBackground }) =>
+    withBackground
+      ? `1px solid ${theme.colors.bodyBackgroundAccentOne}`
+      : "none"};
+  border-radius: ${({ theme }) => theme.borderRadii.small};
   cursor: pointer;
-  padding: 0 0 ${({ theme }) => theme.spaces.large};
+  display: flex;
+  flex-direction: column;
+  min-width: ${({ withBackground }) => (withBackground ? "350px" : 0)};
+  max-width: ${({ withBackground }) => (withBackground ? "500px" : "100%")};
+  padding: ${({ theme, withBackground }) =>
+    withBackground ? theme.spaces.medium : `0 0 ${theme.spaces.large}`};
   width: 100%;
 
   h4 {

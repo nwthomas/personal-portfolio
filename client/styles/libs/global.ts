@@ -14,7 +14,6 @@ const GlobalStyle = css`
 
   html {
     font-size: 62.5%;
-    scroll-behavior: smooth;
   }
 
   html,
@@ -43,7 +42,7 @@ const GlobalStyle = css`
   body.light {
     --body-bg: ${colors.alabaster};
     --body-bg-accent-one: ${colors.mercury};
-    --body-bg-accent-two: ${colors.gainsboro};
+    --body-bg-accent-two: ${colors.white};
     --text: ${colors.mineShaft};
     --theme-icon-bg: ${colors.crusta};
   }

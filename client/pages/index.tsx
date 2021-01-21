@@ -35,7 +35,7 @@ export default function Home() {
     isFetching: isFetchingCategories,
   } = useQuery("categories", getCategories);
 
-  const finalArticlesData = articlesData?.slice(0, 5) || [];
+  const finalArticlesData = articlesData?.slice(0, 3) || [];
 
   return (
     <Layout pageName={PAGE_NAME} withEmojis withFooter>

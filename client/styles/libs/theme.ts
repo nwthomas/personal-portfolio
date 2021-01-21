@@ -8,7 +8,6 @@ export const colors = {
   bilobaFlower: "#BBADEB",
   bunker: "#101419",
   emerald: "#59c689",
-  gainsboro: "#dadde1",
   dullLavender: "#9F8AE5",
   mediumPurple: "#7E61DC",
   mercury: "#e2e2e2",
@@ -18,6 +17,7 @@ export const colors = {
   titanWhite: "#f8f8ff",
   transparent: "transparent",
   vistaBlue: "#95dbb3",
+  white: "#ffffff",
   woodsmoke: "#161618",
 };
 

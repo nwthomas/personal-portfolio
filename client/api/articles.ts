@@ -222,7 +222,7 @@ export async function getArticlePreviews() {
     endpoint,
     gql`
       query {
-        articleCollection(limit: 3) {
+        articleCollection {
           __typename
           items {
             __typename
