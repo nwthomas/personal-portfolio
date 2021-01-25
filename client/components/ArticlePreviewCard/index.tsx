@@ -23,7 +23,7 @@ export default function ArticlePreviewCard({
   const sortedCategories = categories?.sort((a, b) => (a > b ? 1 : -1));
 
   return (
-    <Link href={createArticleRoute(articleId)} scroll={false}>
+    <Link href={createArticleRoute(articleId)}>
       <RootStyles withBackground={withBackground}>
         <>
           <h4>{title}</h4>
