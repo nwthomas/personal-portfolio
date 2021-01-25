@@ -2,17 +2,12 @@ import React from "react";
 import { useRouter } from "next/router";
 import { QueryClient, useQuery } from "react-query";
 import { dehydrate } from "react-query/hydration";
-import type { ArticleType } from "../../api/articles";
 import { getArticleIds, getArticleById } from "../../api";
 import Layout from "../../components/Layout";
 import Article from "../../components/Article";
 import styled from "styled-components";
 
-interface Props {
-  article: ArticleType;
-}
-
-export default function ArticleScreen({ article }: Props) {
+export default function ArticleByName() {
   const router = useRouter();
   const { articleId }: { articleId?: string } = router.query;
 

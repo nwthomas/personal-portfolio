@@ -23,29 +23,32 @@ export default function ArticlePreviewCard({
   const sortedCategories = categories?.sort((a, b) => (a > b ? 1 : -1));
 
   return (
-    <Link href={createArticleRoute(articleId)}>
+    <Link href={createArticleRoute(articleId)} scroll={false}>
       <RootStyles withBackground={withBackground}>
-        <h4>{title}</h4>
-        <p>{description}</p>
-        <div>
+        <>
+          <h4>{title}</h4>
+          <p>{description}</p>
           <div>
-            <ChevronForwardIcon />
+            <div>
+              <ChevronForwardIcon />
+            </div>
+            <p>Read</p>
+            {sortedCategories?.length >= 1
+              ? sortedCategories.map((topicTag, i) => (
+                  <div key={`${topicTag}${i}`}>
+                    <TopicTag name={topicTag} />
+                  </div>
+                ))
+              : null}
           </div>
-          <p>Read</p>
-          {sortedCategories?.length >= 1
-            ? sortedCategories.map((topicTag, i) => (
-                <div key={`${topicTag}${i}`}>
-                  <TopicTag name={topicTag} />
-                </div>
-              ))
-            : null}
-        </div>
+        </>
       </RootStyles>
     </Link>
   );
 }
 
 const RootStyles = styled.article`
+  align-self: flex-start;
   background-color: ${({ theme, withBackground }) =>
     withBackground
       ? theme.colors.bodyBackgroundAccentTwo
@@ -58,11 +61,19 @@ const RootStyles = styled.article`
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  min-width: ${({ withBackground }) => (withBackground ? "350px" : 0)};
-  max-width: ${({ withBackground }) => (withBackground ? "500px" : "100%")};
+  margin-bottom: ${({ theme }) => theme.spaces.small};
+  min-height: 0;
   padding: ${({ theme, withBackground }) =>
     withBackground ? theme.spaces.medium : `0 0 ${theme.spaces.large}`};
   width: 100%;
+
+  @media only screen and (min-width: ${({ theme }) =>
+      theme.breakpoints.desktop}) {
+    margin: ${({ theme, withBackground }) =>
+      withBackground ? `0 ${theme.spaces.small} ${theme.spaces.small} 0` : 0};
+    min-height: ${({ withBackground }) => (withBackground ? "350px" : 0)};
+    width: ${({ withBackground }) => (withBackground ? "400px" : "100%")};
+  }
 
   h4 {
     font-weight: bold;

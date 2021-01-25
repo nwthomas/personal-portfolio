@@ -1,4 +1,5 @@
 import { request, gql } from "graphql-request";
+import { CategoryCollectionType } from "./categories";
 
 const contentfulDeliveryAccessToken =
   process.env.NEXT_PUBLIC_CONTENTFUL_DELIVERY_ACCESS_TOKEN;
@@ -214,6 +215,24 @@ export async function getArticleById(articleId: string) {
   );
 
   return article;
+}
+
+export interface ArticlePreviewType {
+  __typename: string;
+  sys: {
+    id: string;
+    firstPublishedAt: string;
+    publishedAt: string;
+  };
+  title: string;
+  slug: string;
+  description: string;
+  categoriesCollection: CategoryCollectionType;
+}
+
+export interface ArticleCollectionType {
+  __typename: "ArticleCollection";
+  items: Array<ArticlePreviewType>;
 }
 
 // Queries previews of all articles

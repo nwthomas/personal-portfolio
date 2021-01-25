@@ -44,7 +44,7 @@ export default class MyDocument extends Document {
               var preferredTheme;
 
               // This defines the variable for later assignment and use client-side
-              window.__onThemeChange = function onThemeChange() {};
+              window.__onThemeChange = function() {};
 
               function setTheme(newTheme) {
                 window.__theme = newTheme;
