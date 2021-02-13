@@ -3,6 +3,7 @@ import { BabyYodaEasterEgg } from "../EasterEggs";
 import Head from "next/head";
 import Footer from "../Footer";
 import usePageName from "../../hooks/usePageName";
+import useGetPreferredTheme from "../../hooks/useGetPreferredTheme";
 import styled from "styled-components";
 
 interface Props {
@@ -19,6 +20,7 @@ export default function Layout({
   withFooter,
 }: Props) {
   const [currentPageName] = usePageName(pageName);
+  const [currentTheme] = useGetPreferredTheme();
   const finalPageName = withEmojis ? currentPageName : pageName;
 
   return (
@@ -26,6 +28,7 @@ export default function Layout({
       <Head>
         <title>{finalPageName}</title>
         <meta name="description" content={pageName} />
+        <meta name="twitter:widgets:theme" content={currentTheme} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <RootStyles withFooter={withFooter}>

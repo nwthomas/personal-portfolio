@@ -2,13 +2,14 @@ import React from "react";
 import { QueryClient, useQuery } from "react-query";
 import { dehydrate } from "react-query/hydration";
 import Layout from "../../components/Layout";
+import PageTitle from "../../components/PageTitle";
 import { getArticlePreviews, getCategories } from "../../api";
 import type { ArticlePreviewType } from "../../api/articles";
 import CategoryArticleSection from "../../components/CategoryArticleSection";
 import { useLayoutCategoryArticlePreviews } from "../../hooks/useLayoutCategoryArticlePreviews";
 import styled from "styled-components";
 
-const PAGE_NAME = "Posts";
+const PAGE_NAME = "Articles";
 
 export async function getServerSideProps() {
   const queryClient = new QueryClient();
@@ -23,7 +24,7 @@ export async function getServerSideProps() {
   };
 }
 
-export default function Articles() {
+export default function ArticlesPage() {
   const {
     data: articlesData,
     error: articlesError,
@@ -52,11 +53,11 @@ export default function Articles() {
     > = Object.entries(categorizedArticles);
 
     return (
-      <Layout pageName={PAGE_NAME} withFooter>
+      <Layout pageName={PAGE_NAME} withEmojis withFooter>
         <RootStyles>
+          <PageTitle title="Articles" type="2" />
           <div>
             {categorizedArticlesArray.map(([category, articles], i) => {
-              console.log({ articles });
               return (
                 <CategoryArticleSection
                   articles={articles}
@@ -75,8 +76,10 @@ export default function Articles() {
 }
 
 const RootStyles = styled.main`
+  align-items: center;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  margin-top: ${({ theme }) => theme.spaces.small};
   margin-bottom: ${({ theme }) => theme.spaces.large};
   padding: 0 3%;
   width: 100%;

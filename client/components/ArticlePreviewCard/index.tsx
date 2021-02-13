@@ -35,7 +35,7 @@ export default function ArticlePreviewCard({
             <p>Read</p>
             {sortedCategories?.length >= 1
               ? sortedCategories.map((topicTag, i) => (
-                  <div key={`${topicTag}${i}`}>
+                  <div key={i}>
                     <TopicTag name={topicTag} />
                   </div>
                 ))

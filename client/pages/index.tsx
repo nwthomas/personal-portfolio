@@ -1,20 +1,34 @@
-import React from "react";
+import React, { createRef, useEffect, useRef } from "react";
 import Image from "next/image";
 import Layout from "../components/Layout";
 import TopicTag from "../components/TopicTag";
 import ArticlePreviewCard from "../components/ArticlePreviewCard";
 import { QueryClient, useQuery } from "react-query";
 import { dehydrate } from "react-query/hydration";
-import { getArticlePreviews, getCategories } from "../api";
+import {
+  getArticlePreviews,
+  getCategories,
+  getLastTweetFromTwitterProfile,
+} from "../api";
+import useGetPreferredTheme from "../hooks/useGetPreferredTheme";
+import useCreateNewTweet from "../hooks/useCreateNewTweet";
 import styled from "styled-components";
 
 const PAGE_NAME = "Home";
+
+const createNormalizedRouteName = (title: string) => {
+  return title.split(" ").join("-").toLowerCase();
+};
 
 export async function getServerSideProps() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery("articlePreviews", getArticlePreviews);
   await queryClient.prefetchQuery("categories", getCategories);
+  await queryClient.prefetchQuery(
+    "recentTweet",
+    getLastTweetFromTwitterProfile
+  );
 
   return {
     props: {
@@ -24,6 +38,9 @@ export async function getServerSideProps() {
 }
 
 export default function Home() {
+  const [currentTheme] = useGetPreferredTheme();
+  let tweetRef = useRef(null);
+
   const {
     data: { items: articlesData },
     error: articlesError,
@@ -34,8 +51,23 @@ export default function Home() {
     error: categoriesError,
     isFetching: isFetchingCategories,
   } = useQuery("categories", getCategories);
+  const {
+    data: tweetsData,
+    error: tweetsError,
+    isFetching: isFetchingTweets,
+  } = useQuery("recentTweet", getLastTweetFromTwitterProfile);
 
-  const finalArticlesData = articlesData?.slice(0, 3) || [];
+  const finalArticlesData = articlesData?.slice(0, 4) || [];
+
+  const { shouldUpdateTweet } = useCreateNewTweet(
+    currentTheme,
+    tweetRef.current,
+    tweetsData?.data[0]?.id
+  );
+
+  useEffect(() => {
+    // tweetRef = createRef(null);
+  }, [currentTheme, tweetRef.current]);
 
   return (
     <Layout pageName={PAGE_NAME} withEmojis withFooter>
@@ -137,20 +169,18 @@ export default function Home() {
                   {!isFetchingCategories &&
                     !categoriesError &&
                     categoriesData.map(({ title }) => {
-                      const normalizedRoute = title
-                        .split(" ")
-                        .join("-")
-                        .toLowerCase();
+                      const routeName = createNormalizedRouteName(title);
 
                       return (
                         <div key={title}>
-                          <TopicTag name={title} route={normalizedRoute} />
+                          <TopicTag name={title} route={routeName} />
                         </div>
                       );
                     })}
                 </div>
                 <div>
                   <h3>Latest Tweet</h3>
+                  <div ref={tweetRef} />
                 </div>
               </div>
             </Content>
@@ -252,7 +282,6 @@ const Content = styled.div`
   }
 
   > div:last-child {
-    display: none;
     flex-grow: 1;
     max-width: 460px;
     width: 100%;
