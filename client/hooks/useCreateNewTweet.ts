@@ -11,7 +11,7 @@ declare global {
         createTweetEmbed: (
           tweetId: string | number,
           el: HTMLElement,
-          themeObj: { dnt: boolean; theme: string }
+          themeObj: { dnt: boolean; theme: string },
         ) => void;
       };
     };
@@ -29,12 +29,12 @@ export default function useCreateNewTweet(
     const attributesObject = { dnt: true, theme: currentTheme };
 
     if (
-      shouldUpdate
-      && typeof window !== 'undefined'
-      && window?.twttr?.widgets?.createTweetEmbed
-      && element
-      && element?.children?.length === 0
-      && tweetId
+      shouldUpdate &&
+      typeof window !== 'undefined' &&
+      window?.twttr?.widgets?.createTweetEmbed &&
+      element &&
+      element?.children?.length === 0 &&
+      tweetId
     ) {
       const recentTweetId = `${tweetId}`;
 

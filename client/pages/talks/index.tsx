@@ -1,9 +1,8 @@
-import React from "react";
-import Layout from "../../components/Layout";
-import PageTitle from "../../components/PageTitle";
-import styled from "styled-components";
+import styled from 'styled-components';
+import Layout from '../../components/Layout';
+import PageTitle from '../../components/PageTitle';
 
-const PAGE_NAME = "Talks";
+const PAGE_NAME = 'Talks';
 
 export default function Talks() {
   return (

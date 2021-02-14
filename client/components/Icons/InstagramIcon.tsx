@@ -1,14 +1,10 @@
 import styled from 'styled-components';
 
-const RootStyles = styled.svg`
-  fill: ${({ theme }) => theme.colors.text};
-`;
-
 interface Props {
   title?: string;
 }
 
-function InstagramIcon({ title }: Props) {
+export default function InstagramIcon({ title }: Props) {
   return (
     <RootStyles xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
       <title>{title || 'Instagram icon'}</title>
@@ -17,4 +13,6 @@ function InstagramIcon({ title }: Props) {
   );
 }
 
-export default InstagramIcon;
+const RootStyles = styled.svg`
+  fill: ${({ theme }) => theme.colors.text};
+`;

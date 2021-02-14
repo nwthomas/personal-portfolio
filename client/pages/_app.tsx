@@ -1,12 +1,12 @@
-import { ThemeProvider } from "styled-components";
-import Navbar from "../components/Navbar";
-import useGetPreferredTheme from "../hooks/useGetPreferredTheme";
-import MobileNavbar from "../components/MobileNavbar";
-import { QueryClientProvider, QueryClient } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
-import { Hydrate } from "react-query/hydration";
-import GlobalStyle, { makeMainTheme } from "../styles";
-import "../styles/libs/fonts.css";
+import { Hydrate } from 'react-query/hydration';
+import { QueryClientProvider, QueryClient } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
+import { ThemeProvider } from 'styled-components';
+import Navbar from '../components/Navbar';
+import useGetPreferredTheme from '../hooks/useGetPreferredTheme';
+import MobileNavbar from '../components/MobileNavbar';
+import GlobalStyle, { makeMainTheme } from '../styles';
+import '../styles/libs/fonts.css';
 
 const oneDayMillis = 60000 * 60 * 24;
 const queryClient = new QueryClient({
@@ -17,7 +17,7 @@ const queryClient = new QueryClient({
   },
 });
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }) {
   const [currentTheme, setCurrentTheme] = useGetPreferredTheme();
   const mainTheme = makeMainTheme();
 
@@ -33,12 +33,10 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
           <MobileNavbar />
         </ThemeProvider>
-        {process.env.NEXT_PUBLIC_RUNTIME_ENV === "development" ? (
+        {process.env.NEXT_PUBLIC_RUNTIME_ENV === 'development' ? (
           <ReactQueryDevtools initialIsOpen />
         ) : null}
       </Hydrate>
     </QueryClientProvider>
   );
 }
-
-export default MyApp;

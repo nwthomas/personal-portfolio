@@ -1,21 +1,21 @@
-import BodyCopy from "./components/BodyCopy";
-import CodeSnippet from "./components/CodeSnippet";
-import Image from "./components/Image";
-import Quote from "./components/Quote";
-import Seperator from "./components/Seperator";
-import Title from "./components/Title";
-import type { ArticleModulesCollectionTypes } from "../../api/articles";
+import BodyCopy from './components/BodyCopy';
+import CodeSnippet from './components/CodeSnippet';
+import Image from './components/Image';
+import Quote from './components/Quote';
+import Seperator from './components/Seperator';
+import Title from './components/Title';
+import type { ArticleModulesCollectionTypes } from '../../api/articles';
 
-const ARTICLE_COPY = "ArticleBodyCopy";
-const ARTICLE_CODE_SNIPPETS = "ArticleCodeSnippets";
-const ARTICLE_HEADING = "ArticleHeading";
-const ARTICLE_IMAGE = "ArticleImage";
-const ARTICLE_QUOTE = "ArticleQuote";
-const ARTICLE_SEPERATOR = "ArticleSeperator";
+const ARTICLE_COPY = 'ArticleBodyCopy';
+const ARTICLE_CODE_SNIPPETS = 'ArticleCodeSnippets';
+const ARTICLE_HEADING = 'ArticleHeading';
+const ARTICLE_IMAGE = 'ArticleImage';
+const ARTICLE_QUOTE = 'ArticleQuote';
+const ARTICLE_SEPERATOR = 'ArticleSeperator';
 
 export default function createNewArticle(
   articleModule: ArticleModulesCollectionTypes,
-  articleModuleId: number
+  articleModuleId: number,
 ) {
   switch (articleModule.__typename) {
     case ARTICLE_COPY:
@@ -30,14 +30,10 @@ export default function createNewArticle(
         />
       );
     case ARTICLE_HEADING:
-      const isMainTitle = articleModule?.isMainTitle
-        ? articleModule.isMainTitle
-        : undefined;
-
       return (
         <Title
           titleCopy={articleModule.copy}
-          isMainTitle={isMainTitle}
+          isMainTitle={articleModule.isMainTitle}
           key={articleModuleId}
         />
       );

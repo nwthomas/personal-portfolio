@@ -1,7 +1,8 @@
 import { request, gql } from 'graphql-request';
 import { CategoryCollectionType } from './categories';
 
-const contentfulDeliveryAccessToken = process.env.NEXT_PUBLIC_CONTENTFUL_DELIVERY_ACCESS_TOKEN;
+const contentfulDeliveryAccessToken =
+  process.env.NEXT_PUBLIC_CONTENTFUL_DELIVERY_ACCESS_TOKEN;
 const contentfulSpaceId = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
 
 const baseUrl = 'https://graphql.contentful.com';

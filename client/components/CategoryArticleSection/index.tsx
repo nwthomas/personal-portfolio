@@ -1,7 +1,7 @@
-import ArticlePreviewCard from "../ArticlePreviewCard";
-import { ArticlePreviewType } from "../../api/articles";
-import TopicTag from "../TopicTag";
-import styled from "styled-components";
+import styled from 'styled-components';
+import ArticlePreviewCard from '../ArticlePreviewCard';
+import { ArticlePreviewType } from '../../api/articles';
+import TopicTag from '../TopicTag';
 
 interface Props {
   articles: Array<ArticlePreviewType>;
@@ -35,7 +35,7 @@ export default function CategoryArticleSection({
                 withBackground
               />
             );
-          }
+          },
         )}
       </div>
     </RootStyles>

@@ -1,14 +1,10 @@
 import styled from 'styled-components';
 
-const RootStyles = styled.svg`
-  stroke: ${({ theme }) => theme.colors.text};
-`;
-
 interface Props {
   title?: string;
 }
 
-function HomeIcon({ title }: Props) {
+export default function HomeIcon({ title }: Props) {
   return (
     <RootStyles xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
       <title>{title || 'Home icon'}</title>
@@ -30,4 +26,6 @@ function HomeIcon({ title }: Props) {
   );
 }
 
-export default HomeIcon;
+const RootStyles = styled.svg`
+  stroke: ${({ theme }) => theme.colors.text};
+`;

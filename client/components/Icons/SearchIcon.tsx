@@ -1,14 +1,10 @@
 import styled from 'styled-components';
 
-const RootStyles = styled.svg`
-  stroke: ${({ theme }) => theme.colors.text};
-`;
-
 interface Props {
   title?: string;
 }
 
-function SearchIcon({ title }: Props) {
+export default function SearchIcon({ title }: Props) {
   return (
     <RootStyles xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
       <title>{title || 'Search icon'}</title>
@@ -29,4 +25,6 @@ function SearchIcon({ title }: Props) {
   );
 }
 
-export default SearchIcon;
+const RootStyles = styled.svg`
+  stroke: ${({ theme }) => theme.colors.text};
+`;

@@ -5,11 +5,11 @@ const GlobalStyle = css`
   * {
     box-sizing: border-box;
     transition: ${({
-    theme: {
-      transitions: { short },
-    },
-  }) =>
-    `background-color ${short}, color ${short}, fill ${short}, stroke ${short}, border-color ${short}`};
+      theme: {
+        transitions: { short },
+      },
+    }) =>
+      `background-color ${short}, color ${short}, fill ${short}, stroke ${short}, border-color ${short}`};
   }
 
   html {
@@ -19,9 +19,9 @@ const GlobalStyle = css`
   html,
   body {
     background-color: ${({ theme }) => theme.colors.bodyBackground};
-    font-family: "Work Sans", -apple-system, BlinkMacSystemFont, Segoe UI,
-      Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
-      "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, Segoe UI,
+      Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol';
   }
 
   body {
@@ -58,7 +58,7 @@ const GlobalStyle = css`
   }
 
   h1 {
-    font-family: "Nanum Pen Script", cursive;
+    font-family: 'Nanum Pen Script', cursive;
     font-size: 7rem;
   }
 

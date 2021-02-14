@@ -1,7 +1,7 @@
-import Link from "next/link";
-import styled from "styled-components";
-import { ChevronForwardIcon } from "../Icons";
-import TopicTag from "../TopicTag";
+import Link from 'next/link';
+import styled from 'styled-components';
+import { ChevronForwardIcon } from '../Icons';
+import TopicTag from '../TopicTag';
 
 const createArticleRoute = (articleId: string) => `/articles/${articleId}`;
 
@@ -56,7 +56,7 @@ const RootStyles = styled.article`
   border: ${({ theme, withBackground }) =>
     withBackground
       ? `1px solid ${theme.colors.bodyBackgroundAccentOne}`
-      : "none"};
+      : 'none'};
   border-radius: ${({ theme }) => theme.borderRadii.small};
   cursor: pointer;
   display: flex;
@@ -71,8 +71,8 @@ const RootStyles = styled.article`
       theme.breakpoints.desktop}) {
     margin: ${({ theme, withBackground }) =>
       withBackground ? `0 ${theme.spaces.small} ${theme.spaces.small} 0` : 0};
-    min-height: ${({ withBackground }) => (withBackground ? "350px" : 0)};
-    width: ${({ withBackground }) => (withBackground ? "400px" : "100%")};
+    min-height: ${({ withBackground }) => (withBackground ? '350px' : 0)};
+    width: ${({ withBackground }) => (withBackground ? '400px' : '100%')};
   }
 
   h4 {

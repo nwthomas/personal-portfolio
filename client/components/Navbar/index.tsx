@@ -1,8 +1,7 @@
-import React from "react";
-import Link from "next/link";
-import ThemeTransitionButton from "../ThemeTransitionButton";
-import type { ThemeEnum } from "../../styles/libs/theme";
-import styled from "styled-components";
+import styled from 'styled-components';
+import Link from 'next/link';
+import ThemeTransitionButton from '../ThemeTransitionButton';
+import type { ThemeEnum } from '../../styles/libs/theme';
 
 interface Props {
   onThemeChangeClick: () => void;

@@ -1,14 +1,10 @@
 import styled from 'styled-components';
 
-const RootStyles = styled.svg`
-  fill: ${({ theme }) => theme.colors.text};
-`;
-
 interface Props {
   title?: string;
 }
 
-function GitHubIcon({ title }: Props) {
+export default function GitHubIcon({ title }: Props) {
   return (
     <RootStyles xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
       <title>{title || 'GitHub icon'}</title>
@@ -17,4 +13,6 @@ function GitHubIcon({ title }: Props) {
   );
 }
 
-export default GitHubIcon;
+const RootStyles = styled.svg`
+  fill: ${({ theme }) => theme.colors.text};
+`;

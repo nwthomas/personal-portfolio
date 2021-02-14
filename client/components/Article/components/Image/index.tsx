@@ -1,6 +1,6 @@
-import Image from "next/image";
-import Seperator from "../Seperator";
-import styled from "styled-components";
+import Image from 'next/image';
+import styled from 'styled-components';
+import Seperator from '../Seperator';
 
 interface Props {
   altText?: string;
@@ -27,7 +27,7 @@ export default function ArticleImage({
       {shouldRenderSeperators ? <Seperator /> : null}
       <figure>
         <Image
-          alt={altText || "Image"}
+          alt={altText || 'Image'}
           draggable={false}
           height={height}
           quality={100}

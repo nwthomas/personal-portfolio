@@ -21,9 +21,9 @@ export default function usePreferredTheme(): [ThemeEnum | null, () => void] {
     // because typeof does not evaluate window but only get its type
     // https://dev.to/vvo/how-to-solve-window-is-not-defined-errors-in-react-and-next-js-5f97
     if (
-      typeof window !== 'undefined'
-      && window.__theme
-      && (window.__theme === DARK_THEME || window.__theme === LIGHT_THEME)
+      typeof window !== 'undefined' &&
+      window.__theme &&
+      (window.__theme === DARK_THEME || window.__theme === LIGHT_THEME)
     ) {
       setUserPreferredTheme(window.__theme);
     }
@@ -31,9 +31,9 @@ export default function usePreferredTheme(): [ThemeEnum | null, () => void] {
 
   function updatePreferredTheme() {
     if (
-      typeof window !== 'undefined'
-      && window.__theme
-      && window.__setPreferredTheme
+      typeof window !== 'undefined' &&
+      window.__theme &&
+      window.__setPreferredTheme
     ) {
       const newTheme = window.__theme === DARK_THEME ? LIGHT_THEME : DARK_THEME;
 

@@ -1,15 +1,10 @@
 import styled from 'styled-components';
 
-const RootStyles = styled.svg`
-  stroke: ${({ theme }) => theme.colors.text};
-  fill: ${({ theme }) => theme.colors.text};
-`;
-
 interface Props {
   title?: string;
 }
 
-function PostsIcon({ title }: Props) {
+export default function PostsIcon({ title }: Props) {
   return (
     <RootStyles xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
       <title>{title || 'Posts icon'}</title>
@@ -37,4 +32,7 @@ function PostsIcon({ title }: Props) {
   );
 }
 
-export default PostsIcon;
+const RootStyles = styled.svg`
+  stroke: ${({ theme }) => theme.colors.text};
+  fill: ${({ theme }) => theme.colors.text};
+`;

@@ -1,15 +1,15 @@
-import Link from "next/link";
-import Layout from "../components/Layout";
-import styled from "styled-components";
+import Link from 'next/link';
+import styled from 'styled-components';
+import Layout from '../components/Layout';
 
-const pageName = "404";
+const pageName = '404';
 
 const phrases = [
-  "I looked everywhere",
+  'I looked everywhere',
   "Sorry, I can't find that",
-  "It was just here...",
+  'It was just here...',
   "That doesn't exist",
-  "Check that URL",
+  'Check that URL',
 ];
 
 export async function getStaticProps() {

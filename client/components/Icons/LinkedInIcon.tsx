@@ -1,14 +1,10 @@
 import styled from 'styled-components';
 
-const RootStyles = styled.svg`
-  fill: ${({ theme }) => theme.colors.text};
-`;
-
 interface Props {
   title?: string;
 }
 
-function LinkedInIcon({ title }: Props) {
+export default function LinkedInIcon({ title }: Props) {
   return (
     <RootStyles xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448.1 512">
       <title>{title || 'LinkedIn icon'}</title>
@@ -17,4 +13,6 @@ function LinkedInIcon({ title }: Props) {
   );
 }
 
-export default LinkedInIcon;
+const RootStyles = styled.svg`
+  fill: ${({ theme }) => theme.colors.text};
+`;

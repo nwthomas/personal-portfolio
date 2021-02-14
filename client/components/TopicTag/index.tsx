@@ -1,10 +1,10 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { SyntheticEvent } from "react";
-import styled from "styled-components";
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { SyntheticEvent } from 'react';
+import styled from 'styled-components';
 
 export const createCategoryRouteName = (title: string) => {
-  return title.split(" ").join("-").toLowerCase();
+  return title.split(' ').join('-').toLowerCase();
 };
 
 interface Props {

@@ -1,29 +1,29 @@
-import React, { createRef, useEffect, useRef } from "react";
-import Image from "next/image";
-import Layout from "../components/Layout";
-import TopicTag from "../components/TopicTag";
-import ArticlePreviewCard from "../components/ArticlePreviewCard";
-import { QueryClient, useQuery } from "react-query";
-import { dehydrate } from "react-query/hydration";
+import { dehydrate } from 'react-query/hydration';
+import { useEffect, useRef } from 'react';
+import Image from 'next/image';
+import { QueryClient, useQuery } from 'react-query';
+import styled from 'styled-components';
+import Layout from '../components/Layout';
+import TopicTag from '../components/TopicTag';
+import ArticlePreviewCard from '../components/ArticlePreviewCard';
 import {
   getArticlePreviews,
   getCategories,
   getLastTweetFromTwitterProfile,
-} from "../api";
-import useGetPreferredTheme from "../hooks/useGetPreferredTheme";
-import useCreateNewTweet from "../hooks/useCreateNewTweet";
-import styled from "styled-components";
+} from '../api';
+import useGetPreferredTheme from '../hooks/useGetPreferredTheme';
+import useCreateNewTweet from '../hooks/useCreateNewTweet';
 
-const PAGE_NAME = "Home";
+const PAGE_NAME = 'Home';
 
 export async function getServerSideProps() {
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery("articlePreviews", getArticlePreviews);
-  await queryClient.prefetchQuery("categories", getCategories);
+  await queryClient.prefetchQuery('articlePreviews', getArticlePreviews);
+  await queryClient.prefetchQuery('categories', getCategories);
   await queryClient.prefetchQuery(
-    "recentTweet",
-    getLastTweetFromTwitterProfile
+    'recentTweet',
+    getLastTweetFromTwitterProfile,
   );
 
   return {
@@ -35,21 +35,21 @@ export async function getServerSideProps() {
 
 export default function Home() {
   const [currentTheme] = useGetPreferredTheme();
-  let tweetRef = useRef();
+  const tweetRef = useRef();
 
   const {
     data: { items: articlesData },
     error: articlesError,
     isFetching: isFetchingArticles,
-  } = useQuery("articlePreviews", getArticlePreviews);
+  } = useQuery('articlePreviews', getArticlePreviews);
   const {
     data: { items: categoriesData },
     error: categoriesError,
     isFetching: isFetchingCategories,
-  } = useQuery("categories", getCategories);
+  } = useQuery('categories', getCategories);
   const { data: tweetsData } = useQuery(
-    "recentTweet",
-    getLastTweetFromTwitterProfile
+    'recentTweet',
+    getLastTweetFromTwitterProfile,
   );
 
   const finalArticlesData = articlesData?.slice(0, 3) || [];
@@ -58,7 +58,7 @@ export default function Home() {
   const { shouldUpdateTweet } = useCreateNewTweet(
     currentTheme,
     tweetRef.current,
-    tweetsData?.data[0]?.id
+    tweetsData?.data[0]?.id,
   );
 
   useEffect(() => {
@@ -143,7 +143,7 @@ export default function Home() {
                   }) => {
                     const articleCategories = categoriesCollection?.items
                       ? categoriesCollection.items.map(
-                          (category) => category.title
+                          (category) => category.title,
                         )
                       : undefined;
 
@@ -156,7 +156,7 @@ export default function Home() {
                         categories={articleCategories || []}
                       />
                     );
-                  }
+                  },
                 )}
               </div>
               <div>

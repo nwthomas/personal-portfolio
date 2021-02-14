@@ -1,21 +1,20 @@
-import React from "react";
-import { QueryClient, useQuery } from "react-query";
-import { dehydrate } from "react-query/hydration";
-import Layout from "../../components/Layout";
-import PageTitle from "../../components/PageTitle";
-import { getArticlePreviews, getCategories } from "../../api";
-import type { ArticlePreviewType } from "../../api/articles";
-import CategoryArticleSection from "../../components/CategoryArticleSection";
-import { useLayoutCategoryArticlePreviews } from "../../hooks/useLayoutCategoryArticlePreviews";
-import styled from "styled-components";
+import styled from 'styled-components';
+import { QueryClient, useQuery } from 'react-query';
+import { dehydrate } from 'react-query/hydration';
+import Layout from '../../components/Layout';
+import PageTitle from '../../components/PageTitle';
+import { getArticlePreviews, getCategories } from '../../api';
+import type { ArticlePreviewType } from '../../api/articles';
+import CategoryArticleSection from '../../components/CategoryArticleSection';
+import { useLayoutCategoryArticlePreviews } from '../../hooks/useLayoutCategoryArticlePreviews';
 
-const PAGE_NAME = "Articles";
+const PAGE_NAME = 'Articles';
 
 export async function getServerSideProps() {
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery("articlePreviews", getArticlePreviews);
-  await queryClient.prefetchQuery("categories", getCategories);
+  await queryClient.prefetchQuery('articlePreviews', getArticlePreviews);
+  await queryClient.prefetchQuery('categories', getCategories);
 
   return {
     props: {
@@ -29,12 +28,12 @@ export default function ArticlesPage() {
     data: articlesData,
     error: articlesError,
     isFetching: isFetchingArticles,
-  } = useQuery("articlePreviews", getArticlePreviews);
+  } = useQuery('articlePreviews', getArticlePreviews);
   const {
     data: categoriesData,
     error: categoriesError,
     isFetching: isFetchingCategories,
-  } = useQuery("categories", getCategories);
+  } = useQuery('categories', getCategories);
 
   if (
     !isFetchingArticles &&
@@ -46,7 +45,7 @@ export default function ArticlesPage() {
   ) {
     const categorizedArticles = useLayoutCategoryArticlePreviews(
       categoriesData.items,
-      articlesData.items
+      articlesData.items,
     );
     const categorizedArticlesArray: Array<
       [string, Array<ArticlePreviewType>]
@@ -70,9 +69,9 @@ export default function ArticlesPage() {
         </RootStyles>
       </Layout>
     );
-  } else {
-    return <div />;
   }
+
+  return <div />;
 }
 
 const RootStyles = styled.main`

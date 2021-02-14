@@ -1,4 +1,6 @@
 import React, { useRef } from 'react';
+import Link from 'next/link';
+import styled from 'styled-components';
 import {
   GitHubIcon,
   InstagramIcon,
@@ -6,9 +8,7 @@ import {
   MailIcon,
   TwitterIcon,
 } from '../Icons';
-import Link from 'next/link';
 import { footerPhrases } from '../../assets';
-import styled from 'styled-components';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();

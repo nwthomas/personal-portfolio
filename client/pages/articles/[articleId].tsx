@@ -1,18 +1,17 @@
-import React from "react";
-import { useRouter } from "next/router";
-import { QueryClient, useQuery } from "react-query";
-import { dehydrate } from "react-query/hydration";
-import { getArticleIds, getArticleById } from "../../api";
-import Layout from "../../components/Layout";
-import Article from "../../components/Article";
-import styled from "styled-components";
+import { useRouter } from 'next/router';
+import { QueryClient, useQuery } from 'react-query';
+import { dehydrate } from 'react-query/hydration';
+import styled from 'styled-components';
+import { getArticleIds, getArticleById } from '../../api';
+import Layout from '../../components/Layout';
+import Article from '../../components/Article';
 
 export default function ArticleByName() {
   const router = useRouter();
   const { articleId }: { articleId?: string } = router.query;
 
-  const { data, error, isLoading } = useQuery(["article", articleId], () =>
-    getArticleById(articleId)
+  const { data, error, isLoading } = useQuery(['article', articleId], () =>
+    getArticleById(articleId),
   );
 
   const pageTitle = data.title;
@@ -25,9 +24,9 @@ export default function ArticleByName() {
         </RootStyles>
       </Layout>
     );
-  } else {
-    return <p>Something went wrong</p>;
   }
+
+  return <p>Something went wrong</p>;
 }
 
 export async function getStaticProps(context) {
@@ -35,8 +34,8 @@ export async function getStaticProps(context) {
 
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(["article", articleId], () =>
-    getArticleById(articleId)
+  await queryClient.prefetchQuery(['article', articleId], () =>
+    getArticleById(articleId),
   );
 
   return {

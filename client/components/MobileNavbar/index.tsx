@@ -1,6 +1,6 @@
-import Link from "next/link";
-import styled from "styled-components";
-import { HomeIcon, SearchIcon, MailIcon, PostsIcon } from "../Icons";
+import Link from 'next/link';
+import styled from 'styled-components';
+import { HomeIcon, SearchIcon, MailIcon, PostsIcon } from '../Icons';
 
 export default function MobileNavbar() {
   return (

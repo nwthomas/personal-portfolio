@@ -1,14 +1,10 @@
 import styled from 'styled-components';
 
-const RootStyles = styled.svg`
-  stroke: ${({ theme }) => theme.colors.text};
-`;
-
 interface Props {
   title?: string;
 }
 
-function MailIcon({ title }: Props) {
+export default function MailIcon({ title }: Props) {
   return (
     <RootStyles xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
       <title>{title || 'Mail icon'}</title>
@@ -35,4 +31,6 @@ function MailIcon({ title }: Props) {
   );
 }
 
-export default MailIcon;
+const RootStyles = styled.svg`
+  stroke: ${({ theme }) => theme.colors.text};
+`;

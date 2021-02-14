@@ -1,14 +1,14 @@
-import ReactMarkdown from "react-markdown";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import styled from "styled-components";
+import ReactMarkdown from 'react-markdown';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { materialDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import styled from 'styled-components';
 
 interface Props {
   bodyCopy: string;
 }
 
 export default function ArticleBodyCopy({ bodyCopy }: Props) {
-  const bodyCopySections = bodyCopy.split("\n\n");
+  const bodyCopySections = bodyCopy.split('\n\n');
 
   const renderers = {
     code: ({ language, value }) => {

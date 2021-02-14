@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Seperator from "../Seperator";
+import styled from 'styled-components';
+import Seperator from '../Seperator';
 
 interface Props {
   quoteAttribution: string;

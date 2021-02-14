@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import createNewArticleModule from "./createNewArticleModule";
-import type { ArticleModulesCollectionType } from "../../api/articles";
+import styled from 'styled-components';
+import createNewArticleModule from './createNewArticleModule';
+import type { ArticleModulesCollectionType } from '../../api/articles';
 
 interface Props {
   articleModuleCollection: ArticleModulesCollectionType;
@@ -9,9 +9,9 @@ interface Props {
 export default function Article({ articleModuleCollection }: Props) {
   return (
     <RootStyles>
-      {articleModuleCollection.map((articleModule, id) =>
-        createNewArticleModule(articleModule, id)
-      )}
+      {articleModuleCollection.map((articleModule, id) => {
+        return createNewArticleModule(articleModule, id);
+      })}
     </RootStyles>
   );
 }

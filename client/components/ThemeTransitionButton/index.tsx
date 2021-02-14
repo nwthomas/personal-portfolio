@@ -1,7 +1,8 @@
-import Image from "next/image";
-import styled from "styled-components";
-import type { ThemeEnum } from "../../styles/libs/theme";
+import Image from 'next/image';
+import styled from 'styled-components';
+import type { ThemeEnum } from '../../styles/libs/theme';
 
+// TODO: Move these to Icons folder
 const MoonIcon = (
   <Image
     alt="Click to change theme to light mode"
@@ -9,7 +10,7 @@ const MoonIcon = (
     height={30}
     quality={100}
     priority
-    src={"/moon.svg"}
+    src={'/moon.svg'}
     width={30}
   />
 );
@@ -21,7 +22,7 @@ const SunIcon = (
     height={30}
     quality={100}
     priority
-    src={"/sun.svg"}
+    src={'/sun.svg'}
     width={30}
   />
 );
@@ -32,7 +33,7 @@ interface Props {
 }
 
 export default function ThemeTransitionButton({ onClick, themeName }: Props) {
-  const currentIcon = themeName === "dark" ? MoonIcon : SunIcon;
+  const currentIcon = themeName === 'dark' ? MoonIcon : SunIcon;
 
   return <RootStyles onClick={onClick}>{currentIcon}</RootStyles>;
 }
