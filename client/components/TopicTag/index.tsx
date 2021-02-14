@@ -1,24 +1,27 @@
 import Link from "next/link";
+import { SyntheticEvent } from "react";
 import styled from "styled-components";
+
+const createNormalizedRouteName = (title: string) => {
+  return title.split(" ").join("-").toLowerCase();
+};
 
 interface Props {
   name: string;
-  route?: string;
 }
 
-export default function TopicTag({ name, route }: Props) {
-  const isInline = !route;
+export default function TopicTag({ name }: Props) {
+  const normalizedCategoryRouteName = createNormalizedRouteName(name);
+  const routePath = `articles/category/${normalizedCategoryRouteName}`;
+
+  const handleClick = (event: SyntheticEvent) => {
+    event.stopPropagation();
+  };
 
   return (
-    <>
-      {route ? (
-        <Link href={route}>
-          <Button>{name}</Button>
-        </Link>
-      ) : (
-        <Button isInline={isInline}>{name}</Button>
-      )}
-    </>
+    <Link href={routePath}>
+      <Button onClick={handleClick}>{name}</Button>
+    </Link>
   );
 }
 
@@ -33,12 +36,10 @@ const Button = styled.button`
   transition: opacity ${({ theme }) => theme.transitions.short};
 
   &:hover {
-    opacity: ${({ isInline, theme }) =>
-      isInline ? theme.opacity.opacity100 : theme.opacity.opacity80};
+    opacity: ${({ theme }) => theme.opacity.opacity80};
   }
 
   &:focus {
     outline-color: ${({ theme }) => theme.colors.text};
-    outline: ${({ isInline }) => (isInline ? "none" : undefined)};
   }
 `;

@@ -16,10 +16,6 @@ import styled from "styled-components";
 
 const PAGE_NAME = "Home";
 
-const createNormalizedRouteName = (title: string) => {
-  return title.split(" ").join("-").toLowerCase();
-};
-
 export async function getServerSideProps() {
   const queryClient = new QueryClient();
 
@@ -39,7 +35,7 @@ export async function getServerSideProps() {
 
 export default function Home() {
   const [currentTheme] = useGetPreferredTheme();
-  let tweetRef = useRef(null);
+  let tweetRef = useRef();
 
   const {
     data: { items: articlesData },
@@ -169,11 +165,9 @@ export default function Home() {
                   {!isFetchingCategories &&
                     !categoriesError &&
                     categoriesData.map(({ title }) => {
-                      const routeName = createNormalizedRouteName(title);
-
                       return (
                         <div key={title}>
-                          <TopicTag name={title} route={routeName} />
+                          <TopicTag name={title} />
                         </div>
                       );
                     })}
