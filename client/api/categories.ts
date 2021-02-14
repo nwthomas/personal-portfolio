@@ -1,10 +1,9 @@
-import { request, gql } from "graphql-request";
+import { request, gql } from 'graphql-request';
 
-const contentfulDeliveryAccessToken =
-  process.env.NEXT_PUBLIC_CONTENTFUL_DELIVERY_ACCESS_TOKEN;
+const contentfulDeliveryAccessToken = process.env.NEXT_PUBLIC_CONTENTFUL_DELIVERY_ACCESS_TOKEN;
 const contentfulSpaceId = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
 
-const baseUrl = "https://graphql.contentful.com";
+const baseUrl = 'https://graphql.contentful.com';
 const endpoint = `${baseUrl}/content/v1/spaces/${contentfulSpaceId}?access_token=${contentfulDeliveryAccessToken}`;
 
 export interface CategoryType {
@@ -16,7 +15,7 @@ export interface CategoryType {
 }
 
 export interface CategoryCollectionType {
-  __typename: "CategoryCollection";
+  __typename: 'CategoryCollection';
   items: Array<CategoryType>;
 }
 
@@ -37,7 +36,7 @@ export async function getCategories() {
           }
         }
       }
-    `
+    `,
   );
 
   return categoryCollection;

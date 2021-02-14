@@ -47,14 +47,14 @@ export default function Home() {
     error: categoriesError,
     isFetching: isFetchingCategories,
   } = useQuery("categories", getCategories);
-  const {
-    data: tweetsData,
-    error: tweetsError,
-    isFetching: isFetchingTweets,
-  } = useQuery("recentTweet", getLastTweetFromTwitterProfile);
+  const { data: tweetsData } = useQuery(
+    "recentTweet",
+    getLastTweetFromTwitterProfile
+  );
 
-  const finalArticlesData = articlesData?.slice(0, 4) || [];
+  const finalArticlesData = articlesData?.slice(0, 3) || [];
 
+  // TODO: Update tweet on theme change
   const { shouldUpdateTweet } = useCreateNewTweet(
     currentTheme,
     tweetRef.current,
@@ -62,7 +62,7 @@ export default function Home() {
   );
 
   useEffect(() => {
-    // tweetRef = createRef(null);
+    // TODO: Update tweet on theme change
   }, [currentTheme, tweetRef.current]);
 
   return (
@@ -211,7 +211,14 @@ const RootStyles = styled.main`
         font-size: 2.5rem;
         max-width: 100%;
 
-        @media only screen and (min-width: 600px) {
+        @media only screen and (min-width: ${({ theme }) =>
+            theme.breakpoints.mobile}) {
+          font-size: 3rem;
+          max-width: 100%;
+        }
+
+        @media only screen and (min-width: ${({ theme }) =>
+            theme.breakpoints.desktop}) {
           font-size: 3rem;
           max-width: 75%;
         }

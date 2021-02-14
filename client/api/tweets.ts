@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 const twitterProfileId = process.env.NEXT_PUBLIC_TWITTER_PROFILE_ID;
 const twitterBearerTokenId = process.env.NEXT_PUBLIC_TWITTER_BEARER_TOKEN;
@@ -11,7 +11,7 @@ const config = {
 export async function getLastTweetFromTwitterProfile() {
   const { data: twitterTimelineData } = await axios(
     twitterTimelineEndpoint,
-    config
+    config,
   );
 
   return twitterTimelineData;

@@ -1,13 +1,17 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+
+const RootStyles = styled.svg`
+  stroke: ${({ theme }) => theme.colors.text};
+`;
 
 interface Props {
   title?: string;
 }
 
-export default function SearchIcon({ title }: Props) {
+function SearchIcon({ title }: Props) {
   return (
     <RootStyles xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-      <title>{title || "Search icon"}</title>
+      <title>{title || 'Search icon'}</title>
       <path
         d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
         fill="none"
@@ -25,6 +29,4 @@ export default function SearchIcon({ title }: Props) {
   );
 }
 
-const RootStyles = styled.svg`
-  stroke: ${({ theme }) => theme.colors.text};
-`;
+export default SearchIcon;

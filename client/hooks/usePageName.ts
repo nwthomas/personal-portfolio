@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 const INTERVAL_AMOUNT = 1000;
-const STATIC_EMOJI_LIST = [..."🌀🍪🤬🦑🌞👻✨🌧🤯🧩"];
+const STATIC_EMOJI_LIST = [...'🌀🍪🤬🦑🌞👻✨🌧🤯🧩'];
 
 export default function usePageName(initialPageName: string) {
   const [pageName, setPageName] = useState(
-    [...`${initialPageName}`].concat(STATIC_EMOJI_LIST)
+    [...`${initialPageName}`].concat(STATIC_EMOJI_LIST),
   );
 
   useEffect(() => {
@@ -17,5 +17,5 @@ export default function usePageName(initialPageName: string) {
     return () => clearInterval(interval);
   }, [pageName, setPageName]);
 
-  return [pageName.join(""), setPageName];
+  return [pageName.join(''), setPageName];
 }

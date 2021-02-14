@@ -1,1 +1,1 @@
-export { default as BabyYodaEasterEgg } from "./BabyYoda";
+export { default as BabyYodaEasterEgg } from './BabyYoda';

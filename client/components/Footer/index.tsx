@@ -1,22 +1,26 @@
-import React from "react";
+import React, { useRef } from 'react';
 import {
   GitHubIcon,
   InstagramIcon,
   LinkedInIcon,
   MailIcon,
   TwitterIcon,
-} from "../Icons";
-import Link from "next/link";
-import styled from "styled-components";
+} from '../Icons';
+import Link from 'next/link';
+import { footerPhrases } from '../../assets';
+import styled from 'styled-components';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const footerPhraseRef = useRef(
+    footerPhrases[Math.floor(Math.random() * footerPhrases.length)],
+  );
 
   return (
     <RootStyles>
       <div>
         <div>
-          <p>"Be excellent to each other."</p>
+          <p>{footerPhraseRef.current}</p>
           <p>{`© ${currentYear} Nathan Thomas`}</p>
         </div>
         <nav>

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import type { ThemeEnum } from "../styles/libs/theme";
+import { useEffect, useState } from 'react';
+import type { ThemeEnum } from '../styles/libs/theme';
 
 // This extends the Window object with the methods used in this hook
 // from the Twitter Embeds extensions
@@ -21,7 +21,7 @@ declare global {
 export default function useCreateNewTweet(
   currentTheme: ThemeEnum,
   element?: HTMLElement,
-  tweetId?: string | number
+  tweetId?: string | number,
 ) {
   const [shouldUpdate, setShouldUpdate] = useState(true);
 
@@ -29,19 +29,19 @@ export default function useCreateNewTweet(
     const attributesObject = { dnt: true, theme: currentTheme };
 
     if (
-      shouldUpdate &&
-      typeof window !== "undefined" &&
-      window?.twttr?.widgets?.createTweetEmbed &&
-      element &&
-      element?.children?.length === 0 &&
-      tweetId
+      shouldUpdate
+      && typeof window !== 'undefined'
+      && window?.twttr?.widgets?.createTweetEmbed
+      && element
+      && element?.children?.length === 0
+      && tweetId
     ) {
       const recentTweetId = `${tweetId}`;
 
       window.twttr.widgets.createTweetEmbed(
         recentTweetId,
         element,
-        attributesObject
+        attributesObject,
       );
 
       setShouldUpdate(false);

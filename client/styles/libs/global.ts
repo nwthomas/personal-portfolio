@@ -1,15 +1,15 @@
-import { css } from "styled-components";
-import { colors } from "./theme";
+import { css } from 'styled-components';
+import { colors } from './theme';
 
 const GlobalStyle = css`
   * {
     box-sizing: border-box;
     transition: ${({
-      theme: {
-        transitions: { short },
-      },
-    }) =>
-      `background-color ${short}, color ${short}, fill ${short}, stroke ${short}, border-color ${short}`};
+    theme: {
+      transitions: { short },
+    },
+  }) =>
+    `background-color ${short}, color ${short}, fill ${short}, stroke ${short}, border-color ${short}`};
   }
 
   html {

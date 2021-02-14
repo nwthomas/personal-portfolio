@@ -1,15 +1,14 @@
-import { request, gql } from "graphql-request";
-import { CategoryCollectionType } from "./categories";
+import { request, gql } from 'graphql-request';
+import { CategoryCollectionType } from './categories';
 
-const contentfulDeliveryAccessToken =
-  process.env.NEXT_PUBLIC_CONTENTFUL_DELIVERY_ACCESS_TOKEN;
+const contentfulDeliveryAccessToken = process.env.NEXT_PUBLIC_CONTENTFUL_DELIVERY_ACCESS_TOKEN;
 const contentfulSpaceId = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
 
-const baseUrl = "https://graphql.contentful.com";
+const baseUrl = 'https://graphql.contentful.com';
 const endpoint = `${baseUrl}/content/v1/spaces/${contentfulSpaceId}?access_token=${contentfulDeliveryAccessToken}`;
 
 interface ArticleHeadingType {
-  __typename: "ArticleHeading";
+  __typename: 'ArticleHeading';
   sys: {
     id: string;
   };
@@ -19,14 +18,14 @@ interface ArticleHeadingType {
 }
 
 interface ArticleSeperator {
-  __typename: "ArticleSeperator";
+  __typename: 'ArticleSeperator';
   sys: {
     id: string;
   };
 }
 
 interface ArticleImageType {
-  __typename: "ArticleImage";
+  __typename: 'ArticleImage';
   sys: {
     id: string;
   };
@@ -45,7 +44,7 @@ interface ArticleImageType {
 }
 
 interface ArticleBodyCopyType {
-  __typename: "ArticleBodyCopy";
+  __typename: 'ArticleBodyCopy';
   sys: {
     id: string;
   };
@@ -54,7 +53,7 @@ interface ArticleBodyCopyType {
 }
 
 interface ArticleQuoteType {
-  __typename: "ArticleQuote";
+  __typename: 'ArticleQuote';
   sys: {
     id: string;
   };
@@ -64,7 +63,7 @@ interface ArticleQuoteType {
 }
 
 interface ArticleCodeSnippetsType {
-  __typename: "ArticleCodeSnippets";
+  __typename: 'ArticleCodeSnippets';
   sys: {
     id: string;
   };
@@ -83,7 +82,7 @@ export type ArticleModulesCollectionTypes =
 export type ArticleModulesCollectionType = Array<ArticleModulesCollectionTypes>;
 
 export interface ArticleType {
-  __typename: "Article";
+  __typename: 'Article';
   sys: {
     id: string;
     firstPublishedAt: string;
@@ -95,7 +94,7 @@ export interface ArticleType {
     items: Array<{ title: string }>;
   };
   modulesCollection: {
-    __typename: "ArticlesModulesCollection";
+    __typename: 'ArticlesModulesCollection';
     items: ArticleModulesCollectionTypes;
   };
 }
@@ -115,7 +114,7 @@ export async function getArticleIds() {
           }
         }
       }
-    `
+    `,
   );
 
   return articleCollection;
@@ -211,7 +210,7 @@ export async function getArticleById(articleId: string) {
         }
       }
     `,
-    { id: articleId }
+    { id: articleId },
   );
 
   return article;
@@ -231,7 +230,7 @@ export interface ArticlePreviewType {
 }
 
 export interface ArticleCollectionType {
-  __typename: "ArticleCollection";
+  __typename: 'ArticleCollection';
   items: Array<ArticlePreviewType>;
 }
 
@@ -266,7 +265,7 @@ export async function getArticlePreviews() {
           }
         }
       }
-    `
+    `,
   );
 
   return articleCollection;

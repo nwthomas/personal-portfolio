@@ -1,7 +1,7 @@
 (function getUserPreferredTheme() {
-  const DARK_THEME = "dark";
-  const LIGHT_THEME = "light";
-  const LOCAL_STORAGE_KEY = "preferredTheme";
+  const DARK_THEME = 'dark';
+  const LIGHT_THEME = 'light';
+  const LOCAL_STORAGE_KEY = 'preferredTheme';
 
   try {
     const pastThemeState = window.localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -14,4 +14,4 @@
   } catch (_) {
     window.__userPreferredTheme = DARK_THEME;
   }
-})();
+}());

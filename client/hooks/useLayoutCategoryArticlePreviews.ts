@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import { ArticlePreviewType } from "../api/articles";
-import { CategoryType } from "../api/categories";
+import { useEffect, useState } from 'react';
+import { ArticlePreviewType } from '../api/articles';
+import { CategoryType } from '../api/categories';
 
-const UNCATEGORIZED_ARTICLES = "Uncategorized";
+const UNCATEGORIZED_ARTICLES = 'Uncategorized';
 
 export function useLayoutCategoryArticlePreviews(
   categories: Array<CategoryType>,
   articles: Array<ArticlePreviewType>,
-  selectedCategoryName?: string
+  selectedCategoryName?: string,
 ) {
   const categoryTracker = {};
   const uncategorized = [];
@@ -20,8 +20,8 @@ export function useLayoutCategoryArticlePreviews(
 
   articles.forEach((article) => {
     if (
-      article?.categoriesCollection?.items &&
-      article.categoriesCollection.items.length >= 1
+      article?.categoriesCollection?.items
+      && article.categoriesCollection.items.length >= 1
     ) {
       article.categoriesCollection.items.forEach((category) => {
         if (category.title) {
@@ -33,10 +33,9 @@ export function useLayoutCategoryArticlePreviews(
     }
   });
 
-  const finalCategoryTracker =
-    uncategorized.length >= 1
-      ? { ...categoryTracker, [UNCATEGORIZED_ARTICLES]: uncategorized }
-      : categoryTracker;
+  const finalCategoryTracker = uncategorized.length >= 1
+    ? { ...categoryTracker, [UNCATEGORIZED_ARTICLES]: uncategorized }
+    : categoryTracker;
 
   return finalCategoryTracker;
 }

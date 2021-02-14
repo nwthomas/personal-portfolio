@@ -1,0 +1,38 @@
+{
+  "env": {
+    "browser": true,
+    "es2020": true
+  },
+  "extends": ["airbnb-base"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "import/prefer-default-export": ["off"],
+    "camelcase": ["off"],
+    "class-methods-use-this": ["off"],
+    "implicit-arrow-linebreak": ["off"],
+    "import/extensions": ["off"],
+    "max-classes-per-file": ["off"],
+    "no-underscore-dangle": ["off"],
+    "object-curly-newline": ["off"]
+  },
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": [2, { "args": "none" }]
+      }
+    }
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}
