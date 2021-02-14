@@ -1,8 +1,9 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { SyntheticEvent } from "react";
 import styled from "styled-components";
 
-const createNormalizedRouteName = (title: string) => {
+export const createCategoryRouteName = (title: string) => {
   return title.split(" ").join("-").toLowerCase();
 };
 
@@ -11,8 +12,14 @@ interface Props {
 }
 
 export default function TopicTag({ name }: Props) {
-  const normalizedCategoryRouteName = createNormalizedRouteName(name);
-  const routePath = `articles/category/${normalizedCategoryRouteName}`;
+  const router = useRouter();
+
+  const isInsideCategoryPage = !!router.query.categoryName;
+
+  const categoryRouteName = createCategoryRouteName(name);
+  const routePath = isInsideCategoryPage
+    ? categoryRouteName
+    : `articles/category/${categoryRouteName}`;
 
   const handleClick = (event: SyntheticEvent) => {
     event.stopPropagation();
