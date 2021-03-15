@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { Hydrate } from 'react-query/hydration';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -19,7 +20,9 @@ const queryClient = new QueryClient({
 
 export default function MyApp({ Component, pageProps }) {
   const [currentTheme, setCurrentTheme] = useGetPreferredTheme();
-  const mainTheme = makeMainTheme(currentTheme);
+  const mainTheme = useMemo(() => {
+    return makeMainTheme(currentTheme);
+  }, [currentTheme]);
 
   return (
     <QueryClientProvider client={queryClient}>
