@@ -24,13 +24,13 @@ const GlobalStyle = css`
       'Segoe UI Emoji', 'Segoe UI Symbol';
   }
 
+  /* To change the colors in the colors object, go to styles/libs/theme.ts */
   body {
     --text-accent-one: ${colors.mediumPurple};
     --text-accent-two: ${colors.dullLavender};
     --text-accent-three: ${colors.bilobaFlower};
     --transparent: ${colors.transparent};
   }
-
   body.dark {
     --body-bg: ${colors.woodsmoke};
     --body-bg-accent-one: ${colors.shark};
@@ -38,7 +38,6 @@ const GlobalStyle = css`
     --text: ${colors.titanWhite};
     --theme-icon-bg: ${colors.mediumPurple};
   }
-
   body.light {
     --body-bg: ${colors.alabaster};
     --body-bg-accent-one: ${colors.mercury};

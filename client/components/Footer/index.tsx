@@ -8,7 +8,7 @@ import {
   MailIcon,
   TwitterIcon,
 } from '../Icons';
-import { footerPhrases } from '../../assets';
+import { footerPhrases } from '../../staticAssets';
 
 const randomFooterPhrase =
   footerPhrases[Math.floor(Math.random() * footerPhrases.length)];

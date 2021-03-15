@@ -34,7 +34,7 @@ function Layout({ children, pageName, withEmojis, withFooter }: Props) {
   );
 }
 
-const RootStyles = styled.div`
+const RootStyles = styled.div<{ withFooter: boolean }>`
   background-color: ${({ theme }) => theme.colors.bodyBackground};
   display: flex;
   justify-content: center;

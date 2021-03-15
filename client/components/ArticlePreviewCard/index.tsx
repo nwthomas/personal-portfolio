@@ -47,7 +47,7 @@ export default function ArticlePreviewCard({
   );
 }
 
-const RootStyles = styled.article`
+const RootStyles = styled.article<{ withBackground: boolean }>`
   align-self: flex-start;
   background-color: ${({ theme, withBackground }) =>
     withBackground
