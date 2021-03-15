@@ -41,7 +41,7 @@ export default function ArticleImage({
   );
 }
 
-const RootStyles = styled.div`
+const RootStyles = styled.div<{ isHeroImage: boolean }>`
   align-items: center;
   display: flex;
   flex-direction: column;

@@ -20,6 +20,7 @@
     "indent": ["off"],
     "max-classes-per-file": ["off"],
     "no-underscore-dangle": ["off"],
+    "no-confusing-arrow": ["off"],
     "no-use-before-define": ["off"],
     "object-curly-newline": ["off"],
     "operator-linebreak": ["off"]

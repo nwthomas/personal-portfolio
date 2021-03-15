@@ -15,7 +15,7 @@ export default function ArticleTitle({ isMainTitle, titleCopy }: Props) {
   );
 }
 
-const RootStyles = styled.div`
+const RootStyles = styled.div<{ isMainTitle: boolean }>`
   display: flex;
   justify-content: center;
   margin-bottom: ${({ theme }) => theme.spaces.medium};
