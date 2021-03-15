@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import {
@@ -13,6 +13,12 @@ import { footerPhrases } from '../../assets';
 const randomFooterPhrase =
   footerPhrases[Math.floor(Math.random() * footerPhrases.length)];
 
+const GitHubIconComponent = <GitHubIcon />;
+const InstagramIconComponent = <InstagramIcon />;
+const LinkedInIconComponent = <LinkedInIcon />;
+const MailIconComponent = <MailIcon />;
+const TwitterIconComponent = <TwitterIcon />;
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -26,7 +32,7 @@ export default function Footer() {
         <nav>
           <div>
             <a href="https://github.com/nwthomas" aria-label="Link to GitHub">
-              <GitHubIcon />
+              {GitHubIconComponent}
             </a>
           </div>
           <div>
@@ -34,7 +40,7 @@ export default function Footer() {
               href="https://www.instagram.com/nwthomas/"
               aria-label="Link to Instagram"
             >
-              <InstagramIcon />
+              {InstagramIconComponent}
             </a>
           </div>
           <div>
@@ -42,7 +48,7 @@ export default function Footer() {
               href="https://www.linkedin.com/in/nwthomas-dev/"
               aria-label="Link to LinkedIn"
             >
-              <LinkedInIcon />
+              {LinkedInIconComponent}
             </a>
           </div>
           <div>
@@ -50,13 +56,11 @@ export default function Footer() {
               href="https://twitter.com/nwthomas_"
               aria-label="Link to Twitter"
             >
-              <TwitterIcon />
+              {TwitterIconComponent}
             </a>
           </div>
           <Link href="/contact" aria-label="Link to contact page">
-            <div>
-              <MailIcon />
-            </div>
+            <div>{MailIconComponent}</div>
           </Link>
         </nav>
       </div>

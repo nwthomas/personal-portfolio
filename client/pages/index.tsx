@@ -165,7 +165,7 @@ export default function Home() {
                 ) : null}
                 <div>
                   <h3>Latest Tweet</h3>
-                  {Tweet}
+                  <div ref={tweetRef} />
                 </div>
               </div>
             </Content>
