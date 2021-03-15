@@ -5,6 +5,7 @@ import Layout from '../../components/Layout';
 import PageTitle from '../../components/PageTitle';
 import { getArticlePreviews, getCategories } from '../../api';
 import type { ArticlePreviewType } from '../../api/articles';
+import CategoryList from '../../components/CategoryList';
 import CategoryArticleSection from '../../components/CategoryArticleSection';
 import { useLayoutCategoryArticlePreviews } from '../../hooks/useLayoutCategoryArticlePreviews';
 
@@ -23,14 +24,14 @@ export async function getServerSideProps() {
   };
 }
 
-export default function ArticlesPage() {
+function ArticlesPage() {
   const {
-    data: articlesData,
+    data: { items: articlesData },
     error: articlesError,
     isFetching: isFetchingArticles,
   } = useQuery('articlePreviews', getArticlePreviews);
   const {
-    data: categoriesData,
+    data: { items: categoriesData },
     error: categoriesError,
     isFetching: isFetchingCategories,
   } = useQuery('categories', getCategories);
@@ -40,13 +41,14 @@ export default function ArticlesPage() {
     !isFetchingCategories &&
     !articlesError &&
     !categoriesError &&
-    articlesData.items.length >= 1 &&
-    categoriesData.items.length >= 1
+    articlesData.length >= 1 &&
+    categoriesData.length >= 1
   ) {
     const categorizedArticles = useLayoutCategoryArticlePreviews(
-      categoriesData.items,
-      articlesData.items,
+      categoriesData,
+      articlesData,
     );
+
     const categorizedArticlesArray: Array<
       [string, Array<ArticlePreviewType>]
     > = Object.entries(categorizedArticles);
@@ -66,6 +68,7 @@ export default function ArticlesPage() {
               );
             })}
           </div>
+          <CategoryList categories={categoriesData} />
         </RootStyles>
       </Layout>
     );
@@ -88,3 +91,5 @@ const RootStyles = styled.main`
     width: 100%;
   }
 `;
+
+export default ArticlesPage;

@@ -19,7 +19,7 @@ const queryClient = new QueryClient({
 
 export default function MyApp({ Component, pageProps }) {
   const [currentTheme, setCurrentTheme] = useGetPreferredTheme();
-  const mainTheme = makeMainTheme();
+  const mainTheme = makeMainTheme(currentTheme);
 
   return (
     <QueryClientProvider client={queryClient}>

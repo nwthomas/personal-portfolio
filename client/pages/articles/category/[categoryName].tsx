@@ -6,6 +6,7 @@ import CategoryArticleSection from '../../../components/CategoryArticleSection';
 import Layout from '../../../components/Layout';
 import PageTitle from '../../../components/PageTitle';
 import { getArticlePreviews, getCategories } from '../../../api';
+import CategoryList from '../../../components/CategoryList';
 
 export async function getServerSideProps() {
   const queryClient = new QueryClient();
@@ -30,13 +31,14 @@ export default function CategoryPage() {
     error: articlesError,
     isFetching: isFetchingArticles,
   } = useQuery('articlePreviews', getArticlePreviews);
+
   const {
-    data: categoriesData,
+    data: { items: categoriesData },
     error: categoriesError,
     isFetching: isFetchingCategories,
   } = useQuery('categories', getCategories);
 
-  const fullCategoryObject = categoriesData?.items?.find(
+  const fullCategoryObject = categoriesData?.find(
     (category) => category.slug === categoryName,
   );
 
@@ -70,6 +72,7 @@ export default function CategoryPage() {
             articles={articlesInCategoryArray}
             categoryName={fullCategoryName}
           />
+          <CategoryList categories={categoriesData} />
         </RootStyles>
       </Layout>
     );

@@ -6,12 +6,59 @@ import { getArticleIds, getArticleById } from '../../api';
 import Layout from '../../components/Layout';
 import Article from '../../components/Article';
 
+interface ArticleIdType {
+  articleId?: string;
+}
+
+export async function getStaticProps(context) {
+  const { articleId } = context.params;
+
+  const queryClient = new QueryClient();
+
+  function handleGetArticleByIdQuery() {
+    return getArticleById(articleId);
+  }
+
+  await queryClient.prefetchQuery(
+    ['article', articleId],
+    handleGetArticleByIdQuery,
+  );
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
+}
+
+export async function getStaticPaths() {
+  const data = await getArticleIds();
+
+  if (!data?.items?.length) {
+    return {
+      paths: [],
+      fallback: false,
+    };
+  }
+
+  return {
+    // Pre-generates all possible article paths at build time
+    paths: data.items.map(({ sys: { id } }) => ({ params: { articleId: id } })),
+    fallback: false,
+  };
+}
+
 export default function ArticleByName() {
   const router = useRouter();
-  const { articleId }: { articleId?: string } = router.query;
+  const { articleId }: ArticleIdType = router.query;
 
-  const { data, error, isLoading } = useQuery(['article', articleId], () =>
-    getArticleById(articleId),
+  function handleUseQuery() {
+    return getArticleById(articleId);
+  }
+
+  const { data, error, isLoading } = useQuery(
+    ['article', articleId],
+    handleUseQuery,
   );
 
   const pageTitle = data.title;
@@ -27,38 +74,6 @@ export default function ArticleByName() {
   }
 
   return <p>Something went wrong</p>;
-}
-
-export async function getStaticProps(context) {
-  const { articleId } = context.params;
-
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery(['article', articleId], () =>
-    getArticleById(articleId),
-  );
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
-}
-
-export async function getStaticPaths() {
-  const data = await getArticleIds();
-
-  if (!data.items.length) {
-    return {
-      paths: [],
-      fallback: false,
-    };
-  }
-
-  return {
-    paths: data.items.map(({ sys: { id } }) => ({ params: { articleId: id } })),
-    fallback: false,
-  };
 }
 
 const RootStyles = styled.main`

@@ -3,7 +3,14 @@ import { useEffect, useState } from 'react';
 const INTERVAL_AMOUNT = 1000;
 const STATIC_EMOJI_LIST = [...'🌀🍪🤬🦑🌞👻✨🌧🤯🧩'];
 
-export default function usePageName(initialPageName: string) {
+export default function usePageName(
+  initialPageName: string,
+  withDynamicEmojis?: boolean,
+) {
+  if (!withDynamicEmojis) {
+    return initialPageName;
+  }
+
   const [pageName, setPageName] = useState(
     [...`${initialPageName}`].concat(STATIC_EMOJI_LIST),
   );

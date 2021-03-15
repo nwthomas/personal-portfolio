@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useMemo } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import {
@@ -10,17 +10,17 @@ import {
 } from '../Icons';
 import { footerPhrases } from '../../assets';
 
+const randomFooterPhrase =
+  footerPhrases[Math.floor(Math.random() * footerPhrases.length)];
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const footerPhraseRef = useRef(
-    footerPhrases[Math.floor(Math.random() * footerPhrases.length)],
-  );
 
   return (
     <RootStyles>
       <div>
         <div>
-          <p>{footerPhraseRef.current}</p>
+          <p suppressHydrationWarning>{randomFooterPhrase}</p>
           <p>{`© ${currentYear} Nathan Thomas`}</p>
         </div>
         <nav>

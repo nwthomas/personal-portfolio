@@ -1,10 +1,38 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useContext } from 'react';
 import Head from 'next/head';
-import styled from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import { BabyYodaEasterEgg } from '../EasterEggs';
 import Footer from '../Footer';
 import usePageName from '../../hooks/usePageName';
-import useGetPreferredTheme from '../../hooks/useGetPreferredTheme';
+
+interface Props {
+  children?: ReactNode | Array<ReactNode>;
+  pageName: string;
+  withEmojis?: boolean;
+  withFooter?: boolean;
+}
+
+function Layout({ children, pageName, withEmojis, withFooter }: Props) {
+  const [currentPageName] = usePageName(pageName, withEmojis);
+  const theme = useContext(ThemeContext);
+
+  return (
+    <>
+      <Head>
+        <title>{currentPageName}</title>
+        <meta name="description" content={pageName}></meta>
+        <meta name="twitter:widgets:theme" content={theme.currentTheme}></meta>
+        <meta name="twitter:dnt" content="on"></meta>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <RootStyles withFooter={withFooter}>
+        {children}
+        {withFooter ? <Footer /> : null}
+        <BabyYodaEasterEgg />
+      </RootStyles>
+    </>
+  );
+}
 
 const RootStyles = styled.div`
   background-color: ${({ theme }) => theme.colors.bodyBackground};
@@ -24,34 +52,5 @@ const RootStyles = styled.div`
     margin-bottom: 0;
   }
 `;
-
-interface Props {
-  children?: ReactNode | Array<ReactNode>;
-  pageName: string;
-  withEmojis?: boolean;
-  withFooter?: boolean;
-}
-
-function Layout({ children, pageName, withEmojis, withFooter }: Props) {
-  const [currentPageName] = usePageName(pageName);
-  const [currentTheme] = useGetPreferredTheme();
-  const finalPageName = withEmojis ? currentPageName : pageName;
-
-  return (
-    <>
-      <Head>
-        <title>{finalPageName}</title>
-        <meta name="description" content={pageName} />
-        <meta name="twitter:widgets:theme" content={currentTheme} />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <RootStyles withFooter={withFooter}>
-        {children}
-        {withFooter ? <Footer /> : null}
-        <BabyYodaEasterEgg />
-      </RootStyles>
-    </>
-  );
-}
 
 export default Layout;

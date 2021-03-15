@@ -40,11 +40,9 @@ export default class MyDocument extends Document {
               var DARK_THEME = "dark";
               var LIGHT_THEME = "light";
               var LOCAL_STORAGE_KEY = "theme";
-
               var preferredTheme;
 
-              // This defines the variable for later assignment and use client-side
-              window.__onThemeChange = function() {};
+              window.__onThemeChange = function (newTheme) {};
 
               function setTheme(newTheme) {
                 window.__theme = newTheme;

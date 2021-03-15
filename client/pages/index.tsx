@@ -3,8 +3,8 @@ import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { QueryClient, useQuery } from 'react-query';
 import styled from 'styled-components';
+import CategoryList from '../components/CategoryList';
 import Layout from '../components/Layout';
-import TopicTag from '../components/TopicTag';
 import ArticlePreviewCard from '../components/ArticlePreviewCard';
 import {
   getArticlePreviews,
@@ -55,7 +55,7 @@ export default function Home() {
   const finalArticlesData = articlesData?.slice(0, 3) || [];
 
   // TODO: Update tweet on theme change
-  const { shouldUpdateTweet } = useCreateNewTweet(
+  const { Tweet, shouldUpdateTweet } = useCreateNewTweet(
     currentTheme,
     tweetRef.current,
     tweetsData?.data[0]?.id,
@@ -160,21 +160,12 @@ export default function Home() {
                 )}
               </div>
               <div>
-                <h3>Article Categories</h3>
-                <div>
-                  {!isFetchingCategories &&
-                    !categoriesError &&
-                    categoriesData.map(({ title }) => {
-                      return (
-                        <div key={title}>
-                          <TopicTag name={title} />
-                        </div>
-                      );
-                    })}
-                </div>
+                {!isFetchingCategories && !categoriesError ? (
+                  <CategoryList categories={categoriesData} />
+                ) : null}
                 <div>
                   <h3>Latest Tweet</h3>
-                  <div ref={tweetRef} />
+                  {Tweet}
                 </div>
               </div>
             </Content>
@@ -220,7 +211,7 @@ const RootStyles = styled.main`
         @media only screen and (min-width: ${({ theme }) =>
             theme.breakpoints.desktop}) {
           font-size: 3rem;
-          max-width: 75%;
+          max-width: 85%;
         }
 
         > span {
@@ -292,22 +283,17 @@ const Content = styled.div`
     }
 
     > div {
-      display: flex;
-      flex-wrap: wrap;
-      margin-bottom: 50px;
-      width: 100%;
-
-      > div {
-        margin-bottom: ${({ theme }) => theme.spaces.small};
-        margin-right: ${({ theme }) => theme.spaces.small};
-      }
-    }
-
-    > div:last-child {
       display: none;
 
       @media only screen and (min-width: 1000px) {
         display: block;
+        margin-bottom: 50px;
+        width: 100%;
+      }
+
+      > div {
+        margin-bottom: ${({ theme }) => theme.spaces.small};
+        margin-right: ${({ theme }) => theme.spaces.small};
       }
     }
   }
