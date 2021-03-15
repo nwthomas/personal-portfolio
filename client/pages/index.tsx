@@ -1,18 +1,17 @@
+import { useContext } from 'react';
 import { dehydrate } from 'react-query/hydration';
-import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { QueryClient, useQuery } from 'react-query';
-import styled from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import CategoryList from '../components/CategoryList';
 import Layout from '../components/Layout';
 import ArticlePreviewCard from '../components/ArticlePreviewCard';
+import Tweet from '../components/Tweet';
 import {
   getArticlePreviews,
   getCategories,
   getLastTweetFromTwitterProfile,
 } from '../api';
-import useGetPreferredTheme from '../hooks/useGetPreferredTheme';
-import useCreateNewTweet from '../hooks/useCreateNewTweet';
 
 const PAGE_NAME = 'Home';
 
@@ -34,8 +33,7 @@ export async function getServerSideProps() {
 }
 
 export default function Home() {
-  const [currentTheme] = useGetPreferredTheme();
-  const tweetRef = useRef();
+  const { currentTheme } = useContext(ThemeContext);
 
   const {
     data: { items: articlesData },
@@ -53,17 +51,6 @@ export default function Home() {
   );
 
   const finalArticlesData = articlesData?.slice(0, 3) || [];
-
-  // TODO: Update tweet on theme change
-  const { Tweet, shouldUpdateTweet } = useCreateNewTweet(
-    currentTheme,
-    tweetRef.current,
-    tweetsData?.data[0]?.id,
-  );
-
-  useEffect(() => {
-    // TODO: Update tweet on theme change
-  }, [currentTheme, tweetRef.current]);
 
   return (
     <Layout pageName={PAGE_NAME} withEmojis withFooter>
@@ -163,10 +150,15 @@ export default function Home() {
                 {!isFetchingCategories && !categoriesError ? (
                   <CategoryList categories={categoriesData} />
                 ) : null}
-                <div>
-                  <h3>Latest Tweet</h3>
-                  <div ref={tweetRef} />
-                </div>
+                {tweetsData?.data[0]?.id ? (
+                  <div>
+                    <h3>Latest Tweet</h3>
+                    <Tweet
+                      currentTheme={currentTheme}
+                      tweetId={tweetsData?.data[0]?.id}
+                    />
+                  </div>
+                ) : null}
               </div>
             </Content>
           )}
