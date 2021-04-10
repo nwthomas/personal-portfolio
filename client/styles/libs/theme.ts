@@ -94,8 +94,19 @@ const transitions = {
   long: '1s',
 };
 
+export interface Theme {
+  appDimensions: typeof appDimensions;
+  breakpoints: typeof breakpoints;
+  borderRadii: typeof borderRadii;
+  colors: typeof themeColorValues;
+  currentTheme: ThemeEnum;
+  opacity: typeof opacity;
+  spaces: typeof spaces;
+  transitions: typeof transitions;
+}
+
 // ===================================== Main Theme
-function makeMainTheme(currentTheme: ThemeEnum) {
+function makeMainTheme(currentTheme: ThemeEnum): Theme {
   return {
     appDimensions,
     breakpoints,
