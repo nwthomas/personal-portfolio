@@ -51,6 +51,7 @@ export default function Home() {
   );
 
   const finalArticlesData = articlesData?.slice(0, 4) || [];
+  const mostRecentTweetId = tweetsData?.data[0]?.id;
 
   return (
     <Layout pageName={PAGE_NAME} withEmojis withFooter>
@@ -150,10 +151,10 @@ export default function Home() {
                 {!isFetchingCategories && !categoriesError ? (
                   <CategoryList categories={categoriesData} />
                 ) : null}
-                {tweetsData?.data[0]?.id ? (
+                {mostRecentTweetId ? (
                   <Tweet
                     currentTheme={currentTheme}
-                    tweetId={tweetsData?.data[0]?.id}
+                    tweetId={mostRecentTweetId}
                   />
                 ) : null}
               </div>

@@ -16,8 +16,8 @@ interface CreateTweetOptions {
   theme: ThemeEnum;
 }
 
-// This extends the Window object with the methods used in this component
-// from the Twitter Embeds extensions
+// This extends the Window object with the methods used in this component from the Twitter Embeds
+// extensions.
 /* eslint-disable no-unused-vars */
 declare global {
   interface Window {
