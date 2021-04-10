@@ -50,7 +50,7 @@ export default function Home() {
     getLastTweetFromTwitterProfile,
   );
 
-  const finalArticlesData = articlesData?.slice(0, 3) || [];
+  const finalArticlesData = articlesData?.slice(0, 4) || [];
 
   return (
     <Layout pageName={PAGE_NAME} withEmojis withFooter>
@@ -151,13 +151,10 @@ export default function Home() {
                   <CategoryList categories={categoriesData} />
                 ) : null}
                 {tweetsData?.data[0]?.id ? (
-                  <div>
-                    <h3>Latest Tweet</h3>
-                    <Tweet
-                      currentTheme={currentTheme}
-                      tweetId={tweetsData?.data[0]?.id}
-                    />
-                  </div>
+                  <Tweet
+                    currentTheme={currentTheme}
+                    tweetId={tweetsData?.data[0]?.id}
+                  />
                 ) : null}
               </div>
             </Content>
