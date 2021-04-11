@@ -11,7 +11,7 @@ import {
   getArticlePreviews,
   getCategories,
   getLastTweetFromTwitterProfile,
-} from '../api';
+} from './api';
 
 const PAGE_NAME = 'Home';
 
