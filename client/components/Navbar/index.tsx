@@ -24,7 +24,7 @@ export default function Navbar({ onThemeChangeClick, themeName }: Props) {
           ) : null}
           <nav>
             <Link href="/articles">Articles</Link>
-            <Link href="/talks">Talks</Link>
+            <Link href="/presentations">Presentations</Link>
             <Link href="/projects">Projects</Link>
             <Link href="/contact">Contact</Link>
           </nav>

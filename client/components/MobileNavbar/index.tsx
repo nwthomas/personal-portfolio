@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import { HomeIcon, SearchIcon, MailIcon, PostsIcon } from '../Icons';
+import { HomeIcon, PresentationsIcon, MailIcon, PostsIcon } from '../Icons';
 
 export default function MobileNavbar() {
   return (
@@ -16,9 +16,9 @@ export default function MobileNavbar() {
             <PostsIcon />
           </div>
         </Link>
-        <Link href="/search" aria-label="Link to search page">
+        <Link href="/presentations" aria-label="Link to presentations page">
           <div>
-            <SearchIcon />
+            <PresentationsIcon />
           </div>
         </Link>
         <Link href="/contact" aria-label="Link to contact page">
