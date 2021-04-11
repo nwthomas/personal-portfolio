@@ -1,13 +1,19 @@
 import styled from 'styled-components';
+import type { Presentation } from '../../staticAssets';
 
-interface Props {
-  description: string;
-  presenters: string;
-  title: string;
-  url: string;
+interface Props extends Presentation {
+  // finish
 }
 
-function PresentationCard({ description, presenters, title, url }: Props) {
+function PresentationCard({
+  date,
+  description,
+  location,
+  meetupTitle,
+  presenters,
+  title,
+  url,
+}: Props) {
   return (
     <RootStyles>
       <div>
@@ -22,7 +28,9 @@ function PresentationCard({ description, presenters, title, url }: Props) {
       </div>
       <div>
         <h4>{title}</h4>
+        <p>{`${meetupTitle} on ${date}`}</p>
         <p>{presenters}</p>
+        <p>{location}</p>
         <p>{description}</p>
       </div>
     </RootStyles>

@@ -89,6 +89,11 @@ const RootStyles = styled.header`
               padding-bottom: 5px;
             }
           }
+
+          > a:nth-child(2) {
+            width: ${({ theme }) =>
+              `calc(${theme.appDimensions.navbarLinkWidth} + 45px)`};
+          }
         }
       }
     }

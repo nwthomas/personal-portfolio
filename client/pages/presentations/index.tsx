@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Layout from '../../components/Layout';
 import PageTitle from '../../components/PageTitle';
 import PresentationCard from '../../components/PresentationCard';
+import { presentations } from '../../staticAssets';
 
 const PAGE_NAME = 'Presentations';
 
@@ -11,12 +12,19 @@ export default function Presentations() {
       <RootStyles>
         <PageTitle title="Talks" type="2" />
         <div>
-          <PresentationCard
-            description="React Native at Shopify"
-            presenters="Nathan Thomas & Justine De Caires"
-            title="React Native at Shopify"
-            url="https://www.youtube-nocookie.com/embed/GNrQTbIFsG4?start=2909"
-          />
+          {presentations.map((presentation) => {
+            return (
+              <PresentationCard
+                date={presentation.date}
+                description={presentation.description}
+                location={presentation.location}
+                meetupTitle={presentation.meetupTitle}
+                presenters={presentation.presenters}
+                title={presentation.title}
+                url={presentation.url}
+              />
+            );
+          })}
         </div>
       </RootStyles>
     </Layout>
