@@ -25,7 +25,6 @@ export default function Navbar({ onThemeChangeClick, themeName }: Props) {
           <nav>
             <Link href="/articles">Articles</Link>
             <Link href="/presentations">Presentations</Link>
-            <Link href="/projects">Projects</Link>
             <Link href="/contact">Contact</Link>
           </nav>
         </div>
@@ -92,7 +91,7 @@ const RootStyles = styled.header`
 
           > a:nth-child(2) {
             width: ${({ theme }) =>
-              `calc(${theme.appDimensions.navbarLinkWidth} + 45px)`};
+              `calc(${theme.appDimensions.navbarLinkWidth} + 42px)`};
           }
         }
       }
