@@ -22,6 +22,9 @@ export default function Presentations() {
                 presenters={presentation.presenters}
                 title={presentation.title}
                 url={presentation.url}
+                videoHeight={presentation.videoHeight}
+                videoRatio={presentation.videoRatio}
+                videoWidth={presentation.videoWidth}
               />
             );
           })}

@@ -17,8 +17,6 @@ function PresentationCard({
     <RootStyles>
       <div>
         <iframe
-          width="560"
-          height="315"
           src={url}
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -52,6 +50,32 @@ const RootStyles = styled.div`
     flex-direction: row;
   }
 
+  > div:first-child {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+
+    @media only screen and (min-width: ${({ theme }) =>
+        theme.breakpoints.desktop}) {
+      min-width: 500px;
+    }
+
+    &::after {
+      padding-top: 56.25%;
+      display: block;
+      content: '';
+    }
+
+    > iframe {
+      display: block;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+
   > div:last-child {
     margin-left: 0;
     margin-top: ${({ theme }) => theme.spaces.medium};
@@ -60,6 +84,7 @@ const RootStyles = styled.div`
         theme.breakpoints.desktop}) {
       margin-left: ${({ theme }) => theme.spaces.medium};
       margin-top: 0;
+      max-width: 700px;
     }
 
     > div {
