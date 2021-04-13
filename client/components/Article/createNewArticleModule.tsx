@@ -4,7 +4,7 @@ import Image from './components/Image';
 import Quote from './components/Quote';
 import Seperator from './components/Seperator';
 import Title from './components/Title';
-import type { ArticleModulesCollectionTypes } from '../../api/articles';
+import type { ArticleModulesCollectionTypes } from '../../pages/api/articles';
 
 const ARTICLE_COPY = 'ArticleBodyCopy';
 const ARTICLE_CODE_SNIPPETS = 'ArticleCodeSnippets';

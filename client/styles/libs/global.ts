@@ -74,6 +74,7 @@ const GlobalStyle = css`
 
   h4 {
     font-size: 2rem;
+    font-weight: bold;
   }
 
   p,

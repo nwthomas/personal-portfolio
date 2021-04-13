@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import ArticlePreviewCard from '../ArticlePreviewCard';
-import { ArticlePreviewType } from '../../api/articles';
+import { ArticlePreviewType } from '../../pages/api/articles';
 import TopicTag from '../TopicTag';
 
 interface Props {

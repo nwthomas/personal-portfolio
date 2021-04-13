@@ -24,8 +24,7 @@ export default function Navbar({ onThemeChangeClick, themeName }: Props) {
           ) : null}
           <nav>
             <Link href="/articles">Articles</Link>
-            <Link href="/talks">Talks</Link>
-            <Link href="/projects">Projects</Link>
+            <Link href="/presentations">Presentations</Link>
             <Link href="/contact">Contact</Link>
           </nav>
         </div>
@@ -88,6 +87,11 @@ const RootStyles = styled.header`
               color: ${({ theme }) => theme.colors.textAccentTwo};
               padding-bottom: 5px;
             }
+          }
+
+          > a:nth-child(2) {
+            width: ${({ theme }) =>
+              `calc(${theme.appDimensions.navbarLinkWidth} + 42px)`};
           }
         }
       }

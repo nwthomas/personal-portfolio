@@ -1,5 +1,5 @@
-import { ArticlePreviewType } from '../api/articles';
-import { CategoryType } from '../api/categories';
+import { ArticlePreviewType } from '../pages/api/articles';
+import { CategoryType } from '../pages/api/categories';
 
 const UNCATEGORIZED_ARTICLES = 'Uncategorized';
 
