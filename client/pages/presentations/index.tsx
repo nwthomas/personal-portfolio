@@ -6,17 +6,32 @@ import { presentations } from '../../staticAssets';
 
 const PAGE_NAME = 'Presentations';
 
+// These two async functions pre-generate this page at build time as it's using a static resources
+//  file and will never change in production.
+export async function getStaticProps() {
+  return {
+    props: {},
+  };
+}
+export async function getStaticPaths() {
+  return {
+    paths: ['/presentations'],
+    fallback: false,
+  };
+}
+
 export default function Presentations() {
   return (
     <Layout pageName={PAGE_NAME} withEmojis withFooter>
       <RootStyles>
         <PageTitle title="Talks" type="2" />
         <div>
-          {presentations.map((presentation) => {
+          {presentations.map((presentation, i) => {
             return (
               <PresentationCard
                 date={presentation.date}
                 description={presentation.description}
+                key={i}
                 location={presentation.location}
                 meetupTitle={presentation.meetupTitle}
                 presenters={presentation.presenters}

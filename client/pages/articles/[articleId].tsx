@@ -2,9 +2,11 @@ import { useRouter } from 'next/router';
 import { QueryClient, useQuery } from 'react-query';
 import { dehydrate } from 'react-query/hydration';
 import styled from 'styled-components';
-import { getArticleIds, getArticleById } from '../../api';
+import { getArticleIds, getArticleById } from '../api';
 import Layout from '../../components/Layout';
 import Article from '../../components/Article';
+import { getRandomErrorPhrase } from '../../staticAssets';
+import Error from '../../components/Error';
 
 interface ArticleIdType {
   articleId?: string;
@@ -73,7 +75,11 @@ export default function ArticleByName() {
     );
   }
 
-  return <p>Something went wrong</p>;
+  return (
+    <Layout pageName="Oops" withEmojis>
+      <Error errorCode="500" errorPhrase={getRandomErrorPhrase()} />
+    </Layout>
+  );
 }
 
 const RootStyles = styled.main`

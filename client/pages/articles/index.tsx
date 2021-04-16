@@ -8,6 +8,8 @@ import type { ArticlePreviewType } from '../api/articles';
 import CategoryList from '../../components/CategoryList';
 import CategoryArticleSection from '../../components/CategoryArticleSection';
 import { useLayoutCategoryArticlePreviews } from '../../hooks/useLayoutCategoryArticlePreviews';
+import { getRandomErrorPhrase } from '../../staticAssets';
+import Error from '../../components/Error';
 
 const PAGE_NAME = 'Articles';
 
@@ -74,7 +76,11 @@ function ArticlesPage() {
     );
   }
 
-  return <div />;
+  return (
+    <Layout pageName="Oops" withEmojis>
+      <Error errorCode="500" errorPhrase={getRandomErrorPhrase()} />
+    </Layout>
+  );
 }
 
 const RootStyles = styled.main`
@@ -87,7 +93,7 @@ const RootStyles = styled.main`
   width: 100%;
 
   > div {
-    max-width: 1400px;
+    max-width: ${({ theme }) => theme.breakpoints.ultraWide};
     width: 100%;
   }
 `;
