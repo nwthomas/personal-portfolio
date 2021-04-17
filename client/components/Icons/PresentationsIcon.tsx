@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 
 interface Props {
+  isActive?: boolean;
   title?: string;
 }
 
-export default function PresentationsIcon({ title }: Props) {
+export default function PresentationsIcon({ isActive, title }: Props) {
   return (
-    <RootStyles xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <RootStyles
+      isActive={isActive}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+    >
       <title>{title || 'Presentations icon'}</title>
       <rect
         x="48"
@@ -30,7 +35,13 @@ export default function PresentationsIcon({ title }: Props) {
   );
 }
 
-const RootStyles = styled.svg`
-  stroke: ${({ theme }) => theme.colors.text};
-  fill: ${({ theme }) => theme.colors.text};
+interface StyleProps {
+  isActive?: boolean;
+}
+
+const RootStyles = styled.svg<StyleProps>`
+  stroke: ${({ isActive, theme }) =>
+    isActive ? theme.colors.textAccentTwo : theme.colors.text};
+  fill: ${({ isActive, theme }) =>
+    isActive ? theme.colors.textAccentTwo : theme.colors.text};
 `;

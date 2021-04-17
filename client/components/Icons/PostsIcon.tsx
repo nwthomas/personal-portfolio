@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 
 interface Props {
+  isActive?: boolean;
   title?: string;
 }
 
-export default function PostsIcon({ title }: Props) {
+export default function PostsIcon({ isActive, title }: Props) {
   return (
-    <RootStyles xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <RootStyles
+      isActive={isActive}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+    >
       <title>{title || 'Posts icon'}</title>
       <path
         d="M368 415.86V72a24.07 24.07 0 00-24-24H72a24.07 24.07 0 00-24 24v352a40.12 40.12 0 0040 40h328"
@@ -32,7 +37,13 @@ export default function PostsIcon({ title }: Props) {
   );
 }
 
-const RootStyles = styled.svg`
-  stroke: ${({ theme }) => theme.colors.text};
-  fill: ${({ theme }) => theme.colors.text};
+interface StyleProps {
+  isActive?: boolean;
+}
+
+const RootStyles = styled.svg<StyleProps>`
+  stroke: ${({ isActive, theme }) =>
+    isActive ? theme.colors.textAccentTwo : theme.colors.text};
+  fill: ${({ isActive, theme }) =>
+    isActive ? theme.colors.textAccentTwo : theme.colors.text};
 `;

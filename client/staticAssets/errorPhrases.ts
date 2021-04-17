@@ -3,7 +3,7 @@ export const errorPhrases = [
   "Sorry, I can't find that",
   'It was just here...',
   "That doesn't exist",
-  'Check that URL',
+  'Rough times',
 ];
 
 export function getRandomErrorPhrase() {

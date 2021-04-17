@@ -1,29 +1,34 @@
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { HomeIcon, PresentationsIcon, MailIcon, PostsIcon } from '../Icons';
+import Link, { isActiveLink } from '../Link';
 
 export default function MobileNavbar() {
+  const { pathname } = useRouter();
+
   return (
     <RootStyles>
       <nav>
         <Link href="/" aria-label="Link to home page">
           <div>
-            <HomeIcon />
+            <HomeIcon isActive={isActiveLink(pathname, '/')} />
           </div>
         </Link>
         <Link href="/articles" aria-label="Link to articles page">
           <div>
-            <PostsIcon />
+            <PostsIcon isActive={isActiveLink(pathname, '/articles')} />
           </div>
         </Link>
         <Link href="/presentations" aria-label="Link to presentations page">
           <div>
-            <PresentationsIcon />
+            <PresentationsIcon
+              isActive={isActiveLink(pathname, '/presentations')}
+            />
           </div>
         </Link>
         <Link href="/contact" aria-label="Link to contact page">
           <div>
-            <MailIcon />
+            <MailIcon isActive={isActiveLink(pathname, '/contact')} />
           </div>
         </Link>
       </nav>

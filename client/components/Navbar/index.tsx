@@ -23,9 +23,15 @@ function Navbar({ onThemeChangeClick, themeName }: Props) {
             />
           ) : null}
           <nav>
-            <Link href="/articles">Articles</Link>
-            <Link href="/presentations">Presentations</Link>
-            <Link href="/contact">Contact</Link>
+            <Link href="/articles" withStyling>
+              Articles
+            </Link>
+            <Link href="/presentations" withStyling>
+              Presentations
+            </Link>
+            <Link href="/contact" withStyling>
+              Contact
+            </Link>
           </nav>
         </div>
       </div>
