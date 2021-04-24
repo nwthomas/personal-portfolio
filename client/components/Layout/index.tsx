@@ -34,12 +34,17 @@ function Layout({ children, pageName, withEmojis, withFooter }: Props) {
   );
 }
 
-const RootStyles = styled.div<{ withFooter: boolean }>`
+interface StyleProps {
+  withFooter: boolean;
+}
+
+const RootStyles = styled.div<StyleProps>`
   background-color: ${({ theme }) => theme.colors.bodyBackground};
   display: flex;
   justify-content: center;
   margin-bottom: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};
-  min-height: ${({ theme }) => theme.appDimensions.appMinHeight};
+  min-height: ${({ theme, withFooter }) =>
+    withFooter ? theme.appDimensions.appMinHeight : 0};
   padding: ${({ theme }) =>
     `${theme.appDimensions.mobileNavbarHeight} 0 ${theme.appDimensions.mobileFooterHeight}`};
   position: relative;
