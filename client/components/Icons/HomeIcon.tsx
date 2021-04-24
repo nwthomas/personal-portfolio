@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 
 interface Props {
+  isActive?: boolean;
   title?: string;
 }
 
-export default function HomeIcon({ title }: Props) {
+export default function HomeIcon({ isActive, title }: Props) {
   return (
-    <RootStyles xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <RootStyles
+      isActive={isActive}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+    >
       <title>{title || 'Home icon'}</title>
       <path
         d="M80 212v236a16 16 0 0016 16h96V328a24 24 0 0124-24h80a24 24 0 0124 24v136h96a16 16 0 0016-16V212"
@@ -26,6 +31,11 @@ export default function HomeIcon({ title }: Props) {
   );
 }
 
-const RootStyles = styled.svg`
-  stroke: ${({ theme }) => theme.colors.text};
+interface StyleProps {
+  isActive?: boolean;
+}
+
+const RootStyles = styled.svg<StyleProps>`
+  stroke: ${({ isActive, theme }) =>
+    isActive ? theme.colors.textAccentTwo : theme.colors.text};
 `;

@@ -12,11 +12,12 @@ export default function Presentations() {
       <RootStyles>
         <PageTitle title="Talks" type="2" />
         <div>
-          {presentations.map((presentation) => {
+          {presentations.map((presentation, i) => {
             return (
               <PresentationCard
                 date={presentation.date}
                 description={presentation.description}
+                key={i}
                 location={presentation.location}
                 meetupTitle={presentation.meetupTitle}
                 presenters={presentation.presenters}

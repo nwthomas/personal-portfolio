@@ -47,7 +47,11 @@ export default function ArticlePreviewCard({
   );
 }
 
-const RootStyles = styled.article<{ withBackground: boolean }>`
+interface StylesProps {
+  withBackground: boolean;
+}
+
+const RootStyles = styled.div<StylesProps>`
   align-self: flex-start;
   background-color: ${({ theme, withBackground }) =>
     withBackground
@@ -62,7 +66,6 @@ const RootStyles = styled.article<{ withBackground: boolean }>`
   display: flex;
   flex-direction: column;
   margin-bottom: ${({ theme }) => theme.spaces.small};
-  min-height: 0;
   padding: ${({ theme, withBackground }) =>
     withBackground ? theme.spaces.medium : `0 0 ${theme.spaces.large}`};
   width: 100%;
@@ -71,7 +74,6 @@ const RootStyles = styled.article<{ withBackground: boolean }>`
       theme.breakpoints.desktop}) {
     margin: ${({ theme, withBackground }) =>
       withBackground ? `0 ${theme.spaces.small} ${theme.spaces.small} 0` : 0};
-    min-height: ${({ withBackground }) => (withBackground ? '350px' : 0)};
     width: ${({ withBackground }) => (withBackground ? '400px' : '100%')};
   }
 

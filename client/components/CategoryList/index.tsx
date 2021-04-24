@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import TopicTag from '../TopicTag';
-import { CategoryType } from '../../api/categories';
+import { CategoryType } from '../../pages/api/categories';
 
 interface Props {
   categories: Array<CategoryType>;

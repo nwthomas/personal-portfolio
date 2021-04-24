@@ -5,8 +5,10 @@ import styled from 'styled-components';
 import CategoryArticleSection from '../../../components/CategoryArticleSection';
 import Layout from '../../../components/Layout';
 import PageTitle from '../../../components/PageTitle';
-import { getArticlePreviews, getCategories } from '../../../api';
+import { getArticlePreviews, getCategories } from '../../api';
 import CategoryList from '../../../components/CategoryList';
+import { getRandomErrorPhrase } from '../../../staticAssets';
+import Error from '../../../components/Error';
 
 export async function getServerSideProps() {
   const queryClient = new QueryClient();
@@ -78,7 +80,11 @@ export default function CategoryPage() {
     );
   }
 
-  return <div />;
+  return (
+    <Layout pageName="Oops" withEmojis>
+      <Error errorCode="500" errorPhrase={getRandomErrorPhrase()} />
+    </Layout>
+  );
 }
 
 const RootStyles = styled.main`

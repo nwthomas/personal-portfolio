@@ -4,6 +4,7 @@ export type ThemeEnum = 'dark' | 'light';
 // All color names pulled directly from http://chir.ag/projects/name-that-color/
 export const colors = {
   alabaster: '#f8f8f8f8',
+  black: '#000000',
   crusta: '#f98a31',
   bilobaFlower: '#BBADEB',
   bunker: '#101419',

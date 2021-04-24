@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Link from 'next/link';
+import Link from '../Link';
 import ThemeTransitionButton from '../ThemeTransitionButton';
 import type { ThemeEnum } from '../../styles/libs/theme';
 
@@ -8,7 +8,7 @@ interface Props {
   themeName: ThemeEnum | null;
 }
 
-export default function Navbar({ onThemeChangeClick, themeName }: Props) {
+function Navbar({ onThemeChangeClick, themeName }: Props) {
   return (
     <RootStyles>
       <div>
@@ -23,9 +23,15 @@ export default function Navbar({ onThemeChangeClick, themeName }: Props) {
             />
           ) : null}
           <nav>
-            <Link href="/articles">Articles</Link>
-            <Link href="/presentations">Presentations</Link>
-            <Link href="/contact">Contact</Link>
+            <Link href="/articles" withStyling>
+              Articles
+            </Link>
+            <Link href="/presentations" withStyling>
+              Presentations
+            </Link>
+            <Link href="/contact" withStyling>
+              Contact
+            </Link>
           </nav>
         </div>
       </div>
@@ -73,7 +79,7 @@ const RootStyles = styled.header`
           align-self: center;
           justify-content: flex-end;
 
-          > a {
+          > div {
             align-items: center;
             display: flex;
             height: ${({ theme }) => theme.appDimensions.desktopNavbarHeight};
@@ -82,14 +88,9 @@ const RootStyles = styled.header`
             transition: color ${({ theme }) => theme.transitions.short},
               padding-bottom ${({ theme }) => theme.transitions.short};
             width: ${({ theme }) => theme.appDimensions.navbarLinkWidth};
-
-            &:hover {
-              color: ${({ theme }) => theme.colors.textAccentTwo};
-              padding-bottom: 5px;
-            }
           }
 
-          > a:nth-child(2) {
+          > div:nth-child(2) {
             width: ${({ theme }) =>
               `calc(${theme.appDimensions.navbarLinkWidth} + 42px)`};
           }
@@ -99,7 +100,7 @@ const RootStyles = styled.header`
   }
 `;
 
-const TitleIcon = styled.h1`
+const TitleIcon = styled.h1<{ children: string }>`
   align-items: center;
   color: ${({ theme }) => theme.colors.textAccentOne};
   cursor: pointer;
@@ -119,3 +120,5 @@ const TitleIcon = styled.h1`
     font-size: 10rem;
   }
 `;
+
+export default Navbar;
