@@ -69,12 +69,14 @@ export default function CategoryPage() {
     return (
       <Layout pageName={fullCategoryName} withEmojis withFooter>
         <RootStyles>
-          <PageTitle title={fullCategoryName} type="2" />
-          <CategoryArticleSection
-            articles={articlesInCategoryArray}
-            categoryName={fullCategoryName}
-          />
-          <CategoryList categories={categoriesData} />
+          <div>
+            <PageTitle title={fullCategoryName} type="2" />
+            <CategoryArticleSection
+              articles={articlesInCategoryArray}
+              categoryName={fullCategoryName}
+            />
+            <CategoryList categories={categoriesData} />
+          </div>
         </RootStyles>
       </Layout>
     );
@@ -91,9 +93,7 @@ const RootStyles = styled.main`
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin-top: ${({ theme }) => theme.spaces.small};
-  margin-bottom: ${({ theme }) => theme.spaces.large};
-  padding: 0 3%;
+  padding: ${({ theme }) => theme.spaces.medium} 3%;
   width: 100%;
 
   > div {

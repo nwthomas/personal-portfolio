@@ -36,12 +36,12 @@ export default function Home() {
   const { currentTheme } = useContext(ThemeContext);
 
   const {
-    data: { items: articlesData },
+    data: articlesData,
     error: articlesError,
     isFetching: isFetchingArticles,
   } = useQuery('articlePreviews', getArticlePreviews);
   const {
-    data: { items: categoriesData },
+    data: categoriesData,
     error: categoriesError,
     isFetching: isFetchingCategories,
   } = useQuery('categories', getCategories);
@@ -50,7 +50,7 @@ export default function Home() {
     getLastTweetFromTwitterProfile,
   );
 
-  const finalArticlesData = articlesData?.slice(0, 4) || [];
+  const finalArticlesData = articlesData?.items?.slice(0, 4) || [];
   const mostRecentTweetId = tweetsData?.data[0]?.id;
 
   return (
@@ -118,48 +118,52 @@ export default function Home() {
               in San Francisco, California.
             </h2>
           </section>
-          {!isFetchingArticles && !articlesError && articlesData.length >= 1 && (
-            <Content>
-              <div>
-                <h3>Latest Articles</h3>
-                {finalArticlesData.map(
-                  ({
-                    categoriesCollection,
-                    description,
-                    sys: { id },
-                    title,
-                  }) => {
-                    const articleCategories = categoriesCollection?.items
-                      ? categoriesCollection.items.map(
-                          (category) => category.title,
-                        )
-                      : undefined;
+          {!isFetchingArticles &&
+            !articlesError &&
+            articlesData?.items.length >= 1 && (
+              <Content>
+                <div>
+                  <h3>Latest Articles</h3>
+                  {finalArticlesData.map(
+                    ({
+                      categoriesCollection,
+                      description,
+                      sys: { id },
+                      title,
+                    }) => {
+                      const articleCategories = categoriesCollection?.items
+                        ? categoriesCollection.items.map(
+                            (category) => category.title,
+                          )
+                        : undefined;
 
-                    return (
-                      <ArticlePreviewCard
-                        articleId={id}
-                        description={description}
-                        key={title}
-                        title={title}
-                        categories={articleCategories || []}
-                      />
-                    );
-                  },
-                )}
-              </div>
-              <div>
-                {!isFetchingCategories && !categoriesError ? (
-                  <CategoryList categories={categoriesData} />
-                ) : null}
-                {mostRecentTweetId ? (
-                  <Tweet
-                    currentTheme={currentTheme}
-                    tweetId={mostRecentTweetId}
-                  />
-                ) : null}
-              </div>
-            </Content>
-          )}
+                      return (
+                        <ArticlePreviewCard
+                          articleId={id}
+                          description={description}
+                          key={title}
+                          title={title}
+                          categories={articleCategories || []}
+                        />
+                      );
+                    },
+                  )}
+                </div>
+                <div>
+                  {!isFetchingCategories &&
+                  !categoriesError &&
+                  categoriesData?.items.length ? (
+                    <CategoryList categories={categoriesData?.items} />
+                  ) : null}
+                  {mostRecentTweetId ? (
+                    <Tweet
+                      currentTheme={currentTheme}
+                      tweetId={mostRecentTweetId}
+                    />
+                  ) : null}
+                </div>
+              </Content>
+            )}
         </div>
       </RootStyles>
     </Layout>

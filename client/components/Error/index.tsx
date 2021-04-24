@@ -6,7 +6,7 @@ interface Props {
   errorPhrase: string;
 }
 
-function Error({ errorCode, errorPhrase }: Props) {
+export default function Error({ errorCode, errorPhrase }: Props) {
   return (
     <RootStyles>
       <h4>{`${errorCode} - ${errorPhrase}`}</h4>
@@ -57,5 +57,3 @@ const RootStyles = styled.main`
     }
   }
 `;
-
-export default Error;

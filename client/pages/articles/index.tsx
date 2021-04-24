@@ -58,8 +58,8 @@ function ArticlesPage() {
     return (
       <Layout pageName={PAGE_NAME} withEmojis withFooter>
         <RootStyles>
-          <PageTitle title="Articles" type="2" />
           <div>
+            <PageTitle title="Articles" type="2" />
             {categorizedArticlesArray.map(([category, articles], i) => {
               return (
                 <CategoryArticleSection
@@ -87,9 +87,7 @@ const RootStyles = styled.main`
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin-top: ${({ theme }) => theme.spaces.small};
-  margin-bottom: ${({ theme }) => theme.spaces.large};
-  padding: 0 3%;
+  padding: ${({ theme }) => theme.spaces.medium} 3%;
   width: 100%;
 
   > div {

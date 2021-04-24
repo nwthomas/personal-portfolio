@@ -1,5 +1,3 @@
-import styled from 'styled-components';
-
 type PageTitleTypeEnum = '1' | '2' | '3' | '4' | '5';
 
 interface Props {
@@ -25,9 +23,5 @@ export default function PageTitle({ title, type }: Props) {
     }
   };
 
-  return <RootStyles>{getHeaderType(title, type)}</RootStyles>;
+  return getHeaderType(title, type);
 }
-
-const RootStyles = styled.div`
-  width: 100%;
-`;
