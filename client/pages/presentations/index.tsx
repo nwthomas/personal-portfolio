@@ -6,20 +6,6 @@ import { presentations } from '../../staticAssets';
 
 const PAGE_NAME = 'Presentations';
 
-// These two async functions pre-generate this page at build time as it's using a static resources
-//  file and will never change in production.
-export async function getStaticProps() {
-  return {
-    props: {},
-  };
-}
-export async function getStaticPaths() {
-  return {
-    paths: ['/presentations'],
-    fallback: false,
-  };
-}
-
 export default function Presentations() {
   return (
     <Layout pageName={PAGE_NAME} withEmojis withFooter>
