@@ -45,7 +45,7 @@ const RootStyles = styled.main`
   width: 100%;
 
   > div {
-    max-width: ${({ theme }) => theme.breakpoints.ultraWide};
+    max-width: ${({ theme }) => theme.appDimensions.appMaxWidth};
     width: 100%;
 
     > div {

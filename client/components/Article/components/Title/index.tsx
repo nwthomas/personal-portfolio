@@ -15,7 +15,11 @@ export default function ArticleTitle({ isMainTitle, titleCopy }: Props) {
   );
 }
 
-const RootStyles = styled.div<{ isMainTitle: boolean }>`
+interface StyleProps {
+  isMainTitle?: boolean;
+}
+
+const RootStyles = styled.div<StyleProps>`
   display: flex;
   justify-content: center;
   margin-bottom: ${({ theme }) => theme.spaces.medium};
@@ -30,8 +34,7 @@ const RootStyles = styled.div<{ isMainTitle: boolean }>`
 
     @media only screen and (min-width: ${({ theme }) =>
         theme.breakpoints.mobile}) {
-      justify-content: ${({ isMainTitle }) =>
-        isMainTitle ? 'center' : 'flex-start'};
+      justify-content: flex-start;
     }
 
     > h2 {

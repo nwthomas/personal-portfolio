@@ -7,7 +7,6 @@ import Layout from '../../../components/Layout';
 import PageTitle from '../../../components/PageTitle';
 import { getArticlePreviews, getCategories } from '../../api';
 import CategoryList from '../../../components/CategoryList';
-import { getRandomErrorPhrase } from '../../../staticAssets';
 import Error from '../../../components/Error';
 
 export async function getServerSideProps() {
@@ -84,7 +83,7 @@ export default function CategoryPage() {
 
   return (
     <Layout pageName="Oops" withEmojis>
-      <Error errorCode="500" errorPhrase={getRandomErrorPhrase()} />
+      <Error errorCode="500" />
     </Layout>
   );
 }

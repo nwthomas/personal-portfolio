@@ -50,7 +50,7 @@ export default function Home() {
     getLastTweetFromTwitterProfile,
   );
 
-  const finalArticlesData = articlesData?.items?.slice(0, 4) || [];
+  const finalArticlesData = articlesData?.items?.slice(0, 3) || [];
   const mostRecentTweetId = tweetsData?.data[0]?.id;
 
   return (
@@ -59,7 +59,7 @@ export default function Home() {
         <div>
           <section>
             <h2>
-              I'm Nathan Thomas, a software engineer
+              Hi. I'm Nathan, a software engineer
               <span>
                 <a href="https://reactjs.org/">
                   <Image
@@ -101,7 +101,7 @@ export default function Home() {
                   />
                 </a>
               </span>
-              . I currently work at the bird company
+              . I work at the bird company
               <span>
                 <a href="https://twitter.com/nwthomas_">
                   <Image
@@ -115,7 +115,7 @@ export default function Home() {
                   />
                 </a>
               </span>
-              in San Francisco, California.
+              in San Francisco.
             </h2>
           </section>
           {!isFetchingArticles &&
@@ -144,6 +144,7 @@ export default function Home() {
                           key={title}
                           title={title}
                           categories={articleCategories || []}
+                          withCategories
                         />
                       );
                     },
@@ -178,7 +179,7 @@ const RootStyles = styled.main`
   width: 100%;
 
   > div {
-    max-width: 1400px;
+    max-width: ${({ theme }) => theme.appDimensions.appMaxWidth};
     width: 100%;
 
     > section {
@@ -193,19 +194,13 @@ const RootStyles = styled.main`
       }
 
       > h2 {
-        font-size: 2.5rem;
+        font-size: 3rem;
         max-width: 100%;
-
-        @media only screen and (min-width: ${({ theme }) =>
-            theme.breakpoints.mobile}) {
-          font-size: 3rem;
-          max-width: 100%;
-        }
 
         @media only screen and (min-width: ${({ theme }) =>
             theme.breakpoints.desktop}) {
           font-size: 3rem;
-          max-width: 85%;
+          max-width: 75%;
         }
 
         > span {

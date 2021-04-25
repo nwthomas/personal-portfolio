@@ -1,15 +1,17 @@
 import Link from 'next/link';
 import styled from 'styled-components';
+import { getRandomErrorPhrase } from '../../staticAssets';
 
 interface Props {
   errorCode: string;
-  errorPhrase: string;
+  errorPhrase?: string;
 }
 
 export default function Error({ errorCode, errorPhrase }: Props) {
+  const finalErrorPhrase = errorPhrase || getRandomErrorPhrase();
   return (
     <RootStyles>
-      <h4>{`${errorCode} - ${errorPhrase}`}</h4>
+      <h4>{`${errorCode} - ${finalErrorPhrase}`}</h4>
       <div>
         <Link href="/">
           <p>Go back home</p>

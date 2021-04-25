@@ -41,6 +41,7 @@ const Button = styled.button`
   padding: 6px 10px;
   text-decoration: none;
   transition: opacity ${({ theme }) => theme.transitions.short};
+  white-space: nowrap;
 
   &:hover {
     opacity: ${({ theme }) => theme.opacity.opacity80};

@@ -8,7 +8,6 @@ import type { ArticlePreviewType } from '../api/articles';
 import CategoryList from '../../components/CategoryList';
 import CategoryArticleSection from '../../components/CategoryArticleSection';
 import { useLayoutCategoryArticlePreviews } from '../../hooks/useLayoutCategoryArticlePreviews';
-import { getRandomErrorPhrase } from '../../staticAssets';
 import Error from '../../components/Error';
 
 const PAGE_NAME = 'Articles';
@@ -78,7 +77,7 @@ function ArticlesPage() {
 
   return (
     <Layout pageName="Oops" withEmojis>
-      <Error errorCode="500" errorPhrase={getRandomErrorPhrase()} />
+      <Error errorCode="500" />
     </Layout>
   );
 }
@@ -91,7 +90,7 @@ const RootStyles = styled.main`
   width: 100%;
 
   > div {
-    max-width: ${({ theme }) => theme.breakpoints.ultraWide};
+    max-width: ${({ theme }) => theme.appDimensions.appMaxWidth};
     width: 100%;
   }
 `;

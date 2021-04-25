@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { getArticleIds, getArticleById } from '../api';
 import Layout from '../../components/Layout';
 import Article from '../../components/Article';
-import { getRandomErrorPhrase } from '../../staticAssets';
 import Error from '../../components/Error';
 
 interface ArticleIdType {
@@ -77,7 +76,7 @@ export default function ArticleByName() {
 
   return (
     <Layout pageName="Oops" withEmojis>
-      <Error errorCode="500" errorPhrase={getRandomErrorPhrase()} />
+      <Error errorCode="500" />
     </Layout>
   );
 }

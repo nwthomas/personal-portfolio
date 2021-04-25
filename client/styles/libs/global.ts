@@ -26,23 +26,26 @@ const GlobalStyle = css`
 
   /* To change the colors in the colors object, go to styles/libs/theme.ts */
   body {
-    --text-accent-one: ${colors.mediumPurple};
-    --text-accent-two: ${colors.dullLavender};
-    --text-accent-three: ${colors.bilobaFlower};
     --transparent: ${colors.transparent};
   }
   body.dark {
     --body-bg: ${colors.woodsmoke};
-    --body-bg-accent-one: ${colors.shark};
-    --body-bg-accent-two: ${colors.onyx};
+    --body-bg-accent-one: ${colors.onyx};
+    --body-bg-accent-two: ${colors.black};
     --text: ${colors.titanWhite};
-    --theme-icon-bg: ${colors.mediumPurple};
+    --text-accent-one: ${colors.goldenFizz};
+    --text-accent-two: ${colors.dolly};
+    --text-accent-three: ${colors.australianMint};
+    --theme-icon-bg: ${colors.goldenFizz};
   }
   body.light {
     --body-bg: ${colors.alabaster};
     --body-bg-accent-one: ${colors.mercury};
     --body-bg-accent-two: ${colors.white};
     --text: ${colors.mineShaft};
+    --text-accent-one: ${colors.mediumPurple};
+    --text-accent-two: ${colors.dullLavender};
+    --text-accent-three: ${colors.bilobaFlower};
     --theme-icon-bg: ${colors.crusta};
   }
 

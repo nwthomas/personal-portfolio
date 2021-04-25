@@ -4,12 +4,15 @@ export type ThemeEnum = 'dark' | 'light';
 // All color names pulled directly from http://chir.ag/projects/name-that-color/
 export const colors = {
   alabaster: '#f8f8f8f8',
+  australianMint: '#F9FFC2',
   black: '#000000',
   crusta: '#f98a31',
   bilobaFlower: '#BBADEB',
   bunker: '#101419',
-  emerald: '#59c689',
   dullLavender: '#9F8AE5',
+  dolly: '#F4FE86',
+  emerald: '#59c689',
+  goldenFizz: '#eefd42',
   mediumPurple: '#7E61DC',
   mercury: '#e2e2e2',
   mineShaft: '#333333',
@@ -62,7 +65,6 @@ const borderRadii = {
 const breakpoints = {
   mobile: '600px',
   desktop: '1000px',
-  ultraWide: '1400px',
 };
 
 const opacity = {

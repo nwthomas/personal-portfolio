@@ -11,6 +11,7 @@ interface Props {
   title: string;
   categories: Array<string>;
   withBackground?: boolean;
+  withCategories?: boolean;
 }
 
 export default function ArticlePreviewCard({
@@ -19,6 +20,7 @@ export default function ArticlePreviewCard({
   title,
   categories,
   withBackground,
+  withCategories,
 }: Props) {
   const sortedCategories = categories?.sort((a, b) => (a > b ? 1 : -1));
 
@@ -33,14 +35,16 @@ export default function ArticlePreviewCard({
               <ChevronForwardIcon />
             </div>
             <p>Read</p>
-            {sortedCategories?.length >= 1
-              ? sortedCategories.map((topicTag, i) => (
-                  <div key={i}>
-                    <TopicTag name={topicTag} />
-                  </div>
-                ))
-              : null}
           </div>
+          {withCategories ? (
+            <div>
+              {sortedCategories?.length >= 1
+                ? sortedCategories.map((topicTag, i) => (
+                    <TopicTag name={topicTag} key={i} />
+                  ))
+                : null}
+            </div>
+          ) : null}
         </>
       </RootStyles>
     </Link>
@@ -56,7 +60,7 @@ const RootStyles = styled.div<StylesProps>`
   background-color: ${({ theme, withBackground }) =>
     withBackground
       ? theme.colors.bodyBackgroundAccentTwo
-      : theme.colors.bodyBackground};
+      : theme.colors.transparent};
   border: ${({ theme, withBackground }) =>
     withBackground
       ? `1px solid ${theme.colors.bodyBackgroundAccentOne}`
@@ -68,12 +72,13 @@ const RootStyles = styled.div<StylesProps>`
   margin-bottom: ${({ theme }) => theme.spaces.small};
   padding: ${({ theme, withBackground }) =>
     withBackground ? theme.spaces.medium : `0 0 ${theme.spaces.large}`};
+  transition: opacity ${({ theme }) => theme.transitions.short};
   width: 100%;
 
   @media only screen and (min-width: ${({ theme }) =>
       theme.breakpoints.desktop}) {
     margin: ${({ theme, withBackground }) =>
-      withBackground ? `0 ${theme.spaces.small} ${theme.spaces.small} 0` : 0};
+      withBackground ? `0 ${theme.spaces.medium} ${theme.spaces.medium} 0` : 0};
     width: ${({ withBackground }) => (withBackground ? '400px' : '100%')};
   }
 
@@ -91,13 +96,13 @@ const RootStyles = styled.div<StylesProps>`
     transition: opacity ${({ theme }) => theme.transitions.short};
     width: 100%;
 
-    > div {
-      margin-left: ${({ theme }) => theme.spaces.small};
-    }
-
     > div:first-child {
       width: ${({ theme }) => theme.spaces.medium};
       margin-left: ${({ theme }) => `-${theme.spaces.small}`};
+    }
+
+    > div {
+      margin-left: ${({ theme }) => theme.spaces.small};
     }
 
     > p {
@@ -105,9 +110,16 @@ const RootStyles = styled.div<StylesProps>`
     }
   }
 
-  &:hover {
-    > h4 {
-      color: ${({ theme }) => theme.colors.textAccentTwo};
+  > div:last-child {
+    margin-top: ${({ theme }) => theme.spaces.small};
+    width: 100%;
+
+    > button {
+      margin-right: ${({ theme }) => theme.spaces.small};
     }
+  }
+
+  &:hover {
+    opacity: ${({ theme }) => theme.opacity.opacity80};
   }
 `;
