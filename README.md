@@ -1,6 +1,7 @@
 <h1 align="center"><img src="./assets/readme-title.png" /></h1>
-
 # PORTFOLIO 2.0 🤌🏻
+
+![axios](https://img.shields.io/badge/axios-%5E0.21.1-yellow) ![formik](https://img.shields.io/badge/formik-%5E2.2.6-green) ![golang](https://img.shields.io/badge/golang-1.16.3-blue) ![graphql](https://img.shields.io/badge/graphql-%5E15.4.0-red) ![next](https://img.shields.io/badge/next-10.0.2-yellowgreen) ![react](https://img.shields.io/badge/react-17.0.1-blue) ![react-markdown](https://img.shields.io/badge/react--markdown-%5E5.0.3-lightgrey) ![react-query](https://img.shields.io/badge/react--query-%5E3.5.14-pink) ![react-syntax-highlighter](https://img.shields.io/badge/react--syntax--highlighter-%5E15.4.3-green) ![styled-components](https://img.shields.io/badge/styled--components-%5E5.2.1-red)
 
 ## TABLE OF CONTENTS 📚
 
@@ -18,7 +19,7 @@ Making this site gave me the opportunity to really stretch out and craft a site 
 
 Welcome.
 
-## TECHNOLOGY STACK 🧙🏻‍♂️
+## TECHNOLOGY STACK 🐋
 
 I tried to use a fairly modern tech stack (both on front-end and back-end) while testing out some new technologies that I'd never used before. This resulted in a fast, performant, and easily extensible web app that should be fairly future proof for the coming years. I used:
 
