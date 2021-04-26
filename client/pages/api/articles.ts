@@ -72,13 +72,24 @@ interface ArticleCodeSnippetsType {
   contents: string;
 }
 
+interface ArticleVideoType {
+  __typename: 'ArticleVideo';
+  sys: {
+    id: string;
+  };
+  title: string;
+  height: number;
+  width: number;
+}
+
 export type ArticleModulesCollectionTypes =
   | ArticleHeadingType
   | ArticleSeperator
   | ArticleImageType
   | ArticleBodyCopyType
   | ArticleQuoteType
-  | ArticleCodeSnippetsType;
+  | ArticleCodeSnippetsType
+  | ArticleVideoType;
 
 export type ArticleModulesCollectionType = Array<ArticleModulesCollectionTypes>;
 
@@ -123,6 +134,7 @@ export async function getArticleIds() {
 
 // Queries an article by ID
 export async function getArticleById(articleId: string) {
+  console;
   const { article } = await request(
     endpoint,
     gql`
@@ -205,6 +217,17 @@ export async function getArticleById(articleId: string) {
                 python
                 shell
                 typescript
+              }
+
+              ... on ArticleVideo {
+                __typename
+                sys {
+                  id
+                }
+                title
+                src
+                height
+                width
               }
             }
           }

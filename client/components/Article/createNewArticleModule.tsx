@@ -12,11 +12,12 @@ const ARTICLE_HEADING = 'ArticleHeading';
 const ARTICLE_IMAGE = 'ArticleImage';
 const ARTICLE_QUOTE = 'ArticleQuote';
 const ARTICLE_SEPERATOR = 'ArticleSeperator';
+const ARTICLE_VIDEO = 'ArticleVideo';
 
-export default function createNewArticle(
+export const createNewArticleModule = (
   articleModule: ArticleModulesCollectionTypes,
   articleModuleId: number,
-) {
+) => {
   switch (articleModule.__typename) {
     case ARTICLE_COPY:
       return (
@@ -58,7 +59,10 @@ export default function createNewArticle(
       );
     case ARTICLE_SEPERATOR:
       return <Seperator key={articleModuleId} />;
+    case ARTICLE_VIDEO:
+      console.log(articleModule);
+      return null;
     default:
       return null;
   }
-}
+};
