@@ -77,6 +77,7 @@ interface ArticleVideoType {
   sys: {
     id: string;
   };
+  src: string;
   title: string;
   height: number;
   width: number;
@@ -134,7 +135,6 @@ export async function getArticleIds() {
 
 // Queries an article by ID
 export async function getArticleById(articleId: string) {
-  console;
   const { article } = await request(
     endpoint,
     gql`

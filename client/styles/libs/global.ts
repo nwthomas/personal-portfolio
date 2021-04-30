@@ -81,6 +81,7 @@ const GlobalStyle = css`
   }
 
   p,
+  label,
   span,
   ul,
   ol {
@@ -90,7 +91,8 @@ const GlobalStyle = css`
     overflow: break-word;
   }
 
-  p {
+  p,
+  label {
     color: ${({ theme }) => theme.colors.text};
   }
 

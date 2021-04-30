@@ -10,6 +10,7 @@ export default function ArticleTitle({ isMainTitle, titleCopy }: Props) {
     <RootStyles isMainTitle={isMainTitle}>
       <div>
         <h2>{titleCopy}</h2>
+        {isMainTitle ? <p>by Nathan Thomas</p> : null}
       </div>
     </RootStyles>
   );
@@ -28,6 +29,7 @@ const RootStyles = styled.div<StyleProps>`
 
   > div {
     display: flex;
+    flex-direction: column;
     justify-content: 'flex-start';
     max-width: ${({ theme }) => theme.appDimensions.articleMaxWidth};
     width: 100%;
@@ -45,6 +47,11 @@ const RootStyles = styled.div<StyleProps>`
           theme.breakpoints.mobile}) {
         font-size: ${({ isMainTitle }) => (isMainTitle ? '3.5rem' : '2rem')};
       }
+    }
+
+    > p {
+      font-style: italic;
+      opacity: ${({ theme }) => theme.opacity.opacity60};
     }
   }
 `;
