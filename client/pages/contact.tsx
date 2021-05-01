@@ -10,40 +10,9 @@ const NAME_PLACEHOLDER = 'Enter name...';
 const SUBJECT_PLACEHOLDER = 'Enter subject...';
 const MESSAGE_PLACEHOLDER = "What's on your mind...";
 
-interface FormErrorType {
-  name?: string;
-  email?: string;
-  subject?: string;
-  message?: string;
-  phone?: string;
-}
-
 const handleFormSubmit = (values) => {
   // TODO Post to my email server
   console.log(values);
-};
-
-// This is a custom validation function that Formik uses to drop the ban hammer on
-// anyone that's trying to get frisky with this code.
-const validate = (values) => {
-  const errors: FormErrorType = {};
-
-  if (!values.name.length) {
-    errors.name = 'Required';
-  }
-  if (!values.email.length) {
-    errors.email = 'Required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address';
-  }
-  if (!values.subject.length) {
-    errors.subject = 'Required';
-  }
-  if (!values.message.length) {
-    errors.message = 'Required';
-  }
-
-  return errors;
 };
 
 export default function Contact() {
@@ -55,9 +24,20 @@ export default function Contact() {
       message: '',
       // This field is the honeypot field. If it is sent to the email server,
       // the server will not pass on the email.
-      phone: '',
+      fax: '',
     },
-    validate,
+    validationSchema: Yup.object({
+      name: Yup.string()
+        .max(50, 'Must be 50 characters or less')
+        .required('Required'),
+      email: Yup.string().email('Invalid email address').required('Required'),
+      subject: Yup.string()
+        .max(100, 'Must be 100 characters or less')
+        .required('Required'),
+      message: Yup.string()
+        .max(500, 'Must be 500 characters or less')
+        .required('Required'),
+    }),
     onSubmit: handleFormSubmit,
   });
 
@@ -126,12 +106,12 @@ export default function Contact() {
               />
               <input
                 autoComplete="nope"
-                name="phone"
+                name="fax"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
                 tabIndex={-1}
                 type="text"
-                value={formik.values.phone}
+                value={formik.values.fax}
               />
               <div>
                 <button type="submit">Send</button>
