@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ./ --fix"
+    "lint": "eslint ./ --fix",
+    "share": "~/ngrok http 3000"
   },
   "dependencies": {
     "axios": "^0.21.1",
