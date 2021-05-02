@@ -31,6 +31,7 @@ export const themeColorValues = {
   bodyBackgroundAccentOne: 'var(--body-bg-accent-one)',
   bodyBackgroundAccentTwo: 'var(--body-bg-accent-two)',
   text: 'var(--text)',
+  textOnColor: 'var(--text-on-color)',
   textAccentOne: 'var(--text-accent-one)',
   textAccentTwo: 'var(--text-accent-two)',
   textAccentThree: 'var(--text-accent-three)',

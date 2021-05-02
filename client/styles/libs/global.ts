@@ -19,6 +19,10 @@ const GlobalStyle = css`
   html,
   body {
     background-color: ${({ theme }) => theme.colors.bodyBackground};
+  }
+
+  html,
+  body {
     font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, Segoe UI,
       Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
       'Segoe UI Emoji', 'Segoe UI Symbol';
@@ -33,6 +37,7 @@ const GlobalStyle = css`
     --body-bg-accent-one: ${colors.onyx};
     --body-bg-accent-two: ${colors.black};
     --text: ${colors.titanWhite};
+    --text-on-color: ${colors.mineShaft};
     --text-accent-one: ${colors.goldenFizz};
     --text-accent-two: ${colors.dolly};
     --text-accent-three: ${colors.australianMint};
@@ -43,6 +48,7 @@ const GlobalStyle = css`
     --body-bg-accent-one: ${colors.mercury};
     --body-bg-accent-two: ${colors.white};
     --text: ${colors.mineShaft};
+    --text-on-color: ${colors.titanWhite};
     --text-accent-one: ${colors.mediumPurple};
     --text-accent-two: ${colors.dullLavender};
     --text-accent-three: ${colors.bilobaFlower};
@@ -69,7 +75,7 @@ const GlobalStyle = css`
   }
 
   h3 {
-    color: var(--text-accent-one);
+    color: ${({ theme }) => theme.colors.textAccentOne};
     font-size: 1.6rem;
     margin-bottom: ${({ theme }) => theme.spaces.medium};
     text-transform: uppercase;
@@ -84,11 +90,19 @@ const GlobalStyle = css`
   label,
   span,
   ul,
-  ol {
+  ol,
+  input,
+  textarea {
     font-display: swap;
     font-size: 1.6rem;
     line-height: 2;
     overflow: break-word;
+  }
+
+  textarea {
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, Segoe UI,
+      Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol';
   }
 
   p,

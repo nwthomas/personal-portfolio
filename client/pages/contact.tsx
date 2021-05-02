@@ -1,21 +1,40 @@
 import { useFormik } from 'formik';
+import { useMutation } from 'react-query';
 import * as Yup from 'yup';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
+import { sendEmailToServer } from './api/email';
+import type { EmailType } from './api/email';
 
 const PAGE_NAME = 'Contact';
 const EMAIL_PLACEHOLDER = 'Enter email...';
 const NAME_PLACEHOLDER = 'Enter name...';
 const SUBJECT_PLACEHOLDER = 'Enter subject...';
-const MESSAGE_PLACEHOLDER = "What's on your mind...";
-
-const handleFormSubmit = (values) => {
-  // TODO Post to my email server
-  console.log(values);
-};
+const MESSAGE_PLACEHOLDER = "What's happening?";
 
 export default function Contact() {
+  const handleFormSubmit = (emailValues: EmailType) => {
+    mutate(emailValues);
+  };
+
+  const handleResetForm = (event) => {
+    event.preventDefault();
+    formik.resetForm();
+  };
+
+  const { mutate, isLoading } = useMutation(sendEmailToServer, {
+    onSuccess: (data) => {
+      formik.resetForm();
+    },
+    onError: () => {
+      console.log(error);
+    },
+    onSettled: () => {
+      // finish
+    },
+  });
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -47,7 +66,6 @@ export default function Contact() {
         <div>
           <PageTitle title="Contact" type="2" />
           <div>
-            <h3>Let's Talk</h3>
             <form onSubmit={formik.handleSubmit}>
               <div>
                 <label htmlFor="name">Name:</label>
@@ -115,7 +133,9 @@ export default function Contact() {
               />
               <div>
                 <button type="submit">Send</button>
-                <button type="submit">Clear</button>
+                <button type="button" onClick={handleResetForm}>
+                  Reset
+                </button>
               </div>
             </form>
           </div>
@@ -164,6 +184,10 @@ const RootStyles = styled.main<StyleProps>`
           }
 
           > button {
+            background: ${({ theme }) => theme.colors.textAccentOne};
+            color: ${({ theme }) => theme.colors.textOnColor};
+            border: ${({ theme }) =>
+              `1px solid ${theme.colors.bodyBackgroundAccentOne}`};
             border-radius: ${({ theme }) => theme.borderRadii.medium};
             cursor: pointer;
             height: ${({ theme }) => theme.spaces.xLarge};
@@ -177,7 +201,7 @@ const RootStyles = styled.main<StyleProps>`
           border-radius: ${({ theme }) => theme.borderRadii.medium};
           height: ${({ theme }) => theme.spaces.xLarge};
           margin-bottom: ${({ theme }) => theme.spaces.small};
-          padding: ${({ theme }) => theme.spaces.small};
+          padding: ${({ theme }) => `0 ${theme.spaces.small}`};
         }
 
         > textarea {
@@ -190,7 +214,7 @@ const RootStyles = styled.main<StyleProps>`
           margin-bottom: ${({ theme }) => theme.spaces.medium};
           min-width: 100%;
           max-width: 100%;
-          padding: ${({ theme }) => theme.spaces.small};
+          padding: ${({ theme }) => `0${theme.spaces.small}`};
         }
 
         > input:nth-child(9) {
