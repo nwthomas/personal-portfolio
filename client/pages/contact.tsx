@@ -184,37 +184,61 @@ const RootStyles = styled.main<StyleProps>`
           }
 
           > button {
-            background: ${({ theme }) => theme.colors.textAccentOne};
+            background: ${({ theme }) => theme.colors.textAccentTwo};
             color: ${({ theme }) => theme.colors.textOnColor};
             border: ${({ theme }) =>
               `1px solid ${theme.colors.bodyBackgroundAccentOne}`};
             border-radius: ${({ theme }) => theme.borderRadii.medium};
             cursor: pointer;
             height: ${({ theme }) => theme.spaces.xLarge};
+            transition: background ${({ theme }) => theme.transitions.short};
             width: 48%;
+
+            &:hover {
+              background: ${({ theme }) => theme.colors.textAccentThree};
+            }
+
+            &:focus {
+              border: 1px solid ${({ theme }) => theme.colors.text};
+              outline: none;
+            }
           }
         }
 
         > input {
+          background: ${({ theme }) => theme.colors.bodyBackground};
           border: ${({ theme }) =>
             `1px solid ${theme.colors.bodyBackgroundAccentOne}`};
           border-radius: ${({ theme }) => theme.borderRadii.medium};
+          color: ${({ theme }) => theme.colors.text};
           height: ${({ theme }) => theme.spaces.xLarge};
           margin-bottom: ${({ theme }) => theme.spaces.small};
           padding: ${({ theme }) => `0 ${theme.spaces.small}`};
+
+          &:focus {
+            border: 1px solid ${({ theme }) => theme.colors.text};
+            outline: none;
+          }
         }
 
         > textarea {
+          background: ${({ theme }) => theme.colors.bodyBackground};
           border: ${({ theme }) =>
             `1px solid ${theme.colors.bodyBackgroundAccentOne}`};
           border-top-left-radius: ${({ theme }) => theme.borderRadii.medium};
           border-top-right-radius: ${({ theme }) => theme.borderRadii.medium};
           border-bottom-left-radius: ${({ theme }) => theme.borderRadii.medium};
+          color: ${({ theme }) => theme.colors.text};
           height: ${({ theme }) => `calc(${theme.spaces.xxLarge} * 3)`};
           margin-bottom: ${({ theme }) => theme.spaces.medium};
           min-width: 100%;
           max-width: 100%;
           padding: ${({ theme }) => `0${theme.spaces.small}`};
+
+          &:focus {
+            border: 1px solid ${({ theme }) => theme.colors.text};
+            outline: none;
+          }
         }
 
         > input:nth-child(9) {

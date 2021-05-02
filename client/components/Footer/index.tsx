@@ -103,7 +103,7 @@ const RootStyles = styled.footer`
       padding: 0;
     }
 
-    div:first-child {
+    > div:first-child > p:first-child {
       font-style: italic;
     }
 
