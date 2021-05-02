@@ -1,8 +1,14 @@
 import { useContext } from 'react';
 import { useFormik } from 'formik';
 import { useMutation } from 'react-query';
+import { useStateValue } from 'react-conflux';
 import * as Yup from 'yup';
 import styled, { ThemeContext } from 'styled-components';
+import {
+  StateContext,
+  UPDATE_CONTACT_FORM_VALUES,
+  UPDATE_MODAL,
+} from '../store';
 import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
 import Tweet from '../components/Tweet';
@@ -17,9 +23,14 @@ const MESSAGE_PLACEHOLDER = "What's happening?";
 
 function Contact() {
   const { currentTheme } = useContext(ThemeContext);
+  const [state, dispatch] = useStateValue(StateContext);
 
   const handleFormSubmit = (emailValues: EmailType) => {
     mutate(emailValues);
+    dispatch({
+      type: UPDATE_MODAL,
+      payload: { isShown: true, isLoading: true, message: 'Sending Email' },
+    });
   };
 
   const handleResetForm = (event) => {
@@ -27,27 +38,49 @@ function Contact() {
     formik.resetForm();
   };
 
-  const { mutate, isLoading } = useMutation(sendEmailToServer, {
-    onSuccess: (data) => {
+  const handleFormUpdate = (event) => {
+    formik.handleChange(event);
+    dispatch({
+      type: UPDATE_CONTACT_FORM_VALUES,
+      payload: {
+        [event.target.name]: event.target.value,
+      },
+    });
+  };
+
+  const { mutate } = useMutation(sendEmailToServer, {
+    onSuccess: () => {
       formik.resetForm();
+      dispatch({
+        type: UPDATE_MODAL,
+        payload: {
+          isLoading: false,
+          message: 'Email Sent',
+          withButton: true,
+        },
+      });
     },
-    onError: (error) => {
-      console.log(error);
-    },
-    onSettled: () => {
-      // finish
+    onError: () => {
+      dispatch({
+        type: UPDATE_MODAL,
+        payload: {
+          isLoading: false,
+          message: 'Email Failed. Try Again.',
+          withButton: true,
+        },
+      });
     },
   });
 
   const formik = useFormik({
     initialValues: {
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
+      name: state.contactFormValues.name,
+      email: state.contactFormValues.email,
+      subject: state.contactFormValues.subject,
+      message: state.contactFormValues.message,
       // This field is the honeypot field. If it is sent to the email server,
       // the server will not pass on the email.
-      fax: '',
+      fax: state.contactFormValues.fax,
     },
     validationSchema: Yup.object({
       name: Yup.string()
@@ -80,7 +113,7 @@ function Contact() {
               <input
                 name="name"
                 type="text"
-                onChange={formik.handleChange}
+                onChange={handleFormUpdate}
                 onBlur={formik.handleBlur}
                 placeholder={NAME_PLACEHOLDER}
                 value={formik.values.name}
@@ -94,7 +127,7 @@ function Contact() {
               <input
                 name="email"
                 type="email"
-                onChange={formik.handleChange}
+                onChange={handleFormUpdate}
                 onBlur={formik.handleBlur}
                 placeholder={EMAIL_PLACEHOLDER}
                 value={formik.values.email}
@@ -108,7 +141,7 @@ function Contact() {
               <input
                 name="subject"
                 type="subject"
-                onChange={formik.handleChange}
+                onChange={handleFormUpdate}
                 onBlur={formik.handleBlur}
                 placeholder={SUBJECT_PLACEHOLDER}
                 value={formik.values.subject}
@@ -121,7 +154,7 @@ function Contact() {
               </div>
               <textarea
                 name="message"
-                onChange={formik.handleChange}
+                onChange={handleFormUpdate}
                 onBlur={formik.handleBlur}
                 placeholder={MESSAGE_PLACEHOLDER}
                 value={formik.values.message}
@@ -129,14 +162,14 @@ function Contact() {
               <input
                 autoComplete="nope"
                 name="fax"
+                onChange={handleFormUpdate}
                 onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
                 tabIndex={-1}
                 type="text"
                 value={formik.values.fax}
               />
               <div>
-                <button type="submit">{isLoading ? 'Sending' : 'Send'}</button>
+                <button type="submit">Send</button>
                 <button type="button" onClick={handleResetForm}>
                   Reset
                 </button>
@@ -156,14 +189,11 @@ function Contact() {
   );
 }
 
-interface StyleProps {
-  // finish
-}
-
-const RootStyles = styled.main<StyleProps>`
+const RootStyles = styled.main`
   align-items: center;
   display: flex;
   flex-direction: column;
+  overflow-y: hidden;
   padding: ${({ theme }) => theme.spaces.medium} 3%;
   width: 100%;
 
@@ -291,7 +321,7 @@ const RootStyles = styled.main<StyleProps>`
           }
 
           > div {
-            transform: rotate(-2deg);
+            transform: rotate(-1deg);
             width: 70%;
           }
         }

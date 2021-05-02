@@ -49,6 +49,7 @@ const appDimensions = {
   articleMaxWidth: '680px',
   desktopFooterHeight: '200px',
   desktopNavbarHeight: '120px',
+  modalMaxWidth: '450px',
   mobileFooterHeight: '200px',
   mobileNavbarHeight: '70px',
   quoteHorizontalGutters: '6%',
