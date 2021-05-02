@@ -96,7 +96,7 @@ const RootStyles = styled.main`
   width: 100%;
 
   > div {
-    max-width: 1400px;
+    max-width: ${({ theme }) => theme.appDimensions.appMaxWidth};
     width: 100%;
   }
 `;

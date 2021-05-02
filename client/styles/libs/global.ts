@@ -97,12 +97,19 @@ const GlobalStyle = css`
     font-size: 1.6rem;
     line-height: 2;
     overflow: break-word;
-  }
-
-  textarea {
     font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, Segoe UI,
       Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
       'Segoe UI Emoji', 'Segoe UI Symbol';
+
+    &::placeholder {
+      color: ${({ theme }) => theme.colors.text};
+      opacity: ${({ theme }) => theme.opacity.opacity60};
+      font-size: 1.6rem;
+      line-height: 2;
+      font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, Segoe UI,
+        Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+        'Segoe UI Emoji', 'Segoe UI Symbol';
+    }
   }
 
   p,

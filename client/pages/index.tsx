@@ -135,7 +135,7 @@ export default function Home() {
                         ? categoriesCollection.items.map(
                             (category) => category.title,
                           )
-                        : undefined;
+                        : [];
 
                       return (
                         <ArticlePreviewCard
@@ -143,7 +143,7 @@ export default function Home() {
                           description={description}
                           key={title}
                           title={title}
-                          categories={articleCategories || []}
+                          categories={articleCategories}
                           withCategories
                         />
                       );
@@ -201,7 +201,7 @@ const RootStyles = styled.main`
 
         @media only screen and (min-width: ${({ theme }) =>
             theme.breakpoints.desktop}) {
-          max-width: 75%;
+          max-width: 80%;
         }
 
         > span {
@@ -259,7 +259,7 @@ const Content = styled.div`
 
     @media only screen and (min-width: ${({ theme }) =>
         theme.breakpoints.mobile}) {
-      padding-right: 15%;
+      padding-right: 10%;
     }
   }
 

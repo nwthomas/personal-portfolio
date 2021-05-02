@@ -44,7 +44,8 @@ const RootStyles = styled.section`
   padding: 0 ${({ theme }) => theme.appDimensions.appHorizontalGutters};
   width: 100%;
 
-  > p {
+  > p,
+  ol {
     max-width: ${({ theme }) => theme.appDimensions.articleMaxWidth};
     margin-bottom: ${({ theme }) => theme.spaces.large};
     overflow: break-word;
@@ -60,6 +61,11 @@ const RootStyles = styled.section`
 
     > em {
       font-style: italic;
+    }
+
+    li {
+      list-style-position: outside;
+      margin-left: ${({ theme }) => theme.spaces.medium};
     }
   }
 

@@ -45,7 +45,7 @@ const appDimensions = {
   appHorizontalGutters: '3%',
   appMaxWidth: '1200px',
   appMinHeight: '100vh',
-  articleHeroImageMaxWidth: '1000px',
+  articleHeroImageMaxWidth: '1200px',
   articleMaxWidth: '680px',
   desktopFooterHeight: '200px',
   desktopNavbarHeight: '120px',

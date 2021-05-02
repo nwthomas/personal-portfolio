@@ -1,5 +1,6 @@
 import { useFormik } from 'formik';
 import { useMutation } from 'react-query';
+import Image from 'next/image';
 import * as Yup from 'yup';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
@@ -13,7 +14,19 @@ const NAME_PLACEHOLDER = 'Enter name...';
 const SUBJECT_PLACEHOLDER = 'Enter subject...';
 const MESSAGE_PLACEHOLDER = "What's happening?";
 
-export default function Contact() {
+const PostcardIcon = (
+  <Image
+    alt="Postcard"
+    draggable={false}
+    height={627}
+    quality={100}
+    priority
+    src={'/postcard.png'}
+    width={1098}
+  />
+);
+
+function Contact() {
   const handleFormSubmit = (emailValues: EmailType) => {
     mutate(emailValues);
   };
@@ -138,6 +151,10 @@ export default function Contact() {
                 </button>
               </div>
             </form>
+            <div>
+              <p>Let's talk.</p>
+              <div>{PostcardIcon}</div>
+            </div>
           </div>
         </div>
       </RootStyles>
@@ -165,6 +182,8 @@ const RootStyles = styled.main<StyleProps>`
       border: ${({ theme }) =>
         `1px solid ${theme.colors.bodyBackgroundAccentOne}`};
       border-radius: ${({ theme }) => theme.borderRadii.small};
+      display: flex;
+      justify-content: space-between;
       margin: ${({ theme }) => theme.spaces.medium} 0;
       padding: ${({ theme }) => theme.spaces.medium};
       width: 100%;
@@ -189,6 +208,8 @@ const RootStyles = styled.main<StyleProps>`
           }
 
           > button {
+            align-items: center;
+            display: flex;
             background: ${({ theme }) => theme.colors.textAccentTwo};
             color: ${({ theme }) => theme.colors.textOnColor};
             border: ${({ theme }) =>
@@ -196,6 +217,7 @@ const RootStyles = styled.main<StyleProps>`
             border-radius: ${({ theme }) => theme.borderRadii.medium};
             cursor: pointer;
             height: ${({ theme }) => theme.spaces.xLarge};
+            justify-content: center;
             transition: background ${({ theme }) => theme.transitions.short};
             width: 48%;
 
@@ -244,6 +266,10 @@ const RootStyles = styled.main<StyleProps>`
             border: 1px solid ${({ theme }) => theme.colors.text};
             outline: none;
           }
+
+          &::placeholder {
+            color: ${({ theme }) => theme.colors.text};
+          }
         }
 
         > input:nth-child(9) {
@@ -252,6 +278,25 @@ const RootStyles = styled.main<StyleProps>`
           border: 1px solid red;
         }
       }
+
+      > div {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 50%;
+
+        > p {
+          margin-bottom: ${({ theme }) => theme.spaces.jumbo};
+        }
+
+        > div {
+          transform: rotate(2deg);
+          width: 70%;
+        }
+      }
     }
   }
 `;
+
+export default Contact;

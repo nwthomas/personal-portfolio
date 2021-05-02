@@ -25,17 +25,11 @@ const RootStyles = styled.main`
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
+  margin-top: 35vh;
   max-width: ${({ theme }) => theme.appDimensions.appMaxWidth};
-  padding: ${({ theme }) =>
-    `${theme.appDimensions.mobileNavbarHeight} ${theme.appDimensions.appHorizontalGutters} 0`};
+  padding: ${({ theme }) => ` 0 ${theme.appDimensions.appHorizontalGutters}`};
   width: 100%;
-
-  @media only screen and (min-width: ${({ theme }) =>
-      theme.breakpoints.mobile}) {
-    padding: ${({ theme }) =>
-      `${theme.appDimensions.desktopNavbarHeight} ${theme.appDimensions.appHorizontalGutters} 0`};
-  }
 
   > h4 {
     margin-bottom: ${({ theme }) => theme.spaces.small};
