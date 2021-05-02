@@ -27,7 +27,7 @@ export default function Contact() {
     onSuccess: (data) => {
       formik.resetForm();
     },
-    onError: () => {
+    onError: (error) => {
       console.log(error);
     },
     onSettled: () => {
@@ -132,7 +132,7 @@ export default function Contact() {
                 value={formik.values.fax}
               />
               <div>
-                <button type="submit">Send</button>
+                <button type="submit">{isLoading ? 'Sending' : 'Send'}</button>
                 <button type="button" onClick={handleResetForm}>
                   Reset
                 </button>
@@ -172,7 +172,12 @@ const RootStyles = styled.main<StyleProps>`
       > form {
         display: flex;
         flex-direction: column;
-        width: 45%;
+        width: 100%;
+
+        @media only screen and (min-width: ${({ theme }) =>
+            theme.breakpoints.desktop}) {
+          width: 45%;
+        }
 
         > div {
           display: flex;

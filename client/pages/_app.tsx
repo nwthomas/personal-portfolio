@@ -6,6 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import Navbar from '../components/Navbar';
 import useGetPreferredTheme from '../hooks/useGetPreferredTheme';
 import MobileNavbar from '../components/MobileNavbar';
+import Toast from '../components/Toast';
 import GlobalStyle, { makeMainTheme } from '../styles';
 import '../styles/libs/fonts.css';
 
@@ -34,6 +35,7 @@ export default function MyApp({ Component, pageProps }) {
             themeName={currentTheme}
           />
           <Component {...pageProps} />
+          <Toast isShown message="Email Sent" />
           <MobileNavbar />
         </ThemeProvider>
         {process.env.NEXT_PUBLIC_RUNTIME_ENV === 'development' ? (

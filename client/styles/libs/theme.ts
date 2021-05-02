@@ -16,6 +16,7 @@ export const colors = {
   mediumPurple: '#7E61DC',
   mercury: '#e2e2e2',
   mineShaft: '#333333',
+  pictonBlue: '#479ded',
   onyx: '#3b3b40',
   shark: '#27272a',
   titanWhite: '#f8f8ff',
@@ -42,7 +43,7 @@ export const themeColorValues = {
 // ===================================== Space Variables
 const appDimensions = {
   appHorizontalGutters: '3%',
-  appMaxWidth: '1400px',
+  appMaxWidth: '1200px',
   appMinHeight: '100vh',
   articleHeroImageMaxWidth: '1000px',
   articleMaxWidth: '680px',
@@ -66,6 +67,7 @@ const borderRadii = {
 const breakpoints = {
   mobile: '600px',
   desktop: '1000px',
+  ultrawide: '1200px',
 };
 
 const opacity = {
@@ -103,6 +105,7 @@ export interface Theme {
   breakpoints: typeof breakpoints;
   borderRadii: typeof borderRadii;
   colors: typeof themeColorValues;
+  colorsHex: typeof colors;
   currentTheme: ThemeEnum;
   opacity: typeof opacity;
   spaces: typeof spaces;
@@ -116,6 +119,7 @@ function makeMainTheme(currentTheme: ThemeEnum): Theme {
     breakpoints,
     borderRadii,
     colors: themeColorValues,
+    colorsHex: colors,
     currentTheme,
     opacity,
     spaces,

@@ -185,12 +185,14 @@ const RootStyles = styled.main`
     > section {
       align-items: center;
       display: flex;
-      margin: 50px 0 80px;
+      margin: ${({ theme }) => theme.spaces.medium} 0
+        ${({ theme }) => `calc(${theme.spaces.medium} * 2)`};
       width: 100%;
 
       @media only screen and (min-width: ${({ theme }) =>
           theme.breakpoints.mobile}) {
-        margin: 80px 0;
+        margin: ${({ theme }) => theme.spaces.medium} 0
+          ${({ theme }) => `calc(${theme.spaces.large} * 2)`};
       }
 
       > h2 {
@@ -199,7 +201,6 @@ const RootStyles = styled.main`
 
         @media only screen and (min-width: ${({ theme }) =>
             theme.breakpoints.desktop}) {
-          font-size: 3rem;
           max-width: 75%;
         }
 
@@ -267,14 +268,16 @@ const Content = styled.div`
     max-width: 460px;
     width: 100%;
 
-    @media only screen and (min-width: 600px) {
+    @media only screen and (min-width: ${({ theme }) =>
+        theme.breakpoints.mobile}) {
       display: block;
     }
 
     > div {
       display: none;
 
-      @media only screen and (min-width: 1000px) {
+      @media only screen and (min-width: ${({ theme }) =>
+          theme.breakpoints.desktop}) {
         display: block;
         margin-bottom: 50px;
         width: 100%;
