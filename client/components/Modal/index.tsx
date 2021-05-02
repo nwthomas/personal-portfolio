@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { useStateValue } from 'react-conflux';
 import { StateContext, UPDATE_MODAL } from '../../store';
 
@@ -23,13 +23,16 @@ function Modal() {
   return (
     <>
       {isShown ? (
-        <RootStyles>
-          {isLoading ? 'Crazy' : null}
-          <p>{message}</p>
-          {withButton ? (
-            <button onClick={handleButtonClick}>Okay</button>
-          ) : null}
-        </RootStyles>
+        <>
+          <LockBodyScroll />
+          <RootStyles>
+            {isLoading ? <p>Testing Loading</p> : null}
+            <p>{message}</p>
+            {withButton ? (
+              <button onClick={handleButtonClick}>Okay</button>
+            ) : null}
+          </RootStyles>
+        </>
       ) : null}
     </>
   );
@@ -66,8 +69,9 @@ const RootStyles = styled.div`
     cursor: pointer;
     height: ${({ theme }) => theme.spaces.xLarge};
     justify-content: center;
+    max-width: ${({ theme }) => theme.appDimensions.modalMaxWidth};
     transition: background ${({ theme }) => theme.transitions.short};
-    width: 90%;
+    width: 100%;
 
     &:hover {
       background: ${({ theme }) => theme.colors.textAccentThree};
@@ -77,6 +81,13 @@ const RootStyles = styled.div`
       border: 1px solid ${({ theme }) => theme.colors.text};
       outline: none;
     }
+  }
+`;
+
+const LockBodyScroll = createGlobalStyle`
+  body {
+    overflow-y: hidden;
+    position: fixed;
   }
 `;
 

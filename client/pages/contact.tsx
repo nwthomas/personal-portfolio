@@ -16,6 +16,7 @@ import { sendEmailToServer } from './api/email';
 import type { EmailType } from './api/email';
 
 const PAGE_NAME = 'Contact';
+
 const EMAIL_PLACEHOLDER = 'Enter email...';
 const NAME_PLACEHOLDER = 'Enter name...';
 const SUBJECT_PLACEHOLDER = 'Enter subject...';

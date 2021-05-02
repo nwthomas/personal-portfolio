@@ -61,6 +61,10 @@ const RootStyles = styled.div`
     div {
       height: 30px;
       width: 30px;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 `;

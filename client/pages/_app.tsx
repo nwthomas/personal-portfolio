@@ -21,7 +21,7 @@ const queryClient = new QueryClient({
   },
 });
 
-export default function MyApp({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   const [currentTheme, setCurrentTheme] = useGetPreferredTheme();
   const mainTheme = useMemo(() => {
     return makeMainTheme(currentTheme);
@@ -49,3 +49,5 @@ export default function MyApp({ Component, pageProps }) {
     </StateProvider>
   );
 }
+
+export default App;
