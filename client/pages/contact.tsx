@@ -1,10 +1,11 @@
+import { useContext } from 'react';
 import { useFormik } from 'formik';
 import { useMutation } from 'react-query';
-import Image from 'next/image';
 import * as Yup from 'yup';
-import styled from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
+import Tweet from '../components/Tweet';
 import { sendEmailToServer } from './api/email';
 import type { EmailType } from './api/email';
 
@@ -14,19 +15,9 @@ const NAME_PLACEHOLDER = 'Enter name...';
 const SUBJECT_PLACEHOLDER = 'Enter subject...';
 const MESSAGE_PLACEHOLDER = "What's happening?";
 
-const PostcardIcon = (
-  <Image
-    alt="Postcard"
-    draggable={false}
-    height={627}
-    quality={100}
-    priority
-    src={'/postcard.png'}
-    width={1098}
-  />
-);
-
 function Contact() {
+  const { currentTheme } = useContext(ThemeContext);
+
   const handleFormSubmit = (emailValues: EmailType) => {
     mutate(emailValues);
   };
@@ -152,8 +143,11 @@ function Contact() {
               </div>
             </form>
             <div>
-              <p>Let's talk.</p>
-              <div>{PostcardIcon}</div>
+              <p>From when I wrote this page ⬇️</p>
+              <Tweet
+                currentTheme={currentTheme}
+                tweetId="1388010553424060418"
+              />
             </div>
           </div>
         </div>
@@ -178,24 +172,26 @@ const RootStyles = styled.main<StyleProps>`
     width: 100%;
 
     > div {
-      background-color: ${({ theme }) => theme.colors.bodyBackgroundAccentTwo};
-      border: ${({ theme }) =>
-        `1px solid ${theme.colors.bodyBackgroundAccentOne}`};
-      border-radius: ${({ theme }) => theme.borderRadii.small};
       display: flex;
       justify-content: space-between;
-      margin: ${({ theme }) => theme.spaces.medium} 0;
-      padding: ${({ theme }) => theme.spaces.medium};
       width: 100%;
 
       > form {
+        background-color: ${({ theme }) =>
+          theme.colors.bodyBackgroundAccentTwo};
+        border: ${({ theme }) =>
+          `1px solid ${theme.colors.bodyBackgroundAccentOne}`};
+        border-radius: ${({ theme }) => theme.borderRadii.small};
         display: flex;
+        justify-content: space-between;
+        margin: ${({ theme }) => theme.spaces.medium} 0;
+        padding: ${({ theme }) => theme.spaces.medium};
         flex-direction: column;
         width: 100%;
 
         @media only screen and (min-width: ${({ theme }) =>
             theme.breakpoints.desktop}) {
-          width: 45%;
+          width: 50%;
         }
 
         > div {
@@ -280,19 +276,24 @@ const RootStyles = styled.main<StyleProps>`
       }
 
       > div {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        max-width: 50%;
+        display: none;
 
-        > p {
-          margin-bottom: ${({ theme }) => theme.spaces.jumbo};
-        }
+        @media only screen and (min-width: ${({ theme }) =>
+            theme.breakpoints.desktop}) {
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+          padding-top: ${({ theme }) => theme.spaces.jumbo};
+          width: 50%;
 
-        > div {
-          transform: rotate(2deg);
-          width: 70%;
+          > p {
+            margin-bottom: ${({ theme }) => theme.spaces.small};
+          }
+
+          > div {
+            transform: rotate(-2deg);
+            width: 70%;
+          }
         }
       }
     }

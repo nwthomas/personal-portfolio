@@ -39,9 +39,10 @@ declare global {
 interface Props {
   currentTheme: ThemeEnum;
   tweetId: string;
+  withTitle?: boolean;
 }
 
-function Tweet({ currentTheme, tweetId }: Props) {
+function Tweet({ currentTheme, tweetId, withTitle }: Props) {
   const [isLoaded, setIsLoading] = useState(false);
 
   // The first pass needs to use the <blockquote /> and <a /> tag by calling the script load()
@@ -93,7 +94,7 @@ function Tweet({ currentTheme, tweetId }: Props) {
 
   return (
     <div>
-      <h3>Latest Tweet</h3>
+      {withTitle ? <h3>Latest Tweet</h3> : null}
       <div id="container">
         <blockquote
           className="twitter-tweet"

@@ -160,6 +160,7 @@ export default function Home() {
                     <Tweet
                       currentTheme={currentTheme}
                       tweetId={mostRecentTweetId}
+                      withTitle
                     />
                   ) : null}
                 </div>
