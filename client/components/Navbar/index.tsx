@@ -105,7 +105,7 @@ const TitleIcon = styled.h1<{ children: string }>`
   color: ${({ theme }) => theme.colors.textAccentOne};
   cursor: pointer;
   display: flex;
-  font-size: 5.5rem;
+  font-size: 8rem;
   line-height: 1;
   height: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};
   transition: color ${({ theme }) => theme.transitions.short};

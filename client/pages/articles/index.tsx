@@ -8,7 +8,6 @@ import type { ArticlePreviewType } from '../api/articles';
 import CategoryList from '../../components/CategoryList';
 import CategoryArticleSection from '../../components/CategoryArticleSection';
 import { useLayoutCategoryArticlePreviews } from '../../hooks/useLayoutCategoryArticlePreviews';
-import { getRandomErrorPhrase } from '../../staticAssets';
 import Error from '../../components/Error';
 
 const PAGE_NAME = 'Articles';
@@ -58,8 +57,8 @@ function ArticlesPage() {
     return (
       <Layout pageName={PAGE_NAME} withEmojis withFooter>
         <RootStyles>
-          <PageTitle title="Articles" type="2" />
           <div>
+            <PageTitle title="Articles" type="2" />
             {categorizedArticlesArray.map(([category, articles], i) => {
               return (
                 <CategoryArticleSection
@@ -78,7 +77,7 @@ function ArticlesPage() {
 
   return (
     <Layout pageName="Oops" withEmojis>
-      <Error errorCode="500" errorPhrase={getRandomErrorPhrase()} />
+      <Error errorCode="500" />
     </Layout>
   );
 }
@@ -87,13 +86,11 @@ const RootStyles = styled.main`
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin-top: ${({ theme }) => theme.spaces.small};
-  margin-bottom: ${({ theme }) => theme.spaces.large};
-  padding: 0 3%;
+  padding: ${({ theme }) => theme.spaces.medium} 3%;
   width: 100%;
 
   > div {
-    max-width: ${({ theme }) => theme.breakpoints.ultraWide};
+    max-width: ${({ theme }) => theme.appDimensions.appMaxWidth};
     width: 100%;
   }
 `;

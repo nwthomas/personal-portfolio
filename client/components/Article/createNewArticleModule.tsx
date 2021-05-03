@@ -4,6 +4,7 @@ import Image from './components/Image';
 import Quote from './components/Quote';
 import Seperator from './components/Seperator';
 import Title from './components/Title';
+import Video from './components/Video';
 import type { ArticleModulesCollectionTypes } from '../../pages/api/articles';
 
 const ARTICLE_COPY = 'ArticleBodyCopy';
@@ -12,11 +13,12 @@ const ARTICLE_HEADING = 'ArticleHeading';
 const ARTICLE_IMAGE = 'ArticleImage';
 const ARTICLE_QUOTE = 'ArticleQuote';
 const ARTICLE_SEPERATOR = 'ArticleSeperator';
+const ARTICLE_VIDEO = 'ArticleVideo';
 
-export default function createNewArticle(
+export const createNewArticleModule = (
   articleModule: ArticleModulesCollectionTypes,
   articleModuleId: number,
-) {
+) => {
   switch (articleModule.__typename) {
     case ARTICLE_COPY:
       return (
@@ -58,7 +60,17 @@ export default function createNewArticle(
       );
     case ARTICLE_SEPERATOR:
       return <Seperator key={articleModuleId} />;
+    case ARTICLE_VIDEO:
+      return (
+        <Video
+          height={articleModule.height}
+          key={articleModuleId}
+          url={articleModule.src}
+          title={articleModule.title}
+          width={articleModule.width}
+        />
+      );
     default:
       return null;
   }
-}
+};

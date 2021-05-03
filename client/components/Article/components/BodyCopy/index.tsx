@@ -26,9 +26,11 @@ export default function ArticleBodyCopy({ bodyCopy }: Props) {
     <RootStyles>
       {bodyCopySections.map((section) => {
         return (
-          <div key={section}>
-            <ReactMarkdown renderers={renderers} children={section} />
-          </div>
+          <ReactMarkdown
+            renderers={renderers}
+            children={section}
+            key={section}
+          />
         );
       })}
     </RootStyles>
@@ -42,29 +44,32 @@ const RootStyles = styled.section`
   padding: 0 ${({ theme }) => theme.appDimensions.appHorizontalGutters};
   width: 100%;
 
-  > div {
+  > p,
+  ol {
     max-width: ${({ theme }) => theme.appDimensions.articleMaxWidth};
     margin-bottom: ${({ theme }) => theme.spaces.large};
+    overflow: break-word;
     width: 100%;
 
-    > p {
-      overflow: break-word;
+    > a {
+      color: ${({ theme }) => theme.colors.textAccentTwo};
 
-      > a {
-        color: ${({ theme }) => theme.colors.textAccentTwo};
-
-        &:hover {
-          color: ${({ theme }) => theme.colors.textAccentThree};
-        }
+      &:hover {
+        color: ${({ theme }) => theme.colors.textAccentThree};
       }
+    }
 
-      > em {
-        font-style: italic;
-      }
+    > em {
+      font-style: italic;
+    }
+
+    li {
+      list-style-position: outside;
+      margin-left: ${({ theme }) => theme.spaces.medium};
     }
   }
 
-  > div:last-child {
+  > p:last-child {
     margin-bottom: 0;
   }
 `;

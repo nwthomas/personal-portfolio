@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ./ --fix"
+    "lint": "eslint ./ --fix",
+    "share": "~/ngrok http 3000"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -15,11 +16,13 @@
     "graphql-request": "^3.4.0",
     "next": "10.0.2",
     "react": "17.0.1",
+    "react-conflux": "^0.0.2-beta.6",
     "react-dom": "17.0.1",
     "react-markdown": "^5.0.3",
     "react-query": "^3.5.14",
     "react-syntax-highlighter": "^15.4.3",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@types/node": "^14.14.9",

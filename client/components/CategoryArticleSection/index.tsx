@@ -18,7 +18,6 @@ export default function CategoryArticleSection({
         <TopicTag name={categoryName} />
       </div>
       <div>
-        {}
         {articles.map(
           ({ categoriesCollection, description, sys: { id }, title }) => {
             const articleCategories = categoriesCollection?.items

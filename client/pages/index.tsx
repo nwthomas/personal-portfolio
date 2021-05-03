@@ -36,12 +36,12 @@ export default function Home() {
   const { currentTheme } = useContext(ThemeContext);
 
   const {
-    data: { items: articlesData },
+    data: articlesData,
     error: articlesError,
     isFetching: isFetchingArticles,
   } = useQuery('articlePreviews', getArticlePreviews);
   const {
-    data: { items: categoriesData },
+    data: categoriesData,
     error: categoriesError,
     isFetching: isFetchingCategories,
   } = useQuery('categories', getCategories);
@@ -50,7 +50,7 @@ export default function Home() {
     getLastTweetFromTwitterProfile,
   );
 
-  const finalArticlesData = articlesData?.slice(0, 4) || [];
+  const finalArticlesData = articlesData?.items?.slice(0, 3) || [];
   const mostRecentTweetId = tweetsData?.data[0]?.id;
 
   return (
@@ -59,7 +59,7 @@ export default function Home() {
         <div>
           <section>
             <h2>
-              I'm Nathan Thomas, a software engineer
+              Hi. I'm Nathan, a software engineer
               <span>
                 <a href="https://reactjs.org/">
                   <Image
@@ -101,7 +101,7 @@ export default function Home() {
                   />
                 </a>
               </span>
-              . I currently work at the bird company
+              . I work at the bird company
               <span>
                 <a href="https://twitter.com/nwthomas_">
                   <Image
@@ -115,51 +115,57 @@ export default function Home() {
                   />
                 </a>
               </span>
-              in San Francisco, California.
+              in San Francisco.
             </h2>
           </section>
-          {!isFetchingArticles && !articlesError && articlesData.length >= 1 && (
-            <Content>
-              <div>
-                <h3>Latest Articles</h3>
-                {finalArticlesData.map(
-                  ({
-                    categoriesCollection,
-                    description,
-                    sys: { id },
-                    title,
-                  }) => {
-                    const articleCategories = categoriesCollection?.items
-                      ? categoriesCollection.items.map(
-                          (category) => category.title,
-                        )
-                      : undefined;
+          {!isFetchingArticles &&
+            !articlesError &&
+            articlesData?.items.length >= 1 && (
+              <Content>
+                <div>
+                  <h3>Latest Articles</h3>
+                  {finalArticlesData.map(
+                    ({
+                      categoriesCollection,
+                      description,
+                      sys: { id },
+                      title,
+                    }) => {
+                      const articleCategories = categoriesCollection?.items
+                        ? categoriesCollection.items.map(
+                            (category) => category.title,
+                          )
+                        : [];
 
-                    return (
-                      <ArticlePreviewCard
-                        articleId={id}
-                        description={description}
-                        key={title}
-                        title={title}
-                        categories={articleCategories || []}
-                      />
-                    );
-                  },
-                )}
-              </div>
-              <div>
-                {!isFetchingCategories && !categoriesError ? (
-                  <CategoryList categories={categoriesData} />
-                ) : null}
-                {mostRecentTweetId ? (
-                  <Tweet
-                    currentTheme={currentTheme}
-                    tweetId={mostRecentTweetId}
-                  />
-                ) : null}
-              </div>
-            </Content>
-          )}
+                      return (
+                        <ArticlePreviewCard
+                          articleId={id}
+                          description={description}
+                          key={title}
+                          title={title}
+                          categories={articleCategories}
+                          withCategories
+                        />
+                      );
+                    },
+                  )}
+                </div>
+                <div>
+                  {!isFetchingCategories &&
+                  !categoriesError &&
+                  categoriesData?.items.length ? (
+                    <CategoryList categories={categoriesData?.items} />
+                  ) : null}
+                  {mostRecentTweetId ? (
+                    <Tweet
+                      currentTheme={currentTheme}
+                      tweetId={mostRecentTweetId}
+                      withTitle
+                    />
+                  ) : null}
+                </div>
+              </Content>
+            )}
         </div>
       </RootStyles>
     </Layout>
@@ -174,34 +180,29 @@ const RootStyles = styled.main`
   width: 100%;
 
   > div {
-    max-width: 1400px;
+    max-width: ${({ theme }) => theme.appDimensions.appMaxWidth};
     width: 100%;
 
     > section {
       align-items: center;
       display: flex;
-      margin: 50px 0 80px;
+      margin: ${({ theme }) => theme.spaces.medium} 0
+        ${({ theme }) => `calc(${theme.spaces.medium} * 2)`};
       width: 100%;
 
       @media only screen and (min-width: ${({ theme }) =>
           theme.breakpoints.mobile}) {
-        margin: 80px 0;
+        margin: ${({ theme }) => theme.spaces.medium} 0
+          ${({ theme }) => `calc(${theme.spaces.large} * 2)`};
       }
 
       > h2 {
-        font-size: 2.5rem;
+        font-size: 3rem;
         max-width: 100%;
 
         @media only screen and (min-width: ${({ theme }) =>
-            theme.breakpoints.mobile}) {
-          font-size: 3rem;
-          max-width: 100%;
-        }
-
-        @media only screen and (min-width: ${({ theme }) =>
             theme.breakpoints.desktop}) {
-          font-size: 3rem;
-          max-width: 85%;
+          max-width: 80%;
         }
 
         > span {
@@ -259,7 +260,7 @@ const Content = styled.div`
 
     @media only screen and (min-width: ${({ theme }) =>
         theme.breakpoints.mobile}) {
-      padding-right: 15%;
+      padding-right: 10%;
     }
   }
 
@@ -268,14 +269,16 @@ const Content = styled.div`
     max-width: 460px;
     width: 100%;
 
-    @media only screen and (min-width: 600px) {
+    @media only screen and (min-width: ${({ theme }) =>
+        theme.breakpoints.mobile}) {
       display: block;
     }
 
     > div {
       display: none;
 
-      @media only screen and (min-width: 1000px) {
+      @media only screen and (min-width: ${({ theme }) =>
+          theme.breakpoints.desktop}) {
         display: block;
         margin-bottom: 50px;
         width: 100%;

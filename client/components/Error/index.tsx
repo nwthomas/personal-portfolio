@@ -1,15 +1,17 @@
 import Link from 'next/link';
 import styled from 'styled-components';
+import { getRandomErrorPhrase } from '../../staticAssets';
 
 interface Props {
   errorCode: string;
-  errorPhrase: string;
+  errorPhrase?: string;
 }
 
-function Error({ errorCode, errorPhrase }: Props) {
+export default function Error({ errorCode, errorPhrase }: Props) {
+  const finalErrorPhrase = errorPhrase || getRandomErrorPhrase();
   return (
     <RootStyles>
-      <h4>{`${errorCode} - ${errorPhrase}`}</h4>
+      <h4>{`${errorCode} - ${finalErrorPhrase}`}</h4>
       <div>
         <Link href="/">
           <p>Go back home</p>
@@ -23,17 +25,11 @@ const RootStyles = styled.main`
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
+  margin-top: 35vh;
   max-width: ${({ theme }) => theme.appDimensions.appMaxWidth};
-  padding: ${({ theme }) =>
-    `${theme.appDimensions.mobileNavbarHeight} ${theme.appDimensions.appHorizontalGutters} 0`};
+  padding: ${({ theme }) => ` 0 ${theme.appDimensions.appHorizontalGutters}`};
   width: 100%;
-
-  @media only screen and (min-width: ${({ theme }) =>
-      theme.breakpoints.mobile}) {
-    padding: ${({ theme }) =>
-      `${theme.appDimensions.desktopNavbarHeight} ${theme.appDimensions.appHorizontalGutters} 0`};
-  }
 
   > h4 {
     margin-bottom: ${({ theme }) => theme.spaces.small};
@@ -57,5 +53,3 @@ const RootStyles = styled.main`
     }
   }
 `;
-
-export default Error;

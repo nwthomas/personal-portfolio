@@ -4,15 +4,19 @@ export type ThemeEnum = 'dark' | 'light';
 // All color names pulled directly from http://chir.ag/projects/name-that-color/
 export const colors = {
   alabaster: '#f8f8f8f8',
+  australianMint: '#F9FFC2',
   black: '#000000',
   crusta: '#f98a31',
   bilobaFlower: '#BBADEB',
   bunker: '#101419',
-  emerald: '#59c689',
   dullLavender: '#9F8AE5',
+  dolly: '#F4FE86',
+  emerald: '#59c689',
+  goldenFizz: '#eefd42',
   mediumPurple: '#7E61DC',
   mercury: '#e2e2e2',
   mineShaft: '#333333',
+  pictonBlue: '#479ded',
   onyx: '#3b3b40',
   shark: '#27272a',
   titanWhite: '#f8f8ff',
@@ -28,6 +32,7 @@ export const themeColorValues = {
   bodyBackgroundAccentOne: 'var(--body-bg-accent-one)',
   bodyBackgroundAccentTwo: 'var(--body-bg-accent-two)',
   text: 'var(--text)',
+  textOnColor: 'var(--text-on-color)',
   textAccentOne: 'var(--text-accent-one)',
   textAccentTwo: 'var(--text-accent-two)',
   textAccentThree: 'var(--text-accent-three)',
@@ -38,10 +43,10 @@ export const themeColorValues = {
 // ===================================== Space Variables
 const appDimensions = {
   appHorizontalGutters: '3%',
-  appMaxWidth: '1400px',
+  appMaxWidth: '1200px',
   appMinHeight: '100vh',
-  articleHeroImageMaxWidth: '1000px',
-  articleMaxWidth: '680px',
+  articleHeroImageMaxWidth: '1200px',
+  articleMaxWidth: '600px',
   desktopFooterHeight: '200px',
   desktopNavbarHeight: '120px',
   mobileFooterHeight: '200px',
@@ -62,7 +67,7 @@ const borderRadii = {
 const breakpoints = {
   mobile: '600px',
   desktop: '1000px',
-  ultraWide: '1400px',
+  ultrawide: '1200px',
 };
 
 const opacity = {
@@ -100,6 +105,7 @@ export interface Theme {
   breakpoints: typeof breakpoints;
   borderRadii: typeof borderRadii;
   colors: typeof themeColorValues;
+  colorsHex: typeof colors;
   currentTheme: ThemeEnum;
   opacity: typeof opacity;
   spaces: typeof spaces;
@@ -113,6 +119,7 @@ function makeMainTheme(currentTheme: ThemeEnum): Theme {
     breakpoints,
     borderRadii,
     colors: themeColorValues,
+    colorsHex: colors,
     currentTheme,
     opacity,
     spaces,
