@@ -18,36 +18,17 @@ import type { EmailType } from './api/email';
 const PAGE_NAME = 'Contact';
 
 const EMAIL_PLACEHOLDER = 'Enter email...';
+const MESSAGE_PLACEHOLDER = "What's happening?";
 const NAME_PLACEHOLDER = 'Enter name...';
 const SUBJECT_PLACEHOLDER = 'Enter subject...';
-const MESSAGE_PLACEHOLDER = "What's happening?";
+
+const EMAIL_FAILURE = 'Sending Failed - Try Again';
+const EMAIL_SENDING = 'Sending Email';
+const EMAIL_SUCCESS = 'Email Sent';
 
 function Contact() {
   const { currentTheme } = useContext(ThemeContext);
   const [state, dispatch] = useStateValue(StateContext);
-
-  const handleFormSubmit = (emailValues: EmailType) => {
-    mutate(emailValues);
-    dispatch({
-      type: UPDATE_MODAL,
-      payload: { isShown: true, isLoading: true, message: 'Sending Email' },
-    });
-  };
-
-  const handleResetForm = (event) => {
-    event.preventDefault();
-    formik.resetForm();
-  };
-
-  const handleFormUpdate = (event) => {
-    formik.handleChange(event);
-    dispatch({
-      type: UPDATE_CONTACT_FORM_VALUES,
-      payload: {
-        [event.target.name]: event.target.value,
-      },
-    });
-  };
 
   const { mutate } = useMutation(sendEmailToServer, {
     onSuccess: () => {
@@ -56,7 +37,7 @@ function Contact() {
         type: UPDATE_MODAL,
         payload: {
           isLoading: false,
-          message: 'Email Sent',
+          message: EMAIL_SUCCESS,
           withButton: true,
         },
       });
@@ -66,12 +47,20 @@ function Contact() {
         type: UPDATE_MODAL,
         payload: {
           isLoading: false,
-          message: 'Email Failed. Try Again.',
+          message: EMAIL_FAILURE,
           withButton: true,
         },
       });
     },
   });
+
+  const handleFormSubmit = (emailValues: EmailType) => {
+    mutate(emailValues);
+    dispatch({
+      type: UPDATE_MODAL,
+      payload: { isShown: true, isLoading: true, message: EMAIL_SENDING },
+    });
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -97,6 +86,21 @@ function Contact() {
     }),
     onSubmit: handleFormSubmit,
   });
+
+  const handleFormUpdate = (event) => {
+    formik.handleChange(event);
+    dispatch({
+      type: UPDATE_CONTACT_FORM_VALUES,
+      payload: {
+        [event.target.name]: event.target.value,
+      },
+    });
+  };
+
+  const handleResetForm = (event) => {
+    event.preventDefault();
+    formik.resetForm();
+  };
 
   return (
     <Layout pageName={PAGE_NAME} withEmojis withFooter>

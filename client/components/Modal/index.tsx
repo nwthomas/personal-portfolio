@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, keyframes } from 'styled-components';
 import { useStateValue } from 'react-conflux';
 import { StateContext, UPDATE_MODAL } from '../../store';
 
@@ -26,7 +26,14 @@ function Modal() {
         <>
           <LockBodyScroll />
           <RootStyles>
-            {isLoading ? <p>Testing Loading</p> : null}
+            {isLoading ? (
+              <div>
+                <BoxOne />
+                <BoxTwo />
+                <BoxThree />
+                <BoxFour />
+              </div>
+            ) : null}
             <p>{message}</p>
             {withButton ? (
               <button onClick={handleButtonClick}>Okay</button>
@@ -50,6 +57,20 @@ const RootStyles = styled.div`
   top: 0;
   width: 100%;
   z-index: 100;
+
+  > div {
+    height: 140px;
+    width: 140px;
+    margin: 0 0 ${({ theme }) => theme.spaces.medium};
+    position: relative;
+
+    > div {
+      height: 40px;
+      width: 40px;
+      position: absolute;
+      border-radius: 10px;
+    }
+  }
 
   > p {
     font-size: 3rem;
@@ -82,6 +103,75 @@ const RootStyles = styled.div`
       outline: none;
     }
   }
+`;
+
+const moveTLBL = keyframes`
+  0% {top: 0; left: 0;}
+  50% {top: 50px; left: 50px; transform: rotate(90deg); opacity: 0.9;}
+  100% {top: 100px; left: 0; transform: rotate(180deg);}
+`;
+
+const moveBRTR = keyframes`
+  0% {top: 100px; left: 100px;}
+  50% {top: 50px; left: 50px; transform: rotate(-90deg); opacity: 0.9;}
+  100% {top: 0; left: 100px; transform: rotate(-180deg);}
+`;
+
+const moveBLTL = keyframes`
+  0% {top: 100px; left: 0;}
+  50% {top: 50px; left: 50px; transform: rotate(90deg); opacity: 0.9}
+  100% {top: 0; left: 0; transform: rotate(180deg);}
+`;
+
+const moveTRBR = keyframes`
+  0% {top: 0; left: 100px;}
+  50% {top: 50px; left: 50px; transform: rotate(-90deg); opacity: 0.9}
+  100% {top: 100px; left: 100px; transform: rotate(-180deg);}
+`;
+
+const BoxOne = styled.div`
+  background: ${({ theme }) => theme.colors.textAccentOne};
+  z-index: 5;
+  animation-name: ${moveTLBL};
+  animation-duration: 1.2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  animation-fill-mode: backwards;
+  animation-delay: 0.1s;
+`;
+
+const BoxTwo = styled.div`
+  background: ${({ theme }) => theme.colors.textAccentOne};
+  animation-name: ${moveBRTR};
+  animation-duration: 1.2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  animation-fill-mode: backwards;
+  animation-delay: 0.1s;
+`;
+
+const BoxThree = styled.div`
+  background: ${({ theme }) => theme.colors.textAccentThree};
+  animation-name: ${moveBLTL};
+  animation-duration: 1.2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  animation-fill-mode: backwards;
+  animation-delay: 0.1s;
+`;
+
+const BoxFour = styled.div`
+  background: ${({ theme }) => theme.colors.textAccentThree};
+  animation-name: ${moveTRBR};
+  animation-duration: 1.2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  animation-fill-mode: backwards;
+  animation-delay: 0.1s;
 `;
 
 const LockBodyScroll = createGlobalStyle`
