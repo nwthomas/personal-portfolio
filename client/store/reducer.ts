@@ -10,9 +10,9 @@ const initialState = {
     fax: '',
   },
   modal: {
-    isLoading: true,
-    isShown: true,
-    message: 'Sending Email',
+    isLoading: false,
+    isShown: false,
+    message: '',
     withButton: false,
   },
 };

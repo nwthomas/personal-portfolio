@@ -90,7 +90,7 @@ const RootStyles = styled.div`
     cursor: pointer;
     height: ${({ theme }) => theme.spaces.xLarge};
     justify-content: center;
-    max-width: ${({ theme }) => theme.appDimensions.modalMaxWidth};
+    max-width: ${({ theme }) => `calc(${theme.spaces.jumbo} * 3)`};
     transition: background ${({ theme }) => theme.transitions.short};
     width: 100%;
 
