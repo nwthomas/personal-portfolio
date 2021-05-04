@@ -27,25 +27,23 @@ export default function ArticlePreviewCard({
   return (
     <Link href={createArticleRoute(articleId)}>
       <RootStyles withBackground={withBackground}>
-        <>
-          <h4>{title}</h4>
-          <p>{description}</p>
+        <h4>{title}</h4>
+        <p>{description}</p>
+        <div>
           <div>
-            <div>
-              <ChevronForwardIcon />
-            </div>
-            <p>Read</p>
+            <ChevronForwardIcon />
           </div>
-          {withCategories ? (
-            <div>
-              {sortedCategories?.length >= 1
-                ? sortedCategories.map((topicTag, i) => (
-                    <TopicTag name={topicTag} key={i} />
-                  ))
-                : null}
-            </div>
-          ) : null}
-        </>
+          <p>Read</p>
+        </div>
+        {withCategories ? (
+          <div>
+            {sortedCategories?.length >= 1
+              ? sortedCategories.map((topicTag, i) => (
+                  <TopicTag name={topicTag} key={i} />
+                ))
+              : null}
+          </div>
+        ) : null}
       </RootStyles>
     </Link>
   );

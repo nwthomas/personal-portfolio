@@ -28,7 +28,6 @@ I tried to use a fairly modern tech stack (both on front-end and back-end) while
 
 - Front-end:
   - [Axios](https://www.npmjs.com/package/axios)
-  - [Docker](https://www.docker.com/)
   - [Formik](https://formik.org/)
   - [GraphQL](https://github.com/graphql/graphql-js)
   - [Next.js](https://nextjs.org/)

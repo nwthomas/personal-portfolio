@@ -14,10 +14,10 @@ export interface Presentation {
 export const presentations: Array<Presentation> = [
   {
     title: 'React Native Web at Twitter',
-    meetupTitle: 'React Native at Shopify Meetup',
+    meetupTitle: 'Shopify Meetup',
     presenters: 'Justine De Caires and Nathan Thomas',
     description:
-      "This talk was given following Shopify's push towards using React Native in its products. Twitter uses React Native Web, so it was a natural fit for us to present at it. We discussed the StyleSheet, great React Native features (like the PanResponder API to handle gestures), and more.",
+      "This talk was given following Shopify's push towards using React Native. Twitter uses React Native Web, so it was a natural fit for us to present at it. We discussed the StyleSheet, great React Native features (like the PanResponder API to handle gestures), and more.",
     date: 'January 29th, 2020',
     location: 'Shopify HQ, San Francisco, CA',
     url: 'https://www.youtube-nocookie.com/embed/GNrQTbIFsG4?start=2909',
