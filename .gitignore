@@ -188,3 +188,6 @@ dmypy.json
 
 #Ignore testing database
 db.sqlite3
+
+#Miscellaneous
+.DS_Store

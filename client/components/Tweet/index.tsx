@@ -119,4 +119,5 @@ function createTweet(
     window.twttr.widgets.createTweet(tweetId, element, options);
   }
 }
+
 export default Tweet;

@@ -99,7 +99,18 @@ function Contact() {
 
   const handleResetForm = (event) => {
     event.preventDefault();
-    formik.resetForm();
+    const resetState = {
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+      fax: '',
+    };
+    formik.resetForm({ values: resetState });
+    dispatch({
+      type: UPDATE_CONTACT_FORM_VALUES,
+      payload: resetState,
+    });
   };
 
   return (
