@@ -67,7 +67,7 @@ const RootStyles = styled.div`
     height: ${({ theme }) => theme.appDimensions.desktopNavbarHeight};
     justify-content: center;
     margin-right: ${({ theme }) => theme.spaces.small};
-    width: 55px;
+    width: 58px;
   }
 
   > button {

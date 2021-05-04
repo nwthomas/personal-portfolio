@@ -59,7 +59,7 @@ export default function Home() {
         <div>
           <section>
             <h2>
-              I'm Nathan. I'm a software engineer
+              I'm Nathan, a software engineer
               <span>
                 <a href="https://github.com/nwthomas">
                   <Image
@@ -87,7 +87,7 @@ export default function Home() {
                   />
                 </a>
               </span>
-              , instructor, speaker, and investor
+              , instructor, and investor
               <span>
                 <a href="https://bitcoin.org/bitcoin.pdf">
                   <Image
@@ -202,7 +202,7 @@ const RootStyles = styled.main`
 
         @media only screen and (min-width: ${({ theme }) =>
             theme.breakpoints.desktop}) {
-          max-width: 80%;
+          max-width: 85%;
         }
 
         > span {
@@ -230,7 +230,7 @@ const RootStyles = styled.main`
         }
 
         > span:first-child {
-          margin-left: 5px;
+          margin-left: 6px;
         }
 
         > span:nth-child(3) {
