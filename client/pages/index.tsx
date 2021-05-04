@@ -59,21 +59,21 @@ export default function Home() {
         <div>
           <section>
             <h2>
-              Hi. I'm Nathan, a software engineer
+              I'm Nathan. I'm a software engineer
               <span>
-                <a href="https://reactjs.org/">
+                <a href="https://github.com/nwthomas">
                   <Image
-                    alt="React logo"
+                    alt="Github logo"
                     draggable={false}
                     height={100}
                     quality={100}
                     priority
-                    src="/react.png"
+                    src="/git.png"
                     width={100}
                   />
                 </a>
               </span>
-              , reader, writer, musician
+              , writer, musician
               <span>
                 <a href="https://soundcloud.com/limbalring">
                   <Image

@@ -56,7 +56,7 @@ const appDimensions = {
 };
 
 const borderRadii = {
-  nano: '2px',
+  nano: '3px',
   micro: '5px',
   small: '8px',
   medium: '10px',
