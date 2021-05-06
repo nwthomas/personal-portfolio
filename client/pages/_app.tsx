@@ -10,7 +10,10 @@ import MobileNavbar from '../components/MobileNavbar';
 import GlobalStyle, { makeMainTheme } from '../styles';
 import { reducer, StateContext } from '../store';
 import Modal from '../components/Modal';
+import '../styles/libs/fonts.css';
 
+// We don't care about cache invalidation given the needs of this app, so data isn't stale
+// until >= 1 day
 const oneDayMillis = 60000 * 60 * 24;
 const queryClient = new QueryClient({
   defaultOptions: {
