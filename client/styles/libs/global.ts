@@ -2,6 +2,32 @@ import { css } from 'styled-components';
 import { colors } from './theme';
 
 const GlobalStyle = css`
+  /* I found http://google-webfonts-helper.herokuapp.com/fonts to be a massive help in getting small .woff2 files */
+  /* Also, a great guide for reploading in NextJS was at https://leerob.io/blog/fonts */
+  @font-face {
+    font-family: 'Nanum Pen Script';
+    font-style: normal;
+    font-display: optional;
+    font-weight: 400;
+    src: url(/fonts/NanumPenScript.woff2) format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-display: optional;
+    font-weight: 400;
+    src: url(/fonts/WorkSans400.woff2) format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-display: optional;
+    font-weight: 700;
+    src: url(/fonts/WorkSans700.woff2) format('truetype');
+  }
+
   * {
     box-sizing: border-box;
     transition: ${({
