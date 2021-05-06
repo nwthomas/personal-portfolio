@@ -42,7 +42,7 @@ const RootStyles = styled.div`
   background-color: ${({ theme }) => theme.colors.bodyBackgroundAccentTwo};
   border: ${({ theme }) => `1px solid ${theme.colors.bodyBackgroundAccentOne}`};
   border-radius: ${({ theme }) => theme.borderRadii.small};
-  padding: ${({ theme }) => theme.spaces.medium};
+  overflow: hidden;
   width: 100%;
 
   @media only screen and (min-width: ${({ theme }) =>
@@ -79,11 +79,10 @@ const RootStyles = styled.div`
 
   > div:last-child {
     margin-left: 0;
-    margin-top: ${({ theme }) => theme.spaces.medium};
+    padding: ${({ theme }) => theme.spaces.medium};
 
     @media only screen and (min-width: ${({ theme }) =>
         theme.breakpoints.desktop}) {
-      margin-left: ${({ theme }) => theme.spaces.medium};
       margin-top: 0;
       max-width: 700px;
     }
