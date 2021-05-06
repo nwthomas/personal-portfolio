@@ -36,18 +36,21 @@ export default class MyDocument extends Document {
             rel="preload"
             href="/fonts/NanumPenScript.woff2"
             as="font"
+            type="font/woff2"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
             href="/fonts/WorkSans400.woff2"
             as="font"
+            type="font/woff2"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
             href="/fonts/WorkSans700.woff2"
             as="font"
+            type="font/woff2"
             crossOrigin="anonymous"
           />
         </Head>
