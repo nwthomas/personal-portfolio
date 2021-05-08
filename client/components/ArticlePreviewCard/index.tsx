@@ -62,11 +62,12 @@ const RootStyles = styled.div<StylesProps>`
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  height: 100%;
   margin-bottom: ${({ theme }) => theme.spaces.small};
   padding: ${({ theme }) => theme.spaces.medium};
-  -webkit-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.07);
-  -moz-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.07);
-  box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.07);
+  -webkit-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.08);
   transition: opacity ${({ theme }) => theme.transitions.short};
   width: 100%;
 
@@ -84,7 +85,6 @@ const RootStyles = styled.div<StylesProps>`
     theme.breakpoints.desktop}) {
     margin: ${({ theme }) =>
       `0 ${theme.spaces.medium} ${theme.spaces.medium} 0`};
-    width: 400px;
   }
 
   h4 {

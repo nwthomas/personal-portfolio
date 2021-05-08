@@ -173,7 +173,7 @@ const RootStyles = styled.main`
 
           @media only screen and (min-width: ${({ theme }) =>
               theme.breakpoints.desktop}) {
-            max-width: 68%;
+            width: 68%;
           }
 
           a {
@@ -219,12 +219,7 @@ const Content = styled.div`
 
   > div:first-child {
     flex-grow: 2;
-    margin-bottom: 30px;
-
-    @media only screen and (min-width: ${({ theme }) =>
-        theme.breakpoints.mobile}) {
-      padding-right: 10%;
-    }
+    margin-bottom: ${({ theme }) => theme.spaces.xxLarge};
   }
 
   > div:last-child {

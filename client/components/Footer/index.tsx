@@ -70,9 +70,8 @@ export default function Footer() {
 const RootStyles = styled.footer`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.backgroundColor};
-  border-top: ${({ theme }) => theme.spaces.nano} solid
-    ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
-  border-bottom: ${({ theme }) => theme.spaces.nano} solid
+  border-top: 1px solid ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
+  border-bottom: 1px solid
     ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
   bottom: 0;
   display: flex;

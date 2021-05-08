@@ -27,7 +27,6 @@ const RootStyles = styled.div`
   > div {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 50px;
     width: 100%;
 
     > div {

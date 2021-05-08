@@ -10,7 +10,6 @@ import {
   UPDATE_MODAL,
 } from '../store';
 import Layout from '../components/Layout';
-import Tweet from '../components/Tweet';
 import { sendEmailToServer } from './api/email';
 import type { EmailType } from './api/email';
 
@@ -190,13 +189,6 @@ function Contact() {
                 </button>
               </div>
             </form>
-            <div>
-              <p>From when I wrote this page ⬇️</p>
-              <Tweet
-                currentTheme={currentTheme}
-                tweetId="1388010553424060418"
-              />
-            </div>
           </div>
         </div>
       </RootStyles>

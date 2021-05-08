@@ -2,7 +2,6 @@ export interface Presentation {
   date: string;
   description: string;
   location: string;
-  meetupTitle: string;
   presenters: string;
   title: string;
   url: string;
@@ -14,7 +13,6 @@ export interface Presentation {
 export const presentations: Array<Presentation> = [
   {
     title: 'React Native Web at Twitter',
-    meetupTitle: 'Shopify Meetup',
     presenters: 'Justine De Caires and Nathan Thomas',
     description:
       "This talk was given following Shopify's push towards using React Native. Twitter uses React Native Web, so it was a natural fit for us to present at it. We discussed the StyleSheet, great React Native features (like the PanResponder API to handle gestures), and more.",

@@ -53,10 +53,17 @@ const RootStyles = styled.div`
     margin-bottom: ${({ theme }) => theme.spaces.small};
   }
 
-  > div {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
+  > div:last-child {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minMax(300px, 1fr));
+    grid-auto-rows: minmax(min-content, max-content);
+    column-gap: ${({ theme }) => theme.spaces.medium};
+    row-gap: ${({ theme }) => theme.spaces.medium};
     width: 100%;
+
+    @media only screen and (min-width: ${({ theme }) =>
+        theme.breakpoints.desktop}) {
+      grid-template-columns: repeat(auto-fit, minMax(300px, 380px));
+    }
   }
 `;
