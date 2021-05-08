@@ -91,7 +91,7 @@ const RootStyles = styled.footer`
   > div {
     align-items: flex-start;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     justify-content: space-between;
     max-width: ${({ theme }) => theme.appDimensions.appMaxWidth};
     width: 100%;
@@ -103,21 +103,25 @@ const RootStyles = styled.footer`
       padding: 0;
     }
 
-    > div:first-child > p:first-child {
-      font-style: italic;
+    > div:first-child {
+      margin-bottom: ${({ theme }) => theme.spaces.small};
+
+      > p:first-child {
+        font-style: italic;
+      }
     }
 
     nav {
       align-items: center;
       display: flex;
-      height: ${({ theme }) => theme.spaces.xxLarge};
+      height: ${({ theme }) => theme.spaces.large};
       justify-content: flex-start;
       margin-bottom: ${({ theme }) => theme.spaces.small};
       width: 100%;
 
       @media only screen and (min-width: ${({ theme }) =>
           theme.breakpoints.mobile}) {
-        height: ${({ theme }) => theme.spaces.jumbo};
+        height: ${({ theme }) => theme.spaces.xLarge};
         justify-content: flex-end;
         margin-bottom: 0;
         width: 50%;

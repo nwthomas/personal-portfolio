@@ -67,7 +67,8 @@ const RootStyles = styled.div<StylesProps>`
   -webkit-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.07);
   -moz-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.07);
   box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.07);
-  transition: opacity ${({ theme }) => theme.transitions.short};
+  transition: opacity ${({ theme }) => theme.transitions.short},
+    border ${({ theme }) => theme.transitions.short};
   width: 100%;
 
   ${({ isDarkMode, theme }) =>
@@ -75,6 +76,9 @@ const RootStyles = styled.div<StylesProps>`
     css`
       background-color: ${theme.colors.bodyBackgroundAccentTwo};
       border: 1px solid ${theme.colors.bodyBackgroundAccentOne};
+      -webkit-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0);
+      -moz-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0);
+      box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0);
     `}
 
   @media only screen and (min-width: ${({ theme }) =>
