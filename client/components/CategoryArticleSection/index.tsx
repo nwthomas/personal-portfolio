@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import ArticlePreviewCard from '../ArticlePreviewCard';
 import { ArticlePreviewType } from '../../pages/api/articles';
-import TopicTag from '../TopicTag';
+import CategoryTag from '../CategoryTag';
 
 interface Props {
   articles: Array<ArticlePreviewType>;
@@ -18,7 +18,7 @@ export default function CategoryArticleSection({
     <RootStyles>
       {categoryName && withTopicTag ? (
         <div>
-          <TopicTag name={categoryName} />
+          <CategoryTag name={categoryName} />
         </div>
       ) : null}
       <div>

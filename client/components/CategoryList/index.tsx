@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import TopicTag from '../TopicTag';
+import CategoryTag from '../CategoryTag';
 import { CategoryType } from '../../pages/api/categories';
 
 interface Props {
@@ -14,7 +14,7 @@ function CategoryList({ categories }: Props) {
         {categories.map(({ title }) => {
           return (
             <div key={title}>
-              <TopicTag name={title} />
+              <CategoryTag name={title} />
             </div>
           );
         })}

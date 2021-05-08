@@ -64,12 +64,12 @@ const RootStyles = styled.div`
   @media only screen and (min-width: ${({ theme }) =>
       theme.breakpoints.mobile}) {
     height: ${({ theme }) => theme.appDimensions.desktopNavbarHeight};
-    margin-right: ${({ theme }) => theme.spaces.small};
+    margin-left: ${({ theme }) => theme.spaces.micro};
   }
 
   > button {
     align-items: center;
-    background: ${({ theme }) => theme.colors.bodyBackground};
+    background: ${({ theme }) => theme.colors.transparent};
     border: none;
     cursor: pointer;
     display: flex;

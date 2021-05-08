@@ -61,6 +61,10 @@ function ArticlesPage() {
               <h2>Articles</h2>
             </div>
             {categorizedArticlesArray.map(([category, articles], i) => {
+              if (!articles.length) {
+                return null;
+              }
+
               return (
                 <CategoryArticleSection
                   articles={articles}

@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import { useMutation } from 'react-query';
 import { useStateValue } from 'react-conflux';
 import * as Yup from 'yup';
-import styled, { ThemeContext } from 'styled-components';
+import styled, { css, ThemeContext } from 'styled-components';
 import {
   StateContext,
   UPDATE_CONTACT_FORM_VALUES,
@@ -26,6 +26,8 @@ const EMAIL_SUCCESS = 'Email Sent';
 
 function Contact() {
   const { currentTheme } = useContext(ThemeContext);
+  const isDarkMode = currentTheme === 'dark';
+
   const [state, dispatch] = useStateValue(StateContext);
 
   const { mutate } = useMutation(sendEmailToServer, {
@@ -113,7 +115,7 @@ function Contact() {
 
   return (
     <Layout pageName={PAGE_NAME} withEmojis withFooter>
-      <RootStyles>
+      <RootStyles isDarkMode={isDarkMode}>
         <div>
           <h2>Contact</h2>
           <div>
@@ -196,7 +198,11 @@ function Contact() {
   );
 }
 
-const RootStyles = styled.main`
+interface StyleProps {
+  isDarkMode: boolean;
+}
+
+const RootStyles = styled.main<StyleProps>`
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -215,20 +221,29 @@ const RootStyles = styled.main`
       width: 100%;
 
       > form {
-        background-color: ${({ theme }) =>
-          theme.colors.bodyBackgroundAccentTwo};
-        border: ${({ theme }) =>
-          `1px solid ${theme.colors.bodyBackgroundAccentOne}`};
         border-radius: ${({ theme }) => theme.borderRadii.micro};
         display: flex;
         justify-content: space-between;
         margin: ${({ theme }) => theme.spaces.medium} 0;
         padding: ${({ theme }) => theme.spaces.medium};
         flex-direction: column;
+        -webkit-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.08);
+        -moz-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.08);
+        box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.08);
         width: 100%;
 
+        ${({ isDarkMode, theme }) =>
+          isDarkMode &&
+          css`
+            background-color: ${theme.colors.bodyBackgroundAccentTwo};
+            border: 1px solid ${theme.colors.bodyBackgroundAccentOne};
+            -webkit-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0);
+            -moz-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0);
+            box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0);
+          `}
+
         @media only screen and (min-width: ${({ theme }) =>
-            theme.breakpoints.desktop}) {
+          theme.breakpoints.desktop}) {
           width: 50%;
         }
 
@@ -250,7 +265,7 @@ const RootStyles = styled.main`
               `1px solid ${theme.colors.bodyBackgroundAccentOne}`};
             border-radius: ${({ theme }) => theme.borderRadii.medium};
             cursor: pointer;
-            height: ${({ theme }) => theme.spaces.xLarge};
+            height: ${({ theme }) => theme.spaces.large};
             justify-content: center;
             transition: background ${({ theme }) => theme.transitions.short};
             width: 48%;

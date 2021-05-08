@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import Link from 'next/link';
 import styled, { css, ThemeContext } from 'styled-components';
 import { ChevronForwardIcon } from '../Icons';
-import TopicTag from '../TopicTag';
+import CategoryTag from '../CategoryTag';
 
 const createArticleRoute = (articleId: string) => `/articles/${articleId}`;
 
@@ -42,7 +42,7 @@ export default function ArticlePreviewCard({
           <div>
             {sortedCategories?.length >= 1
               ? sortedCategories.map((topicTag, i) => (
-                  <TopicTag name={topicTag} key={i} />
+                  <CategoryTag name={topicTag} key={i} />
                 ))
               : null}
           </div>
