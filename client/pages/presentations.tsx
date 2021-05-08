@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import Layout from '../components/Layout';
-import PageTitle from '../components/PageTitle';
 import PresentationCard from '../components/PresentationCard';
 import { presentations } from '../staticAssets';
 
@@ -11,7 +10,7 @@ export default function Presentations() {
     <Layout pageName={PAGE_NAME} withEmojis withFooter>
       <RootStyles>
         <div>
-          <PageTitle title="Presentations" type="2" />
+          <h2>Presentations</h2>
           <div>
             {presentations.map((presentation, i) => {
               return (
@@ -46,6 +45,7 @@ const RootStyles = styled.main`
 
   > div {
     max-width: ${({ theme }) => theme.appDimensions.appMaxWidth};
+    padding: ${({ theme }) => theme.spaces.medium} 0 0;
     width: 100%;
 
     > div {

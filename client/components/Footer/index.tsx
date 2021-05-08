@@ -26,7 +26,7 @@ export default function Footer() {
       <div>
         <div>
           <p suppressHydrationWarning>{randomFooterPhrase}</p>
-          <p>{`© ${currentYear} Nathan Thomas`}</p>
+          <p>{`© ${currentYear} Nathan Thomas 🤌🏻`}</p>
         </div>
         <nav>
           <div>

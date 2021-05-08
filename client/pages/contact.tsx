@@ -10,7 +10,6 @@ import {
   UPDATE_MODAL,
 } from '../store';
 import Layout from '../components/Layout';
-import PageTitle from '../components/PageTitle';
 import Tweet from '../components/Tweet';
 import { sendEmailToServer } from './api/email';
 import type { EmailType } from './api/email';
@@ -117,7 +116,7 @@ function Contact() {
     <Layout pageName={PAGE_NAME} withEmojis withFooter>
       <RootStyles>
         <div>
-          <PageTitle title="Contact" type="2" />
+          <h2>Contact</h2>
           <div>
             <form onSubmit={formik.handleSubmit}>
               <div>
@@ -215,6 +214,7 @@ const RootStyles = styled.main`
 
   > div {
     max-width: ${({ theme }) => theme.appDimensions.appMaxWidth};
+    padding: ${({ theme }) => theme.spaces.medium} 0 0;
     width: 100%;
 
     > div {

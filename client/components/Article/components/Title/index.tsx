@@ -51,7 +51,7 @@ const RootStyles = styled.div<StyleProps>`
 
     > p {
       font-style: italic;
-      opacity: ${({ theme }) => theme.opacity.opacity60};
+      opacity: ${({ theme }) => theme.opacity.opacity70};
     }
   }
 `;

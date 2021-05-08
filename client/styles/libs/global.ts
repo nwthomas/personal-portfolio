@@ -105,7 +105,7 @@ const GlobalStyle = css`
 
     &::placeholder {
       color: ${({ theme }) => theme.colors.text};
-      opacity: ${({ theme }) => theme.opacity.opacity60};
+      opacity: ${({ theme }) => theme.opacity.opacity70};
       font-size: 1.6rem;
       line-height: 2;
       font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, Segoe UI,
