@@ -153,15 +153,12 @@ const RootStyles = styled.main`
       align-items: center;
       display: flex;
       flex-direction: column;
-      margin: ${({ theme }) => theme.spaces.medium} 0
-        ${({ theme }) => theme.spaces.large};
+      padding: ${({ theme }) => theme.spaces.medium} 0 0;
       width: 100%;
 
       > div {
         display: flex;
         flex-direction: column;
-        margin: ${({ theme }) => theme.spaces.medium} 0
-          ${({ theme }) => `calc(${theme.spaces.medium} * 2)`};
         width: 100%;
 
         @media only screen and (min-width: ${({ theme }) =>
@@ -171,6 +168,8 @@ const RootStyles = styled.main`
 
         > h2 {
           font-size: 3rem;
+          margin: ${({ theme }) => theme.spaces.medium} 0
+            ${({ theme }) => `calc(${theme.spaces.xxLarge})`};
           max-width: 100%;
 
           @media only screen and (min-width: ${({ theme }) =>
@@ -199,7 +198,8 @@ const RootStyles = styled.main`
           justify-content: space-between;
           margin-right: 13%;
           padding-bottom: ${({ theme }) => theme.spaces.nano};
-          transition: padding-bottom ${({ theme }) => theme.transitions.short};
+          transition: padding-bottom ${({ theme }) => theme.transitions.short}
+            ease-in-out;
 
           &:hover {
             padding-bottom: ${({ theme }) => theme.spaces.micro};

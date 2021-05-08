@@ -1,5 +1,6 @@
+import { useContext } from 'react';
 import Link from 'next/link';
-import styled from 'styled-components';
+import styled, { css, ThemeContext } from 'styled-components';
 import { ChevronForwardIcon } from '../Icons';
 import TopicTag from '../TopicTag';
 
@@ -19,14 +20,16 @@ export default function ArticlePreviewCard({
   articleId,
   title,
   categories,
-  withBackground,
   withCategories,
 }: Props) {
+  const { currentTheme } = useContext(ThemeContext);
+  const isDarkMode = currentTheme === 'dark';
+
   const sortedCategories = categories?.sort((a, b) => (a > b ? 1 : -1));
 
   return (
     <Link href={createArticleRoute(articleId)}>
-      <RootStyles withBackground={withBackground}>
+      <RootStyles isDarkMode={isDarkMode}>
         <h4>{title}</h4>
         <p>{description}</p>
         <div>
@@ -50,34 +53,35 @@ export default function ArticlePreviewCard({
 }
 
 interface StylesProps {
-  withBackground: boolean;
+  isDarkMode: boolean;
 }
 
 const RootStyles = styled.div<StylesProps>`
   align-self: flex-start;
-  background-color: ${({ theme, withBackground }) =>
-    withBackground
-      ? theme.colors.bodyBackgroundAccentTwo
-      : theme.colors.transparent};
-  border: ${({ theme, withBackground }) =>
-    withBackground
-      ? `1px solid ${theme.colors.bodyBackgroundAccentOne}`
-      : 'none'};
   border-radius: ${({ theme }) => theme.borderRadii.micro};
   cursor: pointer;
   display: flex;
   flex-direction: column;
   margin-bottom: ${({ theme }) => theme.spaces.small};
-  padding: ${({ theme, withBackground }) =>
-    withBackground ? theme.spaces.medium : `0 0 ${theme.spaces.large}`};
+  padding: ${({ theme }) => theme.spaces.medium};
+  -webkit-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.07);
+  -moz-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.07);
+  box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.07);
   transition: opacity ${({ theme }) => theme.transitions.short};
   width: 100%;
 
+  ${({ isDarkMode, theme }) =>
+    isDarkMode &&
+    css`
+      background-color: ${theme.colors.bodyBackgroundAccentTwo};
+      border: 1px solid ${theme.colors.bodyBackgroundAccentOne};
+    `}
+
   @media only screen and (min-width: ${({ theme }) =>
-      theme.breakpoints.desktop}) {
-    margin: ${({ theme, withBackground }) =>
-      withBackground ? `0 ${theme.spaces.medium} ${theme.spaces.medium} 0` : 0};
-    width: ${({ withBackground }) => (withBackground ? '400px' : '100%')};
+    theme.breakpoints.desktop}) {
+    margin: ${({ theme }) =>
+      `0 ${theme.spaces.medium} ${theme.spaces.medium} 0`};
+    width: 400px;
   }
 
   h4 {
