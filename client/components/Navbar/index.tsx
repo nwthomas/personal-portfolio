@@ -88,9 +88,12 @@ const RootStyles = styled.header`
             height: ${({ theme }) => theme.appDimensions.desktopNavbarHeight};
             justify-content: center;
             text-decoration: none;
-            transition: color ${({ theme }) => theme.transitions.short},
-              padding-bottom ${({ theme }) => theme.transitions.short};
+            transition: opacity ${({ theme }) => theme.transitions.short};
             width: ${({ theme }) => theme.appDimensions.navbarLinkWidth};
+
+            &:hover {
+              opacity: ${({ theme }) => theme.opacity.opacity70};
+            }
           }
 
           > div:nth-child(2) {

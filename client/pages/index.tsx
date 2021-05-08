@@ -6,7 +6,6 @@ import { QueryClient, useQuery } from 'react-query';
 import styled, { ThemeContext } from 'styled-components';
 import CategoryList from '../components/CategoryList';
 import Layout from '../components/Layout';
-import ArticlePreviewCard from '../components/ArticlePreviewCard';
 import CategoryArticleSection from '../components/CategoryArticleSection';
 import Tweet from '../components/Tweet';
 import {

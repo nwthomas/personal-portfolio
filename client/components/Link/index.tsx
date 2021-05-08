@@ -62,12 +62,7 @@ const RootStyles = styled.div<StyleProps>`
       isActive ? theme.colors.textAccentTwo : theme.colors.text};
     height: 50%;
     justify-content: center;
-    transition: opacity ${({ theme }) => theme.transitions.short};
     width: 100%;
-
-    &:hover {
-      opacity: ${({ theme }) => theme.opacity.opacity70};
-    }
   }
 `;
 
