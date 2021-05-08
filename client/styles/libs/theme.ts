@@ -56,8 +56,8 @@ const appDimensions = {
 };
 
 const borderRadii = {
-  nano: '3px',
-  micro: '5px',
+  nano: '2px',
+  micro: '4px',
   small: '8px',
   medium: '10px',
   large: '15px',
@@ -84,13 +84,13 @@ const opacity = {
 };
 
 const spaces = {
-  nano: '1px',
+  nano: '2px',
   micro: '5px',
   small: '10px',
   medium: '30px',
   large: '35px',
-  xLarge: '40px',
-  xxLarge: '50px',
+  xLarge: '50px',
+  xxLarge: '70px',
   jumbo: '100px',
 };
 

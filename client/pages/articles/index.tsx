@@ -58,13 +58,16 @@ function ArticlesPage() {
       <Layout pageName={PAGE_NAME} withEmojis withFooter>
         <RootStyles>
           <div>
-            <PageTitle title="Articles" type="2" />
+            <div>
+              <PageTitle title="Articles" type="2" />
+            </div>
             {categorizedArticlesArray.map(([category, articles], i) => {
               return (
                 <CategoryArticleSection
                   articles={articles}
                   categoryName={category}
                   key={i}
+                  withTopicTag
                 />
               );
             })}
@@ -92,6 +95,13 @@ const RootStyles = styled.main`
   > div {
     max-width: ${({ theme }) => theme.appDimensions.appMaxWidth};
     width: 100%;
+
+    > div:first-child {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
   }
 `;
 

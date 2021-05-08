@@ -35,7 +35,7 @@ export default function TopicTag({ name }: Props) {
 const Button = styled.button`
   background-color: ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
   border: none;
-  border-radius: ${({ theme }) => theme.borderRadii.small};
+  border-radius: ${({ theme }) => theme.borderRadii.micro};
   display: inline-block;
   cursor: pointer;
   padding: 6px 10px;
@@ -44,7 +44,7 @@ const Button = styled.button`
   white-space: nowrap;
 
   &:hover {
-    opacity: ${({ theme }) => theme.opacity.opacity80};
+    opacity: ${({ theme }) => theme.opacity.opacity70};
   }
 
   &:focus {

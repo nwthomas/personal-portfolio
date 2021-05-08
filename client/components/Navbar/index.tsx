@@ -29,6 +29,9 @@ function Navbar({ onThemeChangeClick, themeName }: Props) {
             <Link href="/presentations" withStyling>
               Presentations
             </Link>
+            <Link href="/nathan-thomas-resume.pdf" withStyling>
+              Resume
+            </Link>
             <Link href="/contact" withStyling>
               Contact
             </Link>
@@ -117,7 +120,7 @@ const TitleIcon = styled.h1<{ children: string }>`
   @media only screen and (min-width: ${({ theme }) =>
       theme.breakpoints.mobile}) {
     height: ${({ theme }) => theme.appDimensions.desktopNavbarHeight};
-    font-size: 10rem;
+    font-size: 12rem;
   }
 `;
 

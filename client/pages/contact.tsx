@@ -227,7 +227,7 @@ const RootStyles = styled.main`
           theme.colors.bodyBackgroundAccentTwo};
         border: ${({ theme }) =>
           `1px solid ${theme.colors.bodyBackgroundAccentOne}`};
-        border-radius: ${({ theme }) => theme.borderRadii.small};
+        border-radius: ${({ theme }) => theme.borderRadii.micro};
         display: flex;
         justify-content: space-between;
         margin: ${({ theme }) => theme.spaces.medium} 0;

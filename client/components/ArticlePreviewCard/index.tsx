@@ -63,7 +63,7 @@ const RootStyles = styled.div<StylesProps>`
     withBackground
       ? `1px solid ${theme.colors.bodyBackgroundAccentOne}`
       : 'none'};
-  border-radius: ${({ theme }) => theme.borderRadii.small};
+  border-radius: ${({ theme }) => theme.borderRadii.micro};
   cursor: pointer;
   display: flex;
   flex-direction: column;

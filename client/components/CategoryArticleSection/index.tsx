@@ -5,18 +5,22 @@ import TopicTag from '../TopicTag';
 
 interface Props {
   articles: Array<ArticlePreviewType>;
-  categoryName: string;
+  categoryName?: string;
+  withTopicTag?: boolean;
 }
 
 export default function CategoryArticleSection({
   articles,
   categoryName,
+  withTopicTag,
 }: Props) {
   return (
     <RootStyles>
-      <div>
-        <TopicTag name={categoryName} />
-      </div>
+      {categoryName && withTopicTag ? (
+        <div>
+          <TopicTag name={categoryName} />
+        </div>
+      ) : null}
       <div>
         {articles.map(
           ({ categoriesCollection, description, sys: { id }, title }) => {

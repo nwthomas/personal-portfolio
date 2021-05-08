@@ -41,7 +41,7 @@ const RootStyles = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.colors.bodyBackgroundAccentTwo};
   border: ${({ theme }) => `1px solid ${theme.colors.bodyBackgroundAccentOne}`};
-  border-radius: ${({ theme }) => theme.borderRadii.small};
+  border-radius: ${({ theme }) => theme.borderRadii.micro};
   overflow: hidden;
   width: 100%;
 
