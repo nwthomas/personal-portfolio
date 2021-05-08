@@ -12,7 +12,7 @@ It will also spawn many new personal projects (such as a potential scribing serv
 
 Welcome. I hope you enjoy the site as much as I enjoyed making it.
 
-![Website screenshot](./assets/website-screenshot.png)
+![Website screenshot](./assets/site-screenshot.png)
 
 ## TABLE OF CONTENTS 📚
 
@@ -24,7 +24,7 @@ Welcome. I hope you enjoy the site as much as I enjoyed making it.
 
 ## TECHNOLOGY STACK 🐋
 
-I tried to use a fairly modern tech stack (both on front-end and back-end) while testing out some new technologies that I'd never used before. This resulted in a fast, performant, and easily extensible web app that should be fairly future proof for the coming years. I used:
+I tried to use a completely modern tech stack (both on front-end and back-end) while testing out some new technologies that I'd never used before. This resulted in a fast, performant, and easily-extensible web app that should be fairly future proof for the coming years. I used:
 
 - Front-end:
   - [Axios](https://www.npmjs.com/package/axios)
@@ -56,3 +56,5 @@ This project was managed using a Trello board which can be found [here](https://
 
 - Thanks to my parents for supporting my journey of learning to code. I couldn't have done it without you.
 - Thanks [Lambda School](https://lambdaschool.com/) for teaching me the skills that allow me to build applications just like this one.
+- Thanks to [Josh Cormeau](https://www.joshwcomeau.com/) for the inspiration behind some of the layout and cards in my site.
+- Thanks to [Medium](https://medium.com/) for inspiring my article layout.
