@@ -73,14 +73,13 @@ const RootStyles = styled.div`
     border: none;
     cursor: pointer;
     display: flex;
-    height: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};
+    height: 100%;
     justify-content: center;
     width: 100%;
 
     @media only screen and (min-width: ${({ theme }) =>
         theme.breakpoints.mobile}) {
-      height: ${({ theme }) => theme.appDimensions.desktopNavbarHeight};
-      height: 100%;
+      height: 50%;
     }
   }
 `;

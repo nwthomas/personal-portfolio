@@ -94,7 +94,7 @@ function Tweet({ currentTheme, tweetId, withTitle }: Props) {
 
   return (
     <div>
-      {withTitle ? <h3>Latest Tweet</h3> : null}
+      {withTitle ? <h3>Latest Tweet:</h3> : null}
       <div id="container">
         <blockquote
           className="twitter-tweet"

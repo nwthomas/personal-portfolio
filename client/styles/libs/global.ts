@@ -71,7 +71,7 @@ const GlobalStyle = css`
   }
 
   h2 {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
 
   h3 {

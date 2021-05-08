@@ -9,7 +9,7 @@ interface Props {
 function CategoryList({ categories }: Props) {
   return (
     <RootStyles>
-      <h3>Article Categories</h3>
+      <h3>Article Categories:</h3>
       <div>
         {categories.map(({ title }) => {
           return (

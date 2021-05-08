@@ -113,7 +113,7 @@ export default function Home() {
             articlesData?.items.length >= 1 && (
               <Content>
                 <div>
-                  <h3>Latest Articles:</h3>
+                  <h2>Latest Articles</h2>
                   <CategoryArticleSection articles={finalArticlesData} />
                 </div>
                 <div>
@@ -122,13 +122,13 @@ export default function Home() {
                   categoriesData?.items.length ? (
                     <CategoryList categories={categoriesData?.items} />
                   ) : null}
-                  {/* {mostRecentTweetId ? (
+                  {mostRecentTweetId ? (
                     <Tweet
                       currentTheme={currentTheme}
                       tweetId={mostRecentTweetId}
                       withTitle
                     />
-                  ) : null} */}
+                  ) : null}
                 </div>
               </Content>
             )}
@@ -153,6 +153,7 @@ const RootStyles = styled.main`
       align-items: center;
       display: flex;
       flex-direction: column;
+      margin-bottom: ${({ theme }) => theme.spaces.medium};
       padding: ${({ theme }) => theme.spaces.medium} 0 0;
       width: 100%;
 
@@ -167,7 +168,6 @@ const RootStyles = styled.main`
         }
 
         > h2 {
-          font-size: 3rem;
           margin: ${({ theme }) => theme.spaces.medium} 0
             ${({ theme }) => `calc(${theme.spaces.xxLarge})`};
           max-width: 100%;
@@ -216,7 +216,7 @@ const RootStyles = styled.main`
 `;
 
 const Content = styled.div`
-  margin-bottom: 30px;
+  padding-bottom: ${({ theme }) => theme.spaces.medium};
 
   > div:first-child {
     flex-grow: 2;
@@ -229,7 +229,6 @@ const Content = styled.div`
   }
 
   > div:last-child {
-    flex-grow: 1;
     width: 100%;
 
     @media only screen and (min-width: ${({ theme }) =>
@@ -239,7 +238,7 @@ const Content = styled.div`
 
     > div {
       display: block;
-      margin-bottom: 50px;
+      padding-bottom: ${({ theme }) => theme.spaces.medium};
       width: 100%;
 
       > div {
