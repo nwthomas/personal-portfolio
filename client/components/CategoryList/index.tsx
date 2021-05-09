@@ -24,6 +24,11 @@ function CategoryList({ categories }: Props) {
 }
 
 const RootStyles = styled.div`
+  > h3 {
+    display: flex;
+    padding-bottom: ${({ theme }) => theme.spaces.small};
+  }
+
   > div {
     display: flex;
     flex-wrap: wrap;

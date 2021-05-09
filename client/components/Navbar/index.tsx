@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import Link from '../Link';
 import ThemeTransitionButton from '../ThemeTransitionButton';
 import { useShouldMinimizeNavbar } from '../../hooks/useShouldMinimizeNavbar';
@@ -11,20 +10,10 @@ interface Props {
 }
 
 function Navbar({ onThemeChangeClick, themeName }: Props) {
-  const [withAnimations, setWithAnimations] = useState(false);
   const shouldMinimizeNavbar = useShouldMinimizeNavbar();
 
-  useEffect(() => {
-    if (shouldMinimizeNavbar) {
-      setWithAnimations(true);
-    }
-  }, [shouldMinimizeNavbar]);
-
   return (
-    <RootStyles
-      shouldMinimizeNavbar={shouldMinimizeNavbar}
-      withAnimations={withAnimations}
-    >
+    <RootStyles shouldMinimizeNavbar={shouldMinimizeNavbar}>
       <div>
         <Link href="/">
           <TitleIcon shouldMinimizeNavbar={shouldMinimizeNavbar}>n</TitleIcon>
@@ -40,9 +29,6 @@ function Navbar({ onThemeChangeClick, themeName }: Props) {
             <Link href="/nathan-thomas-resume.pdf" withStyling>
               Resume
             </Link>
-            <Link href="/contact" withStyling>
-              Contact
-            </Link>
           </nav>
           <ThemeTransitionButton
             onClick={onThemeChangeClick}
@@ -56,7 +42,6 @@ function Navbar({ onThemeChangeClick, themeName }: Props) {
 
 interface StyleProps {
   shouldMinimizeNavbar: boolean;
-  withAnimations: boolean;
 }
 
 const RootStyles = styled.header<StyleProps>`
@@ -107,42 +92,27 @@ const RootStyles = styled.header<StyleProps>`
           align-self: center;
           justify-content: flex-end;
 
-          ${({ shouldMinimizeNavbar, theme, withAnimations }) => {
-            if (withAnimations && shouldMinimizeNavbar) {
-              return css`
-                animation-name: ${hideLinks};
-                animation-duration: ${theme.transitions.medium};
-                animation-timing-function: ease-in-out;
-              `;
-            }
-            if (shouldMinimizeNavbar && !shouldMinimizeNavbar) {
-              return css`
-                animation-name: ${showLinks};
-                animation-duration: ${theme.transitions.medium};
-                animation-timing-function: linear;
-              `;
-            }
-            return null;
-          }}
-
           > div {
             align-items: center;
             display: flex;
             height: ${({ theme }) => theme.appDimensions.desktopNavbarHeight};
             justify-content: center;
             text-decoration: none;
-            transition: opacity ${({ theme }) => theme.transitions.medium};
+            transition: opacity ${({ theme }) => theme.transitions.medium},
+              display ${({ theme }) => theme.transitions.medium};
             width: ${({ theme }) => theme.appDimensions.navbarLinkWidth};
+            visibility: shown;
+
+            ${({ shouldMinimizeNavbar }) =>
+              shouldMinimizeNavbar &&
+              css`
+                display: none;
+                opacity: 0;
+              `}
 
             &:hover {
               opacity: ${({ theme }) => theme.opacity.opacity70};
             }
-
-            ${({ shouldMinimizeNavbar, theme }) =>
-              shouldMinimizeNavbar &&
-              css`
-                opacity: ${theme.opacity.opacity00};
-              `}
           }
 
           > div:nth-child(2) {
@@ -154,20 +124,8 @@ const RootStyles = styled.header<StyleProps>`
     }
   }
 `;
-
-const hideLinks = keyframes`
-  0% {opacity: 1}
-  100% {display: 0, display: none}
-`;
-
-const showLinks = keyframes`
-  0% {opacity: 0, display: flex}
-  100% {opacity: 1}
-`;
-
-interface TitleStyleProps {
+interface TitleStyleProps extends StyleProps {
   children: string;
-  shouldMinimizeNavbar: boolean;
 }
 
 const TitleIcon = styled.h1<TitleStyleProps>`

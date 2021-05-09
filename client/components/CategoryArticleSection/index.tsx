@@ -16,11 +16,11 @@ export default function CategoryArticleSection({
 }: Props) {
   return (
     <RootStyles>
-      {categoryName && withTopicTag ? (
-        <div>
+      <div>
+        {categoryName && withTopicTag ? (
           <CategoryTag name={categoryName} />
-        </div>
-      ) : null}
+        ) : null}
+      </div>
       <div>
         {articles.map(
           ({ categoriesCollection, description, sys: { id }, title }) => {
@@ -50,7 +50,7 @@ const RootStyles = styled.div`
   width: 100%;
 
   > div:first-child {
-    margin-bottom: ${({ theme }) => theme.spaces.small};
+    margin-bottom: ${({ theme }) => `calc(${theme.spaces.small} * 2)`};
   }
 
   > div:last-child {

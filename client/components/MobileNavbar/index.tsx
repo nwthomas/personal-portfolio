@@ -1,6 +1,12 @@
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
-import { HomeIcon, PresentationsIcon, MailIcon, PostsIcon } from '../Icons';
+import {
+  GraduateIcon,
+  HomeIcon,
+  PresentationsIcon,
+  MailIcon,
+  PostsIcon,
+} from '../Icons';
 import Link, { isActiveLink } from '../Link';
 
 export default function MobileNavbar() {
@@ -26,11 +32,21 @@ export default function MobileNavbar() {
             />
           </div>
         </Link>
-        <Link href="/contact" aria-label="Link to contact page">
+        <Link href="/nathan-thomas-resume.pdf">
+          <div>
+            <GraduateIcon />
+          </div>
+        </Link>
+        <a
+          href="mailto:me@nathanthomas.dev"
+          aria-label="Link to send email to nathan"
+          rel="noopener noreferrer"
+          target="_target"
+        >
           <div>
             <MailIcon isActive={isActiveLink(pathname, '/contact')} />
           </div>
-        </Link>
+        </a>
       </nav>
     </RootStyles>
   );

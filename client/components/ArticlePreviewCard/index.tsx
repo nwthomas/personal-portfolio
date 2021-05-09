@@ -65,12 +65,12 @@ const RootStyles = styled.div<StylesProps>`
   height: 100%;
   margin-bottom: ${({ theme }) => theme.spaces.small};
   padding: ${({ theme }) => theme.spaces.medium};
-  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
-    0 15px 40px rgba(166, 173, 201, 0.2);
-  -webkit-box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
-    0 15px 40px rgba(166, 173, 201, 0.2);
-  -moz-box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
-    0 15px 40px rgba(166, 173, 201, 0.2);
+  box-shadow: 0 0 10px rgba(154, 160, 185, 0.05),
+    0 10px 40px rgba(166, 173, 201, 0.1);
+  -webkit-box-shadow: 0 0 10px rgba(154, 160, 185, 0.05),
+    0 10px 40px rgba(166, 173, 201, 0.1);
+  -moz-box-shadow: 0 0 10px rgba(154, 160, 185, 0.05),
+    0 10px 40px rgba(166, 173, 201, 0.1);
   transition: opacity ${({ theme }) => theme.transitions.short};
   width: 100%;
 

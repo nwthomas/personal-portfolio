@@ -33,7 +33,12 @@ export default function Footer() {
         </div>
         <nav>
           <div>
-            <a href="https://github.com/nwthomas" aria-label="Link to GitHub">
+            <a
+              href="https://github.com/nwthomas"
+              aria-label="Link to GitHub"
+              rel="noopener noreferrer"
+              target="_target"
+            >
               {GitHubIconComponent}
             </a>
           </div>
@@ -41,6 +46,8 @@ export default function Footer() {
             <a
               href="https://www.instagram.com/nwthomas/"
               aria-label="Link to Instagram"
+              rel="noopener noreferrer"
+              target="_target"
             >
               {InstagramIconComponent}
             </a>
@@ -49,6 +56,8 @@ export default function Footer() {
             <a
               href="https://www.linkedin.com/in/nwthomas-dev/"
               aria-label="Link to LinkedIn"
+              rel="noopener noreferrer"
+              target="_target"
             >
               {LinkedInIconComponent}
             </a>
@@ -57,13 +66,22 @@ export default function Footer() {
             <a
               href="https://twitter.com/nwthomas_"
               aria-label="Link to Twitter"
+              rel="noopener noreferrer"
+              target="_target"
             >
               {TwitterIconComponent}
             </a>
           </div>
-          <Link href="/contact" aria-label="Link to contact page">
-            <div>{MailIconComponent}</div>
-          </Link>
+          <div>
+            <a
+              href="mailto:me@nathanthomas.dev"
+              aria-label="Link to send email to Nathan"
+              rel="noopener noreferrer"
+              target="_target"
+            >
+              {MailIconComponent}
+            </a>
+          </div>
         </nav>
       </div>
     </RootStyles>

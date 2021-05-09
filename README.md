@@ -1,12 +1,12 @@
 # Personal Website 🤌🏻
 
-![axios](https://img.shields.io/badge/axios-%5E0.21.1-yellow) ![formik](https://img.shields.io/badge/formik-%5E2.2.6-green) ![golang](https://img.shields.io/badge/golang-1.16.3-blue) ![graphql](https://img.shields.io/badge/graphql-%5E15.4.0-red) ![next](https://img.shields.io/badge/next-10.0.2-yellowgreen) ![react](https://img.shields.io/badge/react-17.0.1-blue) ![react-markdown](https://img.shields.io/badge/react--markdown-%5E5.0.3-lightgrey) ![react-query](https://img.shields.io/badge/react--query-%5E3.5.14-pink) ![react-syntax-highlighter](https://img.shields.io/badge/react--syntax--highlighter-%5E15.4.3-green) ![styled-components](https://img.shields.io/badge/styled--components-%5E5.2.1-red)
+![axios](https://img.shields.io/badge/axios-%5E0.21.1-yellow) ![formik](https://img.shields.io/badge/formik-%5E2.2.6-green) ![graphql](https://img.shields.io/badge/graphql-%5E15.4.0-red) ![next](https://img.shields.io/badge/next-10.0.2-yellowgreen) ![react](https://img.shields.io/badge/react-17.0.1-blue) ![react-markdown](https://img.shields.io/badge/react--markdown-%5E5.0.3-lightgrey) ![react-query](https://img.shields.io/badge/react--query-%5E3.5.14-pink) ![react-syntax-highlighter](https://img.shields.io/badge/react--syntax--highlighter-%5E15.4.3-green) ![styled-components](https://img.shields.io/badge/styled--components-%5E5.2.1-red)
 
 ## GETTING STARTED 💭
 
 This is the Github repository for my personal website. The entire codebase (and site) revolves around the idea of content discoverability, as I built it to allow others to more easily consume content that I create. My previous portfolio was based around projects, but it wasn't extensible or malleable enough for me.
 
-Also, making this site gave me the opportunity to really stretch out and craft a site that felt was mine. While I've borrowed inspiration from multiple places (see [acknowledgements section](#acknwoledgements)), the final product is my own creation. It's my own corner of the Internet, a place where I can blog, create, and own my content.
+Also, making this site gave me the opportunity to really stretch out and craft a site that felt was mine. The final product is my own creation. It's my own corner of the Internet, a place where I can blog, create, and own my content.
 
 It will also spawn many new personal projects (such as a potential scribing server and more).
 
@@ -26,27 +26,18 @@ Welcome. I hope you enjoy the site as much as I enjoyed making it.
 
 I tried to use a completely modern tech stack (both on front-end and back-end) while testing out some new technologies that I'd never used before. This resulted in a fast, performant, and easily-extensible web app that should be fairly future proof for the coming years. I used:
 
-- Front-end:
-  - [Axios](https://www.npmjs.com/package/axios)
-  - [Formik](https://formik.org/)
-  - [GraphQL](https://github.com/graphql/graphql-js)
-  - [Next.js](https://nextjs.org/)
-  - [React Markdown](https://github.com/remarkjs/react-markdown)
-  - [React Query](https://react-query.tanstack.com/)
-  - [React Syntax Highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter)
-  - [Styled Components](https://styled-components.com/)
-- Back-end:
-  - [Docker](https://www.docker.com/)
-  - [Golang](https://go.dev/)
-  - `FINISH LATER`
+- [Axios](https://www.npmjs.com/package/axios)
+- [Formik](https://formik.org/)
+- [GraphQL](https://github.com/graphql/graphql-js)
+- [Next.js](https://nextjs.org/)
+- [React Markdown](https://github.com/remarkjs/react-markdown)
+- [React Query](https://react-query.tanstack.com/)
+- [React Syntax Highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter)
+- [Styled Components](https://styled-components.com/)
 
 ## UNIT TESTING 🧪
 
-- Front-end:
-  - [React Testing Library](https://testing-library.com/)
-  - `COMING SOON`
-- Back-end:
-  - `COMING SOON`
+- `COMING SOON`
 
 ## PROJECT MANAGEMENT 🏗
 

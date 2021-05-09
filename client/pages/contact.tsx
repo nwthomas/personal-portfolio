@@ -227,9 +227,12 @@ const RootStyles = styled.main<StyleProps>`
         margin: ${({ theme }) => theme.spaces.medium} 0;
         padding: ${({ theme }) => theme.spaces.medium};
         flex-direction: column;
-        -webkit-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.08);
-        -moz-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.08);
-        box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+          0 15px 40px rgba(166, 173, 201, 0.2);
+        -webkit-box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+          0 15px 40px rgba(166, 173, 201, 0.2);
+        -moz-box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+          0 15px 40px rgba(166, 173, 201, 0.2);
         width: 100%;
 
         ${({ isDarkMode, theme }) =>

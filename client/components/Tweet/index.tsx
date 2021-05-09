@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import type { ThemeEnum } from '../../styles/libs/theme';
 
 /**
@@ -39,10 +40,9 @@ declare global {
 interface Props {
   currentTheme: ThemeEnum;
   tweetId: string;
-  withTitle?: boolean;
 }
 
-function Tweet({ currentTheme, tweetId, withTitle }: Props) {
+function Tweet({ currentTheme, tweetId }: Props) {
   const [isLoaded, setIsLoading] = useState(false);
 
   // The first pass needs to use the <blockquote /> and <a /> tag by calling the script load()
@@ -93,8 +93,8 @@ function Tweet({ currentTheme, tweetId, withTitle }: Props) {
   }, [currentTheme, isLoaded, tweetId]);
 
   return (
-    <div>
-      {withTitle ? <h3>Latest Tweet:</h3> : null}
+    <RootStyles>
+      <h3>Latest Tweet:</h3>
       <div id="container">
         <blockquote
           className="twitter-tweet"
@@ -106,7 +106,7 @@ function Tweet({ currentTheme, tweetId, withTitle }: Props) {
           <a href={`https://twitter.com/nwthomas_/status/${tweetId}`}></a>
         </blockquote>
       </div>
-    </div>
+    </RootStyles>
   );
 }
 
@@ -119,5 +119,11 @@ function createTweet(
     window.twttr.widgets.createTweet(tweetId, element, options);
   }
 }
+
+const RootStyles = styled.div`
+  > h3 {
+    padding-bottom: ${({ theme }) => theme.spaces.small};
+  }
+`;
 
 export default Tweet;
