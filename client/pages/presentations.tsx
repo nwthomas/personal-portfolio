@@ -19,7 +19,6 @@ export default function Presentations() {
                   description={presentation.description}
                   key={i}
                   location={presentation.location}
-                  meetupTitle={presentation.meetupTitle}
                   presenters={presentation.presenters}
                   title={presentation.title}
                   url={presentation.url}
