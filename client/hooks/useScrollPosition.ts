@@ -1,9 +1,4 @@
 import { useEffect, useState } from 'react';
-import { appDimensions } from '../styles/libs/theme';
-
-const DESKTOP_NAVBAR_HEIGHT_INT = Number(
-  appDimensions.desktopNavbarHeight.split('px').join(''),
-);
 
 interface ScrollValuesType {
   scrollValueX: number;
@@ -34,19 +29,4 @@ export function useScrollPosition() {
   }, []);
 
   return scrollValues;
-}
-
-export function useShouldMinimizeNavbar(): boolean {
-  const { scrollValueY } = useScrollPosition();
-  const [shouldMinimizeNavbar, setShouldMinimizeNavbar] = useState(false);
-
-  useEffect(() => {
-    if (scrollValueY >= DESKTOP_NAVBAR_HEIGHT_INT) {
-      setShouldMinimizeNavbar(true);
-    } else {
-      setShouldMinimizeNavbar(false);
-    }
-  }, [scrollValueY]);
-
-  return shouldMinimizeNavbar;
 }

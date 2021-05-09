@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import Link from '../Link';
 import ThemeTransitionButton from '../ThemeTransitionButton';
-import { useShouldMinimizeNavbar } from '../../hooks/useScrollPosition';
+import { useShouldMinimizeNavbar } from '../../hooks/useShouldMinimizeNavbar';
 import type { ThemeEnum } from '../../styles/libs/theme';
 
 interface Props {
