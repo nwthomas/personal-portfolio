@@ -189,5 +189,5 @@ dmypy.json
 #Ignore testing database
 db.sqlite3
 
-#Miscellaneous
+# Miscellaneous Files
 .DS_Store

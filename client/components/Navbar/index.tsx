@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Link from '../Link';
 import ThemeTransitionButton from '../ThemeTransitionButton';
+import { useShouldMinimizeNavbar } from '../../hooks/useShouldMinimizeNavbar';
 import type { ThemeEnum } from '../../styles/libs/theme';
 
 interface Props {
@@ -9,19 +10,15 @@ interface Props {
 }
 
 function Navbar({ onThemeChangeClick, themeName }: Props) {
+  const shouldMinimizeNavbar = useShouldMinimizeNavbar();
+
   return (
-    <RootStyles>
+    <RootStyles shouldMinimizeNavbar={shouldMinimizeNavbar}>
       <div>
         <Link href="/">
-          <TitleIcon>n</TitleIcon>
+          <TitleIcon shouldMinimizeNavbar={shouldMinimizeNavbar}>n</TitleIcon>
         </Link>
         <div>
-          {themeName ? (
-            <ThemeTransitionButton
-              onClick={onThemeChangeClick}
-              themeName={themeName}
-            />
-          ) : null}
           <nav>
             <Link href="/articles" withStyling>
               Articles
@@ -29,25 +26,35 @@ function Navbar({ onThemeChangeClick, themeName }: Props) {
             <Link href="/presentations" withStyling>
               Presentations
             </Link>
-            <Link href="/contact" withStyling>
-              Contact
+            <Link href="/nathan-thomas-resume.pdf" withStyling>
+              Resume
             </Link>
           </nav>
+          <ThemeTransitionButton
+            onClick={onThemeChangeClick}
+            themeName={themeName}
+          />
         </div>
       </div>
     </RootStyles>
   );
 }
 
-const RootStyles = styled.header`
+interface StyleProps {
+  shouldMinimizeNavbar: boolean;
+}
+
+const RootStyles = styled.header<StyleProps>`
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.bodyBackground};
+  background: ${({ theme }) => theme.colors.bodyBackground};
   display: flex;
   height: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};
   justify-content: center;
   padding: 0 ${({ theme }) => theme.appDimensions.appHorizontalGutters};
   position: absolute;
   top: 0;
+  transition: background ${({ theme }) => theme.transitions.short},
+    height ${({ theme }) => theme.transitions.medium};
   width: 100%;
   z-index: 1;
 
@@ -55,6 +62,12 @@ const RootStyles = styled.header`
       theme.breakpoints.mobile}) {
     height: ${({ theme }) => theme.appDimensions.desktopNavbarHeight};
     position: fixed;
+
+    ${({ shouldMinimizeNavbar, theme }) =>
+      shouldMinimizeNavbar &&
+      css`
+        height: ${theme.appDimensions.desktopNavbarMinimizedHeight};
+      `}
   }
 
   > div {
@@ -85,9 +98,21 @@ const RootStyles = styled.header`
             height: ${({ theme }) => theme.appDimensions.desktopNavbarHeight};
             justify-content: center;
             text-decoration: none;
-            transition: color ${({ theme }) => theme.transitions.short},
-              padding-bottom ${({ theme }) => theme.transitions.short};
+            transition: opacity ${({ theme }) => theme.transitions.medium},
+              display ${({ theme }) => theme.transitions.medium};
             width: ${({ theme }) => theme.appDimensions.navbarLinkWidth};
+            visibility: shown;
+
+            ${({ shouldMinimizeNavbar }) =>
+              shouldMinimizeNavbar &&
+              css`
+                display: none;
+                opacity: 0;
+              `}
+
+            &:hover {
+              opacity: ${({ theme }) => theme.opacity.opacity70};
+            }
           }
 
           > div:nth-child(2) {
@@ -99,8 +124,11 @@ const RootStyles = styled.header`
     }
   }
 `;
+interface TitleStyleProps extends StyleProps {
+  children: string;
+}
 
-const TitleIcon = styled.h1<{ children: string }>`
+const TitleIcon = styled.h1<TitleStyleProps>`
   align-items: center;
   color: ${({ theme }) => theme.colors.textAccentOne};
   cursor: pointer;
@@ -117,7 +145,15 @@ const TitleIcon = styled.h1<{ children: string }>`
   @media only screen and (min-width: ${({ theme }) =>
       theme.breakpoints.mobile}) {
     height: ${({ theme }) => theme.appDimensions.desktopNavbarHeight};
-    font-size: 10rem;
+    font-size: 12rem;
+    transition: color ${({ theme }) => theme.transitions.short},
+      font-size ${({ theme }) => theme.transitions.medium};
+
+    ${({ shouldMinimizeNavbar }) =>
+      shouldMinimizeNavbar &&
+      css`
+        font-size: 8rem;
+      `}
   }
 `;
 

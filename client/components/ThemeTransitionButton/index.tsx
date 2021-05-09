@@ -35,17 +35,23 @@ export default function ThemeTransitionButton({ onClick, themeName }: Props) {
 
   const currentIcon = themeName === 'dark' ? MoonIcon : SunIcon;
 
+  function handleOnClick() {
+    if (themeName && onClick) {
+      onClick();
+    }
+  }
+
   return (
     <RootStyles>
-      <button onClick={onClick} type="button">
-        {currentIcon}
+      <button onClick={handleOnClick} type="button">
+        {themeName ? currentIcon : null}
       </button>
     </RootStyles>
   );
 }
 
 const RootStyles = styled.div`
-  cursor: pointer;
+  align-items: center;
   display: flex;
   height: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};
   justify-content: flex-end;
@@ -55,49 +61,31 @@ const RootStyles = styled.div`
       transitions: { short },
     },
   }) => `padding-bottom ${short}, opacity ${short}`};
-  width: 50px;
+  width: 55px;
 
   &:hover {
-    opacity: ${({ theme }) => theme.opacity.opacity80};
-    padding-bottom: ${({ theme }) => theme.spaces.micro};
+    opacity: ${({ theme }) => theme.opacity.opacity70};
   }
 
   @media only screen and (min-width: ${({ theme }) =>
       theme.breakpoints.mobile}) {
     height: ${({ theme }) => theme.appDimensions.desktopNavbarHeight};
-    justify-content: center;
-    margin-right: ${({ theme }) => theme.spaces.small};
-    width: 58px;
+    margin-left: ${({ theme }) => theme.spaces.micro};
   }
 
   > button {
-    align-items: flex-end;
-    background-color: ${({ theme }) => theme.colors.bodyBackgroundAccentTwo};
-    border-bottom: 1px solid
-      ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
-    border-right: 1px solid
-      ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
-    border-left: 1px solid
-      ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
-    border-top: 0;
-    border-bottom-left-radius: ${({ theme }) => theme.borderRadii.small};
-    border-bottom-right-radius: ${({ theme }) => theme.borderRadii.small};
-    box-shadow: 0px 12px 44px -22px rgba(0, 0, 0, 0.34);
-    -moz-box-shadow: 0px 12px 44px -22px rgba(0, 0, 0, 0.34);
-    -webkit-box-shadow: 0px 12px 44px -22px rgba(0, 0, 0, 0.34);
+    align-items: center;
+    background: ${({ theme }) => theme.colors.transparent};
+    border: none;
     cursor: pointer;
     display: flex;
-    height: ${({ theme }) =>
-      `calc(${theme.appDimensions.mobileNavbarHeight} * 0.85)`};
+    height: 100%;
     justify-content: center;
-    padding-bottom: ${({ theme }) => `calc(${theme.spaces.small})`};
     width: 100%;
 
     @media only screen and (min-width: ${({ theme }) =>
         theme.breakpoints.mobile}) {
-      height: ${({ theme }) =>
-        `calc(${theme.appDimensions.desktopNavbarHeight} * 0.75)`};
-      padding-bottom: ${({ theme }) => `calc(${theme.spaces.nano} * 14)`};
+      height: 50%;
     }
   }
 `;

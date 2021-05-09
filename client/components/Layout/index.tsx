@@ -39,7 +39,7 @@ interface StyleProps {
 }
 
 const RootStyles = styled.div<StyleProps>`
-  background-color: ${({ theme }) => theme.colors.bodyBackground};
+  background: ${({ theme }) => theme.colors.bodyBackground};
   display: flex;
   justify-content: center;
   margin-bottom: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};

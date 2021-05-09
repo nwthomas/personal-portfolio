@@ -1,21 +1,25 @@
 import styled from 'styled-components';
 import ArticlePreviewCard from '../ArticlePreviewCard';
 import { ArticlePreviewType } from '../../pages/api/articles';
-import TopicTag from '../TopicTag';
+import CategoryTag from '../CategoryTag';
 
 interface Props {
   articles: Array<ArticlePreviewType>;
-  categoryName: string;
+  categoryName?: string;
+  withTopicTag?: boolean;
 }
 
 export default function CategoryArticleSection({
   articles,
   categoryName,
+  withTopicTag,
 }: Props) {
   return (
     <RootStyles>
       <div>
-        <TopicTag name={categoryName} />
+        {categoryName && withTopicTag ? (
+          <CategoryTag name={categoryName} />
+        ) : null}
       </div>
       <div>
         {articles.map(
@@ -46,13 +50,20 @@ const RootStyles = styled.div`
   width: 100%;
 
   > div:first-child {
-    margin-bottom: ${({ theme }) => theme.spaces.small};
+    margin-bottom: ${({ theme }) => `calc(${theme.spaces.small} * 2)`};
   }
 
-  > div {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
+  > div:last-child {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minMax(300px, 1fr));
+    grid-auto-rows: minmax(min-content, max-content);
+    column-gap: ${({ theme }) => theme.spaces.medium};
+    row-gap: ${({ theme }) => theme.spaces.medium};
     width: 100%;
+
+    @media only screen and (min-width: ${({ theme }) =>
+        theme.breakpoints.desktop}) {
+      grid-template-columns: repeat(auto-fit, minMax(300px, 380px));
+    }
   }
 `;

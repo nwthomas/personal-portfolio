@@ -26,11 +26,19 @@ export default function Footer() {
       <div>
         <div>
           <p suppressHydrationWarning>{randomFooterPhrase}</p>
-          <p>{`© ${currentYear} Nathan Thomas`}</p>
+          <p>
+            {`© ${currentYear} Nathan Thomas `}
+            <Link href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">🤌🏻</Link>
+          </p>
         </div>
         <nav>
           <div>
-            <a href="https://github.com/nwthomas" aria-label="Link to GitHub">
+            <a
+              href="https://github.com/nwthomas"
+              aria-label="Link to GitHub"
+              rel="noopener noreferrer"
+              target="_target"
+            >
               {GitHubIconComponent}
             </a>
           </div>
@@ -38,6 +46,8 @@ export default function Footer() {
             <a
               href="https://www.instagram.com/nwthomas/"
               aria-label="Link to Instagram"
+              rel="noopener noreferrer"
+              target="_target"
             >
               {InstagramIconComponent}
             </a>
@@ -46,6 +56,8 @@ export default function Footer() {
             <a
               href="https://www.linkedin.com/in/nwthomas-dev/"
               aria-label="Link to LinkedIn"
+              rel="noopener noreferrer"
+              target="_target"
             >
               {LinkedInIconComponent}
             </a>
@@ -54,13 +66,22 @@ export default function Footer() {
             <a
               href="https://twitter.com/nwthomas_"
               aria-label="Link to Twitter"
+              rel="noopener noreferrer"
+              target="_target"
             >
               {TwitterIconComponent}
             </a>
           </div>
-          <Link href="/contact" aria-label="Link to contact page">
-            <div>{MailIconComponent}</div>
-          </Link>
+          <div>
+            <a
+              href="mailto:me@nathanthomas.dev"
+              aria-label="Link to send email to Nathan"
+              rel="noopener noreferrer"
+              target="_target"
+            >
+              {MailIconComponent}
+            </a>
+          </div>
         </nav>
       </div>
     </RootStyles>
@@ -69,10 +90,9 @@ export default function Footer() {
 
 const RootStyles = styled.footer`
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.backgroundColor};
-  border-top: ${({ theme }) => theme.spaces.nano} solid
-    ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
-  border-bottom: ${({ theme }) => theme.spaces.nano} solid
+  background: ${({ theme }) => theme.colors.backgroundColor};
+  border-top: 1px solid ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
+  border-bottom: 1px solid
     ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
   bottom: 0;
   display: flex;
@@ -91,7 +111,7 @@ const RootStyles = styled.footer`
   > div {
     align-items: flex-start;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     justify-content: space-between;
     max-width: ${({ theme }) => theme.appDimensions.appMaxWidth};
     width: 100%;
@@ -103,21 +123,25 @@ const RootStyles = styled.footer`
       padding: 0;
     }
 
-    > div:first-child > p:first-child {
-      font-style: italic;
+    > div:first-child {
+      margin-bottom: ${({ theme }) => theme.spaces.small};
+
+      > p:first-child {
+        font-style: italic;
+      }
     }
 
     nav {
       align-items: center;
       display: flex;
-      height: ${({ theme }) => theme.spaces.xxLarge};
+      height: ${({ theme }) => theme.spaces.large};
       justify-content: flex-start;
       margin-bottom: ${({ theme }) => theme.spaces.small};
       width: 100%;
 
       @media only screen and (min-width: ${({ theme }) =>
           theme.breakpoints.mobile}) {
-        height: ${({ theme }) => theme.spaces.jumbo};
+        height: ${({ theme }) => theme.spaces.xLarge};
         justify-content: flex-end;
         margin-bottom: 0;
         width: 50%;
@@ -135,7 +159,7 @@ const RootStyles = styled.footer`
         }
 
         &:hover {
-          opacity: ${({ theme }) => theme.opacity.opacity80};
+          opacity: ${({ theme }) => theme.opacity.opacity70};
         }
       }
 

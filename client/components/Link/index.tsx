@@ -63,10 +63,6 @@ const RootStyles = styled.div<StyleProps>`
     height: 50%;
     justify-content: center;
     width: 100%;
-
-    &:hover {
-      padding-bottom: ${({ isActive }) => !isActive && '5px'};
-    }
   }
 `;
 

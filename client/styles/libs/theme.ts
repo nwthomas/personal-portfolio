@@ -41,7 +41,7 @@ export const themeColorValues = {
 };
 
 // ===================================== Space Variables
-const appDimensions = {
+export const appDimensions = {
   appHorizontalGutters: '3%',
   appMaxWidth: '1200px',
   appMinHeight: '100vh',
@@ -49,6 +49,7 @@ const appDimensions = {
   articleMaxWidth: '600px',
   desktopFooterHeight: '200px',
   desktopNavbarHeight: '120px',
+  desktopNavbarMinimizedHeight: '60px',
   mobileFooterHeight: '200px',
   mobileNavbarHeight: '70px',
   quoteHorizontalGutters: '6%',
@@ -56,8 +57,8 @@ const appDimensions = {
 };
 
 const borderRadii = {
-  nano: '3px',
-  micro: '5px',
+  nano: '2px',
+  micro: '4px',
   small: '8px',
   medium: '10px',
   large: '15px',
@@ -84,20 +85,21 @@ const opacity = {
 };
 
 const spaces = {
-  nano: '1px',
+  nano: '2px',
   micro: '5px',
   small: '10px',
   medium: '30px',
-  large: '35px',
-  xLarge: '40px',
-  xxLarge: '50px',
+  large: '40px',
+  xLarge: '50px',
+  xxLarge: '70px',
   jumbo: '100px',
 };
 
 const transitions = {
-  short: '0.3s',
-  medium: '0.5s',
-  long: '1s',
+  short: '0.03s',
+  medium: '0.1s',
+  long: '0.5s',
+  eternal: '1s',
 };
 
 export interface Theme {

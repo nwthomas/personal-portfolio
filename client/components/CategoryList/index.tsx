@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import TopicTag from '../TopicTag';
+import CategoryTag from '../CategoryTag';
 import { CategoryType } from '../../pages/api/categories';
 
 interface Props {
@@ -9,12 +9,12 @@ interface Props {
 function CategoryList({ categories }: Props) {
   return (
     <RootStyles>
-      <h3>Article Categories</h3>
+      <h3>Article Categories:</h3>
       <div>
         {categories.map(({ title }) => {
           return (
             <div key={title}>
-              <TopicTag name={title} />
+              <CategoryTag name={title} />
             </div>
           );
         })}
@@ -24,10 +24,14 @@ function CategoryList({ categories }: Props) {
 }
 
 const RootStyles = styled.div`
+  > h3 {
+    display: flex;
+    padding-bottom: ${({ theme }) => theme.spaces.small};
+  }
+
   > div {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 50px;
     width: 100%;
 
     > div {

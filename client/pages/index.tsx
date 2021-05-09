@@ -1,11 +1,12 @@
 import { useContext } from 'react';
 import { dehydrate } from 'react-query/hydration';
 import Image from 'next/image';
+import Link from 'next/link';
 import { QueryClient, useQuery } from 'react-query';
 import styled, { ThemeContext } from 'styled-components';
 import CategoryList from '../components/CategoryList';
 import Layout from '../components/Layout';
-import ArticlePreviewCard from '../components/ArticlePreviewCard';
+import CategoryArticleSection from '../components/CategoryArticleSection';
 import Tweet from '../components/Tweet';
 import {
   getArticlePreviews,
@@ -53,102 +54,66 @@ export default function Home() {
   const finalArticlesData = articlesData?.items?.slice(0, 3) || [];
   const mostRecentTweetId = tweetsData?.data[0]?.id;
 
+  const twitterLogo =
+    currentTheme === 'light'
+      ? '/twitter-logo-blue.png'
+      : '/twitter-logo-white.png';
+  const lambdaLogo =
+    currentTheme === 'light' ? '/lambda-logo.png' : '/lambda-logo-white.png';
+
   return (
     <Layout pageName={PAGE_NAME} withEmojis withFooter>
       <RootStyles>
         <div>
           <section>
-            <h2>
-              I'm Nathan, a software engineer
-              <span>
-                <a href="https://github.com/nwthomas">
-                  <Image
-                    alt="Github logo"
-                    draggable={false}
-                    height={100}
-                    quality={100}
-                    priority
-                    src="/git.png"
-                    width={100}
-                  />
-                </a>
-              </span>
-              , writer, musician
-              <span>
-                <a href="https://soundcloud.com/limbalring">
-                  <Image
-                    alt="Soundcloud logo"
-                    draggable={false}
-                    height={100}
-                    quality={100}
-                    priority
-                    src="/soundcloud.png"
-                    width={100}
-                  />
-                </a>
-              </span>
-              , instructor, and investor
-              <span>
-                <a href="https://bitcoin.org/bitcoin.pdf">
-                  <Image
-                    alt="Bitcoin logo"
-                    draggable={false}
-                    height={100}
-                    quality={100}
-                    priority
-                    src="/bitcoin-logo.png"
-                    width={100}
-                  />
-                </a>
-              </span>
-              . I work at the bird company
-              <span>
+            <div>
+              <h2>
+                I'm Nathan, a{' '}
+                <a href="https://github.com/nwthomas">software engineer</a>,{' '}
+                <Link href="/articles">writer</Link>, and{' '}
+                <Link href="/presentations">instructor</Link>. I work at the{' '}
+                <a href="https://twitter.com/nwthomas_">bird company</a> in San
+                Francisco. 🌉
+              </h2>
+            </div>
+            <div>
+              <div>
+                <h3>Currently:</h3>
                 <a href="https://twitter.com/nwthomas_">
                   <Image
                     alt="Twitter logo"
                     draggable={false}
-                    height={263}
+                    height={120}
                     quality={100}
                     priority
-                    src="/twitter-logo-blue.png"
-                    width={263}
+                    src={twitterLogo}
+                    width={120}
                   />
                 </a>
-              </span>
-              in San Francisco.
-            </h2>
+              </div>
+              <div>
+                <h3>Previously:</h3>
+                <a href="https://lambdaschool.com/">
+                  <Image
+                    alt="Lambda logo"
+                    draggable={false}
+                    height={120}
+                    quality={100}
+                    priority
+                    src={lambdaLogo}
+                    width={349.5}
+                  />
+                </a>
+              </div>
+            </div>
           </section>
           {!isFetchingArticles &&
             !articlesError &&
             articlesData?.items.length >= 1 && (
               <Content>
                 <div>
-                  <h3>Latest Articles</h3>
-                  {finalArticlesData.map(
-                    ({
-                      categoriesCollection,
-                      description,
-                      sys: { id },
-                      title,
-                    }) => {
-                      const articleCategories = categoriesCollection?.items
-                        ? categoriesCollection.items.map(
-                            (category) => category.title,
-                          )
-                        : [];
-
-                      return (
-                        <ArticlePreviewCard
-                          articleId={id}
-                          description={description}
-                          key={title}
-                          title={title}
-                          categories={articleCategories}
-                          withCategories
-                        />
-                      );
-                    },
-                  )}
+                  <h2>Latest Articles</h2>
+                  <CategoryArticleSection articles={finalArticlesData} />
                 </div>
                 <div>
                   {!isFetchingCategories &&
@@ -160,7 +125,6 @@ export default function Home() {
                     <Tweet
                       currentTheme={currentTheme}
                       tweetId={mostRecentTweetId}
-                      withTitle
                     />
                   ) : null}
                 </div>
@@ -186,59 +150,63 @@ const RootStyles = styled.main`
     > section {
       align-items: center;
       display: flex;
-      margin: ${({ theme }) => theme.spaces.medium} 0
-        ${({ theme }) => `calc(${theme.spaces.medium} * 2)`};
+      flex-direction: column;
+      margin-bottom: ${({ theme }) => theme.spaces.medium};
+      padding: ${({ theme }) => theme.spaces.medium} 0 0;
       width: 100%;
 
-      @media only screen and (min-width: ${({ theme }) =>
-          theme.breakpoints.mobile}) {
-        margin: ${({ theme }) => theme.spaces.medium} 0
-          ${({ theme }) => `calc(${theme.spaces.large} * 2)`};
-      }
-
-      > h2 {
-        font-size: 3rem;
-        max-width: 100%;
+      > div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
 
         @media only screen and (min-width: ${({ theme }) =>
-            theme.breakpoints.desktop}) {
-          max-width: 85%;
+            theme.breakpoints.mobile}) {
+          flex-direction: row;
         }
 
-        > span {
-          display: inline-block;
-          height: 30px;
-          margin: 0 0 0 7px;
-          width: 30px;
+        > h2 {
+          margin: ${({ theme }) => theme.spaces.medium} 0
+            ${({ theme }) => `calc(${theme.spaces.xxLarge})`};
+          max-width: 100%;
 
-          > a {
-            align-items: flex-end;
-            display: flex;
-            height: 30px;
-            position: relative;
-            transition: opacity ${({ theme }) => theme.transitions.short};
+          @media only screen and (min-width: ${({ theme }) =>
+              theme.breakpoints.desktop}) {
+            width: 68%;
+          }
 
-            > div {
-              bottom: -5px;
-              position: absolute;
+          a {
+            color: ${({ theme }) => theme.colors.textAccentTwo};
+            font-size: 3rem;
 
-              &:hover {
-                opacity: ${({ theme }) => theme.opacity.opacity80};
-              }
+            &:hover {
+              color: ${({ theme }) => theme.colors.textAccentThree};
             }
           }
         }
 
-        > span:first-child {
-          margin-left: 6px;
+        > div:first-child {
+          margin-bottom: ${({ theme }) => theme.spaces.medium};
         }
 
-        > span:nth-child(3) {
-          margin: 0 -3px 0 5px;
+        > div {
+          display: flex;
+          flex-direction: column;
+          height: 170px;
+          justify-content: space-between;
+          margin-right: 13%;
+          padding-bottom: ${({ theme }) => theme.spaces.nano};
+          transition: padding-bottom ${({ theme }) => theme.transitions.short}
+            ease-in-out;
+
+          &:hover {
+            padding-bottom: ${({ theme }) => theme.spaces.micro};
+          }
         }
 
-        > span:last-child {
-          margin: 0 7px;
+        @media only screen and (min-width: ${({ theme }) =>
+            theme.breakpoints.mobile}) {
+          flex-direction: row;
         }
       }
     }
@@ -246,27 +214,14 @@ const RootStyles = styled.main`
 `;
 
 const Content = styled.div`
-  display: flex;
-  flex-direction: column-reverse;
-  margin-bottom: 30px;
-
-  @media only screen and (min-width: 1000px) {
-    flex-direction: row;
-  }
+  padding-bottom: ${({ theme }) => theme.spaces.medium};
 
   > div:first-child {
     flex-grow: 2;
-    margin-bottom: 30px;
-
-    @media only screen and (min-width: ${({ theme }) =>
-        theme.breakpoints.mobile}) {
-      padding-right: 10%;
-    }
+    margin-bottom: ${({ theme }) => theme.spaces.xxLarge};
   }
 
   > div:last-child {
-    flex-grow: 1;
-    max-width: 460px;
     width: 100%;
 
     @media only screen and (min-width: ${({ theme }) =>
@@ -275,14 +230,9 @@ const Content = styled.div`
     }
 
     > div {
-      display: none;
-
-      @media only screen and (min-width: ${({ theme }) =>
-          theme.breakpoints.desktop}) {
-        display: block;
-        margin-bottom: 50px;
-        width: 100%;
-      }
+      display: block;
+      padding-bottom: ${({ theme }) => theme.spaces.medium};
+      width: 100%;
 
       > div {
         margin-bottom: ${({ theme }) => theme.spaces.small};

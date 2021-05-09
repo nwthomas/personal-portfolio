@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { QueryClient, useQuery } from 'react-query';
 import { dehydrate } from 'react-query/hydration';
 import Layout from '../../components/Layout';
-import PageTitle from '../../components/PageTitle';
 import { getArticlePreviews, getCategories } from '../api';
 import type { ArticlePreviewType } from '../api/articles';
 import CategoryList from '../../components/CategoryList';
@@ -58,13 +57,20 @@ function ArticlesPage() {
       <Layout pageName={PAGE_NAME} withEmojis withFooter>
         <RootStyles>
           <div>
-            <PageTitle title="Articles" type="2" />
+            <div>
+              <h2>Articles</h2>
+            </div>
             {categorizedArticlesArray.map(([category, articles], i) => {
+              if (!articles.length) {
+                return null;
+              }
+
               return (
                 <CategoryArticleSection
                   articles={articles}
                   categoryName={category}
                   key={i}
+                  withTopicTag
                 />
               );
             })}
@@ -91,7 +97,15 @@ const RootStyles = styled.main`
 
   > div {
     max-width: ${({ theme }) => theme.appDimensions.appMaxWidth};
+    padding: ${({ theme }) => theme.spaces.medium} 0 0;
     width: 100%;
+
+    > div:first-child {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
   }
 `;
 

@@ -11,7 +11,7 @@ interface Props {
   name: string;
 }
 
-export default function TopicTag({ name }: Props) {
+function CategoryTag({ name }: Props) {
   const router = useRouter();
 
   const isInsideCategoryPage = !!router.query.categoryName;
@@ -33,9 +33,9 @@ export default function TopicTag({ name }: Props) {
 }
 
 const Button = styled.button`
-  background-color: ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
+  background: ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
   border: none;
-  border-radius: ${({ theme }) => theme.borderRadii.small};
+  border-radius: ${({ theme }) => theme.borderRadii.infinity};
   display: inline-block;
   cursor: pointer;
   padding: 6px 10px;
@@ -44,10 +44,12 @@ const Button = styled.button`
   white-space: nowrap;
 
   &:hover {
-    opacity: ${({ theme }) => theme.opacity.opacity80};
+    opacity: ${({ theme }) => theme.opacity.opacity70};
   }
 
   &:focus {
     outline-color: ${({ theme }) => theme.colors.text};
   }
 `;
+
+export default CategoryTag;

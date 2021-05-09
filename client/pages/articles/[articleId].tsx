@@ -89,6 +89,6 @@ const RootStyles = styled.main`
 
   @media only screen and (min-width: ${({ theme }) =>
       theme.breakpoints.mobile}) {
-    padding: 0;
+    padding: ${({ theme }) => theme.spaces.medium} 0 0;
   }
 `;

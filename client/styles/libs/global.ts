@@ -9,7 +9,7 @@ const GlobalStyle = css`
         transitions: { short },
       },
     }) =>
-      `background-color ${short}, color ${short}, fill ${short}, stroke ${short}, border-color ${short}`};
+      `background ${short}, background-color ${short}, color ${short}, fill ${short}, stroke ${short}, border-color ${short}`};
   }
 
   html {
@@ -44,9 +44,9 @@ const GlobalStyle = css`
     --theme-icon-bg: ${colors.goldenFizz};
   }
   body.light {
-    --body-bg: ${colors.alabaster};
+    --body-bg: ${colors.white};
     --body-bg-accent-one: ${colors.mercury};
-    --body-bg-accent-two: ${colors.white};
+    --body-bg-accent-two: ${colors.alabaster};
     --text: ${colors.mineShaft};
     --text-on-color: ${colors.titanWhite};
     --text-accent-one: ${colors.mediumPurple};
@@ -71,13 +71,15 @@ const GlobalStyle = css`
   }
 
   h2 {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
 
   h3 {
-    color: ${({ theme }) => theme.colors.textAccentOne};
+    color: ${({ theme }) => theme.colors.text};
     font-size: 1.6rem;
-    margin-bottom: ${({ theme }) => theme.spaces.medium};
+    letter-spacing: 4px;
+    margin-bottom: ${({ theme }) => theme.spaces.small};
+    opacity: ${({ theme }) => theme.opacity.opacity90};
     text-transform: uppercase;
   }
 
@@ -103,7 +105,7 @@ const GlobalStyle = css`
 
     &::placeholder {
       color: ${({ theme }) => theme.colors.text};
-      opacity: ${({ theme }) => theme.opacity.opacity60};
+      opacity: ${({ theme }) => theme.opacity.opacity70};
       font-size: 1.6rem;
       line-height: 2;
       font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, Segoe UI,

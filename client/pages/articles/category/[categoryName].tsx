@@ -4,7 +4,6 @@ import { dehydrate } from 'react-query/hydration';
 import styled from 'styled-components';
 import CategoryArticleSection from '../../../components/CategoryArticleSection';
 import Layout from '../../../components/Layout';
-import PageTitle from '../../../components/PageTitle';
 import { getArticlePreviews, getCategories } from '../../api';
 import CategoryList from '../../../components/CategoryList';
 import Error from '../../../components/Error';
@@ -69,7 +68,7 @@ export default function CategoryPage() {
       <Layout pageName={fullCategoryName} withEmojis withFooter>
         <RootStyles>
           <div>
-            <PageTitle title={fullCategoryName} type="2" />
+            <h2>{fullCategoryName}</h2>
             <CategoryArticleSection
               articles={articlesInCategoryArray}
               categoryName={fullCategoryName}
@@ -97,6 +96,7 @@ const RootStyles = styled.main`
 
   > div {
     max-width: ${({ theme }) => theme.appDimensions.appMaxWidth};
+    padding: ${({ theme }) => theme.spaces.medium} 0 0;
     width: 100%;
   }
 `;

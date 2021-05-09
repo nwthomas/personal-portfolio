@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import { useContext } from 'react';
+import styled, { css, ThemeContext } from 'styled-components';
 import type { Presentation } from '../../staticAssets';
 
 // Renamed to Props for clarity in error messages
@@ -8,13 +9,15 @@ function PresentationCard({
   date,
   description,
   location,
-  meetupTitle,
   presenters,
   title,
   url,
 }: Props) {
+  const { currentTheme } = useContext(ThemeContext);
+  const isDarkMode = currentTheme === 'dark';
+
   return (
-    <RootStyles>
+    <RootStyles isDarkMode={isDarkMode}>
       <div>
         <iframe
           src={url}
@@ -28,7 +31,7 @@ function PresentationCard({
         <h4>{title}</h4>
         <div>
           <p>{presenters}</p>
-          <p>{`${meetupTitle} on ${date} at ${location}`}</p>
+          <p>{`${date} at ${location}`}</p>
         </div>
         <p>{description}</p>
       </div>
@@ -36,17 +39,35 @@ function PresentationCard({
   );
 }
 
-const RootStyles = styled.div`
+interface StyleProps {
+  isDarkMode: boolean;
+}
+
+const RootStyles = styled.div<StyleProps>`
   flex-direction: column;
   display: flex;
-  background-color: ${({ theme }) => theme.colors.bodyBackgroundAccentTwo};
-  border: ${({ theme }) => `1px solid ${theme.colors.bodyBackgroundAccentOne}`};
-  border-radius: ${({ theme }) => theme.borderRadii.small};
-  padding: ${({ theme }) => theme.spaces.medium};
+  border-radius: ${({ theme }) => theme.borderRadii.micro};
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(154, 160, 185, 0.05),
+    0 10px 40px rgba(166, 173, 201, 0.1);
+  -webkit-box-shadow: 0 0 10px rgba(154, 160, 185, 0.05),
+    0 10px 40px rgba(166, 173, 201, 0.1);
+  -moz-box-shadow: 0 0 10px rgba(154, 160, 185, 0.05),
+    0 10px 40px rgba(166, 173, 201, 0.1);
   width: 100%;
 
+  ${({ isDarkMode, theme }) =>
+    isDarkMode &&
+    css`
+      background: ${theme.colors.bodyBackgroundAccentTwo};
+      border: 1px solid ${theme.colors.bodyBackgroundAccentOne};
+      -webkit-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0);
+      -moz-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0);
+      box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0);
+    `}
+
   @media only screen and (min-width: ${({ theme }) =>
-      theme.breakpoints.desktop}) {
+    theme.breakpoints.desktop}) {
     align-self: flex-start;
     flex-direction: row;
   }
@@ -79,11 +100,10 @@ const RootStyles = styled.div`
 
   > div:last-child {
     margin-left: 0;
-    margin-top: ${({ theme }) => theme.spaces.medium};
+    padding: ${({ theme }) => theme.spaces.medium};
 
     @media only screen and (min-width: ${({ theme }) =>
         theme.breakpoints.desktop}) {
-      margin-left: ${({ theme }) => theme.spaces.medium};
       margin-top: 0;
       max-width: 700px;
     }
@@ -93,7 +113,7 @@ const RootStyles = styled.div`
 
       > p {
         font-style: italic;
-        opacity: ${({ theme }) => theme.opacity.opacity60};
+        opacity: ${({ theme }) => theme.opacity.opacity70};
       }
     }
 
