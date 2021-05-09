@@ -22,7 +22,7 @@ Welcome. I hope you enjoy the site as much as I enjoyed making it.
 - [Project Management](#project-management)
 - [Acknowledgements](#acknowledgements)
 
-## TECHNOLOGY STACK 🐋
+## TECHNOLOGY STACK 👨🏻‍💻
 
 I tried to use a completely modern tech stack (both on front-end and back-end) while testing out some new technologies that I'd never used before. This resulted in a fast, performant, and easily-extensible web app that should be fairly future proof for the coming years. I used:
 
@@ -41,7 +41,7 @@ I tried to use a completely modern tech stack (both on front-end and back-end) w
 
 ## UNIT TESTING 🧪
 
-- `COMING SOON`
+- `COMING SOON`™
 
 ## PROJECT MANAGEMENT 🏗
 
