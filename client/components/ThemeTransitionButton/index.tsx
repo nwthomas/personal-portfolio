@@ -35,10 +35,16 @@ export default function ThemeTransitionButton({ onClick, themeName }: Props) {
 
   const currentIcon = themeName === 'dark' ? MoonIcon : SunIcon;
 
+  function handleOnClick() {
+    if (themeName && onClick) {
+      onClick();
+    }
+  }
+
   return (
     <RootStyles>
-      <button onClick={onClick} type="button">
-        {currentIcon}
+      <button onClick={handleOnClick} type="button">
+        {themeName ? currentIcon : null}
       </button>
     </RootStyles>
   );

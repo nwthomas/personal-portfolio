@@ -72,7 +72,7 @@ export default function Footer() {
 
 const RootStyles = styled.footer`
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.backgroundColor};
+  background: ${({ theme }) => theme.colors.backgroundColor};
   border-top: 1px solid ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
   border-bottom: 1px solid
     ${({ theme }) => theme.colors.bodyBackgroundAccentOne};

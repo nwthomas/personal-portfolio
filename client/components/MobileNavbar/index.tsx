@@ -37,7 +37,7 @@ export default function MobileNavbar() {
 }
 
 const RootStyles = styled.div`
-  background-color: ${({ theme }) => theme.colors.bodyBackground};
+  background: ${({ theme }) => theme.colors.bodyBackground};
   bottom: 0;
   display: flex;
   height: 70px;

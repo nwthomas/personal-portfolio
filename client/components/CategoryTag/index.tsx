@@ -33,7 +33,7 @@ function CategoryTag({ name }: Props) {
 }
 
 const Button = styled.button`
-  background-color: ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
+  background: ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
   border: none;
   border-radius: ${({ theme }) => theme.borderRadii.infinity};
   display: inline-block;

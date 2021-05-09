@@ -235,7 +235,7 @@ const RootStyles = styled.main<StyleProps>`
         ${({ isDarkMode, theme }) =>
           isDarkMode &&
           css`
-            background-color: ${theme.colors.bodyBackgroundAccentTwo};
+            background: ${theme.colors.bodyBackgroundAccentTwo};
             border: 1px solid ${theme.colors.bodyBackgroundAccentOne};
             -webkit-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0);
             -moz-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0);

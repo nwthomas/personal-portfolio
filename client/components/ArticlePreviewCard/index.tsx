@@ -65,16 +65,19 @@ const RootStyles = styled.div<StylesProps>`
   height: 100%;
   margin-bottom: ${({ theme }) => theme.spaces.small};
   padding: ${({ theme }) => theme.spaces.medium};
-  -webkit-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.08);
-  -moz-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.08);
-  box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(166, 173, 201, 0.2);
+  -webkit-box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(166, 173, 201, 0.2);
+  -moz-box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(166, 173, 201, 0.2);
   transition: opacity ${({ theme }) => theme.transitions.short};
   width: 100%;
 
   ${({ isDarkMode, theme }) =>
     isDarkMode &&
     css`
-      background-color: ${theme.colors.bodyBackgroundAccentTwo};
+      background: ${theme.colors.bodyBackgroundAccentTwo};
       border: 1px solid ${theme.colors.bodyBackgroundAccentOne};
       -webkit-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0);
       -moz-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0);

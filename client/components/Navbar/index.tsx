@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import Link from '../Link';
 import ThemeTransitionButton from '../ThemeTransitionButton';
@@ -10,10 +11,20 @@ interface Props {
 }
 
 function Navbar({ onThemeChangeClick, themeName }: Props) {
+  const [withAnimations, setWithAnimations] = useState(false);
   const shouldMinimizeNavbar = useShouldMinimizeNavbar();
 
+  useEffect(() => {
+    if (shouldMinimizeNavbar) {
+      setWithAnimations(true);
+    }
+  }, [shouldMinimizeNavbar]);
+
   return (
-    <RootStyles shouldMinimizeNavbar={shouldMinimizeNavbar}>
+    <RootStyles
+      shouldMinimizeNavbar={shouldMinimizeNavbar}
+      withAnimations={withAnimations}
+    >
       <div>
         <Link href="/">
           <TitleIcon shouldMinimizeNavbar={shouldMinimizeNavbar}>n</TitleIcon>
@@ -33,12 +44,10 @@ function Navbar({ onThemeChangeClick, themeName }: Props) {
               Contact
             </Link>
           </nav>
-          {themeName ? (
-            <ThemeTransitionButton
-              onClick={onThemeChangeClick}
-              themeName={themeName}
-            />
-          ) : null}
+          <ThemeTransitionButton
+            onClick={onThemeChangeClick}
+            themeName={themeName}
+          />
         </div>
       </div>
     </RootStyles>
@@ -47,18 +56,20 @@ function Navbar({ onThemeChangeClick, themeName }: Props) {
 
 interface StyleProps {
   shouldMinimizeNavbar: boolean;
+  withAnimations: boolean;
 }
 
 const RootStyles = styled.header<StyleProps>`
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.bodyBackground};
+  background: ${({ theme }) => theme.colors.bodyBackground};
   display: flex;
   height: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};
   justify-content: center;
   padding: 0 ${({ theme }) => theme.appDimensions.appHorizontalGutters};
   position: absolute;
   top: 0;
-  transition: height ${({ theme }) => theme.transitions.medium};
+  transition: background ${({ theme }) => theme.transitions.short},
+    height ${({ theme }) => theme.transitions.medium};
   width: 100%;
   z-index: 1;
 
@@ -96,14 +107,31 @@ const RootStyles = styled.header<StyleProps>`
           align-self: center;
           justify-content: flex-end;
 
+          ${({ shouldMinimizeNavbar, theme, withAnimations }) => {
+            if (withAnimations && shouldMinimizeNavbar) {
+              return css`
+                animation-name: ${hideLinks};
+                animation-duration: ${theme.transitions.medium};
+                animation-timing-function: ease-in-out;
+              `;
+            }
+            if (shouldMinimizeNavbar && !shouldMinimizeNavbar) {
+              return css`
+                animation-name: ${showLinks};
+                animation-duration: ${theme.transitions.medium};
+                animation-timing-function: linear;
+              `;
+            }
+            return null;
+          }}
+
           > div {
             align-items: center;
             display: flex;
             height: ${({ theme }) => theme.appDimensions.desktopNavbarHeight};
             justify-content: center;
             text-decoration: none;
-            transition: opacity ${({ theme }) => theme.transitions.medium},
-              display ${({ theme }) => theme.transitions.short};
+            transition: opacity ${({ theme }) => theme.transitions.medium};
             width: ${({ theme }) => theme.appDimensions.navbarLinkWidth};
 
             &:hover {
@@ -127,8 +155,19 @@ const RootStyles = styled.header<StyleProps>`
   }
 `;
 
-interface TitleStyleProps extends StyleProps {
+const hideLinks = keyframes`
+  0% {opacity: 1}
+  100% {display: 0, display: none}
+`;
+
+const showLinks = keyframes`
+  0% {opacity: 0, display: flex}
+  100% {opacity: 1}
+`;
+
+interface TitleStyleProps {
   children: string;
+  shouldMinimizeNavbar: boolean;
 }
 
 const TitleIcon = styled.h1<TitleStyleProps>`
