@@ -26,14 +26,20 @@ Welcome. I hope you enjoy the site as much as I enjoyed making it.
 
 I tried to use a completely modern tech stack (both on front-end and back-end) while testing out some new technologies that I'd never used before. This resulted in a fast, performant, and easily-extensible web app that should be fairly future proof for the coming years. I used:
 
-- [Axios](https://www.npmjs.com/package/axios)
-- [Formik](https://formik.org/)
-- [GraphQL](https://github.com/graphql/graphql-js)
-- [Next.js](https://nextjs.org/)
-- [React Markdown](https://github.com/remarkjs/react-markdown)
-- [React Query](https://react-query.tanstack.com/)
-- [React Syntax Highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter)
-- [Styled Components](https://styled-components.com/)
+- Front-End:
+  - [Axios](https://www.npmjs.com/package/axios)
+  - [Formik](https://formik.org/)
+  - [GraphQL](https://github.com/graphql/graphql-js)
+  - [Next.js](https://nextjs.org/)
+  - [React Markdown](https://github.com/remarkjs/react-markdown)
+  - [React Query](https://react-query.tanstack.com/)
+  - [React Syntax Highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter)
+  - [Styled Components](https://styled-components.com/)
+- Back-end:
+  - [Docker](https://www.docker.com/)
+  - [Docker Compose](https://docs.docker.com/compose/)
+  - [Golang](https://golang.org/)
+  - [Gorilla Mux](https://github.com/gorilla/)
 
 ## UNIT TESTING 🧪
 
