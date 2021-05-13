@@ -8,34 +8,42 @@ import (
 	"os"
 
 	"github.com/gorilla/mux"
+	// This autoloads in the environment variables from a local .env file
 	_ "github.com/joho/godotenv/autoload"
 )
 
 
 type Response struct {
-	Success bool `json:"success"`
-	Message *Message `json:"message"`
+	Success 	bool `json:"success"`
+	Message 	*Message `json:"message"`
 }
 
 type Message struct {
-	StatusCode int `json:"status_code"`
-	Content string `json:"content"`
-	Error bool `json:"error"`
+	StatusCode 	int `json:"status_code"`
+	Content 	string `json:"content"`
+	Error 		bool `json:"error"`
 }
 
-type EmailJSON struct {
-	Name 	string `json:"name"`
-	Email 	string `json:"email"`
-	Subject string `json:"subject"`
-	Message string `json:"message"`
+type ReceivedEmail struct {
+	Name 		string `json:"name"`
+	Email 		string `json:"email"`
+	Subject 	string `json:"subject"`
+	Message 	string `json:"message"`
 	// Fax is the honeypot field; if present, do not send on to email
-	Fax 	string `json:"fax,omitempty"`
+	Fax 		string `json:"fax,omitempty"`
+}
+
+type SentEmail struct {
+	From 		string `json:"from"`
+	To			string `json:"to"`
+	Subject		string `json:"subject"`
+	Text		string `json:"text"`
 }
 
 func sendEmail(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
-	var email EmailJSON
+	var email ReceivedEmail
 	_ = json.NewDecoder(r.Body).Decode(&email)
 
 	if len(email.Fax) > 0 {
