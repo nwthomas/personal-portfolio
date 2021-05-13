@@ -8,38 +8,51 @@ import (
 	"os"
 
 	"github.com/gorilla/mux"
-	"github.com/joho/godotenv"
+	_ "github.com/joho/godotenv/autoload"
 )
 
-type Email struct {
-	Name string `json:"name"`
-	Email string `json:"email"`
+
+type Response struct {
+	Success bool `json:"success"`
+	Message *Message `json:"message"`
+}
+
+type Message struct {
+	StatusCode int `json:"status_code"`
+	Content string `json:"content"`
+	Error bool `json:"error"`
+}
+
+type EmailJSON struct {
+	Name 	string `json:"name"`
+	Email 	string `json:"email"`
 	Subject string `json:"subject"`
 	Message string `json:"message"`
 	// Fax is the honeypot field; if present, do not send on to email
-	Fax string `json:"fax,omitempty"`
+	Fax 	string `json:"fax,omitempty"`
 }
 
 func sendEmail(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
-	var email Email
+	var email EmailJSON
 	_ = json.NewDecoder(r.Body).Decode(&email)
 
-	json.NewEncoder(w).Encode("test")
+	if len(email.Fax) > 0 {
+		r := &Response{ Success: false, Message: &Message{ StatusCode: 404, Content: "Please try again", Error: true }}
+		json.NewEncoder(w).Encode(r)
+	} else {
+		r := &Response{ Success: true, Message: &Message{ StatusCode: 201, Content: "Email sent successfully", Error: false } }
+		json.NewEncoder(w).Encode(r)
+	}
+
 }
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-	  log.Fatal("Error loading .env file")
-	}
-
-	port := os.Getenv("PORT")
-
 	r := mux.NewRouter()
-
+	
 	r.HandleFunc("/api/send-email", sendEmail).Methods("POST")
-
+	
+	port := os.Getenv("PORT")
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), r))
 }
