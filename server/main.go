@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"net/smtp"
 	"os"
 
 	"github.com/gorilla/mux"
@@ -50,10 +51,37 @@ func sendEmail(w http.ResponseWriter, r *http.Request) {
 		r := &Response{ Success: false, Message: &Message{ StatusCode: 404, Content: "Please try again", Error: true }}
 		json.NewEncoder(w).Encode(r)
 	} else {
+		// A great guide for sending SMTP with Golang is at https://www.admfactory.com/send-emails-using-golang/
+		personalEmail := os.Getenv("EMAIL_PERSONAL_ADDRESS")
+		from := personalEmail
+		to := []string {
+			personalEmail,
+		}
+
+		// username := os.Getenv("EMAIL_USERNAME")
+		password := os.Getenv("EMAIL_PASSWORD")
+
+		smtpHost := os.Getenv("EMAIL_HOST")
+		smtpPort := os.Getenv("EMAIL_PORT")
+
+		auth := smtp.PlainAuth("", personalEmail, password, smtpHost)
+
+		message := fmt.Sprintf("From: %s\r\n", personalEmail) +
+				fmt.Sprintf("To: %s\r\n", personalEmail) + 
+				fmt.Sprintf("Subject: %s\r\n", email.Subject) +
+				"\r\n" +
+				fmt.Sprintf("Email is from %s at %s\r\n\r\n%s\r\n", email.Name, email.Email, email.Message)
+		
+		err := smtp.SendMail(smtpHost+":"+smtpPort, auth, from, to, []byte(message))
+
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
 		r := &Response{ Success: true, Message: &Message{ StatusCode: 201, Content: "Email sent successfully", Error: false } }
 		json.NewEncoder(w).Encode(r)
 	}
-
 }
 
 func main() {
