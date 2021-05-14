@@ -44,9 +44,9 @@ const GlobalStyle = css`
     --theme-icon-bg: ${colors.goldenFizz};
   }
   body.light {
-    --body-bg: ${colors.white};
+    --body-bg: ${colors.alabaster};
     --body-bg-accent-one: ${colors.mercury};
-    --body-bg-accent-two: ${colors.alabaster};
+    --body-bg-accent-two: ${colors.white};
     --text: ${colors.mineShaft};
     --text-on-color: ${colors.titanWhite};
     --text-accent-one: ${colors.mediumPurple};

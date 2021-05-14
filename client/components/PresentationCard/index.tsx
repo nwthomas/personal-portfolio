@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import styled, { css, ThemeContext } from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import type { Presentation } from '../../staticAssets';
 
 // Renamed to Props for clarity in error messages
@@ -46,28 +46,14 @@ interface StyleProps {
 const RootStyles = styled.div<StyleProps>`
   flex-direction: column;
   display: flex;
+  background: ${({ theme }) => theme.colors.bodyBackgroundAccentTwo};
+  border: 1px solid ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
   border-radius: ${({ theme }) => theme.borderRadii.micro};
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(154, 160, 185, 0.05),
-    0 10px 40px rgba(166, 173, 201, 0.1);
-  -webkit-box-shadow: 0 0 10px rgba(154, 160, 185, 0.05),
-    0 10px 40px rgba(166, 173, 201, 0.1);
-  -moz-box-shadow: 0 0 10px rgba(154, 160, 185, 0.05),
-    0 10px 40px rgba(166, 173, 201, 0.1);
   width: 100%;
 
-  ${({ isDarkMode, theme }) =>
-    isDarkMode &&
-    css`
-      background: ${theme.colors.bodyBackgroundAccentTwo};
-      border: 1px solid ${theme.colors.bodyBackgroundAccentOne};
-      -webkit-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0);
-      -moz-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0);
-      box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0);
-    `}
-
   @media only screen and (min-width: ${({ theme }) =>
-    theme.breakpoints.desktop}) {
+      theme.breakpoints.desktop}) {
     align-self: flex-start;
     flex-direction: row;
   }

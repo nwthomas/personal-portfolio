@@ -1,6 +1,5 @@
-import { useContext } from 'react';
 import Link from 'next/link';
-import styled, { css, ThemeContext } from 'styled-components';
+import styled from 'styled-components';
 import { ChevronForwardIcon } from '../Icons';
 import CategoryTag from '../CategoryTag';
 
@@ -22,14 +21,11 @@ export default function ArticlePreviewCard({
   categories,
   withCategories,
 }: Props) {
-  const { currentTheme } = useContext(ThemeContext);
-  const isDarkMode = currentTheme === 'dark';
-
   const sortedCategories = categories?.sort((a, b) => (a > b ? 1 : -1));
 
   return (
     <Link href={createArticleRoute(articleId)}>
-      <RootStyles isDarkMode={isDarkMode}>
+      <RootStyles>
         <h4>{title}</h4>
         <p>{description}</p>
         <div>
@@ -52,12 +48,10 @@ export default function ArticlePreviewCard({
   );
 }
 
-interface StylesProps {
-  isDarkMode: boolean;
-}
-
-const RootStyles = styled.div<StylesProps>`
+const RootStyles = styled.div`
   align-self: flex-start;
+  background: ${({ theme }) => theme.colors.bodyBackgroundAccentTwo};
+  border: 1px solid ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
   border-radius: ${({ theme }) => theme.borderRadii.micro};
   cursor: pointer;
   display: flex;
@@ -65,27 +59,11 @@ const RootStyles = styled.div<StylesProps>`
   height: 100%;
   margin-bottom: ${({ theme }) => theme.spaces.small};
   padding: ${({ theme }) => theme.spaces.medium};
-  box-shadow: 0 0 10px rgba(154, 160, 185, 0.05),
-    0 10px 40px rgba(166, 173, 201, 0.1);
-  -webkit-box-shadow: 0 0 10px rgba(154, 160, 185, 0.05),
-    0 10px 40px rgba(166, 173, 201, 0.1);
-  -moz-box-shadow: 0 0 10px rgba(154, 160, 185, 0.05),
-    0 10px 40px rgba(166, 173, 201, 0.1);
   transition: opacity ${({ theme }) => theme.transitions.short};
   width: 100%;
 
-  ${({ isDarkMode, theme }) =>
-    isDarkMode &&
-    css`
-      background: ${theme.colors.bodyBackgroundAccentTwo};
-      border: 1px solid ${theme.colors.bodyBackgroundAccentOne};
-      -webkit-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0);
-      -moz-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0);
-      box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0);
-    `}
-
   @media only screen and (min-width: ${({ theme }) =>
-    theme.breakpoints.desktop}) {
+      theme.breakpoints.desktop}) {
     margin: ${({ theme }) =>
       `0 ${theme.spaces.medium} ${theme.spaces.medium} 0`};
   }

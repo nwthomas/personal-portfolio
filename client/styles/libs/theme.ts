@@ -98,7 +98,7 @@ const spaces = {
 const transitions = {
   short: '0.03s',
   medium: '0.1s',
-  long: '0.5s',
+  long: '0.3s',
   eternal: '1s',
 };
 
