@@ -14,15 +14,8 @@ import (
 	_ "github.com/joho/godotenv/autoload"
 )
 
-type ResponseMessage struct {
-	StatusCode 	int `json:"status_code"`
-	Content 	string `json:"content"`
-	Error 		bool `json:"error"`
-}
-
 type Response struct {
-	Success 	bool `json:"success"`
-	Message 	*ResponseMessage `json:"message"`
+	Message 	string `json:"message"`
 }
 
 type ReceivedEmail struct {
@@ -36,14 +29,12 @@ type ReceivedEmail struct {
 
 func sendEmail(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	fmt.Println("working")
+
 	var email ReceivedEmail
 	_ = json.NewDecoder(r.Body).Decode(&email)
 
 	if len(email.Fax) > 0 {
-		r := &Response{ Success: false, Message: &ResponseMessage{ StatusCode: 404, Content: "Please try again", Error: true }}
-		
-		json.NewEncoder(w).Encode(r)
+		http.Error(w, "Please try again", http.StatusBadRequest)
 	} else {
 		// A great guide for sending SMTP with Golang is at https://www.admfactory.com/send-emails-using-golang/
 		personalEmail := os.Getenv("EMAIL_PERSONAL_ADDRESS")
@@ -67,10 +58,9 @@ func sendEmail(w http.ResponseWriter, r *http.Request) {
 		err := smtp.SendMail(smtpAddress, auth, from, to, []byte(message))
 
 		if err != nil {
-			fmt.Println(err)
-			return
+			http.Error(w, "Please try again", http.StatusBadRequest)
 		} else {
-			r := &Response{ Success: true, Message: &ResponseMessage{ StatusCode: 201, Content: "Email sent successfully", Error: false } }
+			r := &Response{ Message: "Email sent successfully" }
 			json.NewEncoder(w).Encode(r)
 		}
 	}
