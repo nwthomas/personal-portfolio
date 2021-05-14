@@ -29,6 +29,9 @@ function Navbar({ onThemeChangeClick, themeName }: Props) {
             <Link href="/nathan-thomas-resume.pdf" withStyling>
               Resume
             </Link>
+            <Link href="/contact" withStyling>
+              Contact
+            </Link>
           </nav>
           <ThemeTransitionButton
             onClick={onThemeChangeClick}
@@ -98,7 +101,8 @@ const RootStyles = styled.header<StyleProps>`
             height: ${({ theme }) => theme.appDimensions.desktopNavbarHeight};
             justify-content: center;
             text-decoration: none;
-            transition: opacity ${({ theme }) => theme.transitions.medium},
+            transition: padding-bottom
+                ${({ theme }) => theme.transitions.medium},
               display ${({ theme }) => theme.transitions.medium};
             width: ${({ theme }) => theme.appDimensions.navbarLinkWidth};
             visibility: shown;
@@ -111,7 +115,7 @@ const RootStyles = styled.header<StyleProps>`
               `}
 
             &:hover {
-              opacity: ${({ theme }) => theme.opacity.opacity70};
+              padding-bottom: ${({ theme }) => theme.spaces.micro};
             }
           }
 

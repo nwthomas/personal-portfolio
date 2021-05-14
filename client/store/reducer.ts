@@ -1,5 +1,6 @@
 export const UPDATE_CONTACT_FORM_VALUES = 'UPDATE_CONTACT_FORM_VALUES';
 export const UPDATE_MODAL = 'UPDATE_MODAL';
+export const UPDATE_SEARCH_FORM_VALUE = 'UPDATE_SEARCH_FORM_VALUE';
 
 const initialState = {
   contactFormValues: {
@@ -14,6 +15,9 @@ const initialState = {
     isShown: false,
     message: '',
     withButton: false,
+  },
+  searchFormValues: {
+    value: '',
   },
 };
 
@@ -32,6 +36,13 @@ export const reducer = (state = initialState, action) => {
         ...state,
         contactFormValues: {
           ...state.contactFormValues,
+          ...action.payload,
+        },
+      };
+    case UPDATE_SEARCH_FORM_VALUE:
+      return {
+        ...state,
+        searchFormValue: {
           ...action.payload,
         },
       };

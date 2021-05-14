@@ -8,6 +8,7 @@ import CategoryList from '../../components/CategoryList';
 import CategoryArticleSection from '../../components/CategoryArticleSection';
 import { useLayoutCategoryArticlePreviews } from '../../hooks/useLayoutCategoryArticlePreviews';
 import Error from '../../components/Error';
+import Search from '../../components/Search';
 
 const PAGE_NAME = 'Articles';
 
@@ -59,6 +60,7 @@ function ArticlesPage() {
           <div>
             <div>
               <h2>Articles</h2>
+              <Search initialFormValue={''} onFormUpdate={function () {}} />
             </div>
             {categorizedArticlesArray.map(([category, articles], i) => {
               if (!articles.length) {
