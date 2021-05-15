@@ -45,13 +45,14 @@ const RootStyles = styled.section`
   width: 100%;
 
   > p,
-  ol {
+  ol,
+  ul {
     max-width: ${({ theme }) => theme.appDimensions.articleMaxWidth};
-    margin-bottom: ${({ theme }) => theme.spaces.large};
+    padding-bottom: ${({ theme }) => theme.spaces.medium};
     overflow: break-word;
     width: 100%;
 
-    > a {
+    a {
       color: ${({ theme }) => theme.colors.textAccentTwo};
 
       &:hover {
@@ -59,17 +60,25 @@ const RootStyles = styled.section`
       }
     }
 
-    > em {
+    li {
+      list-style-position: outside;
+      margin-bottom: ${({ theme }) => theme.spaces.medium};
+      margin-left: ${({ theme }) => theme.spaces.medium};
+    }
+
+    li:last-child {
+      margin-bottom: 0;
+    }
+
+    em {
       font-style: italic;
     }
 
-    li {
-      list-style-position: outside;
-      margin-left: ${({ theme }) => theme.spaces.medium};
+    code {
+      background: ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
+      border-radius: ${({ theme }) => theme.borderRadii.micro};
+      font-family: 'Courier New', serif;
+      padding: ${({ theme }) => `${theme.spaces.nano} ${theme.spaces.micro}`};
     }
-  }
-
-  > p:last-child {
-    margin-bottom: 0;
   }
 `;

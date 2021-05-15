@@ -121,6 +121,8 @@ export default function Home() {
                   categoriesData?.items.length ? (
                     <CategoryList categories={categoriesData?.items} />
                   ) : null}
+                </div>
+                <div>
                   {mostRecentTweetId ? (
                     <Tweet
                       currentTheme={currentTheme}
@@ -151,9 +153,14 @@ const RootStyles = styled.main`
       align-items: center;
       display: flex;
       flex-direction: column;
-      margin-bottom: ${({ theme }) => theme.spaces.medium};
+      margin-bottom: ${({ theme }) => theme.spaces.xLarge};
       padding: ${({ theme }) => theme.spaces.medium} 0 0;
       width: 100%;
+
+      @media only screen and (min-width: ${({ theme }) =>
+          theme.breakpoints.mobile}) {
+        margin-bottom: ${({ theme }) => theme.spaces.medium};
+      }
 
       > div {
         display: flex;
@@ -178,6 +185,8 @@ const RootStyles = styled.main`
           a {
             color: ${({ theme }) => theme.colors.textAccentTwo};
             font-size: 3rem;
+            transition: color ${({ theme }) => theme.transitions.medium}
+              ease-in-out;
 
             &:hover {
               color: ${({ theme }) => theme.colors.textAccentThree};
@@ -187,26 +196,28 @@ const RootStyles = styled.main`
 
         > div:first-child {
           margin-bottom: ${({ theme }) => theme.spaces.medium};
+          margin-right: 13%;
         }
 
         > div {
           display: flex;
           flex-direction: column;
+          flex-wrap: wrap;
           height: 170px;
           justify-content: space-between;
-          margin-right: 13%;
+          max-width: 350px;
           padding-bottom: ${({ theme }) => theme.spaces.nano};
-          transition: padding-bottom ${({ theme }) => theme.transitions.short}
-            ease-in-out;
 
-          &:hover {
-            padding-bottom: ${({ theme }) => theme.spaces.micro};
+          > a {
+            transition: padding-bottom
+                ${({ theme }) => theme.transitions.medium} ease-in-out,
+              opacity ${({ theme }) => theme.transitions.medium} ease-in-out;
+
+            &:hover {
+              padding-bottom: ${({ theme }) => theme.spaces.micro};
+              opacity: ${({ theme }) => theme.opacity.opacity80};
+            }
           }
-        }
-
-        @media only screen and (min-width: ${({ theme }) =>
-            theme.breakpoints.mobile}) {
-          flex-direction: row;
         }
       }
     }
@@ -214,19 +225,18 @@ const RootStyles = styled.main`
 `;
 
 const Content = styled.div`
-  padding-bottom: ${({ theme }) => theme.spaces.medium};
-
-  > div:first-child {
-    flex-grow: 2;
+  > div {
     margin-bottom: ${({ theme }) => theme.spaces.xxLarge};
+    width: 100%;
   }
 
   > div:last-child {
+    margin: 0;
     width: 100%;
 
     @media only screen and (min-width: ${({ theme }) =>
-        theme.breakpoints.mobile}) {
-      display: block;
+        theme.breakpoints.desktop}) {
+      width: 60%;
     }
 
     > div {

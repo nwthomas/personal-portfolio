@@ -37,16 +37,11 @@ export default function MobileNavbar() {
             <GraduateIcon />
           </div>
         </Link>
-        <a
-          href="mailto:me@nathanthomas.dev"
-          aria-label="Link to send email to nathan"
-          rel="noopener noreferrer"
-          target="_target"
-        >
+        <Link href="/contact" aria-label="Link to contact page">
           <div>
             <MailIcon isActive={isActiveLink(pathname, '/contact')} />
           </div>
-        </a>
+        </Link>
       </nav>
     </RootStyles>
   );

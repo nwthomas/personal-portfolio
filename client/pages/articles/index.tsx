@@ -8,7 +8,6 @@ import CategoryList from '../../components/CategoryList';
 import CategoryArticleSection from '../../components/CategoryArticleSection';
 import { useLayoutCategoryArticlePreviews } from '../../hooks/useLayoutCategoryArticlePreviews';
 import Error from '../../components/Error';
-import Search from '../../components/Search';
 
 const PAGE_NAME = 'Articles';
 
@@ -60,7 +59,6 @@ function ArticlesPage() {
           <div>
             <div>
               <h2>Articles</h2>
-              <Search initialFormValue={''} onFormUpdate={function () {}} />
             </div>
             {categorizedArticlesArray.map(([category, articles], i) => {
               if (!articles.length) {
@@ -68,12 +66,14 @@ function ArticlesPage() {
               }
 
               return (
-                <CategoryArticleSection
-                  articles={articles}
-                  categoryName={category}
-                  key={i}
-                  withTopicTag
-                />
+                <div>
+                  <CategoryArticleSection
+                    articles={articles}
+                    categoryName={category}
+                    key={i}
+                    withTopicTag
+                  />
+                </div>
               );
             })}
           </div>
@@ -94,7 +94,9 @@ const RootStyles = styled.main`
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding: ${({ theme }) => theme.spaces.medium} 3%;
+  margin-top: ${({ theme }) => theme.spaces.medium};
+  padding: ${({ theme }) =>
+    `0 ${theme.appDimensions.appHorizontalGutters} ${theme.spaces.xxLarge}`};
   width: 100%;
 
   > div {
@@ -102,11 +104,8 @@ const RootStyles = styled.main`
     padding: ${({ theme }) => theme.spaces.medium} 0 0;
     width: 100%;
 
-    > div:first-child {
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
+    > div {
+      padding-bottom: ${({ theme }) => theme.spaces.micro};
     }
   }
 `;

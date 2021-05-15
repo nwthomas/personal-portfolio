@@ -59,8 +59,12 @@ const RootStyles = styled.div`
   height: 100%;
   margin-bottom: ${({ theme }) => theme.spaces.small};
   padding: ${({ theme }) => theme.spaces.medium};
-  transition: opacity ${({ theme }) => theme.transitions.short};
+  transition: opacity ${({ theme }) => theme.transitions.medium} ease-in-out;
   width: 100%;
+
+  &:hover {
+    opacity: ${({ theme }) => theme.opacity.opacity80};
+  }
 
   @media only screen and (min-width: ${({ theme }) =>
       theme.breakpoints.desktop}) {
@@ -79,7 +83,6 @@ const RootStyles = styled.div`
   > div {
     align-items: center;
     display: flex;
-    transition: opacity ${({ theme }) => theme.transitions.short};
     width: 100%;
 
     > div:first-child {
@@ -103,9 +106,5 @@ const RootStyles = styled.div`
     > button {
       margin-right: ${({ theme }) => theme.spaces.small};
     }
-  }
-
-  &:hover {
-    opacity: ${({ theme }) => theme.opacity.opacity80};
   }
 `;

@@ -33,10 +33,12 @@ function Navbar({ onThemeChangeClick, themeName }: Props) {
               Contact
             </Link>
           </nav>
-          <ThemeTransitionButton
-            onClick={onThemeChangeClick}
-            themeName={themeName}
-          />
+          <div>
+            <ThemeTransitionButton
+              onClick={onThemeChangeClick}
+              themeName={themeName}
+            />
+          </div>
         </div>
       </div>
     </RootStyles>
@@ -56,8 +58,8 @@ const RootStyles = styled.header<StyleProps>`
   padding: 0 ${({ theme }) => theme.appDimensions.appHorizontalGutters};
   position: absolute;
   top: 0;
-  transition: background ${({ theme }) => theme.transitions.short},
-    height ${({ theme }) => theme.transitions.medium};
+  transition: background ${({ theme }) => theme.transitions.medium} ease-in-out,
+    height ${({ theme }) => theme.transitions.medium} ease-in-out;
   width: 100%;
   z-index: 1;
 
@@ -102,8 +104,8 @@ const RootStyles = styled.header<StyleProps>`
             justify-content: center;
             text-decoration: none;
             transition: padding-bottom
-                ${({ theme }) => theme.transitions.medium},
-              display ${({ theme }) => theme.transitions.medium};
+                ${({ theme }) => theme.transitions.medium} ease-in-out,
+              display ${({ theme }) => theme.transitions.medium} ease-in-out;
             width: ${({ theme }) => theme.appDimensions.navbarLinkWidth};
             visibility: shown;
 
@@ -125,6 +127,10 @@ const RootStyles = styled.header<StyleProps>`
           }
         }
       }
+
+      > div {
+        width: 46px;
+      }
     }
   }
 `;
@@ -140,7 +146,7 @@ const TitleIcon = styled.h1<TitleStyleProps>`
   font-size: 8rem;
   line-height: 1;
   height: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};
-  transition: color ${({ theme }) => theme.transitions.short};
+  transition: color ${({ theme }) => theme.transitions.medium} ease-in-out;
 
   &:hover {
     color: ${({ theme }) => theme.colors.textAccentTwo};
@@ -150,8 +156,8 @@ const TitleIcon = styled.h1<TitleStyleProps>`
       theme.breakpoints.mobile}) {
     height: ${({ theme }) => theme.appDimensions.desktopNavbarHeight};
     font-size: 12rem;
-    transition: color ${({ theme }) => theme.transitions.short},
-      font-size ${({ theme }) => theme.transitions.medium};
+    transition: color ${({ theme }) => theme.transitions.medium} ease-in-out,
+      font-size ${({ theme }) => theme.transitions.medium} ease-in-out;
 
     ${({ shouldMinimizeNavbar }) =>
       shouldMinimizeNavbar &&

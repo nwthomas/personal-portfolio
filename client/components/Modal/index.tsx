@@ -88,19 +88,15 @@ const RootStyles = styled.div`
       `1px solid ${theme.colors.bodyBackgroundAccentOne}`};
     border-radius: ${({ theme }) => theme.borderRadii.medium};
     cursor: pointer;
-    height: ${({ theme }) => theme.spaces.xLarge};
+    height: ${({ theme }) => theme.spaces.large};
     justify-content: center;
     max-width: ${({ theme }) => `calc(${theme.spaces.jumbo} * 3)`};
-    transition: background ${({ theme }) => theme.transitions.short};
+    transition: background ${({ theme }) => theme.transitions.medium}
+      ease-in-out;
     width: 100%;
 
     &:hover {
       background: ${({ theme }) => theme.colors.textAccentThree};
-    }
-
-    &:focus {
-      border: 1px solid ${({ theme }) => theme.colors.text};
-      outline: none;
     }
   }
 `;

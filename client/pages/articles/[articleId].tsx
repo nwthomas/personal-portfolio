@@ -82,13 +82,9 @@ export default function ArticleByName() {
 }
 
 const RootStyles = styled.main`
+  align-items: center;
   display: flex;
-  justify-content: center;
-  margin-bottom: ${({ theme }) => theme.spaces.jumbo};
+  flex-direction: column;
+  margin-top: ${({ theme }) => theme.spaces.medium};
   width: 100%;
-
-  @media only screen and (min-width: ${({ theme }) =>
-      theme.breakpoints.mobile}) {
-    padding: ${({ theme }) => theme.spaces.medium} 0 0;
-  }
 `;

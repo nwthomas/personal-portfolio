@@ -58,9 +58,9 @@ const RootStyles = styled.div`
   text-decoration: none;
   transition: ${({
     theme: {
-      transitions: { short },
+      transitions: { medium },
     },
-  }) => `padding-bottom ${short}, opacity ${short}`};
+  }) => `padding-bottom ${medium}, opacity ${medium}`};
   width: 55px;
 
   &:hover {
