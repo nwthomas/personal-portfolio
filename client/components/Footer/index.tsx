@@ -118,25 +118,23 @@ const RootStyles = styled.footer`
       padding: 0;
     }
 
-    > div:first-child {
-      margin-bottom: ${({ theme }) => theme.spaces.small};
-
-      > p:first-child {
-        font-style: italic;
-      }
+    > div:first-child > p {
+      font-style: italic;
     }
 
     nav {
-      align-items: center;
+      align-items: flex-end;
       display: flex;
       height: ${({ theme }) => theme.spaces.large};
       justify-content: flex-start;
+      margin-top: ${({ theme }) => theme.spaces.small};
       width: 100%;
 
       @media only screen and (min-width: ${({ theme }) =>
           theme.breakpoints.mobile}) {
         height: ${({ theme }) => theme.spaces.xLarge};
         justify-content: flex-end;
+        margin-top: 0;
         width: 50%;
       }
 

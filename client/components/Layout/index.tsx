@@ -6,7 +6,8 @@ import Footer from '../Footer';
 import usePageName from '../../hooks/usePageName';
 
 interface Props {
-  children?: ReactNode | Array<ReactNode>;
+  children: ReactNode | Array<ReactNode>;
+  imageURL?: string;
   pageName: string;
   withEmojis?: boolean;
   withFooter?: boolean;

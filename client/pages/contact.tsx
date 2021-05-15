@@ -243,7 +243,7 @@ const RootStyles = styled.main<StyleProps>`
             background: ${({ theme }) => theme.colors.textAccentTwo};
             color: ${({ theme }) => theme.colors.textOnColor};
             border: none;
-            border-radius: ${({ theme }) => theme.borderRadii.medium};
+            border-radius: ${({ theme }) => theme.borderRadii.micro};
             cursor: pointer;
             height: ${({ theme }) => theme.spaces.xLarge};
             justify-content: center;
@@ -269,7 +269,7 @@ const RootStyles = styled.main<StyleProps>`
           background: ${({ theme }) => theme.colors.bodyBackgroundAccentThree};
           border: ${({ theme }) =>
             `1px solid ${theme.colors.bodyBackgroundAccentOne}`};
-          border-radius: ${({ theme }) => theme.borderRadii.medium};
+          border-radius: ${({ theme }) => theme.borderRadii.micro};
           color: ${({ theme }) => theme.colorsHex.mineShaft};
           height: ${({ theme }) => theme.spaces.xLarge};
           margin-bottom: ${({ theme }) => theme.spaces.small};
@@ -285,9 +285,9 @@ const RootStyles = styled.main<StyleProps>`
           background: ${({ theme }) => theme.colors.bodyBackgroundAccentThree};
           border: ${({ theme }) =>
             `1px solid ${theme.colors.bodyBackgroundAccentOne}`};
-          border-top-left-radius: ${({ theme }) => theme.borderRadii.medium};
-          border-top-right-radius: ${({ theme }) => theme.borderRadii.medium};
-          border-bottom-left-radius: ${({ theme }) => theme.borderRadii.medium};
+          border-top-left-radius: ${({ theme }) => theme.borderRadii.micro};
+          border-top-right-radius: ${({ theme }) => theme.borderRadii.micro};
+          border-bottom-left-radius: ${({ theme }) => theme.borderRadii.micro};
           color: ${({ theme }) => theme.colorsHex.mineShaft};
           height: ${({ theme }) => `calc(${theme.spaces.xxLarge} * 3)`};
           margin-bottom: ${({ theme }) => theme.spaces.medium};

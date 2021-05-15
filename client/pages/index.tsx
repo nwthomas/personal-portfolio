@@ -16,7 +16,7 @@ import {
 
 const PAGE_NAME = 'Home';
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery('articlePreviews', getArticlePreviews);
