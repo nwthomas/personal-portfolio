@@ -105,7 +105,8 @@ const RootStyles = styled.header<StyleProps>`
             text-decoration: none;
             transition: padding-bottom
                 ${({ theme }) => theme.transitions.medium} ease-in-out,
-              display ${({ theme }) => theme.transitions.medium} ease-in-out;
+              display ${({ theme }) => theme.transitions.medium} ease-in-out,
+              opacity ${({ theme }) => theme.transitions.medium} ease-in-out;
             width: ${({ theme }) => theme.appDimensions.navbarLinkWidth};
             visibility: shown;
 
@@ -117,6 +118,7 @@ const RootStyles = styled.header<StyleProps>`
               `}
 
             &:hover {
+              opacity: ${({ theme }) => theme.opacity.opacity80};
               padding-bottom: ${({ theme }) => theme.spaces.micro};
             }
           }

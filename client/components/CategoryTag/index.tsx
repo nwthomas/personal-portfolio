@@ -44,7 +44,7 @@ const Button = styled.button`
   white-space: nowrap;
 
   &:hover {
-    opacity: ${({ theme }) => theme.opacity.opacity70};
+    opacity: ${({ theme }) => theme.opacity.opacity80};
   }
 
   &:focus {

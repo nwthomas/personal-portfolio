@@ -91,7 +91,7 @@ const RootStyles = styled.div`
 
       > p {
         font-style: italic;
-        opacity: ${({ theme }) => theme.opacity.opacity70};
+        opacity: ${({ theme }) => theme.opacity.opacity80};
       }
     }
 

@@ -37,17 +37,13 @@ const RootStyles = styled.main`
 
   > div {
     cursor: pointer;
+    transition: opacity ${({ theme }) => theme.transitions.medium} ease-in-out;
 
     > p {
       color: ${({ theme }) => theme.colors.textAccentTwo};
-    }
+      transition: color ${({ theme }) => theme.transitions.medium} ease-in-out;
 
-    &:hover {
-      > span {
-        opacity: ${({ theme }) => theme.opacity.opacity80};
-      }
-
-      > p {
+      &:hover {
         color: ${({ theme }) => theme.colors.textAccentThree};
       }
     }

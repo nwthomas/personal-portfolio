@@ -64,7 +64,7 @@ const RootStyles = styled.div`
   width: 55px;
 
   &:hover {
-    opacity: ${({ theme }) => theme.opacity.opacity70};
+    opacity: ${({ theme }) => theme.opacity.opacity80};
   }
 
   @media only screen and (min-width: ${({ theme }) =>

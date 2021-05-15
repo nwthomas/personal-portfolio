@@ -1,8 +1,9 @@
+import { useContext } from 'react';
 import { useFormik } from 'formik';
 import { useMutation } from 'react-query';
 import { useStateValue } from 'react-conflux';
 import * as Yup from 'yup';
-import styled from 'styled-components';
+import styled, { css, ThemeContext } from 'styled-components';
 import {
   StateContext,
   UPDATE_CONTACT_FORM_VALUES,
@@ -19,6 +20,9 @@ const EMAIL_SENDING = 'Sending Email';
 const EMAIL_SUCCESS = 'Email Sent';
 
 function Contact() {
+  const { currentTheme } = useContext(ThemeContext);
+  const isDarkMode = currentTheme === 'dark';
+
   const [state, dispatch] = useStateValue(StateContext);
 
   const { mutate } = useMutation(sendEmailToServer, {
@@ -106,7 +110,7 @@ function Contact() {
 
   return (
     <Layout pageName={PAGE_NAME} withEmojis withFooter>
-      <RootStyles>
+      <RootStyles isDarkMode={isDarkMode}>
         <div>
           <h2>What's happening?</h2>
           <div>
@@ -185,7 +189,11 @@ function Contact() {
   );
 }
 
-const RootStyles = styled.main`
+interface StyleProps {
+  isDarkMode: boolean;
+}
+
+const RootStyles = styled.main<StyleProps>`
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -232,20 +240,27 @@ const RootStyles = styled.main`
           > button {
             align-items: center;
             display: flex;
-            background: ${({ theme }) => theme.colors.bodyBackgroundAccentTwo};
-            color: ${({ theme }) => theme.colors.text};
+            background: ${({ theme }) => theme.colors.textAccentTwo};
+            color: ${({ theme }) => theme.colors.textOnColor};
             border: none;
             border-radius: ${({ theme }) => theme.borderRadii.medium};
             cursor: pointer;
             height: ${({ theme }) => theme.spaces.xLarge};
             justify-content: center;
             margin-bottom: ${({ theme }) => theme.spaces.small};
-            transition: background ${({ theme }) => theme.transitions.medium}
+            transition: opacity ${({ theme }) => theme.transitions.medium}
               ease-in-out;
             width: 48%;
 
+            ${({ isDarkMode, theme }) =>
+              isDarkMode &&
+              css`
+                background: ${theme.colorsHex.black};
+                color: ${theme.colors.text};
+              `}
+
             &:hover {
-              background: ${({ theme }) => theme.colors.textAccentThree};
+              opacity: ${({ theme }) => theme.opacity.opacity70};
             }
           }
         }
@@ -255,7 +270,7 @@ const RootStyles = styled.main`
           border: ${({ theme }) =>
             `1px solid ${theme.colors.bodyBackgroundAccentOne}`};
           border-radius: ${({ theme }) => theme.borderRadii.medium};
-          color: ${({ theme }) => theme.colors.text};
+          color: ${({ theme }) => theme.colorsHex.mineShaft};
           height: ${({ theme }) => theme.spaces.xLarge};
           margin-bottom: ${({ theme }) => theme.spaces.small};
           padding: ${({ theme }) => `0 ${theme.spaces.small}`};
@@ -273,7 +288,7 @@ const RootStyles = styled.main`
           border-top-left-radius: ${({ theme }) => theme.borderRadii.medium};
           border-top-right-radius: ${({ theme }) => theme.borderRadii.medium};
           border-bottom-left-radius: ${({ theme }) => theme.borderRadii.medium};
-          color: ${({ theme }) => theme.colors.text};
+          color: ${({ theme }) => theme.colorsHex.mineShaft};
           height: ${({ theme }) => `calc(${theme.spaces.xxLarge} * 3)`};
           margin-bottom: ${({ theme }) => theme.spaces.medium};
           min-width: 100%;
