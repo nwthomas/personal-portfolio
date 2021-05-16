@@ -60,7 +60,7 @@ func sendEmail(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			http.Error(w, "Please try again", http.StatusBadRequest)
 		} else {
-			r := &Response{ Message: "Email sent successfully" }
+			r := &Response{ Message: "Email sent" }
 			json.NewEncoder(w).Encode(r)
 		}
 	}

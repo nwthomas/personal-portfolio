@@ -52,7 +52,7 @@ const RootStyles = styled.section`
     overflow: break-word;
     width: 100%;
 
-    a {
+    > a {
       color: ${({ theme }) => theme.colors.textAccentTwo};
 
       &:hover {

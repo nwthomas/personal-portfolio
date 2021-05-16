@@ -53,7 +53,7 @@ const RootStyles = styled.div`
   display: flex;
   height: 70px;
   justify-content: center;
-  padding: 0 8%;
+  padding: 0 5%;
   position: fixed;
   width: 100%;
   z-index: 1;
@@ -66,7 +66,6 @@ const RootStyles = styled.div`
     align-items: center;
     display: flex;
     justify-content: space-between;
-    max-width: 450px;
     width: 100%;
 
     div {

@@ -91,6 +91,5 @@ const RootStyles = styled.main`
   display: flex;
   flex-direction: column;
   margin-top: ${({ theme }) => theme.spaces.medium};
-  padding: 0 ${({ theme }) => theme.appDimensions.appHorizontalGutters};
   width: 100%;
 `;
