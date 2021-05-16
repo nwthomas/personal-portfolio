@@ -66,11 +66,17 @@ func sendEmail(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func returnMessage(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(&Response{ Message: "testing" })
+}
+
 func main() {
 	port := os.Getenv("PORT")
 	router := mux.NewRouter()
 	
 	router.HandleFunc("/api/send-email", sendEmail).Methods(http.MethodPost)
+	router.HandleFunc("/", returnMessage).Methods(http.MethodGet)
 	
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), router))
 }
