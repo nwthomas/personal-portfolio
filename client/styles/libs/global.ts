@@ -9,7 +9,7 @@ const GlobalStyle = css`
         transitions: { short },
       },
     }) =>
-      `background ${short}, background-color ${short}, color ${short}, fill ${short}, stroke ${short}, border-color ${short}`};
+      `background ${short} ease-in-out, background-color ${short} ease-in-out, color ${short} ease-in-out, fill ${short} ease-in-out, stroke ${short} ease-in-out, border-color ${short} ease-in-out`};
   }
 
   html {
@@ -33,9 +33,10 @@ const GlobalStyle = css`
     --transparent: ${colors.transparent};
   }
   body.dark {
-    --body-bg: ${colors.woodsmoke};
+    --body-bg: ${colors.mirage};
     --body-bg-accent-one: ${colors.onyx};
     --body-bg-accent-two: ${colors.black};
+    --body-bg-accent-three: ${colors.white};
     --text: ${colors.titanWhite};
     --text-on-color: ${colors.mineShaft};
     --text-accent-one: ${colors.goldenFizz};
@@ -44,9 +45,10 @@ const GlobalStyle = css`
     --theme-icon-bg: ${colors.goldenFizz};
   }
   body.light {
-    --body-bg: ${colors.alabaster};
+    --body-bg: ${colors.white};
     --body-bg-accent-one: ${colors.mercury};
     --body-bg-accent-two: ${colors.white};
+    --body-bg-accent-three: ${colors.alabaster};
     --text: ${colors.mineShaft};
     --text-on-color: ${colors.titanWhite};
     --text-accent-one: ${colors.mediumPurple};
@@ -105,7 +107,7 @@ const GlobalStyle = css`
 
     &::placeholder {
       color: ${({ theme }) => theme.colors.text};
-      opacity: ${({ theme }) => theme.opacity.opacity70};
+      opacity: ${({ theme }) => theme.opacity.opacity80};
       font-size: 1.6rem;
       line-height: 2;
       font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, Segoe UI,

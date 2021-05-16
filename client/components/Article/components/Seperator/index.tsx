@@ -13,7 +13,7 @@ export default function ArticleSeperator() {
 const RootStyles = styled.div`
   display: flex;
   justify-content: center;
-  margin: ${({ theme }) => theme.spaces.medium} 0;
+  margin: 0 0 ${({ theme }) => theme.spaces.medium} 0;
   padding: 0 ${({ theme }) => theme.appDimensions.appHorizontalGutters};
   width: 100%;
 

@@ -38,13 +38,13 @@ const Button = styled.button`
   border-radius: ${({ theme }) => theme.borderRadii.infinity};
   display: inline-block;
   cursor: pointer;
-  padding: 6px 10px;
+  padding: ${({ theme }) => `${theme.spaces.micro} ${theme.spaces.small}`};
   text-decoration: none;
-  transition: opacity ${({ theme }) => theme.transitions.short};
+  transition: opacity ${({ theme }) => theme.transitions.medium} ease-in-out;
   white-space: nowrap;
 
   &:hover {
-    opacity: ${({ theme }) => theme.opacity.opacity70};
+    opacity: ${({ theme }) => theme.opacity.opacity80};
   }
 
   &:focus {

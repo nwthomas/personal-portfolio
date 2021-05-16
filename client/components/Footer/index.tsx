@@ -73,12 +73,7 @@ export default function Footer() {
             </a>
           </div>
           <div>
-            <a
-              href="mailto:me@nathanthomas.dev"
-              aria-label="Link to send email to Nathan"
-              rel="noopener noreferrer"
-              target="_target"
-            >
+            <a href="/contact" aria-label="Link to contact page">
               {MailIconComponent}
             </a>
           </div>
@@ -123,34 +118,31 @@ const RootStyles = styled.footer`
       padding: 0;
     }
 
-    > div:first-child {
-      margin-bottom: ${({ theme }) => theme.spaces.small};
-
-      > p:first-child {
-        font-style: italic;
-      }
+    > div:first-child > p {
+      font-style: italic;
     }
 
     nav {
-      align-items: center;
+      align-items: flex-end;
       display: flex;
       height: ${({ theme }) => theme.spaces.large};
       justify-content: flex-start;
-      margin-bottom: ${({ theme }) => theme.spaces.small};
+      margin-top: ${({ theme }) => theme.spaces.small};
       width: 100%;
 
       @media only screen and (min-width: ${({ theme }) =>
           theme.breakpoints.mobile}) {
         height: ${({ theme }) => theme.spaces.xLarge};
         justify-content: flex-end;
-        margin-bottom: 0;
+        margin-top: 0;
         width: 50%;
       }
 
       > div {
         cursor: pointer;
         margin: 0 6% 0 0;
-        transition: opacity ${({ theme }) => theme.transitions.short};
+        transition: opacity ${({ theme }) => theme.transitions.medium}
+          ease-in-out;
         width: ${({ theme }) => theme.spaces.medium};
 
         @media only screen and (min-width: ${({ theme }) =>
@@ -159,7 +151,7 @@ const RootStyles = styled.footer`
         }
 
         &:hover {
-          opacity: ${({ theme }) => theme.opacity.opacity70};
+          opacity: ${({ theme }) => theme.opacity.opacity80};
         }
       }
 

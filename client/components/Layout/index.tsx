@@ -6,7 +6,8 @@ import Footer from '../Footer';
 import usePageName from '../../hooks/usePageName';
 
 interface Props {
-  children?: ReactNode | Array<ReactNode>;
+  children: ReactNode | Array<ReactNode>;
+  imageURL?: string;
   pageName: string;
   withEmojis?: boolean;
   withFooter?: boolean;
@@ -46,14 +47,14 @@ const RootStyles = styled.div<StyleProps>`
   min-height: ${({ theme, withFooter }) =>
     withFooter ? theme.appDimensions.appMinHeight : 0};
   padding: ${({ theme }) =>
-    `${theme.appDimensions.mobileNavbarHeight} 0 ${theme.appDimensions.mobileFooterHeight}`};
+    `${theme.appDimensions.mobileNavbarHeight} 0 calc(${theme.appDimensions.mobileFooterHeight} + ${theme.spaces.large})`};
   position: relative;
   width: 100%;
 
   @media only screen and (min-width: ${({ theme }) =>
       theme.breakpoints.mobile}) {
     padding: ${({ theme }) =>
-      `${theme.appDimensions.desktopNavbarHeight} 0 ${theme.appDimensions.desktopFooterHeight}`};
+      `${theme.appDimensions.desktopNavbarHeight} 0 calc(${theme.appDimensions.desktopFooterHeight} + ${theme.spaces.xxLarge})`};
     margin-bottom: 0;
   }
 `;

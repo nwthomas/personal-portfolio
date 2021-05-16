@@ -40,7 +40,11 @@ export default function ArticleImage({
   );
 }
 
-const RootStyles = styled.div<{ isHeroImage: boolean }>`
+interface StyleProps {
+  isHeroImage: boolean;
+}
+
+const RootStyles = styled.div<StyleProps>`
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -49,8 +53,7 @@ const RootStyles = styled.div<{ isHeroImage: boolean }>`
 
   > figure {
     height: auto;
-    margin: ${({ isHeroImage, theme }) =>
-      `${isHeroImage ? 0 : theme.spaces.medium} 0 ${theme.spaces.medium}`};
+    margin: ${({ theme }) => `0 0 ${theme.spaces.medium}`};
     max-width: ${({ isHeroImage, theme }) =>
       isHeroImage
         ? theme.appDimensions.articleHeroImageMaxWidth

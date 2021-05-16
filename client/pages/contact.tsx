@@ -15,11 +15,6 @@ import type { EmailType } from './api/email';
 
 const PAGE_NAME = 'Contact';
 
-const EMAIL_PLACEHOLDER = 'Enter email...';
-const MESSAGE_PLACEHOLDER = "What's happening?";
-const NAME_PLACEHOLDER = 'Enter name...';
-const SUBJECT_PLACEHOLDER = 'Enter subject...';
-
 const EMAIL_FAILURE = 'Sending Failed - Try Again';
 const EMAIL_SENDING = 'Sending Email';
 const EMAIL_SUCCESS = 'Email Sent';
@@ -117,11 +112,11 @@ function Contact() {
     <Layout pageName={PAGE_NAME} withEmojis withFooter>
       <RootStyles isDarkMode={isDarkMode}>
         <div>
-          <h2>Contact</h2>
+          <h2>What's happening?</h2>
           <div>
             <form onSubmit={formik.handleSubmit}>
               <div>
-                <label htmlFor="name">Name:</label>
+                <label htmlFor="name">Name</label>
                 {formik.touched.name && formik.errors.name ? (
                   <p>{formik.errors.name}</p>
                 ) : null}
@@ -131,11 +126,10 @@ function Contact() {
                 type="text"
                 onChange={handleFormUpdate}
                 onBlur={formik.handleBlur}
-                placeholder={NAME_PLACEHOLDER}
                 value={formik.values.name}
               />
               <div>
-                <label htmlFor="email">Email:</label>
+                <label htmlFor="email">Email</label>
                 {formik.touched.email && formik.errors.email ? (
                   <p>{formik.errors.email}</p>
                 ) : null}
@@ -145,11 +139,10 @@ function Contact() {
                 type="email"
                 onChange={handleFormUpdate}
                 onBlur={formik.handleBlur}
-                placeholder={EMAIL_PLACEHOLDER}
                 value={formik.values.email}
               />
               <div>
-                <label htmlFor="subject">Subject:</label>
+                <label htmlFor="subject">Subject</label>
                 {formik.touched.subject && formik.errors.subject ? (
                   <p>{formik.errors.subject}</p>
                 ) : null}
@@ -159,11 +152,10 @@ function Contact() {
                 type="subject"
                 onChange={handleFormUpdate}
                 onBlur={formik.handleBlur}
-                placeholder={SUBJECT_PLACEHOLDER}
                 value={formik.values.subject}
               />
               <div>
-                <label htmlFor="message">Message:</label>
+                <label htmlFor="message">Message</label>
                 {formik.touched.message && formik.errors.message ? (
                   <p>{formik.errors.message}</p>
                 ) : null}
@@ -172,7 +164,6 @@ function Contact() {
                 name="message"
                 onChange={handleFormUpdate}
                 onBlur={formik.handleBlur}
-                placeholder={MESSAGE_PLACEHOLDER}
                 value={formik.values.message}
               />
               <input
@@ -207,13 +198,19 @@ const RootStyles = styled.main<StyleProps>`
   display: flex;
   flex-direction: column;
   overflow-y: hidden;
-  padding: ${({ theme }) => theme.spaces.medium} 3%;
+  padding: ${({ theme }) =>
+    `calc(${theme.spaces.medium} * 2) ${theme.appDimensions.appHorizontalGutters}`};
   width: 100%;
 
   > div {
-    max-width: ${({ theme }) => theme.appDimensions.appMaxWidth};
-    padding: ${({ theme }) => theme.spaces.medium} 0 0;
+    max-width: ${({ theme }) => theme.appDimensions.articleMaxWidth};
     width: 100%;
+
+    > h2 {
+      margin-bottom: ${({ theme }) => theme.spaces.small};
+      text-align: center;
+      width: 100%;
+    }
 
     > div {
       display: flex;
@@ -224,36 +221,17 @@ const RootStyles = styled.main<StyleProps>`
         border-radius: ${({ theme }) => theme.borderRadii.micro};
         display: flex;
         justify-content: space-between;
-        margin: ${({ theme }) => theme.spaces.medium} 0;
-        padding: ${({ theme }) => theme.spaces.medium};
         flex-direction: column;
-        box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
-          0 15px 40px rgba(166, 173, 201, 0.2);
-        -webkit-box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
-          0 15px 40px rgba(166, 173, 201, 0.2);
-        -moz-box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
-          0 15px 40px rgba(166, 173, 201, 0.2);
         width: 100%;
-
-        ${({ isDarkMode, theme }) =>
-          isDarkMode &&
-          css`
-            background: ${theme.colors.bodyBackgroundAccentTwo};
-            border: 1px solid ${theme.colors.bodyBackgroundAccentOne};
-            -webkit-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0);
-            -moz-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0);
-            box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0);
-          `}
-
-        @media only screen and (min-width: ${({ theme }) =>
-          theme.breakpoints.desktop}) {
-          width: 50%;
-        }
 
         > div {
           display: flex;
           justify-content: space-between;
           width: 100%;
+
+          > label {
+            margin-bottom: ${({ theme }) => theme.spaces.nano};
+          }
 
           > p {
             color: red;
@@ -264,32 +242,35 @@ const RootStyles = styled.main<StyleProps>`
             display: flex;
             background: ${({ theme }) => theme.colors.textAccentTwo};
             color: ${({ theme }) => theme.colors.textOnColor};
-            border: ${({ theme }) =>
-              `1px solid ${theme.colors.bodyBackgroundAccentOne}`};
-            border-radius: ${({ theme }) => theme.borderRadii.medium};
+            border: none;
+            border-radius: ${({ theme }) => theme.borderRadii.micro};
             cursor: pointer;
-            height: ${({ theme }) => theme.spaces.large};
+            height: ${({ theme }) => theme.spaces.xLarge};
             justify-content: center;
-            transition: background ${({ theme }) => theme.transitions.short};
+            margin-bottom: ${({ theme }) => theme.spaces.small};
+            transition: opacity ${({ theme }) => theme.transitions.medium}
+              ease-in-out;
             width: 48%;
 
-            &:hover {
-              background: ${({ theme }) => theme.colors.textAccentThree};
-            }
+            ${({ isDarkMode, theme }) =>
+              isDarkMode &&
+              css`
+                background: ${theme.colorsHex.black};
+                color: ${theme.colors.text};
+              `}
 
-            &:focus {
-              border: 1px solid ${({ theme }) => theme.colors.text};
-              outline: none;
+            &:hover {
+              opacity: ${({ theme }) => theme.opacity.opacity70};
             }
           }
         }
 
         > input {
-          background: ${({ theme }) => theme.colors.bodyBackground};
+          background: ${({ theme }) => theme.colors.bodyBackgroundAccentThree};
           border: ${({ theme }) =>
             `1px solid ${theme.colors.bodyBackgroundAccentOne}`};
-          border-radius: ${({ theme }) => theme.borderRadii.medium};
-          color: ${({ theme }) => theme.colors.text};
+          border-radius: ${({ theme }) => theme.borderRadii.micro};
+          color: ${({ theme }) => theme.colorsHex.mineShaft};
           height: ${({ theme }) => theme.spaces.xLarge};
           margin-bottom: ${({ theme }) => theme.spaces.small};
           padding: ${({ theme }) => `0 ${theme.spaces.small}`};
@@ -301,13 +282,13 @@ const RootStyles = styled.main<StyleProps>`
         }
 
         > textarea {
-          background: ${({ theme }) => theme.colors.bodyBackground};
+          background: ${({ theme }) => theme.colors.bodyBackgroundAccentThree};
           border: ${({ theme }) =>
             `1px solid ${theme.colors.bodyBackgroundAccentOne}`};
-          border-top-left-radius: ${({ theme }) => theme.borderRadii.medium};
-          border-top-right-radius: ${({ theme }) => theme.borderRadii.medium};
-          border-bottom-left-radius: ${({ theme }) => theme.borderRadii.medium};
-          color: ${({ theme }) => theme.colors.text};
+          border-top-left-radius: ${({ theme }) => theme.borderRadii.micro};
+          border-top-right-radius: ${({ theme }) => theme.borderRadii.micro};
+          border-bottom-left-radius: ${({ theme }) => theme.borderRadii.micro};
+          color: ${({ theme }) => theme.colorsHex.mineShaft};
           height: ${({ theme }) => `calc(${theme.spaces.xxLarge} * 3)`};
           margin-bottom: ${({ theme }) => theme.spaces.medium};
           min-width: 100%;

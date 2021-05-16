@@ -31,10 +31,10 @@ export default function CodeSnippet({ codeSnippetCopy }: Props) {
 
 const RootStyles = styled.div`
   align-items: center;
-  border-radius: ${({ theme }) => theme.borderRadii.small};
+  border-radius: ${({ theme }) => theme.borderRadii.micro};
   display: flex;
   flex-direction: column;
-  margin: ${({ theme }) => theme.spaces.medium} 0;
+  margin: 0 0 ${({ theme }) => theme.spaces.medium};
   padding: 0 ${({ theme }) => theme.appDimensions.appHorizontalGutters};
   width: 100%;
 

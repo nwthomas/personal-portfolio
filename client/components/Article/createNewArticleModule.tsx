@@ -7,13 +7,13 @@ import Title from './components/Title';
 import Video from './components/Video';
 import type { ArticleModulesCollectionTypes } from '../../pages/api/articles';
 
-const ARTICLE_COPY = 'ArticleBodyCopy';
-const ARTICLE_CODE_SNIPPETS = 'ArticleCodeSnippets';
-const ARTICLE_HEADING = 'ArticleHeading';
-const ARTICLE_IMAGE = 'ArticleImage';
-const ARTICLE_QUOTE = 'ArticleQuote';
-const ARTICLE_SEPERATOR = 'ArticleSeperator';
-const ARTICLE_VIDEO = 'ArticleVideo';
+export const ARTICLE_COPY = 'ArticleBodyCopy';
+export const ARTICLE_CODE_SNIPPETS = 'ArticleCodeSnippets';
+export const ARTICLE_HEADING = 'ArticleHeading';
+export const ARTICLE_IMAGE = 'ArticleImage';
+export const ARTICLE_QUOTE = 'ArticleQuote';
+export const ARTICLE_SEPERATOR = 'ArticleSeperator';
+export const ARTICLE_VIDEO = 'ArticleVideo';
 
 export const createNewArticleModule = (
   articleModule: ArticleModulesCollectionTypes,

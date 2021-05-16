@@ -6,6 +6,7 @@ import { getArticleIds, getArticleById } from '../api';
 import Layout from '../../components/Layout';
 import Article from '../../components/Article';
 import Error from '../../components/Error';
+import { ARTICLE_IMAGE } from '../../components/Article/createNewArticleModule';
 
 interface ArticleIdType {
   articleId?: string;
@@ -62,11 +63,15 @@ export default function ArticleByName() {
     handleUseQuery,
   );
 
+  const heroImage = data.modulesCollection.items.find(
+    (module) => module.__typename === ARTICLE_IMAGE,
+  )?.image?.url;
+
   const pageTitle = data.title;
 
   if (!isLoading && !error) {
     return (
-      <Layout pageName={pageTitle} withFooter>
+      <Layout imageURL={heroImage} pageName={pageTitle} withFooter>
         <RootStyles>
           <Article articleModuleCollection={data.modulesCollection.items} />
         </RootStyles>
@@ -82,13 +87,10 @@ export default function ArticleByName() {
 }
 
 const RootStyles = styled.main`
+  align-items: center;
   display: flex;
-  justify-content: center;
-  margin-bottom: ${({ theme }) => theme.spaces.jumbo};
+  flex-direction: column;
+  margin-top: ${({ theme }) => theme.spaces.medium};
+  padding: 0 ${({ theme }) => theme.appDimensions.appHorizontalGutters};
   width: 100%;
-
-  @media only screen and (min-width: ${({ theme }) =>
-      theme.breakpoints.mobile}) {
-    padding: ${({ theme }) => theme.spaces.medium} 0 0;
-  }
 `;

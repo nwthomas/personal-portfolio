@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import styled from 'styled-components';
 import type { ThemeEnum } from '../../styles/libs/theme';
 
@@ -8,30 +7,10 @@ interface Props {
 }
 
 export default function ThemeTransitionButton({ onClick, themeName }: Props) {
-  // TODO: Move these to Icons folder
-  const MoonIcon = (
-    <Image
-      alt="Click to change theme to light mode"
-      draggable={false}
-      height={30}
-      quality={50}
-      priority
-      src={'/moon.svg'}
-      width={30}
-    />
-  );
-
-  const SunIcon = (
-    <Image
-      alt="Click to change theme to dark mode"
-      draggable={false}
-      height={30}
-      quality={50}
-      priority
-      src={'/sun.svg'}
-      width={30}
-    />
-  );
+  // These weren't rendering correctly on iOS unless they were put in a generic
+  // <img /> tag
+  const MoonIcon = <img alt="Sun icon" src="/moon.png" />;
+  const SunIcon = <img alt="Moon icon" src="/sun.png" />;
 
   const currentIcon = themeName === 'dark' ? MoonIcon : SunIcon;
 
@@ -43,49 +22,26 @@ export default function ThemeTransitionButton({ onClick, themeName }: Props) {
 
   return (
     <RootStyles>
-      <button onClick={handleOnClick} type="button">
-        {themeName ? currentIcon : null}
-      </button>
+      <div onClick={handleOnClick}>{themeName ? currentIcon : null}</div>
     </RootStyles>
   );
 }
 
 const RootStyles = styled.div`
   align-items: center;
+  background: ${({ theme }) => theme.colors.transparent};
   display: flex;
   height: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};
   justify-content: flex-end;
   text-decoration: none;
-  transition: ${({
-    theme: {
-      transitions: { short },
-    },
-  }) => `padding-bottom ${short}, opacity ${short}`};
-  width: 55px;
+  transition: opacity ${({ theme }) => theme.transitions.medium} ease-in-out;
+  width: 100%;
 
   &:hover {
-    opacity: ${({ theme }) => theme.opacity.opacity70};
+    opacity: ${({ theme }) => theme.opacity.opacity80};
   }
 
-  @media only screen and (min-width: ${({ theme }) =>
-      theme.breakpoints.mobile}) {
-    height: ${({ theme }) => theme.appDimensions.desktopNavbarHeight};
-    margin-left: ${({ theme }) => theme.spaces.micro};
-  }
-
-  > button {
-    align-items: center;
-    background: ${({ theme }) => theme.colors.transparent};
-    border: none;
+  > div {
     cursor: pointer;
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    width: 100%;
-
-    @media only screen and (min-width: ${({ theme }) =>
-        theme.breakpoints.mobile}) {
-      height: 50%;
-    }
   }
 `;

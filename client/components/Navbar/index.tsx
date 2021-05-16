@@ -29,11 +29,16 @@ function Navbar({ onThemeChangeClick, themeName }: Props) {
             <Link href="/nathan-thomas-resume.pdf" withStyling>
               Resume
             </Link>
+            <Link href="/contact" withStyling>
+              Contact
+            </Link>
           </nav>
-          <ThemeTransitionButton
-            onClick={onThemeChangeClick}
-            themeName={themeName}
-          />
+          <div>
+            <ThemeTransitionButton
+              onClick={onThemeChangeClick}
+              themeName={themeName}
+            />
+          </div>
         </div>
       </div>
     </RootStyles>
@@ -53,8 +58,8 @@ const RootStyles = styled.header<StyleProps>`
   padding: 0 ${({ theme }) => theme.appDimensions.appHorizontalGutters};
   position: absolute;
   top: 0;
-  transition: background ${({ theme }) => theme.transitions.short},
-    height ${({ theme }) => theme.transitions.medium};
+  transition: background ${({ theme }) => theme.transitions.short} ease-in-out,
+    height ${({ theme }) => theme.transitions.medium} ease-in-out;
   width: 100%;
   z-index: 1;
 
@@ -82,6 +87,7 @@ const RootStyles = styled.header<StyleProps>`
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
+      overflow-x: hidden;
 
       > nav {
         display: none;
@@ -98,8 +104,10 @@ const RootStyles = styled.header<StyleProps>`
             height: ${({ theme }) => theme.appDimensions.desktopNavbarHeight};
             justify-content: center;
             text-decoration: none;
-            transition: opacity ${({ theme }) => theme.transitions.medium},
-              display ${({ theme }) => theme.transitions.medium};
+            transition: padding-bottom
+                ${({ theme }) => theme.transitions.medium} ease-in-out,
+              display ${({ theme }) => theme.transitions.medium} ease-in-out,
+              opacity ${({ theme }) => theme.transitions.medium} ease-in-out;
             width: ${({ theme }) => theme.appDimensions.navbarLinkWidth};
             visibility: shown;
 
@@ -111,7 +119,8 @@ const RootStyles = styled.header<StyleProps>`
               `}
 
             &:hover {
-              opacity: ${({ theme }) => theme.opacity.opacity70};
+              opacity: ${({ theme }) => theme.opacity.opacity80};
+              padding-bottom: ${({ theme }) => theme.spaces.micro};
             }
           }
 
@@ -120,6 +129,11 @@ const RootStyles = styled.header<StyleProps>`
               `calc(${theme.appDimensions.navbarLinkWidth} + 42px)`};
           }
         }
+      }
+
+      > div {
+        margin-left: ${({ theme }) => theme.spaces.small};
+        width: 33px;
       }
     }
   }
@@ -136,7 +150,7 @@ const TitleIcon = styled.h1<TitleStyleProps>`
   font-size: 8rem;
   line-height: 1;
   height: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};
-  transition: color ${({ theme }) => theme.transitions.short};
+  transition: color ${({ theme }) => theme.transitions.medium} ease-in-out;
 
   &:hover {
     color: ${({ theme }) => theme.colors.textAccentTwo};
@@ -146,8 +160,8 @@ const TitleIcon = styled.h1<TitleStyleProps>`
       theme.breakpoints.mobile}) {
     height: ${({ theme }) => theme.appDimensions.desktopNavbarHeight};
     font-size: 12rem;
-    transition: color ${({ theme }) => theme.transitions.short},
-      font-size ${({ theme }) => theme.transitions.medium};
+    transition: color ${({ theme }) => theme.transitions.medium} ease-in-out,
+      font-size ${({ theme }) => theme.transitions.medium} ease-in-out;
 
     ${({ shouldMinimizeNavbar }) =>
       shouldMinimizeNavbar &&

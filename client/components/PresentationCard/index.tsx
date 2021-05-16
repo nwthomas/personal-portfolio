@@ -1,5 +1,4 @@
-import { useContext } from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import styled from 'styled-components';
 import type { Presentation } from '../../staticAssets';
 
 // Renamed to Props for clarity in error messages
@@ -13,11 +12,8 @@ function PresentationCard({
   title,
   url,
 }: Props) {
-  const { currentTheme } = useContext(ThemeContext);
-  const isDarkMode = currentTheme === 'dark';
-
   return (
-    <RootStyles isDarkMode={isDarkMode}>
+    <RootStyles>
       <div>
         <iframe
           src={url}
@@ -39,11 +35,7 @@ function PresentationCard({
   );
 }
 
-interface StyleProps {
-  isDarkMode: boolean;
-}
-
-const RootStyles = styled.div<StyleProps>`
+const RootStyles = styled.div`
   flex-direction: column;
   display: flex;
   background: ${({ theme }) => theme.colors.bodyBackgroundAccentTwo};
@@ -99,7 +91,7 @@ const RootStyles = styled.div<StyleProps>`
 
       > p {
         font-style: italic;
-        opacity: ${({ theme }) => theme.opacity.opacity70};
+        opacity: ${({ theme }) => theme.opacity.opacity80};
       }
     }
 

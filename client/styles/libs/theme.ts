@@ -16,6 +16,7 @@ export const colors = {
   mediumPurple: '#7E61DC',
   mercury: '#e2e2e2',
   mineShaft: '#333333',
+  mirage: '#171F2A',
   pictonBlue: '#479ded',
   onyx: '#3b3b40',
   shark: '#27272a',
@@ -23,6 +24,7 @@ export const colors = {
   transparent: 'transparent',
   vistaBlue: '#95dbb3',
   white: '#ffffff',
+  whitePointer: '#FCF7FF',
   woodsmoke: '#161618',
 };
 
@@ -31,6 +33,7 @@ export const themeColorValues = {
   bodyBackground: 'var(--body-bg)',
   bodyBackgroundAccentOne: 'var(--body-bg-accent-one)',
   bodyBackgroundAccentTwo: 'var(--body-bg-accent-two)',
+  bodyBackgroundAccentThree: 'var(--body-bg-accent-three)',
   text: 'var(--text)',
   textOnColor: 'var(--text-on-color)',
   textAccentOne: 'var(--text-accent-one)',
@@ -97,9 +100,8 @@ const spaces = {
 
 const transitions = {
   short: '0.03s',
-  medium: '0.1s',
-  long: '0.3s',
-  eternal: '1s',
+  medium: '0.15s',
+  long: '0.5s',
 };
 
 export interface Theme {

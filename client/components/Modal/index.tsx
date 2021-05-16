@@ -1,8 +1,17 @@
-import styled, { createGlobalStyle, keyframes } from 'styled-components';
+import { useContext } from 'react';
+import styled, {
+  createGlobalStyle,
+  css,
+  keyframes,
+  ThemeContext,
+} from 'styled-components';
 import { useStateValue } from 'react-conflux';
 import { StateContext, UPDATE_MODAL } from '../../store';
 
 function Modal() {
+  const { currentTheme } = useContext(ThemeContext);
+  const isDarkMode = currentTheme === 'dark';
+
   const [state, dispatch] = useStateValue(StateContext);
   const {
     modal: { isLoading, isShown, message, withButton },
@@ -25,7 +34,7 @@ function Modal() {
       {isShown ? (
         <>
           <LockBodyScroll />
-          <RootStyles>
+          <RootStyles isDarkMode={isDarkMode}>
             {isLoading ? (
               <div>
                 <BoxOne />
@@ -45,7 +54,11 @@ function Modal() {
   );
 }
 
-const RootStyles = styled.div`
+interface StyleProps {
+  isDarkMode: boolean;
+}
+
+const RootStyles = styled.div<StyleProps>`
   align-items: center;
   background: ${({ theme }) => theme.colors.bodyBackground};
   bottom: 0;
@@ -84,23 +97,25 @@ const RootStyles = styled.div`
     display: flex;
     background: ${({ theme }) => theme.colors.textAccentTwo};
     color: ${({ theme }) => theme.colors.textOnColor};
-    border: ${({ theme }) =>
-      `1px solid ${theme.colors.bodyBackgroundAccentOne}`};
-    border-radius: ${({ theme }) => theme.borderRadii.medium};
+    border: none;
+    border-radius: ${({ theme }) => theme.borderRadii.micro};
     cursor: pointer;
     height: ${({ theme }) => theme.spaces.xLarge};
     justify-content: center;
     max-width: ${({ theme }) => `calc(${theme.spaces.jumbo} * 3)`};
-    transition: background ${({ theme }) => theme.transitions.short};
+    transition: background ${({ theme }) => theme.transitions.medium}
+      ease-in-out;
     width: 100%;
 
-    &:hover {
-      background: ${({ theme }) => theme.colors.textAccentThree};
-    }
+    ${({ isDarkMode, theme }) =>
+      isDarkMode &&
+      css`
+        background: ${theme.colorsHex.black};
+        color: ${theme.colors.text};
+      `}
 
-    &:focus {
-      border: 1px solid ${({ theme }) => theme.colors.text};
-      outline: none;
+    &:hover {
+      opacity: ${({ theme }) => theme.opacity.opacity80};
     }
   }
 `;
