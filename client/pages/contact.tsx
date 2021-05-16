@@ -207,7 +207,7 @@ const RootStyles = styled.main<StyleProps>`
     width: 100%;
 
     > h2 {
-      margin-bottom: ${({ theme }) => theme.spaces.medium};
+      margin-bottom: ${({ theme }) => theme.spaces.small};
       text-align: center;
       width: 100%;
     }

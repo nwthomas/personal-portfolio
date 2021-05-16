@@ -58,7 +58,7 @@ const RootStyles = styled.header<StyleProps>`
   padding: 0 ${({ theme }) => theme.appDimensions.appHorizontalGutters};
   position: absolute;
   top: 0;
-  transition: background ${({ theme }) => theme.transitions.medium} ease-in-out,
+  transition: background ${({ theme }) => theme.transitions.short} ease-in-out,
     height ${({ theme }) => theme.transitions.medium} ease-in-out;
   width: 100%;
   z-index: 1;
@@ -87,6 +87,7 @@ const RootStyles = styled.header<StyleProps>`
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
+      overflow-x: hidden;
 
       > nav {
         display: none;
@@ -131,7 +132,8 @@ const RootStyles = styled.header<StyleProps>`
       }
 
       > div {
-        width: 46px;
+        margin-left: ${({ theme }) => theme.spaces.small};
+        width: 33px;
       }
     }
   }

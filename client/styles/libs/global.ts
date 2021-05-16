@@ -9,7 +9,7 @@ const GlobalStyle = css`
         transitions: { short },
       },
     }) =>
-      `background ${short}, background-color ${short}, color ${short}, fill ${short}, stroke ${short}, border-color ${short}`};
+      `background ${short} ease-in-out, background-color ${short} ease-in-out, color ${short} ease-in-out, fill ${short} ease-in-out, stroke ${short} ease-in-out, border-color ${short} ease-in-out`};
   }
 
   html {
