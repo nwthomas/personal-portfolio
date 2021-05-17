@@ -11,6 +11,7 @@ interface Props {
 
 function Navbar({ onThemeChangeClick, themeName }: Props) {
   const shouldMinimizeNavbar = useShouldMinimizeNavbar();
+  const shouldShowContactPage = !!process.env.NEXT_PUBLIC_WITH_CONTACT_PAGE;
 
   return (
     <RootStyles shouldMinimizeNavbar={shouldMinimizeNavbar}>
@@ -29,9 +30,11 @@ function Navbar({ onThemeChangeClick, themeName }: Props) {
             <Link href="/nathan-thomas-resume.pdf" withStyling>
               Resume
             </Link>
-            <Link href="/contact" withStyling>
-              Contact
-            </Link>
+            {shouldShowContactPage ? (
+              <Link href="/contact" withStyling>
+                Contact
+              </Link>
+            ) : null}
           </nav>
           <div>
             <ThemeTransitionButton

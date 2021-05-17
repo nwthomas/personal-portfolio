@@ -20,6 +20,7 @@ const TwitterIconComponent = <TwitterIcon />;
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const shouldShowContactPage = !!process.env.NEXT_PUBLIC_WITH_CONTACT_PAGE;
 
   return (
     <RootStyles>
@@ -72,11 +73,13 @@ export default function Footer() {
               {TwitterIconComponent}
             </a>
           </div>
-          <div>
-            <a href="/contact" aria-label="Link to contact page">
-              {MailIconComponent}
-            </a>
-          </div>
+          {shouldShowContactPage ? (
+            <div>
+              <a href="/contact" aria-label="Link to contact page">
+                {MailIconComponent}
+              </a>
+            </div>
+          ) : null}
         </nav>
       </div>
     </RootStyles>
