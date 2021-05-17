@@ -57,7 +57,7 @@ func sendEmail(w http.ResponseWriter, r *http.Request) {
 		auth := smtp.PlainAuth("", personalEmail, password, smtpHost)
 		smtpAddress := smtpHost + ":" + smtpPort
 		err := smtp.SendMail(smtpAddress, auth, from, to, []byte(message))
-		fmt.Println(err)
+
 		if err != nil {
 			http.Error(w, "Please try again", http.StatusBadRequest)
 		} else {
