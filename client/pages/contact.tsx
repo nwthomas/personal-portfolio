@@ -270,10 +270,12 @@ const RootStyles = styled.main<StyleProps>`
           border: ${({ theme }) =>
             `1px solid ${theme.colors.bodyBackgroundAccentOne}`};
           border-radius: ${({ theme }) => theme.borderRadii.micro};
+          box-shadow: 0;
           color: ${({ theme }) => theme.colorsHex.mineShaft};
           height: ${({ theme }) => theme.spaces.xLarge};
           margin-bottom: ${({ theme }) => theme.spaces.small};
           padding: ${({ theme }) => `0 ${theme.spaces.small}`};
+          -webkit-appearance: none;
 
           &:focus {
             border: 1px solid ${({ theme }) => theme.colors.text};
@@ -294,6 +296,7 @@ const RootStyles = styled.main<StyleProps>`
           min-width: 100%;
           max-width: 100%;
           padding: ${({ theme }) => `0${theme.spaces.small}`};
+          -webkit-appearance: none;
 
           &:focus {
             border: 1px solid ${({ theme }) => theme.colors.text};

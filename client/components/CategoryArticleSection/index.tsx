@@ -55,7 +55,7 @@ const RootStyles = styled.div`
 
   > div:last-child {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minMax(400px, 1fr));
+    grid-template-columns: repeat(auto-fill, minMax(350px, 1fr));
     grid-auto-rows: minmax(min-content, max-content);
     column-gap: ${({ theme }) => theme.spaces.medium};
     row-gap: ${({ theme }) => theme.spaces.medium};

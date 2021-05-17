@@ -11,6 +11,7 @@ import Link, { isActiveLink } from '../Link';
 
 export default function MobileNavbar() {
   const { pathname } = useRouter();
+  const shouldShowContactPage = !!process.env.NEXT_PUBLIC_WITH_CONTACT_PAGE;
 
   return (
     <RootStyles>
@@ -37,11 +38,13 @@ export default function MobileNavbar() {
             <GraduateIcon />
           </div>
         </Link>
-        <Link href="/contact" aria-label="Link to contact page">
-          <div>
-            <MailIcon isActive={isActiveLink(pathname, '/contact')} />
-          </div>
-        </Link>
+        {shouldShowContactPage ? (
+          <Link href="/contact" aria-label="Link to contact page">
+            <div>
+              <MailIcon isActive={isActiveLink(pathname, '/contact')} />
+            </div>
+          </Link>
+        ) : null}
       </nav>
     </RootStyles>
   );
@@ -66,7 +69,6 @@ const RootStyles = styled.div`
     align-items: center;
     display: flex;
     justify-content: space-between;
-    max-width: 450px;
     width: 100%;
 
     div {

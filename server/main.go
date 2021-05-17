@@ -8,6 +8,7 @@ import (
 	"net/smtp"
 	"os"
 
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 
 	// This autoloads in the environment variables from a local .env file
@@ -60,17 +61,27 @@ func sendEmail(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			http.Error(w, "Please try again", http.StatusBadRequest)
 		} else {
-			r := &Response{ Message: "Email sent successfully" }
+			r := Response{ Message: "Email sent" }
 			json.NewEncoder(w).Encode(r)
 		}
 	}
 }
 
+func returnMessage(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	json.NewEncoder(w).Encode(Response{ Message: "The server is alive" })
+}
+
 func main() {
 	port := os.Getenv("PORT")
 	router := mux.NewRouter()
+
+	// TODO - Update this to only be for my domain once server is live
+	corsObj := handlers.AllowedOrigins([]string{"*"})
 	
 	router.HandleFunc("/api/send-email", sendEmail).Methods(http.MethodPost)
+	router.HandleFunc("/", returnMessage).Methods(http.MethodGet)
 	
-	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), router))
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), handlers.CORS(corsObj)(router)))
 }
