@@ -112,7 +112,7 @@ export interface ArticleType {
   };
 }
 
-export async function getArticleIds() {
+export async function getArticleIdsAndSlugs() {
   const { articleCollection } = await request(
     endpoint,
     gql`
@@ -124,6 +124,7 @@ export async function getArticleIds() {
             sys {
               id
             }
+            slug
           }
         }
       }

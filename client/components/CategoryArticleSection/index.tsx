@@ -22,24 +22,22 @@ export default function CategoryArticleSection({
         ) : null}
       </div>
       <div>
-        {articles.map(
-          ({ categoriesCollection, description, sys: { id }, title }) => {
-            const articleCategories = categoriesCollection?.items
-              ? categoriesCollection.items.map((category) => category.title)
-              : undefined;
+        {articles.map(({ categoriesCollection, description, slug, title }) => {
+          const articleCategories = categoriesCollection?.items
+            ? categoriesCollection.items.map((category) => category.title)
+            : undefined;
 
-            return (
-              <ArticlePreviewCard
-                articleId={id}
-                description={description}
-                key={title}
-                title={title}
-                categories={articleCategories || []}
-                withBackground
-              />
-            );
-          },
-        )}
+          return (
+            <ArticlePreviewCard
+              articleSlug={slug}
+              description={description}
+              key={title}
+              title={title}
+              categories={articleCategories || []}
+              withBackground
+            />
+          );
+        })}
       </div>
     </RootStyles>
   );

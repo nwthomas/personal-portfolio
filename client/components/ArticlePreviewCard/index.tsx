@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import { ChevronForwardIcon } from '../Icons';
 import CategoryTag from '../CategoryTag';
 
-const createArticleRoute = (articleId: string) => `/articles/${articleId}`;
+const createArticleRoute = (articleSlug: string) => `/articles/${articleSlug}`;
 
 interface Props {
-  articleId: string;
+  articleSlug: string;
   description: string;
   title: string;
   categories: Array<string>;
@@ -16,7 +16,7 @@ interface Props {
 
 export default function ArticlePreviewCard({
   description,
-  articleId,
+  articleSlug,
   title,
   categories,
   withCategories,
@@ -24,7 +24,7 @@ export default function ArticlePreviewCard({
   const sortedCategories = categories?.sort((a, b) => (a > b ? 1 : -1));
 
   return (
-    <Link href={createArticleRoute(articleId)}>
+    <Link href={createArticleRoute(articleSlug)}>
       <RootStyles>
         <h4>{title}</h4>
         <p>{description}</p>
