@@ -178,8 +178,13 @@ const RootStyles = styled.main`
           max-width: 100%;
 
           @media only screen and (min-width: ${({ theme }) =>
+              theme.breakpoints.mobile}) {
+            width: 90%;
+          }
+
+          @media only screen and (min-width: ${({ theme }) =>
               theme.breakpoints.desktop}) {
-            width: 68%;
+            width: 820px;
           }
 
           a {

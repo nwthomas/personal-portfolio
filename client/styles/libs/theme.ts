@@ -71,7 +71,7 @@ const borderRadii = {
 const breakpoints = {
   mobile: '600px',
   desktop: '1000px',
-  ultrawide: '1200px',
+  ultraWide: '1200px',
 };
 
 const opacity = {
