@@ -12,7 +12,7 @@ It will also spawn many new personal projects (such as a potential scribing serv
 
 Welcome. I hope you enjoy the site as much as I enjoyed making it.
 
-![Website screenshot](./assets/site-screenshot.png)
+![Website screenshot](./assets/homepage-screenshot.png)
 
 ## TABLE OF CONTENTS 📚
 
