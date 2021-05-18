@@ -179,7 +179,7 @@ const RootStyles = styled.main`
 
           @media only screen and (min-width: ${({ theme }) =>
               theme.breakpoints.mobile}) {
-            width: 90%;
+            width: 88%;
           }
 
           @media only screen and (min-width: ${({ theme }) =>
@@ -214,13 +214,13 @@ const RootStyles = styled.main`
           padding-bottom: ${({ theme }) => theme.spaces.nano};
 
           > a {
-            transition: padding-bottom
-                ${({ theme }) => theme.transitions.medium} ease-in-out,
+            transition: transform ${({ theme }) => theme.transitions.medium}
+                ease-in-out,
               opacity ${({ theme }) => theme.transitions.medium} ease-in-out;
 
             &:hover {
-              padding-bottom: ${({ theme }) => theme.spaces.micro};
               opacity: ${({ theme }) => theme.opacity.opacity80};
+              transform: translateY(-1px);
             }
           }
         }

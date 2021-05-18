@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
   GitHubIcon,
   InstagramIcon,
@@ -23,7 +23,7 @@ export default function Footer() {
   const shouldShowContactPage = !!process.env.NEXT_PUBLIC_WITH_CONTACT_PAGE;
 
   return (
-    <RootStyles>
+    <RootStyles shouldShowContactPage={shouldShowContactPage}>
       <div>
         <div>
           <p suppressHydrationWarning>{randomFooterPhrase}</p>
@@ -86,7 +86,11 @@ export default function Footer() {
   );
 }
 
-const RootStyles = styled.footer`
+interface StyleProps {
+  shouldShowContactPage: boolean;
+}
+
+const RootStyles = styled.footer<StyleProps>`
   align-items: center;
   background: ${({ theme }) => theme.colors.backgroundColor};
   border-top: 1px solid ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
@@ -145,7 +149,8 @@ const RootStyles = styled.footer`
         cursor: pointer;
         margin: 0 6% 0 0;
         transition: opacity ${({ theme }) => theme.transitions.medium}
-          ease-in-out;
+            ease-in-out,
+          transform ${({ theme }) => theme.transitions.medium} ease-in-out;
         width: ${({ theme }) => theme.spaces.medium};
 
         @media only screen and (min-width: ${({ theme }) =>
@@ -155,18 +160,22 @@ const RootStyles = styled.footer`
 
         &:hover {
           opacity: ${({ theme }) => theme.opacity.opacity80};
+          transform: translateY(-1px);
         }
       }
 
-      > div:last-child {
-        display: none;
+      ${({ shouldShowContactPage, theme }) =>
+        shouldShowContactPage &&
+        css`
+          > div:last-child {
+            display: none;
 
-        @media only screen and (min-width: ${({ theme }) =>
-            theme.breakpoints.mobile}) {
-          display: block;
-          width: 35px;
-        }
-      }
+            @media only screen and (min-width: ${theme.breakpoints.mobile}) {
+              display: block;
+              width: 35px;
+            }
+          }
+        `}
     }
   }
 `;

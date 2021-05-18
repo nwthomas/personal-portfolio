@@ -53,17 +53,26 @@ const RootStyles = styled.div`
   background: ${({ theme }) => theme.colors.bodyBackgroundAccentTwo};
   border: 1px solid ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
   border-radius: ${({ theme }) => theme.borderRadii.micro};
+  -webkit-box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.08);
   cursor: pointer;
   display: flex;
   flex-direction: column;
   height: 100%;
   margin-bottom: ${({ theme }) => theme.spaces.small};
   padding: ${({ theme }) => theme.spaces.medium};
-  transition: opacity ${({ theme }) => theme.transitions.medium} ease-in-out;
+  transition: opacity ${({ theme }) => theme.transitions.medium} ease-in,
+    transform ${({ theme }) => theme.transitions.medium} ease-in-out,
+    box-shadow ${({ theme }) => theme.transitions.medium} ease-in-out;
   width: 100%;
 
   &:hover {
+    -webkit-box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.15);
     opacity: ${({ theme }) => theme.opacity.opacity80};
+    transform: translateY(-1px);
   }
 
   @media only screen and (min-width: ${({ theme }) =>
