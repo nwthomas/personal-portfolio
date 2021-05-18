@@ -11,7 +11,7 @@ import Error from '../../components/Error';
 
 const PAGE_NAME = 'Articles';
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery('articlePreviews', getArticlePreviews);

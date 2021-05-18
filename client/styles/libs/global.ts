@@ -28,10 +28,13 @@ const GlobalStyle = css`
       'Segoe UI Emoji', 'Segoe UI Symbol';
   }
 
-  /* To change the colors in the colors object, go to styles/libs/theme.ts */
   body {
-    --transparent: ${colors.transparent};
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+
+  /* To change the colors in the colors object, go to styles/libs/theme.ts */
   body.dark {
     --body-bg: ${colors.mirage};
     --body-bg-accent-one: ${colors.onyx};
@@ -43,6 +46,7 @@ const GlobalStyle = css`
     --text-accent-two: ${colors.dolly};
     --text-accent-three: ${colors.australianMint};
     --theme-icon-bg: ${colors.goldenFizz};
+    --transparent: ${colors.transparent};
   }
   body.light {
     --body-bg: ${colors.alabaster};
@@ -55,6 +59,7 @@ const GlobalStyle = css`
     --text-accent-two: ${colors.dullLavender};
     --text-accent-three: ${colors.bilobaFlower};
     --theme-icon-bg: ${colors.crusta};
+    --transparent: ${colors.transparent};
   }
 
   h1,
