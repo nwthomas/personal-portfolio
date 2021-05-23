@@ -14,59 +14,43 @@ interface Props {
   description?: string;
   title?: string;
   imageURL?: string;
-  slug: string;
+  slug?: string;
   isArticle?: boolean;
 }
 
 function SEO({ description, imageURL, isArticle, title, slug }: Props) {
+  const finalDescription = description || originalDescription;
+  const finalImageURL = imageURL || originalImageURL;
+  const finalTitle = title || originalTitle;
+  const finalURL = slug ? `${currentURL}${slug}` : currentURL;
+
   return (
     <Head>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta charSet="utf-8" />
-      <meta name="description" content={description || originalDescription} />
-      <meta name="image" content={imageURL || originalImageURL} key="ogtitle" />
-      {isArticle ? (
-        <meta property="og:type" content="article" key="ogtype" />
-      ) : (
-        <meta property="og:type" content="website" key="ogtype" />
-      )}
+      <meta name="description" content={finalDescription} />
+      <meta name="image" content={finalImageURL} key="ogtitle" />
       <meta
-        property="og:title"
-        content={title || originalTitle}
-        key="ogtitle"
+        property="og:type"
+        content={isArticle ? 'article' : 'website'}
+        key="ogtype"
       />
-      <meta
-        property="og:description"
-        content={description || originalDescription}
-        key="ogdesc"
-      />
+      <meta property="og:title" content={finalTitle} key="ogtitle" />
+      <meta property="og:description" content={finalDescription} key="ogdesc" />
       <meta
         property="twitter:card"
         content="summary_large_image"
         key="twcard"
       />
       <meta name="twitter:creator" content={social.twitter} key="twhandle" />
-      <meta
-        name="twitter:title"
-        content={title || originalTitle}
-        key="twtitle"
-      />
+      <meta name="twitter:title" content={finalTitle} key="twtitle" />
       <meta
         name="twitter:description"
-        content={description || originalDescription}
+        content={finalDescription}
         key="twdescription"
       />
-      <meta
-        name="twitter:image"
-        content={imageURL || originalImageURL}
-        key="twimage"
-      />
-      <meta property="og:url" content={`${currentURL}${slug}`} key="ogurl" />
-      <meta
-        property="og:image"
-        content={imageURL || originalImageURL}
-        key="ogimage"
-      />
+      <meta name="twitter:image" content={finalImageURL} key="twimage" />
+      <meta property="og:url" content={finalURL} key="ogurl" />
+      <meta property="og:image" content={finalImageURL} key="ogimage" />
       <meta property="og:site_name" content={siteName} key="ogsitename" />
     </Head>
   );

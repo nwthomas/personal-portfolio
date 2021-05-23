@@ -21,7 +21,7 @@ function Layout({ children, pageName, withEmojis, withFooter }: Props) {
     <>
       <Head>
         <title>{currentPageName}</title>
-        <meta name="description" content={pageName}></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="twitter:widgets:theme" content={theme.currentTheme}></meta>
         <meta name="twitter:dnt" content="on"></meta>
         <link rel="icon" href="/favicon.ico" />

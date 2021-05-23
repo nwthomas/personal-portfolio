@@ -7,6 +7,7 @@ import styled, { ThemeContext } from 'styled-components';
 import CategoryList from '../components/CategoryList';
 import Layout from '../components/Layout';
 import CategoryArticleSection from '../components/CategoryArticleSection';
+import SEO from '../components/SEO';
 import Tweet from '../components/Tweet';
 import {
   getArticlePreviews,
@@ -63,6 +64,7 @@ export default function Home() {
 
   return (
     <Layout pageName={PAGE_NAME} withEmojis withFooter>
+      <SEO />
       <RootStyles>
         <div>
           <section>
