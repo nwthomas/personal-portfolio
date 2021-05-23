@@ -16,7 +16,7 @@ import {
 
 const PAGE_NAME = 'Home';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery('articlePreviews', getArticlePreviews);
@@ -241,6 +241,12 @@ const Content = styled.div`
     // This is to account for the margin on the bottom of the CategoryList
     margin-bottom: ${({ theme }) =>
       `calc(${theme.spaces.xxLarge} - ${theme.spaces.small})`};
+    width: 100%;
+
+    @media only screen and (min-width: ${({ theme }) =>
+        theme.breakpoints.desktop}) {
+      width: 75%;
+    }
   }
 
   > div:last-child {
@@ -259,7 +265,6 @@ const Content = styled.div`
 
       > div {
         margin-bottom: ${({ theme }) => theme.spaces.small};
-        margin-right: ${({ theme }) => theme.spaces.small};
       }
     }
   }

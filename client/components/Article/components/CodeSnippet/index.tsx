@@ -46,6 +46,7 @@ const RootStyles = styled.div`
       -webkit-box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.08);
       -moz-box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.08);
       box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.08);
+      overflow: scroll;
     }
   }
 `;

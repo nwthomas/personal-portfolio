@@ -37,7 +37,7 @@ export default function ArticleBodyCopy({ bodyCopy }: Props) {
   );
 }
 
-const RootStyles = styled.section`
+const RootStyles = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -50,6 +50,7 @@ const RootStyles = styled.section`
     max-width: ${({ theme }) => theme.appDimensions.articleMaxWidth};
     padding-bottom: ${({ theme }) => theme.spaces.medium};
     overflow: break-word;
+    overflow-wrap: break-word;
     width: 100%;
 
     > a {
@@ -72,6 +73,10 @@ const RootStyles = styled.section`
 
     em {
       font-style: italic;
+    }
+
+    strong {
+      font-weight: bold;
     }
 
     code {
