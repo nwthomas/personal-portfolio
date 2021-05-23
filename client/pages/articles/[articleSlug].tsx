@@ -103,6 +103,7 @@ export default function ArticleByName() {
         <RootStyles>
           <Article
             articleModuleCollection={articleData.modulesCollection.items}
+            readingTime={articleData.readingTime}
           />
         </RootStyles>
       </Layout>

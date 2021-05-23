@@ -7,21 +7,23 @@ const createArticleRoute = (articleSlug: string) => `/articles/${articleSlug}`;
 
 interface Props {
   articleSlug: string;
-  description: string;
-  title: string;
   categories: Array<string>;
-  withBackground?: boolean;
+  description: string;
+  readingTime?: string;
+  title: string;
   withCategories?: boolean;
 }
 
 export default function ArticlePreviewCard({
-  description,
   articleSlug,
-  title,
   categories,
+  description,
+  readingTime,
+  title,
   withCategories,
 }: Props) {
   const sortedCategories = categories?.sort((a, b) => (a > b ? 1 : -1));
+  const finalReadingTime = readingTime ? `${readingTime} read` : 'Read';
 
   return (
     <Link href={createArticleRoute(articleSlug)}>
@@ -32,7 +34,7 @@ export default function ArticlePreviewCard({
           <div>
             <ChevronForwardIcon />
           </div>
-          <p>Read</p>
+          <p>{finalReadingTime}</p>
         </div>
         {withCategories ? (
           <div>

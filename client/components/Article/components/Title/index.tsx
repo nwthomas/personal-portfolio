@@ -2,15 +2,24 @@ import styled from 'styled-components';
 
 interface Props {
   isMainTitle?: boolean;
+  readingTime?: string;
   titleCopy: string;
 }
 
-export default function ArticleTitle({ isMainTitle, titleCopy }: Props) {
+export default function ArticleTitle({
+  isMainTitle,
+  readingTime,
+  titleCopy,
+}: Props) {
+  const attribution = 'by Nathan Thomas';
+  const tagline = readingTime
+    ? `${attribution} · ${readingTime} read`
+    : attribution;
   return (
     <RootStyles isMainTitle={isMainTitle}>
       <div>
         <h2>{titleCopy}</h2>
-        {isMainTitle ? <p>by Nathan Thomas</p> : null}
+        {isMainTitle ? <p>{tagline}</p> : null}
       </div>
     </RootStyles>
   );
