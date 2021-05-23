@@ -7,24 +7,26 @@ const createArticleRoute = (articleSlug: string) => `/articles/${articleSlug}`;
 
 interface Props {
   articleSlug: string;
-  description: string;
-  title: string;
   categories: Array<string>;
-  withBackground?: boolean;
+  description: string;
+  readingTime?: string;
+  title: string;
   withCategories?: boolean;
 }
 
 export default function ArticlePreviewCard({
-  description,
   articleSlug,
-  title,
   categories,
+  description,
+  readingTime,
+  title,
   withCategories,
 }: Props) {
   const sortedCategories = categories?.sort((a, b) => (a > b ? 1 : -1));
+  const finalReadingTime = readingTime ? `${readingTime} read` : 'Read';
 
   return (
-    <Link href={createArticleRoute(articleSlug)}>
+    <Link href={createArticleRoute(articleSlug)} passHref>
       <RootStyles>
         <h4>{title}</h4>
         <p>{description}</p>
@@ -32,7 +34,7 @@ export default function ArticlePreviewCard({
           <div>
             <ChevronForwardIcon />
           </div>
-          <p>Read</p>
+          <p>{finalReadingTime}</p>
         </div>
         {withCategories ? (
           <div>
@@ -48,11 +50,11 @@ export default function ArticlePreviewCard({
   );
 }
 
-const RootStyles = styled.div`
+const RootStyles = styled.a`
   align-self: flex-start;
   background: ${({ theme }) => theme.colors.bodyBackgroundAccentTwo};
   border: 1px solid ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
-  border-radius: ${({ theme }) => theme.borderRadii.micro};
+  border-radius: ${({ theme }) => theme.borderRadii.small};
   -webkit-box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.08);
   -moz-box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.08);
   box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.08);
@@ -71,7 +73,7 @@ const RootStyles = styled.div`
     -webkit-box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.15);
     box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.15);
-    opacity: ${({ theme }) => theme.opacity.opacity80};
+    opacity: ${({ theme }) => theme.opacity.opacity90};
     transform: translateY(-1px);
   }
 

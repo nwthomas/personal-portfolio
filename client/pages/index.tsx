@@ -173,8 +173,10 @@ const RootStyles = styled.main`
         }
 
         > h2 {
+          // The margin bottom here is to account for the white space on the Navbar
           margin: ${({ theme }) => theme.spaces.medium} 0
-            ${({ theme }) => `calc(${theme.spaces.xxLarge})`};
+            ${({ theme }) =>
+              `calc(${theme.spaces.xxLarge} + ${theme.spaces.small})`};
           max-width: 100%;
 
           @media only screen and (min-width: ${({ theme }) =>
@@ -188,6 +190,7 @@ const RootStyles = styled.main`
           }
 
           a {
+            border: 1px solid ${({ theme }) => theme.colors.transparent};
             color: ${({ theme }) => theme.colors.textAccentTwo};
             font-size: 3rem;
             transition: color ${({ theme }) => theme.transitions.medium}
@@ -219,7 +222,7 @@ const RootStyles = styled.main`
               opacity ${({ theme }) => theme.transitions.medium} ease-in-out;
 
             &:hover {
-              opacity: ${({ theme }) => theme.opacity.opacity80};
+              opacity: ${({ theme }) => theme.opacity.opacity90};
               transform: translateY(-1px);
             }
           }
@@ -233,6 +236,12 @@ const Content = styled.div`
   > div {
     margin-bottom: ${({ theme }) => theme.spaces.xxLarge};
     width: 100%;
+  }
+
+  > div:nth-child(2) {
+    // This is to account for the margin on the bottom of the CategoryList
+    margin-bottom: ${({ theme }) =>
+      `calc(${theme.spaces.xxLarge} - ${theme.spaces.small})`};
   }
 
   > div:last-child {

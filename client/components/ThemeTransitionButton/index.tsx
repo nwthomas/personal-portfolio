@@ -22,7 +22,9 @@ export default function ThemeTransitionButton({ onClick, themeName }: Props) {
 
   return (
     <RootStyles>
-      <div onClick={handleOnClick}>{themeName ? currentIcon : null}</div>
+      <button onClick={handleOnClick} role="button" tabIndex={0}>
+        {themeName ? currentIcon : null}
+      </button>
     </RootStyles>
   );
 }
@@ -30,18 +32,28 @@ export default function ThemeTransitionButton({ onClick, themeName }: Props) {
 const RootStyles = styled.div`
   align-items: center;
   background: ${({ theme }) => theme.colors.transparent};
+  cursor: pointer;
   display: flex;
   height: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};
   justify-content: flex-end;
   text-decoration: none;
-  transition: opacity ${({ theme }) => theme.transitions.medium} ease-in-out;
+  transition: opacity ${({ theme }) => theme.transitions.medium} ease-in-out,
+    transform ${({ theme }) => theme.transitions.medium} ease-in-out;
   width: 100%;
 
   &:hover {
-    opacity: ${({ theme }) => theme.opacity.opacity80};
+    opacity: ${({ theme }) => theme.opacity.opacity90};
+    transform: translateY(-1px);
   }
 
-  > div {
+  > button {
+    background: none;
+    border: none;
+    color: inherit;
     cursor: pointer;
+    font: inherit;
+    height: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};
+    padding: 0;
+    width: 100%;
   }
 `;

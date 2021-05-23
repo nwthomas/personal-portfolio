@@ -17,32 +17,32 @@ export default function MobileNavbar() {
     <RootStyles>
       <nav>
         <Link href="/" aria-label="Link to home page">
-          <div>
+          <a>
             <HomeIcon isActive={isActiveLink(pathname, '/')} />
-          </div>
+          </a>
         </Link>
         <Link href="/articles" aria-label="Link to articles page">
-          <div>
+          <a>
             <PostsIcon isActive={isActiveLink(pathname, '/articles')} />
-          </div>
+          </a>
         </Link>
         <Link href="/presentations" aria-label="Link to presentations page">
-          <div>
+          <a>
             <PresentationsIcon
               isActive={isActiveLink(pathname, '/presentations')}
             />
-          </div>
+          </a>
         </Link>
         <Link href="/nathan-thomas-resume.pdf">
-          <div>
+          <a>
             <GraduateIcon />
-          </div>
+          </a>
         </Link>
         {shouldShowContactPage ? (
           <Link href="/contact" aria-label="Link to contact page">
-            <div>
+            <a>
               <MailIcon isActive={isActiveLink(pathname, '/contact')} />
-            </div>
+            </a>
           </Link>
         ) : null}
       </nav>
@@ -71,7 +71,7 @@ const RootStyles = styled.div`
     justify-content: space-between;
     width: 100%;
 
-    div {
+    a {
       height: 30px;
       width: 30px;
 

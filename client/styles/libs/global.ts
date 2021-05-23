@@ -36,16 +36,16 @@ const GlobalStyle = css`
 
   /* To change the colors in the colors object, go to styles/libs/theme.ts */
   body.dark {
-    --body-bg: ${colors.mirage};
+    --body-bg: ${colors.ebony};
     --body-bg-accent-one: ${colors.onyx};
     --body-bg-accent-two: ${colors.black};
     --body-bg-accent-three: ${colors.white};
     --text: ${colors.titanWhite};
     --text-on-color: ${colors.mineShaft};
-    --text-accent-one: ${colors.goldenFizz};
-    --text-accent-two: ${colors.dolly};
-    --text-accent-three: ${colors.australianMint};
-    --theme-icon-bg: ${colors.goldenFizz};
+    --text-accent-one: ${colors.malibu};
+    --text-accent-two: ${colors.melrose};
+    --text-accent-three: ${colors.hawkesBlue};
+    --theme-icon-bg: ${colors.malibu};
     --transparent: ${colors.transparent};
   }
   body.light {

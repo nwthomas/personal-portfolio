@@ -18,6 +18,7 @@ export const ARTICLE_VIDEO = 'ArticleVideo';
 export const createNewArticleModule = (
   articleModule: ArticleModulesCollectionTypes,
   articleModuleId: number,
+  articleReadingTime?: string,
 ) => {
   switch (articleModule.__typename) {
     case ARTICLE_COPY:
@@ -37,6 +38,7 @@ export const createNewArticleModule = (
           titleCopy={articleModule.copy}
           isMainTitle={articleModule.isMainTitle}
           key={articleModuleId}
+          readingTime={articleReadingTime}
         />
       );
     case ARTICLE_IMAGE:

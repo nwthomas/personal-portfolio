@@ -4,13 +4,17 @@ import type { ArticleModulesCollectionType } from '../../pages/api/articles';
 
 interface Props {
   articleModuleCollection: ArticleModulesCollectionType;
+  readingTime?: string;
 }
 
-export default function Article({ articleModuleCollection }: Props) {
+export default function Article({
+  articleModuleCollection,
+  readingTime,
+}: Props) {
   return (
     <RootStyles>
       {articleModuleCollection.map((articleModule, id) => {
-        return createNewArticleModule(articleModule, id);
+        return createNewArticleModule(articleModule, id, readingTime);
       })}
     </RootStyles>
   );

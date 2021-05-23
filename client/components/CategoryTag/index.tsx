@@ -26,7 +26,7 @@ function CategoryTag({ name }: Props) {
   };
 
   return (
-    <Link href={routePath}>
+    <Link href={routePath} passHref>
       <Button onClick={handleClick}>{name}</Button>
     </Link>
   );
@@ -45,10 +45,6 @@ const Button = styled.button`
 
   &:hover {
     opacity: ${({ theme }) => theme.opacity.opacity80};
-  }
-
-  &:focus {
-    outline-color: ${({ theme }) => theme.colors.text};
   }
 `;
 

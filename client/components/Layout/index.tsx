@@ -3,17 +3,30 @@ import Head from 'next/head';
 import styled, { ThemeContext } from 'styled-components';
 import { BabyYodaEasterEgg } from '../EasterEggs';
 import Footer from '../Footer';
+import SEO from '../SEO';
 import usePageName from '../../hooks/usePageName';
 
 interface Props {
   children: ReactNode | Array<ReactNode>;
-  imageURL?: string;
+  isArticle?: boolean;
   pageName: string;
+  seoDescription?: string;
+  seoImageURL?: string;
+  seoSlug?: string;
   withEmojis?: boolean;
   withFooter?: boolean;
 }
 
-function Layout({ children, pageName, withEmojis, withFooter }: Props) {
+function Layout({
+  children,
+  isArticle,
+  pageName,
+  seoDescription,
+  seoImageURL,
+  seoSlug,
+  withEmojis,
+  withFooter,
+}: Props) {
   const [currentPageName] = usePageName(pageName, withEmojis);
   const theme = useContext(ThemeContext);
 
@@ -21,11 +34,17 @@ function Layout({ children, pageName, withEmojis, withFooter }: Props) {
     <>
       <Head>
         <title>{currentPageName}</title>
-        <meta name="description" content={pageName}></meta>
-        <meta name="twitter:widgets:theme" content={theme.currentTheme}></meta>
-        <meta name="twitter:dnt" content="on"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <SEO
+        description={seoDescription}
+        imageURL={seoImageURL}
+        isArticle={isArticle}
+        slug={seoSlug}
+        title={isArticle ? pageName : undefined}
+        currentTheme={theme.currentTheme}
+      />
       <RootStyles withFooter={withFooter}>
         {children}
         {withFooter ? <Footer /> : null}

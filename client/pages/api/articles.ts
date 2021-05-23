@@ -103,6 +103,7 @@ export interface ArticleType {
   };
   title: string;
   slug: string;
+  readingTime: string;
   categoriesCollection?: {
     items: Array<{ title: string }>;
   };
@@ -149,6 +150,7 @@ export async function getArticleById(articleId: string) {
           }
           title
           slug
+          readingTime
           categoriesCollection {
             items {
               title
@@ -250,6 +252,7 @@ export interface ArticlePreviewType {
   };
   title: string;
   slug: string;
+  readingTime: string;
   description: string;
   categoriesCollection: CategoryCollectionType;
 }
@@ -276,6 +279,7 @@ export async function getArticlePreviews() {
             }
             title
             slug
+            readingTime
             description
             categoriesCollection {
               __typename
