@@ -159,7 +159,7 @@ const RootStyles = styled.footer<StyleProps>`
         }
 
         &:hover {
-          opacity: ${({ theme }) => theme.opacity.opacity80};
+          opacity: ${({ theme }) => theme.opacity.opacity90};
           transform: translateY(-1px);
         }
       }

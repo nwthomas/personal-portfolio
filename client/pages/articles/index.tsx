@@ -66,11 +66,10 @@ function ArticlesPage() {
               }
 
               return (
-                <div>
+                <div key={i}>
                   <CategoryArticleSection
                     articles={articles}
                     categoryName={category}
-                    key={i}
                     withTopicTag
                   />
                 </div>

@@ -90,7 +90,6 @@ const RootStyles = styled.header<StyleProps>`
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
-      overflow-x: hidden;
 
       > nav {
         display: none;
@@ -122,7 +121,7 @@ const RootStyles = styled.header<StyleProps>`
               `}
 
             &:hover {
-              opacity: ${({ theme }) => theme.opacity.opacity80};
+              opacity: ${({ theme }) => theme.opacity.opacity90};
               transform: translateY(-1px);
             }
           }

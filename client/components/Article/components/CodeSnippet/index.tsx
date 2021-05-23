@@ -31,7 +31,6 @@ export default function CodeSnippet({ codeSnippetCopy }: Props) {
 
 const RootStyles = styled.div`
   align-items: center;
-  border-radius: ${({ theme }) => theme.borderRadii.micro};
   display: flex;
   flex-direction: column;
   margin: 0 0 ${({ theme }) => theme.spaces.medium};
@@ -41,5 +40,12 @@ const RootStyles = styled.div`
   > div {
     max-width: ${({ theme }) => theme.appDimensions.articleMaxWidth};
     width: 100%;
+
+    > pre {
+      border-radius: ${({ theme }) => theme.borderRadii.micro};
+      -webkit-box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.08);
+      -moz-box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.08);
+      box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.08);
+    }
   }
 `;

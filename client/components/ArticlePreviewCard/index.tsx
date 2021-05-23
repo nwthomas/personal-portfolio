@@ -52,7 +52,7 @@ const RootStyles = styled.div`
   align-self: flex-start;
   background: ${({ theme }) => theme.colors.bodyBackgroundAccentTwo};
   border: 1px solid ${({ theme }) => theme.colors.bodyBackgroundAccentOne};
-  border-radius: ${({ theme }) => theme.borderRadii.micro};
+  border-radius: ${({ theme }) => theme.borderRadii.small};
   -webkit-box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.08);
   -moz-box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.08);
   box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.08);
@@ -71,7 +71,7 @@ const RootStyles = styled.div`
     -webkit-box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.15);
     box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.15);
-    opacity: ${({ theme }) => theme.opacity.opacity80};
+    opacity: ${({ theme }) => theme.opacity.opacity90};
     transform: translateY(-1px);
   }
 

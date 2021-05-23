@@ -34,11 +34,13 @@ const RootStyles = styled.div`
   height: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};
   justify-content: flex-end;
   text-decoration: none;
-  transition: opacity ${({ theme }) => theme.transitions.medium} ease-in-out;
+  transition: opacity ${({ theme }) => theme.transitions.medium} ease-in-out,
+    transform ${({ theme }) => theme.transitions.medium} ease-in-out;
   width: 100%;
 
   &:hover {
-    opacity: ${({ theme }) => theme.opacity.opacity80};
+    opacity: ${({ theme }) => theme.opacity.opacity90};
+    transform: translateY(-1px);
   }
 
   > div {
