@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import seoConfig from '../../staticAssets/seoConfig';
+import type { ThemeEnum } from '../../styles/libs/theme';
 
 const {
   originalTitle,
@@ -11,6 +12,7 @@ const {
 } = seoConfig;
 
 interface Props {
+  currentTheme: ThemeEnum;
   description?: string;
   title?: string;
   imageURL?: string;
@@ -18,7 +20,14 @@ interface Props {
   isArticle?: boolean;
 }
 
-function SEO({ description, imageURL, isArticle, title, slug }: Props) {
+function SEO({
+  currentTheme,
+  description,
+  imageURL,
+  isArticle,
+  title,
+  slug,
+}: Props) {
   const finalDescription = description || originalDescription;
   const finalImageURL = imageURL || originalImageURL;
   const finalTitle = title || originalTitle;
@@ -43,6 +52,8 @@ function SEO({ description, imageURL, isArticle, title, slug }: Props) {
       />
       <meta name="twitter:creator" content={social.twitter} key="twhandle" />
       <meta name="twitter:title" content={finalTitle} key="twtitle" />
+      <meta name="twitter:widgets:theme" content={currentTheme}></meta>
+      <meta name="twitter:dnt" content="on"></meta>
       <meta
         name="twitter:description"
         content={finalDescription}
