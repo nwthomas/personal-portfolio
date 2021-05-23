@@ -29,7 +29,7 @@ const RootStyles = styled.div`
   display: flex;
   height: auto;
   justify-content: center;
-  margin: ${({ theme }) => theme.spaces.medium} 0;
+  margin-bottom: ${({ theme }) => theme.spaces.medium};
   width: 100%;
 
   > div {
