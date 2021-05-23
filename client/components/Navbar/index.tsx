@@ -17,7 +17,9 @@ function Navbar({ onThemeChangeClick, themeName }: Props) {
     <RootStyles shouldMinimizeNavbar={shouldMinimizeNavbar}>
       <div>
         <Link href="/">
-          <TitleIcon shouldMinimizeNavbar={shouldMinimizeNavbar}>n</TitleIcon>
+          <a>
+            <TitleIcon shouldMinimizeNavbar={shouldMinimizeNavbar}>n</TitleIcon>
+          </a>
         </Link>
         <div>
           <nav>
@@ -150,8 +152,8 @@ const TitleIcon = styled.h1<TitleStyleProps>`
   cursor: pointer;
   display: flex;
   font-size: 8rem;
-  line-height: 1;
   height: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};
+  line-height: 1;
   transition: color ${({ theme }) => theme.transitions.medium} ease-in-out;
 
   &:hover {
@@ -160,7 +162,6 @@ const TitleIcon = styled.h1<TitleStyleProps>`
 
   @media only screen and (min-width: ${({ theme }) =>
       theme.breakpoints.mobile}) {
-    height: ${({ theme }) => theme.appDimensions.desktopNavbarHeight};
     font-size: 12rem;
     transition: color ${({ theme }) => theme.transitions.medium} ease-in-out,
       font-size ${({ theme }) => theme.transitions.medium} ease-in-out;

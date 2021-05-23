@@ -22,7 +22,9 @@ export default function ThemeTransitionButton({ onClick, themeName }: Props) {
 
   return (
     <RootStyles>
-      <div onClick={handleOnClick}>{themeName ? currentIcon : null}</div>
+      <button onClick={handleOnClick} role="button" tabIndex={0}>
+        {themeName ? currentIcon : null}
+      </button>
     </RootStyles>
   );
 }
@@ -30,6 +32,7 @@ export default function ThemeTransitionButton({ onClick, themeName }: Props) {
 const RootStyles = styled.div`
   align-items: center;
   background: ${({ theme }) => theme.colors.transparent};
+  cursor: pointer;
   display: flex;
   height: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};
   justify-content: flex-end;
@@ -43,7 +46,14 @@ const RootStyles = styled.div`
     transform: translateY(-1px);
   }
 
-  > div {
+  > button {
+    background: none;
+    border: none;
+    color: inherit;
     cursor: pointer;
+    font: inherit;
+    height: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};
+    padding: 0;
+    width: 100%;
   }
 `;

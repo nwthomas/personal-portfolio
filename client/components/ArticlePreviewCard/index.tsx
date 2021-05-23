@@ -26,7 +26,7 @@ export default function ArticlePreviewCard({
   const finalReadingTime = readingTime ? `${readingTime} read` : 'Read';
 
   return (
-    <Link href={createArticleRoute(articleSlug)}>
+    <Link href={createArticleRoute(articleSlug)} passHref>
       <RootStyles>
         <h4>{title}</h4>
         <p>{description}</p>
@@ -50,7 +50,7 @@ export default function ArticlePreviewCard({
   );
 }
 
-const RootStyles = styled.div`
+const RootStyles = styled.a`
   align-self: flex-start;
   background: ${({ theme }) => theme.colors.bodyBackgroundAccentTwo};
   border: 1px solid ${({ theme }) => theme.colors.bodyBackgroundAccentOne};

@@ -15,7 +15,9 @@ function Link({ children, href, withStyling }: Props) {
   if (withStyling) {
     return (
       <RootStyles isActive={isActiveLink(pathname, href)}>
-        <NextLink href={href}>{children}</NextLink>
+        <NextLink href={href} passHref>
+          {children}
+        </NextLink>
       </RootStyles>
     );
   }

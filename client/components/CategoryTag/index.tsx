@@ -26,7 +26,7 @@ function CategoryTag({ name }: Props) {
   };
 
   return (
-    <Link href={routePath}>
+    <Link href={routePath} passHref>
       <Button onClick={handleClick}>{name}</Button>
     </Link>
   );

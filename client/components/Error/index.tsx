@@ -13,8 +13,8 @@ export default function Error({ errorCode, errorPhrase }: Props) {
     <RootStyles>
       <h4>{`${errorCode} - ${finalErrorPhrase}`}</h4>
       <div>
-        <Link href="/">
-          <p>Go back home</p>
+        <Link href="/" passHref>
+          <a>Go back home</a>
         </Link>
       </div>
     </RootStyles>
@@ -32,14 +32,15 @@ const RootStyles = styled.main`
   width: 100%;
 
   > h4 {
-    margin-bottom: ${({ theme }) => theme.spaces.small};
+    margin-bottom: ${({ theme }) => theme.spaces.medium};
   }
 
   > div {
     cursor: pointer;
     transition: opacity ${({ theme }) => theme.transitions.medium} ease-in-out;
 
-    > p {
+    > a {
+      display: inline-block;
       color: ${({ theme }) => theme.colors.textAccentTwo};
       transition: color ${({ theme }) => theme.transitions.medium} ease-in-out;
 
