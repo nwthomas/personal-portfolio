@@ -190,7 +190,6 @@ const RootStyles = styled.main`
           }
 
           a {
-            border: 1px solid ${({ theme }) => theme.colors.transparent};
             color: ${({ theme }) => theme.colors.textAccentTwo};
             font-size: 3rem;
             transition: color ${({ theme }) => theme.transitions.medium}
