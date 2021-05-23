@@ -2,7 +2,7 @@ import BodyCopy from './components/BodyCopy';
 import CodeSnippet from './components/CodeSnippet';
 import Image from './components/Image';
 import Quote from './components/Quote';
-import Seperator from './components/Seperator';
+import Separator from './components/Separator';
 import Title from './components/Title';
 import Video from './components/Video';
 import type { ArticleModulesCollectionTypes } from '../../pages/api/articles';
@@ -12,7 +12,7 @@ export const ARTICLE_CODE_SNIPPETS = 'ArticleCodeSnippets';
 export const ARTICLE_HEADING = 'ArticleHeading';
 export const ARTICLE_IMAGE = 'ArticleImage';
 export const ARTICLE_QUOTE = 'ArticleQuote';
-export const ARTICLE_SEPERATOR = 'ArticleSeperator';
+export const ARTICLE_SEPARATOR = 'ArticleSeperator';
 export const ARTICLE_VIDEO = 'ArticleVideo';
 
 export const createNewArticleModule = (
@@ -60,8 +60,8 @@ export const createNewArticleModule = (
           quoteCopy={articleModule.copy}
         />
       );
-    case ARTICLE_SEPERATOR:
-      return <Seperator key={articleModuleId} />;
+    case ARTICLE_SEPARATOR:
+      return <Separator key={articleModuleId} />;
     case ARTICLE_VIDEO:
       return (
         <Video

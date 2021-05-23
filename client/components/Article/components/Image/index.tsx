@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styled from 'styled-components';
-import Seperator from '../Seperator';
+import Separator from '../Separator';
 
 interface Props {
   altText?: string;
@@ -19,11 +19,11 @@ export default function ArticleImage({
   isInline,
   width,
 }: Props) {
-  const shouldRenderSeperators = !isInline && !isHeroImage;
+  const shouldRenderSeparators = !isInline && !isHeroImage;
 
   return (
     <RootStyles isHeroImage={isHeroImage}>
-      {shouldRenderSeperators ? <Seperator /> : null}
+      {shouldRenderSeparators ? <Separator /> : null}
       <figure>
         <Image
           alt={altText || 'Image'}
@@ -35,7 +35,7 @@ export default function ArticleImage({
           width={width}
         />
       </figure>
-      {shouldRenderSeperators ? <Seperator /> : null}
+      {shouldRenderSeparators ? <Separator /> : null}
     </RootStyles>
   );
 }

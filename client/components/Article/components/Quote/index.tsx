@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Seperator from '../Seperator';
+import Separator from '../Separator';
 
 interface Props {
   quoteAttribution: string;
@@ -13,12 +13,12 @@ export default function ArticleQuote({ quoteAttribution, quoteCopy }: Props) {
   return (
     <RootStyles>
       <div>
-        <Seperator />
+        <Separator />
         <blockquote>
           <p>{finalQuoteCopy}</p>
           <p>{finalQuoteAttribution}</p>
         </blockquote>
-        <Seperator />
+        <Separator />
       </div>
     </RootStyles>
   );
