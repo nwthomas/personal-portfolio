@@ -99,7 +99,12 @@ export default function ArticleByName() {
     )?.image?.url;
 
     return (
-      <Layout imageURL={heroImageURL} pageName={pageTitle} withFooter>
+      <Layout
+        isArticle
+        pageName={pageTitle}
+        seoImageURL={heroImageURL}
+        withFooter
+      >
         <RootStyles>
           <Article
             articleModuleCollection={articleData.modulesCollection.items}

@@ -42,7 +42,7 @@ function Layout({
         imageURL={seoImageURL}
         isArticle={isArticle}
         slug={seoSlug}
-        title={pageName}
+        title={isArticle ? pageName : undefined}
         currentTheme={theme.currentTheme}
       />
       <RootStyles withFooter={withFooter}>
