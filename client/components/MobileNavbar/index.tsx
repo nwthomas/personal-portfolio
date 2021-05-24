@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
   ArticlesIcon,
   ResumeIcon,
@@ -17,37 +17,43 @@ export default function MobileNavbar() {
     <RootStyles>
       <nav>
         <Link href="/" aria-label="Link to home page">
-          <a>
+          <MobileNavbarLinkStyles isActive={isActiveLink(pathname, '/')}>
             <HomeIcon isActive={isActiveLink(pathname, '/')} />
             <p>Home</p>
-          </a>
+          </MobileNavbarLinkStyles>
         </Link>
         <Link href="/articles" aria-label="Link to articles page">
-          <a>
+          <MobileNavbarLinkStyles
+            isActive={isActiveLink(pathname, '/articles')}
+          >
             <ArticlesIcon isActive={isActiveLink(pathname, '/articles')} />
             <p>Articles</p>
-          </a>
+          </MobileNavbarLinkStyles>
         </Link>
         <Link href="/presentations" aria-label="Link to presentations page">
-          <a>
+          <MobileNavbarLinkStyles
+            isActive={isActiveLink(pathname, '/presentations')}
+          >
             <PresentationsIcon
               isActive={isActiveLink(pathname, '/presentations')}
             />
             <p>Presentations</p>
-          </a>
+          </MobileNavbarLinkStyles>
         </Link>
         <Link href="/nathan-thomas-resume.pdf">
-          <a>
+          <MobileNavbarLinkStyles>
             <ResumeIcon />
             <p>Resume</p>
-          </a>
+          </MobileNavbarLinkStyles>
         </Link>
         {shouldShowContactPage ? (
           <Link href="/contact" aria-label="Link to contact page">
-            <a>
+            <MobileNavbarLinkStyles
+              isActive={isActiveLink(pathname, '/contact')}
+            >
               <MailIcon isActive={isActiveLink(pathname, '/contact')} />
               <p>Contact</p>
-            </a>
+            </MobileNavbarLinkStyles>
           </Link>
         ) : null}
       </nav>
@@ -77,27 +83,37 @@ const RootStyles = styled.div`
     justify-content: space-between;
     padding-top: ${({ theme }) => theme.spaces.micro};
     width: 100%;
+  }
+`;
 
-    > a {
-      align-items: center;
-      display: flex;
-      flex: 1;
-      flex-direction: column;
-      justify-content: center;
+interface MobileNavbarLinkStylesProps {
+  isActive?: boolean;
+}
 
-      &:hover {
-        cursor: pointer;
-      }
+const MobileNavbarLinkStyles = styled.a<MobileNavbarLinkStylesProps>`
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
 
-      > svg {
-        height: 30px;
-        width: 30px;
-      }
+  &:hover {
+    cursor: pointer;
+  }
 
-      > p {
-        font-size: 1rem;
-        user-select: none;
-      }
-    }
+  > svg {
+    height: 30px;
+    width: 30px;
+  }
+
+  > p {
+    font-size: 1rem;
+    user-select: none;
+
+    ${({ isActive, theme }) =>
+      isActive &&
+      css`
+        color: ${theme.colors.textAccentTwo};
+      `}
   }
 `;
