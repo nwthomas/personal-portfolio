@@ -23,19 +23,11 @@ function Navbar({ onThemeChangeClick, themeName }: Props) {
         </Link>
         <div>
           <nav>
-            <Link href="/articles" withStyling>
-              Articles
-            </Link>
-            <Link href="/presentations" withStyling>
-              Presentations
-            </Link>
-            <Link href="/nathan-thomas-resume.pdf" withStyling>
-              Resume
-            </Link>
+            <Link href="/articles">Articles</Link>
+            <Link href="/presentations">Presentations</Link>
+            <Link href="/nathan-thomas-resume.pdf">Resume</Link>
             {shouldShowContactPage ? (
-              <Link href="/contact" withStyling>
-                Contact
-              </Link>
+              <Link href="/contact">Contact</Link>
             ) : null}
           </nav>
           <div>

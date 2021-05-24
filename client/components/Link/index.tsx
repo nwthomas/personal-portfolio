@@ -22,7 +22,11 @@ function Link({ children, href, withStyling }: Props) {
     );
   }
 
-  return <NextLink href={href}>{children}</NextLink>;
+  return (
+    <NextLink href={href} passHref>
+      {children}
+    </NextLink>
+  );
 }
 
 export function isActiveLink(routerPathname: string, hrefPathname: string) {

@@ -12,7 +12,7 @@ function GraduateIcon({ isActive, title }: Props) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
     >
-      <title>{title || 'Graduation hat icon'}</title>
+      <title>{title || 'Resume icon'}</title>
       <path
         fill="none"
         strokeLinecap="round"

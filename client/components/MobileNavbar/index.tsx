@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import {
-  GraduateIcon,
+  ArticlesIcon,
+  ResumeIcon,
   HomeIcon,
   PresentationsIcon,
   MailIcon,
-  PostsIcon,
 } from '../Icons';
 import Link, { isActiveLink } from '../Link';
 
@@ -19,11 +19,13 @@ export default function MobileNavbar() {
         <Link href="/" aria-label="Link to home page">
           <a>
             <HomeIcon isActive={isActiveLink(pathname, '/')} />
+            <p>Home</p>
           </a>
         </Link>
         <Link href="/articles" aria-label="Link to articles page">
           <a>
-            <PostsIcon isActive={isActiveLink(pathname, '/articles')} />
+            <ArticlesIcon isActive={isActiveLink(pathname, '/articles')} />
+            <p>Articles</p>
           </a>
         </Link>
         <Link href="/presentations" aria-label="Link to presentations page">
@@ -31,17 +33,20 @@ export default function MobileNavbar() {
             <PresentationsIcon
               isActive={isActiveLink(pathname, '/presentations')}
             />
+            <p>Presentations</p>
           </a>
         </Link>
         <Link href="/nathan-thomas-resume.pdf">
           <a>
-            <GraduateIcon />
+            <ResumeIcon />
+            <p>Resume</p>
           </a>
         </Link>
         {shouldShowContactPage ? (
           <Link href="/contact" aria-label="Link to contact page">
             <a>
               <MailIcon isActive={isActiveLink(pathname, '/contact')} />
+              <p>Contact</p>
             </a>
           </Link>
         ) : null}
@@ -54,14 +59,15 @@ const RootStyles = styled.div`
   background: ${({ theme }) => theme.colors.bodyBackground};
   bottom: 0;
   display: flex;
-  height: 70px;
+  height: ${({ theme }) => theme.appDimensions.mobileNavbarHeight};
   justify-content: center;
-  padding: 0 8%;
+  padding: 0 ${({ theme }) => theme.appDimensions.appHorizontalGutters};
   position: fixed;
   width: 100%;
   z-index: 1;
 
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: ${({ theme }) =>
+      theme.breakpoints.mobile}) {
     display: none;
   }
 
@@ -69,14 +75,28 @@ const RootStyles = styled.div`
     align-items: center;
     display: flex;
     justify-content: space-between;
+    padding-top: ${({ theme }) => theme.spaces.micro};
     width: 100%;
 
-    a {
-      height: 30px;
-      width: 30px;
+    > a {
+      align-items: center;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: center;
 
       &:hover {
         cursor: pointer;
+      }
+
+      > svg {
+        height: 30px;
+        width: 30px;
+      }
+
+      > p {
+        font-size: 1rem;
+        user-select: none;
       }
     }
   }

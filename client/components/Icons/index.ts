@@ -1,11 +1,11 @@
 export { default as ChevronForwardIcon } from './ChevronForwardIcon';
 export { default as GitHubIcon } from './GitHubIcon';
-export { default as GraduateIcon } from './GraduateIcon';
+export { default as ResumeIcon } from './ResumeIcon';
 export { default as HomeIcon } from './HomeIcon';
 export { default as InstagramIcon } from './InstagramIcon';
 export { default as LinkedInIcon } from './LinkedInIcon';
 export { default as MailIcon } from './MailIcon';
-export { default as PostsIcon } from './PostsIcon';
+export { default as ArticlesIcon } from './ArticlesIcon';
 export { default as PresentationsIcon } from './PresentationsIcon';
 export { default as SearchIcon } from './SearchIcon';
 export { default as TwitterIcon } from './TwitterIcon';
