@@ -36,9 +36,11 @@ function ArticlesPage() {
     isFetching: isFetchingCategories,
   } = useQuery('categories', getCategories);
 
+  if (isFetchingArticles || isFetchingCategories) {
+    return null;
+  }
+
   if (
-    !isFetchingArticles &&
-    !isFetchingCategories &&
     !articlesError &&
     !categoriesError &&
     articlesData.length >= 1 &&
