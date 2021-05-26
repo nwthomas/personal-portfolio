@@ -120,7 +120,7 @@ const RootStyles = styled.footer<StyleProps>`
 
     @media only screen and (min-width: ${({ theme }) =>
         theme.breakpoints.mobile}) {
-      align-items: center;
+      align-items: flex-end;
       flex-direction: row;
       padding: 0;
     }
@@ -130,7 +130,7 @@ const RootStyles = styled.footer<StyleProps>`
     }
 
     nav {
-      align-items: flex-end;
+      align-items: center;
       display: flex;
       height: ${({ theme }) => theme.spaces.large};
       justify-content: flex-start;
