@@ -1,28 +1,22 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import { ChevronForwardIcon } from '../Icons';
-import CategoryTag from '../CategoryTag';
 
 const createArticleRoute = (articleSlug: string) => `/articles/${articleSlug}`;
 
 interface Props {
   articleSlug: string;
-  categories: Array<string>;
   description: string;
   readingTime?: string;
   title: string;
-  withCategories?: boolean;
 }
 
 export default function ArticlePreviewCard({
   articleSlug,
-  categories,
   description,
   readingTime,
   title,
-  withCategories,
 }: Props) {
-  const sortedCategories = categories?.sort((a, b) => (a > b ? 1 : -1));
   const finalReadingTime = readingTime ? `${readingTime} read` : 'Read';
 
   return (
@@ -36,15 +30,6 @@ export default function ArticlePreviewCard({
           </div>
           <p>{finalReadingTime}</p>
         </div>
-        {withCategories ? (
-          <div>
-            {sortedCategories?.length >= 1
-              ? sortedCategories.map((topicTag, i) => (
-                  <CategoryTag name={topicTag} key={i} />
-                ))
-              : null}
-          </div>
-        ) : null}
       </RootStyles>
     </Link>
   );
@@ -92,8 +77,9 @@ const RootStyles = styled.a`
   }
 
   > div {
-    align-items: center;
+    align-items: flex-end;
     display: flex;
+    height: 100%;
     width: 100%;
 
     > div:first-child {
