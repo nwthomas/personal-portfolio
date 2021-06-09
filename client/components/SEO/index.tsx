@@ -37,7 +37,7 @@ function SEO({
     <Head>
       <meta charSet="utf-8" />
       <meta name="description" content={finalDescription} />
-      <meta name="image" content={finalImageURL} key="ogtitle" />
+      <meta name="image" content={finalImageURL} />
       <meta
         property="og:type"
         content={isArticle ? 'article' : 'website'}
@@ -45,6 +45,9 @@ function SEO({
       />
       <meta property="og:title" content={finalTitle} key="ogtitle" />
       <meta property="og:description" content={finalDescription} key="ogdesc" />
+      <meta property="og:image" content={finalImageURL} key="ogimage" />
+      <meta property="og:url" content={finalURL} key="ogurl" />
+      <meta property="og:site_name" content={siteName} key="ogsitename" />
       <meta
         property="twitter:card"
         content="summary_large_image"
@@ -60,9 +63,6 @@ function SEO({
         key="twdescription"
       />
       <meta name="twitter:image" content={finalImageURL} key="twimage" />
-      <meta property="og:url" content={finalURL} key="ogurl" />
-      <meta property="og:image" content={finalImageURL} key="ogimage" />
-      <meta property="og:site_name" content={siteName} key="ogsitename" />
     </Head>
   );
 }
