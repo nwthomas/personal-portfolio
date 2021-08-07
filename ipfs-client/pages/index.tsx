@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Nathan Thomas | Home</title>
+        <title>Nathan Thomas</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
