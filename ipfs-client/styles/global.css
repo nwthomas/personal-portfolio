@@ -1,0 +1,11 @@
+* {
+  background-color: #f8f8f8;
+  box-sizing: border-box;
+}
+
+main {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
