@@ -19,7 +19,7 @@ function CategoryTag({ name }: Props) {
   const categoryRouteName = createCategoryRouteName(name);
   const routePath = isInsideCategoryPage
     ? categoryRouteName
-    : `articles/category/${categoryRouteName}`;
+    : `/articles/category/${categoryRouteName}`;
 
   const handleClick = (event: SyntheticEvent) => {
     event.stopPropagation();
