@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styled from 'styled-components';
 
 interface Props {
@@ -12,14 +13,29 @@ export default function ArticleTitle({
   titleCopy,
 }: Props) {
   const attribution = 'by Nathan Thomas';
-  const tagline = readingTime
-    ? `${attribution} · ${readingTime} read`
-    : attribution;
   return (
     <RootStyles isMainTitle={isMainTitle}>
       <div>
         <h2>{titleCopy}</h2>
-        {isMainTitle ? <p>{tagline}</p> : null}
+        {isMainTitle ? (
+          <div>
+            <div>
+              <Image
+                alt="Nathan Thomas' avatar"
+                draggable={false}
+                height={50}
+                quality={100}
+                priority
+                src="/nathan-avatar.jpeg"
+                width={50}
+              />
+            </div>
+            <div>
+              <p>{attribution}</p>
+              {readingTime ? <p>{`${readingTime} read`}</p> : null}
+            </div>
+          </div>
+        ) : null}
       </div>
     </RootStyles>
   );
@@ -58,10 +74,22 @@ const RootStyles = styled.div<StyleProps>`
       }
     }
 
-    > p {
-      font-style: italic;
-      margin-top: ${({ theme }) => theme.spaces.small};
-      opacity: ${({ theme }) => theme.opacity.opacity80};
+    > div {
+      align-items: center;
+      display: flex;
+
+      > div {
+        margin-right: ${({ theme }) => theme.spaces.small};
+
+        img {
+          border-radius: ${({ theme }) => theme.borderRadii.infinity};
+        }
+
+        > p {
+          font-style: italic;
+          opacity: ${({ theme }) => theme.opacity.opacity80};
+        }
+      }
     }
   }
 `;
